@@ -1,7 +1,0 @@
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\MonyUCAB.dll.config
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\MonyUCAB.dll
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\MonyUCAB.pdb
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\MonyUCAB.csprojAssemblyReference.cache
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\MonyUCAB.csproj.CoreCompileInputs.cache
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\MonyUCAB.dll
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\MonyUCAB.pdb
