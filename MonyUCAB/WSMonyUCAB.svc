@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MonyUCAB.WSMonyUCAB" CodeBehind="WSMonyUCAB.svc.cs" %>
