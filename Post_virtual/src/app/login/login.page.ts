@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,7 +13,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login() {
+  ingresar( f: NgForm ) {
+    console.log(f.value.user);
+    console.log(f.value.password);
+
     this.router.navigate(['/tabs/perfil']);
   }
 
