@@ -1,17 +1,76 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            <h4 class="ion-text-center"><strong>Operaciones</strong></h4>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-grid class="grid1">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+        <ion-row class="row1">
+            <ion-col>
+
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="row2">
+            <ion-col>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <ion-slide>
+        <div class="contaier-perfil">
+            <ion-card>
+                <ion-card-header>
+                    <ion-row>
+                        <ion-col>
+                            <h1>Total de operaciones: 200</h1>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-contend>
+
+                    <strong><h3>Operaciones de cuentas registradas</h3></strong>
+
+                    <ion-list>
+                        <ion-item *ngFor="let cuenta of cuentas">
+                            <ion-icon slot="start" name="reader-outline"></ion-icon>
+                            <ion-label>
+                                Numero de operacion {{cuenta.idOperacionCuenta}} de monto <strong>{{cuenta.monto}}</strong>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+
+                    <strong><h3>Operaciones del monedero</h3></strong>
+
+                    <ion-list>
+                        <ion-item *ngFor="let monedero of monederos">
+                            <ion-icon slot="start" name="reader-outline"></ion-icon>
+                            <ion-label>
+                                Numero de operacion {{monedero.idOperacionMonedero}} de monto <strong>{{monedero.monto}}</strong>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+
+                    <strong><h3>Operaciones de tarjetas registradas</h3></strong>
+
+                    <ion-list>
+                        <ion-item *ngFor="let tarjeta of tarjetas">
+                            <ion-icon slot="start" name="reader-outline"></ion-icon>
+                            <ion-label>
+                                Numero de operacion {{tarjeta.idOperacionTarjeta}} de monto <strong>{{tarjeta.monto}}</strong>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+
+                </ion-card-contend>
+            </ion-card>
+        </div>
+    </ion-slide>
+
 </ion-content>

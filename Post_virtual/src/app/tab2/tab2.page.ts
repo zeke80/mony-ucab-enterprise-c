@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CuentaService } from './cuenta/cuenta.service';
-import { Cuenta } from '../models/cuenta.model';
+import { TarjetaService } from './tarjeta/tarjeta.service';
 
 @Component({
   selector: 'app-tab2',
@@ -9,14 +9,17 @@ import { Cuenta } from '../models/cuenta.model';
 })
 export class Tab2Page implements OnInit {
 
-  cuentas = []
+  cuentas = [];
+  tarjetas = [];
 
   constructor(
-    public _cuentaServices: CuentaService
+    public _cuentaServices: CuentaService,
+    public _tarjetaServices: TarjetaService
   ) {}
 
   ngOnInit(){
     this.cuentas = this._cuentaServices.getCuentas();
+    this.tarjetas = this._tarjetaServices.getTarjetas();
   }
 
 }
