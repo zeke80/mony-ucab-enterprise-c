@@ -1,4 +1,4 @@
-export interface Tarjeta {
+export class Tarjeta {
     idTarjeta: number;
     idUsuario: number;
     idTipoTarjeta: number;

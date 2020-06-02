@@ -1,4 +1,4 @@
-export interface Cuenta {
+export class Cuenta {
     idCuenta: number;
     idUsuario: number;
     idTipoCuenta: number;

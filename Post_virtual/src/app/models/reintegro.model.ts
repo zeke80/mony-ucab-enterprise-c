@@ -1,4 +1,4 @@
-export interface Reintegro {
+export class Reintegro {
     idReintegro: number;
     idUsuarioSolicitante: number;
     idUsuarioReceptor: number;

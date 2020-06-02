@@ -1,4 +1,4 @@
-export interface OperacionCuenta {
+export class OperacionCuenta {
     idOperacionCuenta: number;
     idCuenta: number;
     idUsuarioReceptor: number;

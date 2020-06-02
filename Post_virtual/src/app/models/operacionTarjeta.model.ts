@@ -1,4 +1,4 @@
-export interface OperacionTarjeta {
+export class OperacionTarjeta {
     idOperacionTarjeta: number;
     idUsuarioReceptor: number;
     idTarjeta: number;

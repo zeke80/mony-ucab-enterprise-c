@@ -1,4 +1,4 @@
-export interface Pago {
+export class Pago {
     idPago: number;
     idUsuarioSolicitante: number;
     idUsuarioReceptor: number;

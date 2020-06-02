@@ -1,4 +1,4 @@
-export interface OperacionMonedero {
+export class OperacionMonedero {
     idOperacionMonedero: number;
     idUsuario: number;
     idTipoOperacion: number;
