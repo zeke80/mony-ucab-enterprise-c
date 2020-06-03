@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     console.log(f.value.user);
     console.log(f.value.password);
 
-    this.router.navigate(['/tabs/perfil']);
+    this.router.navigate(['/tabs/cuenta']);
   }
 
 }

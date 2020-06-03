@@ -26,7 +26,7 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let cuenta of cuentas">
+                    <ion-item *ngFor="let cuenta of cuentas" [routerLink]="['/tabs/operaciones', cuenta.idOperacionCuenta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
                             Numero de operacion {{cuenta.idOperacionCuenta}} de monto <strong>{{cuenta.monto}}</strong>
@@ -42,7 +42,7 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let monedero of monederos">
+                    <ion-item *ngFor="let monedero of monederos" [routerLink]="['/tabs/operaciones/monedero', monedero.idOperacionMonedero]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
                             Numero de operacion {{monedero.idOperacionMonedero}} de monto <strong>{{monedero.monto}}</strong>
@@ -58,7 +58,7 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let tarjeta of tarjetas">
+                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones', tarjeta.idOperacionTarjeta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
                             Numero de operacion {{tarjeta.idOperacionTarjeta}} de monto <strong>{{tarjeta.monto}}</strong>

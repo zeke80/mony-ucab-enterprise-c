@@ -12,7 +12,7 @@ export class CuentaService {
       idUsuario: 1,
       idTipoCuenta: 1,
       idBanco: 1,
-      numero: '11111216184'
+      numero: '000000000'
     }
   ];
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OperacionService } from './operacion/operacion.service';
+import { OperacionService } from '../servicios/operacion/operacion.service';
 
 @Component({
   selector: 'app-tab3',
