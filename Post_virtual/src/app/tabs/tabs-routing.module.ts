@@ -34,6 +34,14 @@ const routes: Routes = [
         loadChildren: () => import ('../tab3/operacion-detalle-m/operacion-detalle-m.module').then(m => m.OperacionDetalleMPageModule)
       },
       {
+        path: 'operaciones/tarjeta/:operacionID',
+        loadChildren: () => import ('../tab3/operacion-detalle-t/operacion-detalle-t.module').then(m => m.OperacionDetalleTPageModule)
+      },
+      {
+        path: 'operaciones/pago',
+        loadChildren: () => import ('../tab3/pago/pago.module').then(m => m.PagoPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab2',
         pathMatch: 'full'

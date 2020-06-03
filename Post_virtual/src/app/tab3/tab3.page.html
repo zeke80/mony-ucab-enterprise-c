@@ -58,7 +58,7 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones', tarjeta.idOperacionTarjeta]">
+                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones/tarjeta', tarjeta.idOperacionTarjeta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
                             Numero de operacion {{tarjeta.idOperacionTarjeta}} de monto <strong>{{tarjeta.monto}}</strong>
@@ -67,6 +67,8 @@
                 </ion-list>
             </ion-card-contend>
         </ion-card>
+
+
 
     </div>
 
