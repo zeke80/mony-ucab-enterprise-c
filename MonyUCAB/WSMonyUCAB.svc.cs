@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonyUCAB.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,7 +15,8 @@ namespace MonyUCAB
     {
         public string GetData(int value)
         {
-            return string.Format("You entered: {0}", value);
+            UsuarioDAO usuario = new UsuarioDAO();
+            return usuario.consultar().ToString();
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
