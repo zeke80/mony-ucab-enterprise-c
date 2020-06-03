@@ -18,15 +18,35 @@ export class TarjetaService {
       estatus: 1
     },
     {
-      idTarjeta: 2,
+      idTarjeta: 1,
       idUsuario: 1,
-      idTipoTarjeta: 2,
+      idTipoTarjeta: 1,
       idBanco: 1,
-      numero: 78945645,
+      numero: 15235795,
       fechaVencimineto: '02/02/2020',
       cvc: 1,
       estatus: 1
-    }
+    },
+    {
+      idTarjeta: 1,
+      idUsuario: 1,
+      idTipoTarjeta: 1,
+      idBanco: 1,
+      numero: 15235795,
+      fechaVencimineto: '02/02/2020',
+      cvc: 1,
+      estatus: 1
+    },
+    {
+      idTarjeta: 1,
+      idUsuario: 1,
+      idTipoTarjeta: 1,
+      idBanco: 1,
+      numero: 15235795,
+      fechaVencimineto: '02/02/2020',
+      cvc: 1,
+      estatus: 1
+    },
   ]
 
   constructor() { }

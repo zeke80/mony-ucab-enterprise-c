@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
 import { UsuarioService } from './usuario/usuario.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
@@ -18,6 +19,10 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(){
     this.usuario = this._usuarioService.getUsuario(1);
+  }
+
+  modificarUsuario( f: NgForm) {
+    console.log(f.value.user);
   }
 
 }

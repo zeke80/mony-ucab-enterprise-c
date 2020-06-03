@@ -8,60 +8,57 @@
 
 <ion-content>
 
-    <ion-grid class="grid1">
+    <div class="contaier-monto">
+        <ion-card>
+            <ion-card-header>
+                <ion-row>
+                    <ion-col>
+                        <h1 class="ion-text-center">Saldo disponible:</h1>
+                        <h2 class="ion-text-center">2000 $</h2>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
 
-        <ion-row class="row1">
-            <ion-col>
+        </ion-card>
 
-            </ion-col>
-        </ion-row>
+        <ion-card>
+            <ion-card-header>
+                <h2>Cuentas registradas del usuario</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let cuenta of cuentas">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Banesco Numero de cuenta: <strong>{{cuenta.numero}}</strong>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <h2>Tarjetas registradas del usuario</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let tarjeta of tarjetas">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Visa Numero de tarjeta: <strong>{{tarjeta.numero}}</strong>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        <ion-row class="row2">
-            <ion-col>
-
-            </ion-col>
-        </ion-row>
-
-    </ion-grid>
-
-    <ion-slide>
-        <div class="contaier-perfil">
-            <ion-card>
-                <ion-card-header>
-                    <ion-row>
-                        <ion-col>
-                            <h1>Saldo disponible:</h1>
-                            <h2>2000 $</h2>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-header>
-                <ion-card-contend>
-
-                    <strong><h3>Cuentas registradas del usuario</h3></strong>
-
-                    <ion-list>
-                        <ion-item *ngFor="let cuenta of cuentas">
-                            <ion-icon slot="start" name="reader-outline"></ion-icon>
-                            <ion-label>
-                                Banesco Numero de cuenta: <strong>{{cuenta.numero}}</strong>
-                            </ion-label>
-                        </ion-item>
-                    </ion-list>
-
-                    <strong><h3>Tarjetas registradas del usuario</h3></strong>
-
-                    <ion-list>
-                        <ion-item *ngFor="let tarjeta of tarjetas">
-                            <ion-icon slot="start" name="reader-outline"></ion-icon>
-                            <ion-label>
-                                Visa Numero de tarjeta: <strong>{{tarjeta.numero}}</strong>
-                            </ion-label>
-                        </ion-item>
-                    </ion-list>
-
-                </ion-card-contend>
-            </ion-card>
-        </div>
-    </ion-slide>
-
+    </div>
 </ion-content>
