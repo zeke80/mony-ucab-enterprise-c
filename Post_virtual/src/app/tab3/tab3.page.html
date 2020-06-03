@@ -20,6 +20,9 @@
                 </ion-row>
             </ion-card-header>
         </ion-card>
+        <ion-button (click)="solicitudPago()" color="warning" fill="solid" expand="full">
+            solicitar pago
+        </ion-button>
         <ion-card>
             <ion-card-header>
                 <h2>Operaciones de cuentas</h2>
@@ -68,7 +71,21 @@
             </ion-card-contend>
         </ion-card>
 
-
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones de reintegro</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let reintegro of reintegros" [routerLink]="['/tabs/operaciones/reintegro', reintegro.idReintegro]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Numero de reintegro {{reintegro.idReintegro}} de estatus <strong>{{reintegro.status}}</strong>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
 
     </div>
 

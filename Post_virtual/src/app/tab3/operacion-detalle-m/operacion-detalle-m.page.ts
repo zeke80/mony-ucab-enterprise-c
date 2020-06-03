@@ -24,7 +24,7 @@ export class OperacionDetalleMPage implements OnInit {
       const recipeID = paramMap.get('operacionID');
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionMonedero(id);
-      console.log(this.operacion.monto)
+      console.log(this.operacion.monto);
     });
   }
 

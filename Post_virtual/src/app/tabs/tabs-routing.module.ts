@@ -38,6 +38,10 @@ const routes: Routes = [
         loadChildren: () => import ('../tab3/operacion-detalle-t/operacion-detalle-t.module').then(m => m.OperacionDetalleTPageModule)
       },
       {
+        path: 'operaciones/reintegro/:operacionID',
+        loadChildren: () => import ('../tab3/operacion-detalle-r/operacion-detalle-r.module').then(m => m.OperacionDetalleRPageModule)
+      },
+      {
         path: 'operaciones/pago',
         loadChildren: () => import ('../tab3/pago/pago.module').then(m => m.PagoPageModule)
       },

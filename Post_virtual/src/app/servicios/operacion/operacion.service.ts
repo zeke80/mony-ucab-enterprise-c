@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { OperacionCuenta } from '../../models/operacionCuenta.model';
 import { OperacionMonedero } from '../../models/operacionMonedero.model';
 import { OperacionTarjeta } from '../../models/operacionTarjeta.model';
+import { Reintegro } from '../../models/reintegro.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class OperacionService {
       referencia: 'Tremenda referencia'
     },
     {
-      idOperacionCuenta: 10,
+      idOperacionCuenta: 11,
       idCuenta: 1,
       idUsuarioReceptor: 2,
       fecha: '02/02/2020',
@@ -96,6 +97,25 @@ export class OperacionService {
     }
   ];
 
+  reintegros: Reintegro[] = [
+    {
+      idReintegro: 1,
+      idUsuarioSolicitante: 1,
+      idUsuarioReceptor: 1,
+      fecha_solicitud: '02/02/2020',
+      referencia: 'referencia',
+      status: 'solicitado'
+    },
+    {
+      idReintegro: 2,
+      idUsuarioSolicitante: 1,
+      idUsuarioReceptor: 1,
+      fecha_solicitud: '02/02/2020',
+      referencia: 'referencia',
+      status: 'rechazada'
+    }
+  ];
+
   constructor() { }
 
   getoperacionesCuenta() {
@@ -116,6 +136,12 @@ export class OperacionService {
 
   }
 
+  getreintegros() {
+
+    return [...this.reintegros];
+
+  }
+
   getoperacionCuenta(operacionID: number){
     return {
       ...this.operacionesCuenta.find(operacion => {
@@ -131,4 +157,21 @@ export class OperacionService {
       })
     };
   }
+
+  getoperacionTarjeta(operacionID: number){
+    return {
+      ...this.operacionesTarjeta.find(operacion => {
+        return operacion.idOperacionTarjeta === operacionID;
+      })
+    };
+  }
+
+  getreintegro(operacionID: number){
+    return {
+      ...this.reintegros.find(operacion => {
+        return operacion.idReintegro === operacionID;
+      })
+    };
+  }
+
 }
