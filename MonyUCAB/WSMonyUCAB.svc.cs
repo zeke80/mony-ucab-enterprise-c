@@ -15,8 +15,8 @@ namespace MonyUCAB
     {
         public string GetData(int value)
         {
-            UsuarioDAO usuario = new UsuarioDAO();
-            return usuario.consultar().ToString();
+            IUsuarioDAO usuario = new UsuarioDAOPsql();
+            return usuario.buscar()[0].Usuario;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

@@ -96,8 +96,24 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\ConexionBD.cs" />
-    <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DAO\ICuentaDAO.cs" />
+    <Compile Include="DAO\IOperacionCuentaDAO.cs" />
+    <Compile Include="DAO\IOperacionTarjetaDAO.cs" />
+    <Compile Include="DAO\IPersonaDAO.cs" />
+    <Compile Include="DAO\ITarjetaDAO.cs" />
+    <Compile Include="DAO\Psql\CuentaDAOPsql.cs" />
+    <Compile Include="DAO\Psql\DAOPsql.cs" />
+    <Compile Include="DAO\IUsuarioDAO.cs" />
+    <Compile Include="DAO\Psql\OperacionCuentaDAOPsql.cs" />
+    <Compile Include="DAO\Psql\OperacionTarjetaDAOPsql.cs" />
+    <Compile Include="DAO\Psql\PersonaDAOPsql.cs" />
+    <Compile Include="DAO\Psql\TarjetaDAOPsql.cs" />
+    <Compile Include="DAO\Psql\UsuarioDAOPsql.cs" />
+    <Compile Include="DTO\CuentaDTO.cs" />
+    <Compile Include="DTO\OperacionCuentaDTO.cs" />
+    <Compile Include="DTO\OperacionTarjetaDTO.cs" />
+    <Compile Include="DTO\PersonaDTO.cs" />
+    <Compile Include="DTO\TarjetaDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="WSMonyUCAB.svc.cs">
       <DependentUpon>WSMonyUCAB.svc</DependentUpon>
