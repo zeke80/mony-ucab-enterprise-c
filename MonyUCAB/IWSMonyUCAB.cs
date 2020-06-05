@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonyUCAB.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,7 +16,14 @@ namespace MonyUCAB
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json)]
-        string GetData(int value);
+        int GetData(int value);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/login",
+                   ResponseFormat = WebMessageFormat.Json,
+                   RequestFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Wrapped)]
+        UsuarioDTO login(string user, string contra);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

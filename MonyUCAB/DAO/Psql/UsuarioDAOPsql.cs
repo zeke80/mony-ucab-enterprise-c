@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
+using Microsoft.SqlServer.Server;
 
 namespace MonyUCAB.DAO
 {
@@ -15,17 +16,20 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-        public List<UsuarioDTO> buscar()
+        public List<UsuarioDTO> buscar(string user, string contra)
         {
-            comando.CommandText = "SELECT " +
+            comando.CommandText = string.Format("SELECT " +
                 "idusuario," +
                 "idtipousuario," +
                 "idtipoidentificacion," +
-                "usuario,fecha_registro," +
-                "nro_identificacion,email," +
+                "usuario," +
+                "fecha_registro," +
+                "nro_identificacion," +
+                "email," +
                 "telefono,direccion," +
                 "estatus " +
-                "FROM usuario";
+                "FROM usuario " +
+                "WHERE usuario = {0} AND email = {1}",user,contra);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<UsuarioDTO> listaUsuarios = new List<UsuarioDTO>();

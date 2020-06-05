@@ -9,7 +9,7 @@ namespace MonyUCAB.DAO
 {
     interface IUsuarioDAO
     {
-        List<UsuarioDTO> buscar();
+        List<UsuarioDTO> buscar(string user, string contra);
         void crear();
         void actualizar();
         void eliminar();
