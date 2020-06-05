@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,23 @@ export class UsuarioService {
 
   public usuario: Usuario[] = [
     {
-      idUsuario: 1,
-      idTipoUsuario: 1,
-      idTipoIdentificacion: 1,
-      usuario: 'rojocadi22',
-      fechaRegistro: '02/02/2020',
-      nroIdentificacion: 26411292,
-      email: 'robertocd/98@gmail.com',
-      telefono: '04140315625',
-      direccion: 'Sabana grande',
-      estatus: 1
+      idUsuario: 0,
+      idTipoUsuario: 0,
+      idTipoIdentificacion: 0,
+      usuario: '',
+      fechaRegistro: '',
+      nroIdentificacion: 0,
+      email: '',
+      telefono: '',
+      direccion: '',
+      estatus: 0
 
     }
   ];
 
-  constructor() { }
+  constructor(
+    public http: HttpClient
+  ) { }
 
   getUsuario(idUsuario: number){
     return {
@@ -30,5 +33,9 @@ export class UsuarioService {
         return usuario.idUsuario === idUsuario;
       })
     };
+  }
+
+  pruebaMony(){
+    return this.http.get('http://monyucab.somee.com/WSMonyUCAB.svc/GetData?value=1234');
   }
 }
