@@ -96,9 +96,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ComercioDAO.cs" />
     <Compile Include="DAO\ConexionBD.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DTO\AplicacionDTO.cs" />
+    <Compile Include="DTO\BitacoraDTO.cs" />
+    <Compile Include="DTO\ComercioDTO.cs" />
+    <Compile Include="DTO\ContrasenaDTO.cs" />
+    <Compile Include="DTO\EventoDTO.cs" />
+    <Compile Include="DTO\OpcionMenuDTO.cs" />
+    <Compile Include="DTO\OperacionesMonederoDTO.cs" />
+    <Compile Include="DTO\PagoDTO.cs" />
+    <Compile Include="DTO\ReintegroDTO.cs" />
+    <Compile Include="DTO\TipoIdentificacionDTO.cs" />
+    <Compile Include="DTO\TipoUsuarioDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
+    <Compile Include="DTO\UsuarioOpcionMenuDTO.cs" />
     <Compile Include="WSMonyUCAB.svc.cs">
       <DependentUpon>WSMonyUCAB.svc</DependentUpon>
     </Compile>
