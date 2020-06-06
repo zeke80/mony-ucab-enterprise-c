@@ -1,0 +1,21 @@
+Abren pgadmin
+crean un servidor de nombre heroku
+
+en hostname 
+ec2-52-203-160-194.compute-1.amazonaws.com
+
+port 
+5432
+
+maintenance database
+d1psqo5qceht6j
+
+username
+ppaslmipvfumce
+
+password 
+5daf33bd4e95b74bc2dc0ef64d9b21a2d8fe83b0d602e4db97cca72d5f7627c6
+
+
+en la pestana advance, donde dice dbrestriction
+d1psqo5qceht6j

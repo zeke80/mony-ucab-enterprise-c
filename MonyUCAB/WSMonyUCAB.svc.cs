@@ -1,4 +1,5 @@
 ﻿using MonyUCAB.DAO;
+using MonyUCAB.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,9 @@ namespace MonyUCAB
     // NOTE: In order to launch WCF Test Client for testing this service, please select WSMonyUCAB.svc or WSMonyUCAB.svc.cs at the Solution Explorer and start debugging.
     public class WSMonyUCAB : IWSMonyUCAB
     {
-        public string GetData(int value)
+        public int GetData(int value)
         {
-            UsuarioDAO usuario = new UsuarioDAO();
-            return usuario.consultar().ToString();
+            return 0;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
@@ -30,6 +30,12 @@ namespace MonyUCAB
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public UsuarioDTO login(string user, string contra)
+        {
+            IUsuarioDAO usuario = new UsuarioDAOPsql();
+            return new UsuarioDTO();
         }
     }
 }

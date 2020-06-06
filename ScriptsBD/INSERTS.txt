@@ -1,0 +1,8 @@
+insert into tipousuario(idtipousuario,descripcion,estatus)
+values(1,'destipouser1',1);
+
+insert into tipoidentificacion(idtipoidentificacion, codigo, descripcion, estatus)
+values(1,1,'destipoide1',1);
+
+insert into usuario(idusuario,idtipousuario,idtipoidentificacion,usuario,fecha_registro,nro_identificacion,email,telefono,direccion,estatus)
+values(1,1,1,'user1',to_date('01-01-2020','dd-MM-yyyy'),1,'user1@gmail.com','+58434554','diruser1',1);
