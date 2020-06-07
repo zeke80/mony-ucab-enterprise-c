@@ -19,17 +19,19 @@ namespace MonyUCAB.DAO
         public List<UsuarioDTO> buscar(string user, string contra)
         {
             comando.CommandText = string.Format("SELECT " +
-                "idusuario," +
-                "idtipousuario," +
-                "idtipoidentificacion," +
-                "usuario," +
-                "fecha_registro," +
-                "nro_identificacion," +
-                "email," +
-                "telefono,direccion," +
-                "estatus " +
-                "FROM usuario " +
-                "WHERE usuario = {0} AND email = {1}",user,contra);
+                "us.idusuario," +
+                "us.idtipousuario," +
+                "us.idtipoidentificacion," +
+                "us.usuario," +
+                "us.fecha_registro," +
+                "us.nro_identificacion," +
+                "us.email," +
+                "us.telefono,direccion," +
+                "us.estatus " +
+                "FROM usuario us, contrasena co " +
+                "WHERE us.idusuario = co.idusuario " +
+                "AND us.usuario = '{0}' " +
+                "AND co.contrasena = '{1}'", user, contra);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<UsuarioDTO> listaUsuarios = new List<UsuarioDTO>();
