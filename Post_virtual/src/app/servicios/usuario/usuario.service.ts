@@ -27,15 +27,26 @@ export class UsuarioService {
     public http: HttpClient
   ) { }
 
-  getUsuario(idUsuario: number){
-    return {
-      ...this.usuario.find(usuario => {
-        return usuario.idUsuario === idUsuario;
-      })
-    };
+  getUsuario(){
+    return this.usuario[0];
   }
 
   pruebaMony(){
     return this.http.get('http://monyucab.somee.com/WSMonyUCAB.svc/GetData?value=1234');
+  }
+
+  guardarStorage(usuarioC: Usuario, idUsuario: number, idTipoUsuario: number, usuario: string,
+                 fechaRegistro: string, nroIdentificacion: number, email: string, telefono: string, direccion: string ) {
+
+    localStorage.setItem('idUsuario', idUsuario.toString());
+    localStorage.setItem('idTipoUsuario', idTipoUsuario.toString());
+    localStorage.setItem('usuario', usuario);
+    localStorage.setItem('fechaRegistro', fechaRegistro);
+    localStorage.setItem('nroIdentificacion', nroIdentificacion.toString());
+    localStorage.setItem('email', email);
+    localStorage.setItem('telefono', telefono);
+    localStorage.setItem('direccion', direccion);
+
+    this.usuario[0] = usuarioC;
   }
 }

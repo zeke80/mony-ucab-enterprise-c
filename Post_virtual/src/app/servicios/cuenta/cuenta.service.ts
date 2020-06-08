@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Cuenta } from '../../models/cuenta.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CuentaService {
 
-  cuentas: Cuenta[] = [
-    {
-      idCuenta: 1,
-      idUsuario: 1,
-      idTipoCuenta: 1,
-      idBanco: 1,
-      numero: '000000000'
-    }
-  ];
+  cuentas: Cuenta[] = [];
 
-  constructor() { }
+  constructor(
+    public http: HttpClient
+  ) { }
 
-  getCuentas() {
+  getVacio() {
 
     return [...this.cuentas];
 
+  }
+
+  getCuentas(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/Usuario/infoCuentas';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
   }
 
 }

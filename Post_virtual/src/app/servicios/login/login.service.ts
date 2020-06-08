@@ -11,12 +11,16 @@ export class LoginService {
   ) { }
 
   verificarUsuario(user: string, contra: string) {
-    console.log(user);
-    console.log(contra);
+    
 
-    let url: string = 'http://monyucab.somee.com/WSMonyUCAB.svc/login';
+    let url: string = 'http://monyucab.somee.com/Usuario/loginComercio';
 
-    return this.http.post(url, [user, contra]);
+    let data = {
+      "user": user,
+      "contra": contra
+    };
+
+    return this.http.post(url, data);
 
   }
 }

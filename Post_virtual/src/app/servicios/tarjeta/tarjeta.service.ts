@@ -1,59 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Tarjeta } from '../../models/tarjeta.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TarjetaService {
 
-  tarjetas: Tarjeta[] = [
-    {
-      idTarjeta: 1,
-      idUsuario: 1,
-      idTipoTarjeta: 1,
-      idBanco: 1,
-      numero: 15235795,
-      fechaVencimineto: '02/02/2020',
-      cvc: 1,
-      estatus: 1
-    },
-    {
-      idTarjeta: 1,
-      idUsuario: 1,
-      idTipoTarjeta: 1,
-      idBanco: 1,
-      numero: 15235795,
-      fechaVencimineto: '02/02/2020',
-      cvc: 1,
-      estatus: 1
-    },
-    {
-      idTarjeta: 1,
-      idUsuario: 1,
-      idTipoTarjeta: 1,
-      idBanco: 1,
-      numero: 15235795,
-      fechaVencimineto: '02/02/2020',
-      cvc: 1,
-      estatus: 1
-    },
-    {
-      idTarjeta: 1,
-      idUsuario: 1,
-      idTipoTarjeta: 1,
-      idBanco: 1,
-      numero: 15235795,
-      fechaVencimineto: '02/02/2020',
-      cvc: 1,
-      estatus: 1
-    },
-  ]
+  tarjetas: Tarjeta[] = [];
 
-  constructor() { }
+  constructor(
+    public http: HttpClient
+  ) { }
 
-  getTarjetas() {
+  getVacio() {
 
     return [...this.tarjetas];
 
+  }
+
+  getTarjetas(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/Usuario/infoTarjetas';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
   }
 }

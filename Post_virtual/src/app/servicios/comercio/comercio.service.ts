@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Comercio } from '../../models/comercio.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +9,29 @@ export class ComercioService {
 
   public comercio: Comercio[] = [
     {
-      idUsurio: 1,
-      razonSocial: 'Comida',
-      nombreRepresentante: 'Roberto',
-      apellidoRepresentante: 'Carbajales'
+      idUsurio: 0,
+      razonSocial: '',
+      nombreRepresentante: '',
+      apellidoRepresentante: ''
     }
   ];
 
-  constructor() { }
+  constructor(
+    public http: HttpClient
+  ) { }
 
-  getComercio(idUsuario: number){
-    return {
-      ...this.comercio.find(comercio => {
-        return comercio.idUsurio === idUsuario;
-      })
+  getVacio(){
+    return this.comercio[0];
+  }
+
+  getComercio(idusuario: number){
+    let url: string = 'http://monyucab.somee.com/Usuario/infoComercio';
+
+    let data = {
+      "id" : idusuario
     };
+
+    return this.http.post(url, data);
+
   }
 }

@@ -22,24 +22,15 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit(){
-    this.usuario = this._usuarioService.getUsuario(1);
-    this.comercio = this._comercioService.getComercio(1);
-    
-    this._usuarioService.pruebaMony().subscribe(
-      (data: any) => {
-      console.log(data);
-      this.usuario.usuario = data.Usuario;
-      this.usuario.fechaRegistro = data.Fecha_registro;
-      this.usuario.nroIdentificacion = data.Nro_identificacion;
-      this.usuario.email = data.Email;
-      this.usuario.telefono = data.Telefono;
-      this.usuario.direccion = data.Direccion;
-      }
-    );
+    this.usuario = this._usuarioService.getUsuario();
+    this.comercio = this._comercioService.getVacio();
+    this._comercioService.getComercio(this.usuario.idUsuario)
+                  .subscribe((data: any) => {
+                    this.comercio = data;
+                  });
   }
 
   modificarUsuario( f: NgForm) {
-    console.log(f.value.user);
   }
 
 }
