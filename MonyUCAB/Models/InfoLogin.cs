@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MonyUCAB.Models
 {
-    public class Usuario
+    public class InfoLogin
     {
         public string user { get; set; }
         public string contra { get; set; }

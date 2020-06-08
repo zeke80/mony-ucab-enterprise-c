@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\MonyUCAB.csproj": {}
+    "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\MonyUCAB.csproj": {
+    "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\MonyUCAB.csproj",
+        "projectUniqueName": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
         "projectName": "MonyUCAB",
-        "projectPath": "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\MonyUCAB.csproj",
+        "projectPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
         "packagesPath": "C:\\Users\\eze\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\obj\\",
+        "outputPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eze\\AppData\\Roaming\\NuGet\\NuGet.Config",

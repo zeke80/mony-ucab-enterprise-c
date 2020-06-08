@@ -16,14 +16,15 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-        public List<ComercioDTO> buscar()
+        public List<ComercioDTO> buscar(int idUsuario)
         {
-            comando.CommandText = "SELECT " +
+            comando.CommandText = string.Format("SELECT " +
                 "idusuario," +
                 "razon_social," +
                 "nombre_representante," +
-                "apellido_representante," +
-                "FROM usuario";
+                "apellido_representante " +
+                "FROM comercio " +
+                "WHERE idusuario = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<ComercioDTO> listaComercios = new List<ComercioDTO>();

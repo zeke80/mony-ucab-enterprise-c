@@ -9,7 +9,7 @@ namespace MonyUCAB.DAO
 {
     interface ICuentaDAO
     {
-        List<CuentaDTO> buscar();
+        List<CuentaDTO> buscar(int idUsuario);
         void crear();
         void actualizar();
         void eliminar();

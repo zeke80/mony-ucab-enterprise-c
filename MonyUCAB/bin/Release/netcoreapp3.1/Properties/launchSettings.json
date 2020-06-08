@@ -18,6 +18,7 @@
     "MonyUCAB": {
       "commandName": "Project",
       "launchBrowser": true,
+      //"applicationUrl": "http://localhost:5000/",
       "applicationUrl": "http://monyucab.somee.com",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

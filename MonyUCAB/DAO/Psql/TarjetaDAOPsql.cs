@@ -13,9 +13,39 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<TarjetaDTO> buscar()
+        public List<TarjetaDTO> buscar(int idUsuario)
         {
-            throw new NotImplementedException();
+            comando.CommandText = string.Format("SELECT " +
+                "idtarjeta," +
+                "idusuario," +
+                "idtipotarjeta," +
+                "idbanco," +
+                "numero," +
+                "fecha_vencimiento," +
+                "cvc," +
+                "estatus " +
+                "FROM tarjeta " +
+                "WHERE idusuario = {0}", idUsuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<TarjetaDTO> listaTarjeta = new List<TarjetaDTO>();
+            while (filas.Read())
+            {
+                listaTarjeta.Add(new TarjetaDTO
+                {
+                    Idtarjeta = filas.GetInt32(0),
+                    Idusuario = filas.GetInt32(1),
+                    Idtipotarjeta = filas.GetInt32(2),
+                    Idbanco = filas.GetInt32(3),
+                    Numero = filas.GetInt32(4),
+                    Fecha_vencimiento = filas.GetDateTime(5),
+                    Cvc = filas.GetInt32(6),
+                    Estatus = filas.GetInt32(7),
+                });
+            }
+            filas.Close();
+            conexion.Close();
+            return listaTarjeta;
         }
 
         public void crear()

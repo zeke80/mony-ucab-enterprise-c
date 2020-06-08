@@ -16,8 +16,7 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-        public List<UsuarioDTO> buscar(string user, string contra)
-        {
+        public List<UsuarioDTO> buscarPersona(string user, string contra){
             comando.CommandText = string.Format("SELECT " +
                 "us.idusuario," +
                 "us.idtipousuario," +
@@ -28,8 +27,48 @@ namespace MonyUCAB.DAO
                 "us.email," +
                 "us.telefono,direccion," +
                 "us.estatus " +
-                "FROM usuario us, contrasena co " +
-                "WHERE us.idusuario = co.idusuario " +
+                "FROM usuario us, contrasena co, persona pe " +
+                "WHERE us.idusuario = pe.idusuario " +
+                "AND us.idusuario = co.idusuario " +
+                "AND us.usuario = '{0}' " +
+                "AND co.contrasena = '{1}'", user, contra);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<UsuarioDTO> listaUsuarios = new List<UsuarioDTO>();
+            while (filas.Read())
+            {
+                listaUsuarios.Add(new UsuarioDTO
+                {
+                    Idusuario = filas.GetInt32(0),
+                    Idtipousuario = filas.GetInt32(1),
+                    Idtipoidentificacion = filas.GetInt32(2),
+                    Usuario = filas.GetString(3),
+                    Fecha_registro = filas.GetDateTime(4),
+                    Nro_identificacion = filas.GetInt32(5),
+                    Email = filas.GetString(6),
+                    Telefono = filas.GetString(7),
+                    Direccion = filas.GetString(8),
+                    Estatus = filas.GetInt32(9),
+                });
+            }
+            filas.Close();
+            conexion.Close();
+            return listaUsuarios;
+        }
+        public List<UsuarioDTO> buscarComercio(string user, string contra){
+            comando.CommandText = string.Format("SELECT " +
+                "us.idusuario," +
+                "us.idtipousuario," +
+                "us.idtipoidentificacion," +
+                "us.usuario," +
+                "us.fecha_registro," +
+                "us.nro_identificacion," +
+                "us.email," +
+                "us.telefono,direccion," +
+                "us.estatus " +
+                "FROM usuario us, contrasena co, comercio com " +
+                "WHERE us.idusuario = com.idusuario " +
+                "AND us.idusuario = co.idusuario " +
                 "AND us.usuario = '{0}' " +
                 "AND co.contrasena = '{1}'", user, contra);
             conexion.Open();

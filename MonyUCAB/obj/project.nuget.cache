@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n45IpQxBaW+MTi6R0lmoVWPjK5XdkJvHWqoKEYvxECXdQ0jAKUZeempYMFWzgKOX2FHV4L032HnkYBkmnYj/rA==",
+  "dgSpecHash": "jfnTeRROo1kmeWC5u+Rd4ivGdA/tVAT9Aoahom4tschzOirpl58REm0gYzMydazgJVrsD2OJAvz+SltgYHwfxg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\eze\\Desktop\\New folder\\MonyUCAB\\MonyUCAB.csproj",
+  "projectFilePath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eze\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\eze\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
