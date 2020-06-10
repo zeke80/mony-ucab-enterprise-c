@@ -31,6 +31,7 @@ export class Tab1Page implements OnInit {
   }
 
   modificarUsuario( f: NgForm) {
+    console.log(f);
   }
 
 }

@@ -18,61 +18,7 @@ export class OperacionService {
       hora: '5:00 pm',
       monto: 5000000,
       referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 11,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
-    {
-      idOperacionCuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
-    },
+    }
   ];
   operacionesMonedero: OperacionMonedero[] = [
     {
@@ -105,14 +51,6 @@ export class OperacionService {
       fecha_solicitud: '02/02/2020',
       referencia: 'referencia',
       status: 'solicitado'
-    },
-    {
-      idReintegro: 2,
-      idUsuarioSolicitante: 1,
-      idUsuarioReceptor: 1,
-      fecha_solicitud: '02/02/2020',
-      referencia: 'referencia',
-      status: 'rechazada'
     }
   ];
 

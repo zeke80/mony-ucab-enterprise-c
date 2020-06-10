@@ -27,6 +27,7 @@ export class Tab2Page implements OnInit {
     this.cuentas = this._cuentaServices.getVacio();
     this._cuentaServices.getCuentas(this.usuario.idUsuario)
          .subscribe((data: any) => {
+           console.log(data);
            this.cuentas = data;
          });
     this.tarjetas = this._tarjetaService.getVacio();

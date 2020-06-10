@@ -31,10 +31,6 @@ export class UsuarioService {
     return this.usuario[0];
   }
 
-  pruebaMony(){
-    return this.http.get('http://monyucab.somee.com/WSMonyUCAB.svc/GetData?value=1234');
-  }
-
   guardarStorage(usuarioC: Usuario, idUsuario: number, idTipoUsuario: number, usuario: string,
                  fechaRegistro: string, nroIdentificacion: number, email: string, telefono: string, direccion: string ) {
 

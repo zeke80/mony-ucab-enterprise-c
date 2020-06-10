@@ -25,7 +25,7 @@ export class ComercioService {
   }
 
   getComercio(idusuario: number){
-    let url: string = 'http://monyucab.somee.com/Usuario/infoComercio';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoComercio';
 
     let data = {
       "id" : idusuario

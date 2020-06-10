@@ -13,7 +13,7 @@ export class LoginService {
   verificarUsuario(user: string, contra: string) {
     
 
-    let url: string = 'http://monyucab.somee.com/Usuario/loginComercio';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/loginComercio';
 
     let data = {
       "user": user,

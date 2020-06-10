@@ -20,7 +20,7 @@ export class CuentaService {
   }
 
   getCuentas(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/Usuario/infoCuentas';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoCuentas';
 
     let data = {
       "id" : idusuario

@@ -20,7 +20,7 @@ export class TarjetaService {
   }
 
   getTarjetas(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/Usuario/infoTarjetas';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoTarjetas';
 
     let data = {
       "id" : idusuario
