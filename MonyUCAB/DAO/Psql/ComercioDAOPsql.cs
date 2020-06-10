@@ -16,31 +16,31 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-        public List<ComercioDTO> buscar(int idUsuario)
+        public ComercioDTO buscar(int idUsuario)
         {
             comando.CommandText = string.Format("SELECT " +
-                "idusuario," +
-                "razon_social," +
-                "nombre_representante," +
-                "apellido_representante " +
-                "FROM comercio " +
-                "WHERE idusuario = {0}", idUsuario);
+                "com.idusuario," +
+                "com.razon_social," +
+                "com.nombre_representante," +
+                "com.apellido_representante " +
+                "FROM comercio com " +
+                "WHERE com.idusuario = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
-            List<ComercioDTO> listaComercios = new List<ComercioDTO>();
-            while (filas.Read())
+            ComercioDTO comercioDTO = null;
+            if(filas.Read())
             {
-                listaComercios.Add(new ComercioDTO
+                comercioDTO = new ComercioDTO
                 {
                     Idusuario = filas.GetInt32(0),
                     Razon_social = filas.GetString(1),
                     Nombre_representante = filas.GetString(2),
                     Apellido_representante = filas.GetString(3),
-                });
+                };
             }
             filas.Close();
             conexion.Close();
-            return listaComercios;
+            return comercioDTO;
         }
 
         public void crear()

@@ -28,10 +28,10 @@ namespace MonyUCAB.DAO.Psql
                 "WHERE idusuario = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
-            List<TarjetaDTO> listaTarjeta = new List<TarjetaDTO>();
+            List<TarjetaDTO> tarjetaDTOs = new List<TarjetaDTO>();
             while (filas.Read())
             {
-                listaTarjeta.Add(new TarjetaDTO
+                tarjetaDTOs.Add(new TarjetaDTO
                 {
                     Idtarjeta = filas.GetInt32(0),
                     Idusuario = filas.GetInt32(1),
@@ -45,7 +45,7 @@ namespace MonyUCAB.DAO.Psql
             }
             filas.Close();
             conexion.Close();
-            return listaTarjeta;
+            return tarjetaDTOs;
         }
 
         public void crear()

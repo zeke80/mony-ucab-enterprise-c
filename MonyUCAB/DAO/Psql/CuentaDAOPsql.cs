@@ -25,10 +25,10 @@ namespace MonyUCAB.DAO.Psql
                 "WHERE idusuario = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
-            List<CuentaDTO> listaCuenta = new List<CuentaDTO>();
+            List<CuentaDTO> cuentaDTOs = new List<CuentaDTO>();
             while (filas.Read())
             {
-                listaCuenta.Add(new CuentaDTO
+                cuentaDTOs.Add(new CuentaDTO
                 {
                     Idcuenta = filas.GetInt32(0),
                     Idusuario = filas.GetInt32(1),
@@ -39,7 +39,7 @@ namespace MonyUCAB.DAO.Psql
             }
             filas.Close();
             conexion.Close();
-            return listaCuenta;
+            return cuentaDTOs;
         }
 
         public void crear()

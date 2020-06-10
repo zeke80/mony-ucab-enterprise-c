@@ -13,9 +13,33 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<PersonaDTO> buscar()
+        public PersonaDTO buscar(int idUsuario)
         {
-            throw new NotImplementedException();
+            comando.CommandText = string.Format("SELECT " +
+                "per.idusuario," +
+                "per.idestadocivil," +
+                "per.nombre," +
+                "per.apellido," +
+                "per.fecha_nacimiento " +
+                "FROM persona per " +
+                "WHERE per.idusuario = {0}", idUsuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            PersonaDTO personaDTO = null;
+            if (filas.Read())
+            {
+                personaDTO = new PersonaDTO
+                {
+                    Idusuario = filas.GetInt32(0),
+                    Idestadocivil = filas.GetInt32(1),
+                    Nombre = filas.GetString(2),
+                    Apellido = filas.GetString(3),
+                    Fecha_nacimiento = filas.GetDateTime(4),
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return personaDTO;
         }
 
         public void crear()

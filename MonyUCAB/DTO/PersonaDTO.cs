@@ -11,12 +11,12 @@ namespace MonyUCAB.DTO
         int _Idestadocivil;
         string _Nombre;
         string _Apellido;
-        string _Fecha_nacimiento;
+        DateTime _Fecha_nacimiento;
 
         public int Idusuario { get => _Idusuario; set => _Idusuario = value; }
         public int Idestadocivil { get => _Idestadocivil; set => _Idestadocivil = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Apellido { get => _Apellido; set => _Apellido = value; }
-        public string Fecha_nacimiento { get => _Fecha_nacimiento; set => _Fecha_nacimiento = value; }
+        public DateTime Fecha_nacimiento { get => _Fecha_nacimiento; set => _Fecha_nacimiento = value; }
     }
 }

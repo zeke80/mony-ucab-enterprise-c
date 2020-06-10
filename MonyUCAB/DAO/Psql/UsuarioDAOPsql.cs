@@ -16,7 +16,7 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-        public List<UsuarioDTO> buscarPersona(string user, string contra){
+        public UsuarioDTO buscarPersona(string user, string contra){
             comando.CommandText = string.Format("SELECT " +
                 "us.idusuario," +
                 "us.idtipousuario," +
@@ -25,7 +25,8 @@ namespace MonyUCAB.DAO
                 "us.fecha_registro," +
                 "us.nro_identificacion," +
                 "us.email," +
-                "us.telefono,direccion," +
+                "us.telefono," +
+                "us.direccion," +
                 "us.estatus " +
                 "FROM usuario us, contrasena co, persona pe " +
                 "WHERE us.idusuario = pe.idusuario " +
@@ -34,10 +35,10 @@ namespace MonyUCAB.DAO
                 "AND co.contrasena = '{1}'", user, contra);
             conexion.Open();
             filas = comando.ExecuteReader();
-            List<UsuarioDTO> listaUsuarios = new List<UsuarioDTO>();
-            while (filas.Read())
+            UsuarioDTO usuarioDTO = null;
+            if(filas.Read())
             {
-                listaUsuarios.Add(new UsuarioDTO
+                usuarioDTO = new UsuarioDTO
                 {
                     Idusuario = filas.GetInt32(0),
                     Idtipousuario = filas.GetInt32(1),
@@ -49,13 +50,13 @@ namespace MonyUCAB.DAO
                     Telefono = filas.GetString(7),
                     Direccion = filas.GetString(8),
                     Estatus = filas.GetInt32(9),
-                });
+                };
             }
             filas.Close();
             conexion.Close();
-            return listaUsuarios;
+            return usuarioDTO;
         }
-        public List<UsuarioDTO> buscarComercio(string user, string contra){
+        public UsuarioDTO buscarComercio(string user, string contra){
             comando.CommandText = string.Format("SELECT " +
                 "us.idusuario," +
                 "us.idtipousuario," +
@@ -64,7 +65,8 @@ namespace MonyUCAB.DAO
                 "us.fecha_registro," +
                 "us.nro_identificacion," +
                 "us.email," +
-                "us.telefono,direccion," +
+                "us.telefono," +
+                "us.direccion," +
                 "us.estatus " +
                 "FROM usuario us, contrasena co, comercio com " +
                 "WHERE us.idusuario = com.idusuario " +
@@ -73,10 +75,10 @@ namespace MonyUCAB.DAO
                 "AND co.contrasena = '{1}'", user, contra);
             conexion.Open();
             filas = comando.ExecuteReader();
-            List<UsuarioDTO> listaUsuarios = new List<UsuarioDTO>();
-            while (filas.Read())
+            UsuarioDTO usuarioDTO = null;
+            if(filas.Read())
             {
-                listaUsuarios.Add(new UsuarioDTO
+                usuarioDTO = new UsuarioDTO
                 {
                     Idusuario = filas.GetInt32(0),
                     Idtipousuario = filas.GetInt32(1),
@@ -88,11 +90,11 @@ namespace MonyUCAB.DAO
                     Telefono = filas.GetString(7),
                     Direccion = filas.GetString(8),
                     Estatus = filas.GetInt32(9),
-                });
+                };
             }
             filas.Close();
             conexion.Close();
-            return listaUsuarios;
+            return usuarioDTO;
         }
 
         public void crear()

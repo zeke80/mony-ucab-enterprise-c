@@ -9,7 +9,7 @@ using MonyUCAB.Models;
 
 namespace MonyUCAB.Controllers
 {
-    [Route("api/TodoItem")]
+    /*[Route("api/TodoItem")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -79,10 +79,10 @@ namespace MonyUCAB.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
-            /*_context.TodoItems.Add(todoItem);
+            _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);*/
+            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
             return BadRequest();
         }
 
@@ -106,5 +106,5 @@ namespace MonyUCAB.Controllers
         {
             return _context.TodoItems.Any(e => e.Id == id);
         }
-    }
+    }*/
 }

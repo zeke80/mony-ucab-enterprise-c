@@ -9,7 +9,7 @@ namespace MonyUCAB.DAO
 {
     interface IComercioDAO
     {
-        List<ComercioDTO> buscar(int idUsuario);
+        ComercioDTO buscar(int idUsuario);
         void crear();
         void actualizar();
         void eliminar();

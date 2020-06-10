@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace MonyUCAB.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -22,7 +22,12 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<UsuarioDTO>> loginPersona(InfoLogin infoLogin)
         {
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-            return usuarioDAO.buscarPersona(infoLogin.user, infoLogin.contra)[0];
+            UsuarioDTO usuarioDTO = usuarioDAO.buscarPersona(infoLogin.user, infoLogin.contra);
+
+            if (usuarioDTO == null)
+                return NotFound();
+
+            return usuarioDTO;
         }
 
         [Route("[action]")]
@@ -30,7 +35,25 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<UsuarioDTO>> loginComercio(InfoLogin infoLogin)
         {
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-            return usuarioDAO.buscarComercio(infoLogin.user, infoLogin.contra)[0];
+            UsuarioDTO usuarioDTO = usuarioDAO.buscarComercio(infoLogin.user, infoLogin.contra);
+
+            if (usuarioDTO == null)
+                return NotFound();
+
+            return usuarioDTO;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<PersonaDTO>> infoPersona(IdUsuario idUsuario)
+        {
+            IPersonaDAO personaDAO = new PersonaDAOPsql();
+            PersonaDTO personaDTO = personaDAO.buscar(idUsuario.id);
+
+            if (personaDTO == null)
+                return NotFound();
+
+            return personaDTO;
         }
 
         [Route("[action]")]
@@ -38,7 +61,12 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<ComercioDTO>> infoComercio(IdUsuario idUsuario)
         {
             IComercioDAO comercioDAO = new ComercioDAOPsql();
-            return comercioDAO.buscar(idUsuario.id)[0];
+            ComercioDTO comercioDTO = comercioDAO.buscar(idUsuario.id);
+
+            if (comercioDTO == null)
+                return NotFound();
+
+            return comercioDTO;
         }
 
         [Route("[action]")]
@@ -46,7 +74,9 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<List<CuentaDTO>>> infoCuentas(IdUsuario idUsuario)
         {
             ICuentaDAO cuentaDAO = new CuentaDAOPsql();
-            return cuentaDAO.buscar(idUsuario.id);
+            List<CuentaDTO> cuentaDTOs = cuentaDAO.buscar(idUsuario.id);
+
+            return cuentaDTOs;
         }
 
         [Route("[action]")]
@@ -54,7 +84,9 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<List<TarjetaDTO>>> infoTarjetas(IdUsuario idUsuario)
         {
             ITarjetaDAO tarjetaDAO = new TarjetaDAOPsql();
-            return tarjetaDAO.buscar(idUsuario.id);
+            List<TarjetaDTO> tarjetaDTOs = tarjetaDAO.buscar(idUsuario.id);
+
+            return tarjetaDTOs;
         }
     }
 }

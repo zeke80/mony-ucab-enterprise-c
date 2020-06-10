@@ -9,8 +9,8 @@ namespace MonyUCAB.DAO
 {
     interface IUsuarioDAO
     {
-        List<UsuarioDTO> buscarPersona(string user, string contra);
-        List<UsuarioDTO> buscarComercio(string user, string contra);
+        UsuarioDTO buscarPersona(string user, string contra);
+        UsuarioDTO buscarComercio(string user, string contra);
         void crear();
         void actualizar();
         void eliminar();

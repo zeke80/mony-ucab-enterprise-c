@@ -9,7 +9,7 @@ namespace MonyUCAB.DAO
 {
     interface IPersonaDAO
     {
-        List<PersonaDTO> buscar();
+        PersonaDTO buscar(int idUsuario);
         void crear();
         void actualizar();
         void eliminar();
