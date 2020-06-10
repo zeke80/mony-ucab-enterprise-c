@@ -1,17 +1,98 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            <h4 class="ion-text-center"><strong>Operaciones</strong></h4>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+    <div class="contaier-monto">
+
+        <ion-button (click)="solicitudPago()" color="warning" fill="solid" expand="full">
+            solicitar pago
+        </ion-button>
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones de cuentas</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let cuenta of cuentas" [routerLink]="['/tabs/operaciones', cuenta.idOperacionCuenta]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+
+                            Operacion: {{cuenta.idOperacionCuenta}}
+
+                            <h1>
+                                Monto: <strong>{{cuenta.monto}}</strong>
+                            </h1>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones del monedero</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let monedero of monederos" [routerLink]="['/tabs/operaciones/monedero', monedero.idOperacionMonedero]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Operacion {{monedero.idOperacionMonedero}}
+                            <h1>
+                                Monto: <strong>{{monedero.monto}}</strong>
+                            </h1>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones de tarjetas</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones/tarjeta', tarjeta.idOperacionTarjeta]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Operacion: {{tarjeta.idOperacionTarjeta}}
+                            <h1>
+                                Monto: <strong>{{tarjeta.monto}}</strong>
+                            </h1>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones de reintegro</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let reintegro of reintegros" [routerLink]="['/tabs/operaciones/reintegro', reintegro.idReintegro]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Reintegro: {{reintegro.idReintegro}}
+                            <h1>
+                                Estatus: <strong>{{reintegro.status}}</strong>
+                            </h1>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
+    </div>
+
+
 </ion-content>

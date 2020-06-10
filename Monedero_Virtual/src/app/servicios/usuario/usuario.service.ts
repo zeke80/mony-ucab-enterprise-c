@@ -8,10 +8,10 @@ export class UsuarioService {
 
   public usuario: Usuario[] = [
     {
-      idUsuario: 1,
+      idUsuario: 0,
       idTipoUsuario: 0,
       idTipoIdentificacion: 0,
-      usuario: 'hola',
+      usuario: '',
       fechaRegistro: '',
       nroIdentificacion: 0,
       email: '',
@@ -24,11 +24,22 @@ export class UsuarioService {
 
   constructor() { }
 
-  getUsuario(idUsuario: number){
-    return {
-      ...this.usuario.find(usuario => {
-        return usuario.idUsuario === idUsuario;
-      })
-    };
+  getUsuario(){
+    return this.usuario[0];
+  }
+
+  guardarStorage(usuarioC: Usuario, idUsuario: number, idTipoUsuario: number, usuario: string,
+                 fechaRegistro: string, nroIdentificacion: number, email: string, telefono: string, direccion: string ) {
+
+    localStorage.setItem('idUsuario', idUsuario.toString());
+    localStorage.setItem('idTipoUsuario', idTipoUsuario.toString());
+    localStorage.setItem('usuario', usuario);
+    localStorage.setItem('fechaRegistro', fechaRegistro);
+    localStorage.setItem('nroIdentificacion', nroIdentificacion.toString());
+    localStorage.setItem('email', email);
+    localStorage.setItem('telefono', telefono);
+    localStorage.setItem('direccion', direccion);
+
+    this.usuario[0] = usuarioC;
   }
 }

@@ -44,6 +44,18 @@
                         <ion-label position="floating"><strong>Dirección:</strong></ion-label>
                         <ion-input [ngModel]="usuario.direccion" name="direccion"></ion-input>
                     </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"><strong>Nombre:</strong></ion-label>
+                        <ion-input [ngModel]="persona.nombre" name="nombre"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"><strong>Apellido:</strong></ion-label>
+                        <ion-input [ngModel]="persona.apellido" name="apellido"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"><strong>Fecha de Nacimiento:</strong></ion-label>
+                        <ion-input [ngModel]="persona.fecha_nacimiento" name="fechaNacimiento"></ion-input>
+                    </ion-item>
 
                     <ion-button type="submit" fill="solid" expand="full">
                         Guardar

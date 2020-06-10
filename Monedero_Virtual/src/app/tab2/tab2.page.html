@@ -1,17 +1,64 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            <h4 class="ion-text-center"><strong>Cuenta</strong></h4>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <div class="contaier-monto">
+        <ion-card>
+            <ion-card-header>
+                <ion-row>
+                    <ion-col>
+                        <h1 class="ion-text-center">Saldo disponible:</h1>
+                        <h2 class="ion-text-center">2000 $</h2>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                <h2>Cuentas registradas del usuario</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let cuenta of cuentas">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Numero de cuenta: <strong>{{cuenta.numero}}</strong>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <h2>Tarjetas registradas del usuario</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let tarjeta of tarjetas">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Numero de tarjeta: <strong>{{tarjeta.numero}}</strong>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
 </ion-content>
