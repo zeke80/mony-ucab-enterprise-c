@@ -20,11 +20,11 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let cuenta of cuentas" [routerLink]="['/tabs/operaciones', cuenta.idOperacionCuenta]">
+                    <ion-item *ngFor="let cuenta of cuentas" [routerLink]="['/tabs/operaciones', cuenta.idoperacioncuenta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
 
-                            Operacion: {{cuenta.idOperacionCuenta}}
+                            Operacion: {{cuenta.idoperacioncuenta}}
 
                             <h1>
                                 Monto: <strong>{{cuenta.monto}}</strong>
@@ -60,10 +60,10 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones/tarjeta', tarjeta.idOperacionTarjeta]">
+                    <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones/tarjeta', tarjeta.idoperaciontarjeta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Operacion: {{tarjeta.idOperacionTarjeta}}
+                            Operacion: {{tarjeta.idoperaciontarjeta}}
                             <h1>
                                 Monto: <strong>{{tarjeta.monto}}</strong>
                             </h1>

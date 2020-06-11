@@ -1,5 +1,5 @@
 export class OperacionCuenta {
-    idOperacionCuenta: number;
+    idoperacioncuenta: number;
     idCuenta: number;
     idUsuarioReceptor: number;
     fecha: string;
