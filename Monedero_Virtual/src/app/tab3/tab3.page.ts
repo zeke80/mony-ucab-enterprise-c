@@ -1,5 +1,8 @@
 import { Component,  OnInit } from '@angular/core';
 import { OperacionService } from '../servicios/operacion/operacion.service';
+import { Router } from '@angular/router';
+import { UsuarioService } from '../servicios/usuario/usuario.service';
+import { Usuario } from '../models/usuario.model';
 
 
 @Component({
@@ -13,16 +16,31 @@ export class Tab3Page implements OnInit{
   tarjetas = [];
   monederos = [];
   reintegros = [];
+  usuario: Usuario;
 
   constructor(
-    public _operacionServices: OperacionService
+    public _operacionServices: OperacionService,
+    public router: Router,
+    public _usuarioServices: UsuarioService
   ) {}
 
   ngOnInit(){
-    this.cuentas = this._operacionServices.getoperacionesCuenta();
-    this.tarjetas = this._operacionServices.getoperacionesTarjeta();
-    this.monederos = this._operacionServices.getoperacionesMonedero();
-    this.reintegros = this._operacionServices.getreintegros();
+    this.cuentas = this._operacionServices.getoperacionesCuentaVacio();
+    this.tarjetas = this._operacionServices.getoperacionesTarjetaVacio();
+    this.monederos = this._operacionServices.getoperacionesMonederoVacio();
+    this.reintegros = this._operacionServices.getreintegrosVacio();
+    this.usuario = this._usuarioServices.getUsuario();
+    this._operacionServices.getoperacionesCuenta(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.cuentas = data;
+          this._operacionServices.guardarCuentas(this.cuentas);
+        });
+    this._operacionServices.getoperacionesTarjeta(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.tarjetas = data;
+          this._operacionServices.guardarTarjetas(this.tarjetas);
+
+        });
   }
 
 }
