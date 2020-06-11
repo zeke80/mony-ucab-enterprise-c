@@ -131,3 +131,30 @@ SELECT
 	opc.referencia
 FROM operaciontarjeta opc
 WHERE opc.idusuarioreceptor = 2
+
+/* Información de Usuario */ 
+
+SELECT 
+    us.idTipoUsuario, 
+	us.idTipoIdentificacion, 
+	us.usuario, 
+	us.fecha_registro, 
+	us.nro_identificacion,
+	us.email,
+	us.telefono,
+	us.direccion,
+	us.estatus
+FROM Usuario AS us
+WHERE
+	us.idUsuario = 1
+
+/* Información de Cuenta */ 
+
+SELECT 
+    cu.idCuenta,
+    cu.idTipoCuenta,
+    cu.idBanco,
+    cu.numero
+FROM Cuenta AS cu
+WHERE
+	cu.idUsuario = 1
