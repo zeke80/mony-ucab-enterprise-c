@@ -13,9 +13,51 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<OperacionTarjetaDTO> buscar()
+        public List<OperacionTarjetaDTO> buscar(int idUsuario)
         {
-            throw new NotImplementedException();
+            comando.CommandText = string.Format(
+            "SELECT " +
+                "opc.idoperaciontarjeta," +
+                "opc.idusuarioreceptor," +
+                "opc.idtarjeta," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM tarjeta tar, operaciontarjeta opc " +
+            "WHERE tar.idtarjeta = opc.idtarjeta " +
+            "AND tar.idusuario = {0} " +
+            "UNION " +
+            "SELECT " +
+                "opc.idoperaciontarjeta," +
+                "opc.idusuarioreceptor," +
+                "opc.idtarjeta," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM operaciontarjeta opc " +
+            "WHERE opc.idusuarioreceptor = {0}", idUsuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
+            while (filas.Read())
+            {
+                ;
+                operacionTarjetaDTOs.Add(new OperacionTarjetaDTO
+                {
+                    Idoperaciontarjeta = filas.GetInt32(0),
+                    Idusuarioreceptor = filas.GetInt32(1),
+                    Idtarjeta = filas.GetInt32(2),
+                    Fecha = filas.GetDateTime(3),
+                    Hora = filas.GetTimeSpan(4),
+                    Monto = filas.GetFloat(5),
+                    Referencia = filas.GetString(6),
+            });
+            }
+            filas.Close();
+            conexion.Close();
+            return operacionTarjetaDTOs;
         }
 
         public void crear()

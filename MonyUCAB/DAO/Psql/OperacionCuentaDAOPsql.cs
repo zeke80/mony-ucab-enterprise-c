@@ -13,9 +13,51 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<OperacionCuentaDTO> buscar()
+        public List<OperacionCuentaDTO> buscar(int idUsuario)
         {
-            throw new NotImplementedException();
+            comando.CommandText = string.Format(
+            "SELECT " +
+                "opc.idoperacioncuenta," +
+                "opc.idcuenta," +
+                "opc.idusuarioreceptor," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM cuenta cue, operacioncuenta opc " +
+            "WHERE cue.idcuenta = opc.idcuenta " +
+            "AND cue.idusuario = {0} " +
+            "UNION " +
+            "SELECT " +
+                "opc.idoperacioncuenta," +
+                "opc.idcuenta," +
+                "opc.idusuarioreceptor," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM operacioncuenta opc " +
+            "WHERE opc.idusuarioreceptor = {0}", idUsuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<OperacionCuentaDTO> operacionCuentaDTOs = new List<OperacionCuentaDTO>();
+            while (filas.Read())
+            {
+                ;
+                operacionCuentaDTOs.Add(new OperacionCuentaDTO
+                {
+                    Idoperacioncuenta = filas.GetInt32(0),
+                    Idcuenta = filas.GetInt32(1),
+                    Idusuarioreceptor = filas.GetInt32(2),
+                    Fecha = filas.GetDateTime(3),
+                    Hora = filas.GetTimeSpan(4),
+                    Monto = filas.GetFloat(5),
+                    Referencia = filas.GetString(6),
+                });
+            }
+            filas.Close();
+            conexion.Close();
+            return operacionCuentaDTOs;
         }
 
         public void crear()

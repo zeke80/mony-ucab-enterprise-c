@@ -88,5 +88,25 @@ namespace MonyUCAB.Controllers
 
             return tarjetaDTOs;
         }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<List<OperacionCuentaDTO>>> operacionesCuenta(IdUsuario idUsuario)
+        {
+            IOperacionCuentaDAO OperacionCuentaDAO = new OperacionCuentaDAOPsql();
+            List<OperacionCuentaDTO> operacionCuentaDTOs = OperacionCuentaDAO.buscar(idUsuario.id);
+
+            return operacionCuentaDTOs;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<List<OperacionTarjetaDTO>>> operacionesTarjeta(IdUsuario idUsuario)
+        {
+            IOperacionTarjetaDAO operacionTarjetaDAO = new OperacionTarjetaDAOPsql();
+            List<OperacionTarjetaDTO> operacionTarjetaDTOs = operacionTarjetaDAO.buscar(idUsuario.id);
+
+            return operacionTarjetaDTOs;
+        }
     }
 }

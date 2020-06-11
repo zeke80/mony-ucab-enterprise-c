@@ -9,7 +9,7 @@ namespace MonyUCAB.DAO
 {
     interface IOperacionTarjetaDAO
     {
-        List<OperacionTarjetaDTO> buscar();
+        List<OperacionTarjetaDTO> buscar(int idUsuario);
         void crear();
         void actualizar();
         void eliminar();
