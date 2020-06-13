@@ -29,4 +29,14 @@ export class CuentaService {
     return this.http.post(url, data);
   }
 
+  infoCuenta(idcuenta: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoCuenta';
+
+    let data = {
+      "id" : idcuenta
+    };
+
+    return this.http.post(url, data);
+  }
+
 }

@@ -45,4 +45,14 @@ export class UsuarioService {
 
     this.usuario[0] = usuarioC;
   }
+
+  inforUsurio(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoUsuario';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
 }

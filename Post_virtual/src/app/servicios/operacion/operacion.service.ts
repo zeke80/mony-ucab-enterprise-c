@@ -13,8 +13,8 @@ export class OperacionService {
   operacionesCuenta: OperacionCuenta[] = [
     {
       idoperacioncuenta: 0,
-      idCuenta: 0,
-      idUsuarioReceptor: 0,
+      idcuenta: 0,
+      idusuarioreceptor: 0,
       fecha: '',
       hora: '',
       monto: 0,
@@ -23,8 +23,8 @@ export class OperacionService {
   ];
   operacionesMonedero: OperacionMonedero[] = [
     {
-      idOperacionMonedero: 0,
-      idUsuario: 0,
+      idoperacionesmonedero: 0,
+      idusuario: 0,
       idTipoOperacion: 0,
       monto: 0,
       fecha: '',
@@ -35,8 +35,8 @@ export class OperacionService {
   operacionesTarjeta: OperacionTarjeta[] = [
     {
       idoperaciontarjeta: 0,
-      idUsuarioReceptor: 0,
-      idTarjeta: 0,
+      idusuarioreceptor: 0,
+      idtarjeta: 0,
       fecha: '',
       hora: '',
       monto: 0,
@@ -46,9 +46,9 @@ export class OperacionService {
 
   reintegros: Reintegro[] = [
     {
-      idReintegro: 0,
-      idUsuarioSolicitante: 0,
-      idUsuarioReceptor: 0,
+      idreintegro: 0,
+      idusuario_solicitante: 0,
+      idusuario_receptor: 0,
       fecha_solicitud: '',
       referencia: '',
       status: ''
@@ -91,8 +91,16 @@ export class OperacionService {
     this.operacionesTarjeta = tarjeta;
   }
 
+  guardarMonedero(monedero: OperacionMonedero[]) {
+    this.operacionesMonedero = monedero;
+  }
+
+  guardarReintegros(reintegro: Reintegro[]) {
+    this.reintegros = reintegro;
+  }
+
   getoperacionesCuenta(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesCuenta';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesCuentas';
 
     let data = {
       "id" : idusuario
@@ -103,7 +111,7 @@ export class OperacionService {
   }
 
   getoperacionesTarjeta(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesTarjeta';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesTarjetas';
 
     let data = {
       "id" : idusuario
@@ -111,6 +119,27 @@ export class OperacionService {
 
     return this.http.post(url, data);
   }
+
+  getoperacionesMonedero(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesMonedero';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
+
+  getoperacionesreintegros(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoReintegros';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
+
 
   getoperacionCuenta(operacionID: number){
     return {
@@ -123,7 +152,7 @@ export class OperacionService {
   getoperacionMonedero(operacionID: number){
     return {
       ...this.operacionesMonedero.find(operacion => {
-        return operacion.idOperacionMonedero === operacionID;
+        return operacion.idoperacionesmonedero === operacionID;
       })
     };
   }
@@ -139,7 +168,7 @@ export class OperacionService {
   getreintegro(operacionID: number){
     return {
       ...this.reintegros.find(operacion => {
-        return operacion.idReintegro === operacionID;
+        return operacion.idreintegro === operacionID;
       })
     };
   }

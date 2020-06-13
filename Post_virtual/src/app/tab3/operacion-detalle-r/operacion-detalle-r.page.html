@@ -9,32 +9,51 @@
 
 <ion-content>
 
-    <br>
-    <h4 class="ion-text-center"><strong>Detalle de la operación</strong></h4>
+    <div class="contaier-monto">
 
-    <ion-card>
-        <ion-card-contend>
-            <ion-item>
-                <ion-label position="floating"><strong>Fecha de solicitud:</strong></ion-label>
-                <br>
-                <h4 class="ion-text-center">{{operacion.fecha_solicitud}}</h4>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating"><strong>Referencia:</strong></ion-label>
-                <br>
-                <h4 class="ion-text-center">{{operacion.referencia}}</h4>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating"><strong>Estatus: :</strong></ion-label>
-                <br>
-                <h4 class="ion-text-center">{{operacion.status}}</h4>
-            </ion-item>
+        <ion-card>
+            <ion-card-header>
+                <h4 class="ion-text-center"><strong>Detalle de la operación</strong></h4>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-item>
+                    <ion-label position="floating"><strong>Usuario solicitante:</strong></ion-label>
+                    <br>
+                    <h4 class="ion-text-center">{{userS}}</h4>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating"><strong>Fecha de solicitud:</strong></ion-label>
+                    <br>
+                    <h4 class="ion-text-center">{{operacion.fecha_solicitud}}</h4>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating"><strong>Referencia:</strong></ion-label>
+                    <br>
+                    <h4 class="ion-text-center">{{operacion.referencia}}</h4>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating"><strong>Estatus: :</strong></ion-label>
+                    <br>
+                    <h4 class="ion-text-center">{{operacion.estatus}}</h4>
+                </ion-item>
 
-        </ion-card-contend>
+            </ion-card-contend>
+
+        </ion-card>
         <ion-button (click)="aceptarReintegro()" fill="solid" expand="full">
             Aceptar Solicitud de reintegro
         </ion-button>
-    </ion-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
 
 
 </ion-content>

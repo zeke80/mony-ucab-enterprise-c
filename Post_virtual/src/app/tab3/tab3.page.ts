@@ -40,6 +40,16 @@ export class Tab3Page implements OnInit{
           this._operacionServices.guardarTarjetas(this.tarjetas);
 
         });
+    this._operacionServices.getoperacionesMonedero(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.monederos = data;
+          this._operacionServices.guardarMonedero(this.monederos);
+        });
+    this._operacionServices.getoperacionesreintegros(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.reintegros = data;
+          this._operacionServices.guardarReintegros(this.reintegros);
+        })
   }
 
   solicitudPago() {

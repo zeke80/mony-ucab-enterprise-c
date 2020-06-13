@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OperacionService } from '../../servicios/operacion/operacion.service';
 import { Reintegro } from '../../models/reintegro.model';
 import { AlertController } from '@ionic/angular';
+import { UsuarioService } from '../../servicios/usuario/usuario.service';
 
 
 @Component({
@@ -13,12 +14,14 @@ import { AlertController } from '@ionic/angular';
 export class OperacionDetalleRPage implements OnInit {
 
   operacion: Reintegro;
+  userS: string;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
     public _operacionServices: OperacionService,
     public alert: AlertController,
-    public router: Router
+    public router: Router,
+    public _usuarioServices: UsuarioService
   ) { }
 
   ngOnInit() {
@@ -28,6 +31,10 @@ export class OperacionDetalleRPage implements OnInit {
       this.operacion = this._operacionServices.getreintegro(id);
 
     });
+    this._usuarioServices.inforUsurio(this.operacion.idusuario_solicitante)
+        .subscribe((data: any) => {
+          this.userS = data.usuario;
+        });
   }
 
   async aceptarReintegro() {

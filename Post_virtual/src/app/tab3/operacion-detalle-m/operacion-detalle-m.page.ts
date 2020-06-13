@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OperacionService } from '../../servicios/operacion/operacion.service';
 import { OperacionMonedero } from '../../models/operacionMonedero.model';
+import { UsuarioService } from '../../servicios/usuario/usuario.service';
 
 
 @Component({
@@ -12,10 +13,12 @@ import { OperacionMonedero } from '../../models/operacionMonedero.model';
 export class OperacionDetalleMPage implements OnInit {
 
   operacion: OperacionMonedero;
+  user: string;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
     public _operacionServices: OperacionService,
+    public _usuarioServices: UsuarioService
   ) { }
 
   ngOnInit() {
@@ -24,7 +27,10 @@ export class OperacionDetalleMPage implements OnInit {
       const recipeID = paramMap.get('operacionID');
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionMonedero(id);
-      console.log(this.operacion.monto);
+    });
+    this._usuarioServices.inforUsurio(this.operacion.idusuario)
+    .subscribe((data: any) => {
+      this.user = data.usuario;
     });
   }
 
