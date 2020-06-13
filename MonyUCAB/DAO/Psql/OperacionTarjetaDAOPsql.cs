@@ -13,7 +13,41 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<OperacionTarjetaDTO> buscar(int idUsuario)
+        public OperacionTarjetaDTO buscarOperacionTarjeta(int idOperacionTarjeta)
+        {
+            comando.CommandText = string.Format(
+            "SELECT " +
+                "opc.idoperaciontarjeta," +
+                "opc.idusuarioreceptor," +
+                "opc.idtarjeta," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM operaciontarjeta opc " +
+            "WHERE opc.idoperaciontarjeta = {0}", idOperacionTarjeta);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            OperacionTarjetaDTO operacionTarjetaDTO = null;
+            if (filas.Read())
+            {
+                operacionTarjetaDTO = new OperacionTarjetaDTO
+                {
+                    Idoperaciontarjeta = filas.GetInt32(0),
+                    Idusuarioreceptor = filas.GetInt32(1),
+                    Idtarjeta = filas.GetInt32(2),
+                    Fecha = filas.GetDateTime(3),
+                    Hora = filas.GetTimeSpan(4),
+                    Monto = filas.GetFloat(5),
+                    Referencia = filas.GetString(6),
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return operacionTarjetaDTO;
+        }
+
+        public List<OperacionTarjetaDTO> buscarOperacionesTarjetas(int idUsuario)
         {
             comando.CommandText = string.Format(
             "SELECT " +
@@ -43,7 +77,6 @@ namespace MonyUCAB.DAO.Psql
             List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
             while (filas.Read())
             {
-                ;
                 operacionTarjetaDTOs.Add(new OperacionTarjetaDTO
                 {
                     Idoperaciontarjeta = filas.GetInt32(0),

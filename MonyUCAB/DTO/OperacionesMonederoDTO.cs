@@ -12,7 +12,7 @@ namespace MonyUCAB.DTO
 		int _Idtipooperacion;
 		float _Monto;
 		DateTime _Fecha;
-		DateTime _Hora;
+		TimeSpan _Hora;
 		string _Referencia;
 
         public int Idoperacionesmonedero { get => _Idoperacionesmonedero; set => _Idoperacionesmonedero = value; }
@@ -20,7 +20,7 @@ namespace MonyUCAB.DTO
         public int Idtipooperacion { get => _Idtipooperacion; set => _Idtipooperacion = value; }
         public float Monto { get => _Monto; set => _Monto = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
-        public DateTime Hora { get => _Hora; set => _Hora = value; }
+        public TimeSpan Hora { get => _Hora; set => _Hora = value; }
         public string Referencia { get => _Referencia; set => _Referencia = value; }
     }
 }

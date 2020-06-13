@@ -13,7 +13,36 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<CuentaDTO> buscar(int idUsuario)
+        public CuentaDTO buscarCuenta(int idCuenta)
+        {
+            comando.CommandText = string.Format("SELECT " +
+                "idcuenta," +
+                "idusuario," +
+                "idtipocuenta," +
+                "idbanco," +
+                "numero " +
+                "FROM cuenta " +
+                "WHERE idcuenta = {0}", idCuenta);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            CuentaDTO cuentaDTO = null;
+            if (filas.Read())
+            {
+                cuentaDTO = new CuentaDTO
+                {
+                    Idcuenta = filas.GetInt32(0),
+                    Idusuario = filas.GetInt32(1),
+                    Idtipocuenta = filas.GetInt32(2),
+                    Idbanco = filas.GetInt32(3),
+                    Numero = filas.GetString(4),
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return cuentaDTO;
+        }
+
+        public List<CuentaDTO> buscarCuentas(int idUsuario)
         {
             comando.CommandText = string.Format("SELECT " +
                 "idcuenta," +

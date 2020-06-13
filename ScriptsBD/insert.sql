@@ -146,3 +146,37 @@ values
 (1,1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
 (2,1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
 (3,2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1');
+
+insert into tipooperacion(
+	idtipooperacion,
+	descripcion,
+	estatus
+)
+values
+(1,'1',1);
+
+insert into operacionesmonedero(
+	idoperacionesmonedero,
+	idusuario,
+	idtipooperacion,
+	monto,
+	fecha,
+	hora,
+	referencia
+)
+values
+(1,1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1'),
+(2,1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1'),
+(3,2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1');
+
+insert into reintegro(
+	idreintegro,
+	idusuario_solicitante,
+	idusuario_receptor,
+	fecha_solicitud,
+	referencia,
+	estatus
+)
+values
+(1,2,1,'11-11-1111','1',1),
+(2,2,1,'11-11-1111','1',1);

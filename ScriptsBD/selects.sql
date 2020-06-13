@@ -82,7 +82,20 @@ SELECT
 FROM tarjeta 
 WHERE idusuario = 2
 
-/*operacionesCuenta*/
+/*operacionCuenta*/
+
+SELECT
+	opc.idoperacioncuenta,
+	opc.idcuenta,
+	opc.idusuarioreceptor,
+	opc.fecha,
+	opc.hora,
+	opc.monto,
+	opc.referencia
+FROM operacioncuenta opc
+WHERE opc.idoperacioncuenta = 1
+
+/*operacionesCuentas*/
 
 SELECT
 	opc.idoperacioncuenta,
@@ -107,7 +120,20 @@ SELECT
 FROM operacioncuenta opc
 WHERE opc.idusuarioreceptor = 1
 
-/*operacionesTarjeta*/
+/*operacionTarjeta*/
+
+SELECT
+	opc.idoperaciontarjeta,
+	opc.idusuarioreceptor,
+	opc.idtarjeta,
+	opc.fecha,
+	opc.hora,
+	opc.monto,
+	opc.referencia
+FROM operaciontarjeta opc
+WHERE opc.idoperaciontarjeta = 1
+
+/*operacionesTarjetas*/
 
 SELECT
 	opc.idoperaciontarjeta,
@@ -132,9 +158,10 @@ SELECT
 FROM operaciontarjeta opc
 WHERE opc.idusuarioreceptor = 2
 
-/* Información de Usuario */ 
+/* infoUsuario */ 
 
 SELECT 
+	us.idusuario,
     us.idTipoUsuario, 
 	us.idTipoIdentificacion, 
 	us.usuario, 
@@ -148,7 +175,7 @@ FROM Usuario AS us
 WHERE
 	us.idUsuario = 1
 
-/* Información de Cuenta */ 
+/* infoCuenta */ 
 
 SELECT 
     cu.idCuenta,
@@ -158,3 +185,53 @@ SELECT
 FROM Cuenta AS cu
 WHERE
 	cu.idUsuario = 1
+
+/* operacionesMonederos */
+SELECT
+	opm.idoperacionesmonedero,
+	opm.idusuario,
+	opm.idtipooperacion,
+	opm.monto,
+	opm.fecha,
+	opm.hora,
+	opm.referencia
+FROM operacionesmonedero opm
+WHERE opm.idusuario = 1
+
+/* operacionMonedero */
+
+SELECT
+	opm.idoperacionesmonedero,
+	opm.idusuario,
+	opm.idtipooperacion,
+	opm.monto,
+	opm.fecha,
+	opm.hora,
+	opm.referencia
+FROM operacionesmonedero opm
+WHERE opm.idoperacionesmonedero = 1
+
+/*infoReintegro*/
+
+SELECT
+	rei.idreintegro,
+	rei.idusuario_solicitante,
+	rei.idusuario_receptor,
+	rei.fecha_solicitud,
+	rei.referencia,
+	rei.estatus 
+FROM reintegro rei
+WHERE rei.idreintegro = 1
+
+/*infoReintegros*/
+
+SELECT
+	rei.idreintegro,
+	rei.idusuario_solicitante,
+	rei.idusuario_receptor,
+	rei.fecha_solicitud,
+	rei.referencia,
+	rei.estatus 
+FROM reintegro rei
+WHERE rei.idusuario_solicitante = 1 
+OR rei.idusuario_receptor = 1

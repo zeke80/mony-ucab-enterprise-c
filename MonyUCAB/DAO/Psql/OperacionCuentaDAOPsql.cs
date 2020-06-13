@@ -13,7 +13,41 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
-        public List<OperacionCuentaDTO> buscar(int idUsuario)
+        public OperacionCuentaDTO buscarOperacionCuenta(int idOperacionCuenta)
+        {
+            comando.CommandText = string.Format(
+            "SELECT " +
+                "opc.idoperacioncuenta," +
+                "opc.idcuenta," +
+                "opc.idusuarioreceptor," +
+                "opc.fecha," +
+                "opc.hora," +
+                "opc.monto," +
+                "opc.referencia " +
+            "FROM operacioncuenta opc " +
+            "WHERE opc.idoperacioncuenta = {0}", idOperacionCuenta);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            OperacionCuentaDTO operacionCuentaDTO = null;
+            if (filas.Read())
+            {
+                operacionCuentaDTO = new OperacionCuentaDTO
+                {
+                    Idoperacioncuenta = filas.GetInt32(0),
+                    Idcuenta = filas.GetInt32(1),
+                    Idusuarioreceptor = filas.GetInt32(2),
+                    Fecha = filas.GetDateTime(3),
+                    Hora = filas.GetTimeSpan(4),
+                    Monto = filas.GetFloat(5),
+                    Referencia = filas.GetString(6),
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return operacionCuentaDTO;
+        }
+
+        public List<OperacionCuentaDTO> buscarOperacionesCuentas(int idUsuario)
         {
             comando.CommandText = string.Format(
             "SELECT " +
@@ -43,7 +77,6 @@ namespace MonyUCAB.DAO.Psql
             List<OperacionCuentaDTO> operacionCuentaDTOs = new List<OperacionCuentaDTO>();
             while (filas.Read())
             {
-                ;
                 operacionCuentaDTOs.Add(new OperacionCuentaDTO
                 {
                     Idoperacioncuenta = filas.GetInt32(0),

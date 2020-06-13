@@ -9,7 +9,8 @@ namespace MonyUCAB.DAO
 {
     interface IReintegroDAO
     {
-        List<ReintegroDTO> buscar();
+        ReintegroDTO buscarReintegro(int idReintegro);
+        List<ReintegroDTO> buscarReintegros(int idUsuario);
         void crear();
         void actualizar();
         void eliminar();

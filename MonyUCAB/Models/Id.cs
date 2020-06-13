@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MonyUCAB.Models
 {
-    public class IdUsuario
+    public class Id
     {
         public int id { get; set; }
     }
