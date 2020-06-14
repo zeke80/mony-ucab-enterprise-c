@@ -1,6 +1,6 @@
 export class OperacionMonedero {
-    idOperacionMonedero: number;
-    idUsuario: number;
+    idoperacionesmonedero: number;
+    idusuario: number;
     idTipoOperacion: number;
     monto: number;
     fecha: string;

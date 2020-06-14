@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export class UsuarioService {
     }
   ];
 
-  constructor() { }
+  constructor(
+    public http: HttpClient
+  ) { }
 
   getUsuario(){
     return this.usuario[0];
@@ -41,5 +44,15 @@ export class UsuarioService {
     localStorage.setItem('direccion', direccion);
 
     this.usuario[0] = usuarioC;
+  }
+
+  inforUsurio(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoUsuario';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
   }
 }

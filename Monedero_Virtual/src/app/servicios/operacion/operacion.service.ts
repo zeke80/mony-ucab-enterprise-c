@@ -5,7 +5,6 @@ import { OperacionTarjeta } from '../../models/operacionTarjeta.model';
 import { Reintegro } from '../../models/reintegro.model';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,46 +12,46 @@ export class OperacionService {
 
   operacionesCuenta: OperacionCuenta[] = [
     {
-      idoperacioncuenta: 10,
-      idCuenta: 1,
-      idUsuarioReceptor: 2,
-      fecha: '02/02/2020',
-      hora: '5:00 pm',
-      monto: 5000000,
-      referencia: 'Tremenda referencia'
+      idoperacioncuenta: 0,
+      idcuenta: 0,
+      idusuarioreceptor: 0,
+      fecha: '',
+      hora: '',
+      monto: 0,
+      referencia: ''
     }
   ];
   operacionesMonedero: OperacionMonedero[] = [
     {
-      idOperacionMonedero: 123,
-      idUsuario: 1,
-      idTipoOperacion: 1,
-      monto: 100000,
-      fecha: '02/02/2020',
-      hora: '01:30 pm',
-      referencia: 'referencia'
+      idoperacionesmonedero: 0,
+      idusuario: 0,
+      idTipoOperacion: 0,
+      monto: 0,
+      fecha: '',
+      hora: '',
+      referencia: ''
     }
   ];
   operacionesTarjeta: OperacionTarjeta[] = [
     {
-      idoperaciontarjeta: 1,
-      idUsuarioReceptor: 2,
-      idTarjeta: 1,
-      fecha: '02/02/2020',
-      hora: '02:49 pm',
-      monto: 50,
-      referencia: 'referencia'
+      idoperaciontarjeta: 0,
+      idusuarioreceptor: 0,
+      idtarjeta: 0,
+      fecha: '',
+      hora: '',
+      monto: 0,
+      referencia: ''
     }
   ];
 
   reintegros: Reintegro[] = [
     {
-      idReintegro: 1,
-      idUsuarioSolicitante: 1,
-      idUsuarioReceptor: 1,
-      fecha_solicitud: '02/02/2020',
-      referencia: 'referencia',
-      status: 'solicitado'
+      idreintegro: 0,
+      idusuario_solicitante: 0,
+      idusuario_receptor: 0,
+      fecha_solicitud: '',
+      referencia: '',
+      status: ''
     }
   ];
 
@@ -92,8 +91,16 @@ export class OperacionService {
     this.operacionesTarjeta = tarjeta;
   }
 
+  guardarMonedero(monedero: OperacionMonedero[]) {
+    this.operacionesMonedero = monedero;
+  }
+
+  guardarReintegros(reintegro: Reintegro[]) {
+    this.reintegros = reintegro;
+  }
+
   getoperacionesCuenta(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesCuenta';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesCuentas';
 
     let data = {
       "id" : idusuario
@@ -104,7 +111,7 @@ export class OperacionService {
   }
 
   getoperacionesTarjeta(idusuario: number) {
-    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesTarjeta';
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesTarjetas';
 
     let data = {
       "id" : idusuario
@@ -112,6 +119,27 @@ export class OperacionService {
 
     return this.http.post(url, data);
   }
+
+  getoperacionesMonedero(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/operacionesMonedero';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
+
+  getoperacionesreintegros(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoReintegros';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
+
 
   getoperacionCuenta(operacionID: number){
     return {
@@ -124,7 +152,7 @@ export class OperacionService {
   getoperacionMonedero(operacionID: number){
     return {
       ...this.operacionesMonedero.find(operacion => {
-        return operacion.idOperacionMonedero === operacionID;
+        return operacion.idoperacionesmonedero === operacionID;
       })
     };
   }
@@ -140,8 +168,9 @@ export class OperacionService {
   getreintegro(operacionID: number){
     return {
       ...this.reintegros.find(operacion => {
-        return operacion.idReintegro === operacionID;
+        return operacion.idreintegro === operacionID;
       })
     };
   }
+
 }

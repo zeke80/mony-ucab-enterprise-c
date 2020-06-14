@@ -1,9 +1,8 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OperacionService } from '../servicios/operacion/operacion.service';
 import { Router } from '@angular/router';
-import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
-
+import { UsuarioService } from '../servicios/usuario/usuario.service';
 
 @Component({
   selector: 'app-tab3',
@@ -16,7 +15,7 @@ export class Tab3Page implements OnInit{
   tarjetas = [];
   monederos = [];
   reintegros = [];
-  usuario: Usuario;
+  usuario: Usuario
 
   constructor(
     public _operacionServices: OperacionService,
@@ -41,6 +40,18 @@ export class Tab3Page implements OnInit{
           this._operacionServices.guardarTarjetas(this.tarjetas);
 
         });
+    this._operacionServices.getoperacionesMonedero(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.monederos = data;
+          this._operacionServices.guardarMonedero(this.monederos);
+        });
+    this._operacionServices.getoperacionesreintegros(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.reintegros = data;
+          this._operacionServices.guardarReintegros(this.reintegros);
+        })
   }
+
+  
 
 }
