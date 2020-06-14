@@ -52,8 +52,6 @@ export class Tab3Page implements OnInit{
         })
   }
 
-  solicitudPago() {
-    this.router.navigate(['tabs/operaciones/pago']);
-  }
+  
 
 }

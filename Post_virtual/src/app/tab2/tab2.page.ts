@@ -3,6 +3,7 @@ import { CuentaService } from '../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../servicios/tarjeta/tarjeta.service';
 import { Usuario } from '../models/usuario.model';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -18,7 +19,8 @@ export class Tab2Page implements OnInit {
   constructor(
     public _cuentaServices: CuentaService,
     public _tarjetaService: TarjetaService,
-    public _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService,
+    public router: Router
   ) {}
 
   ngOnInit(){
@@ -36,6 +38,10 @@ export class Tab2Page implements OnInit {
            this.tarjetas = data;
          });
 
+  }
+
+  solicitudPago() {
+    this.router.navigate(['tabs/operaciones/pago']);
   }
 
 }
