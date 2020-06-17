@@ -517,6 +517,96 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "solicitarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/solicitarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aceptarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/aceptarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"aceptarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rechazarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/rechazarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"rechazarReintegro"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1046,6 +1136,99 @@
 								"api",
 								"Usuario",
 								"infoReintegros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/solicitarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aceptarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/aceptarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"aceptarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rechazarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/rechazarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"rechazarReintegro"
 							]
 						}
 					},

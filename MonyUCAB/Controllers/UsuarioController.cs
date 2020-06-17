@@ -219,5 +219,35 @@ namespace MonyUCAB.Controllers
 
             return reintegroDTOs;
         }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> solicitarReintegro(InfoOperacion infoOperacion)
+        {
+            IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
+            reintegroDAO.solicitar(infoOperacion.idUsuarioSolicitante, infoOperacion.idUsuarioReceptor, infoOperacion.referencia);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> aceptarReintegro(Id idReintegro)
+        {
+            IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
+            reintegroDAO.aceptar(idReintegro.id);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> rechazarReintegro(Id idReintegro)
+        {
+            IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
+            reintegroDAO.rechazar(idReintegro.id);
+
+            return true;
+        }
     }
 }

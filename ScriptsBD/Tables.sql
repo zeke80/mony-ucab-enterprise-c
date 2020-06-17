@@ -269,7 +269,7 @@ CREATE TABLE tarjeta (
 
 
 CREATE TABLE operaciontarjeta (
-	idoperaciontarjeta integer PRIMARY KEY,
+	idoperaciontarjeta serial PRIMARY KEY,
 	idusuarioreceptor  integer NOT NULL,
 	idtarjeta          integer NOT NULL,
 	fecha              date NOT NULL,

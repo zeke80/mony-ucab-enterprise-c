@@ -81,14 +81,47 @@ namespace MonyUCAB.DAO
             return reintegroDTOs;
         }
 
-        public void crear()
+        public void solicitar(int idUsuarioSolicitante, int idUsuarioReceptor, string referencia)
         {
-            throw new NotImplementedException();
+            comando.CommandText = string.Format(
+                "INSERT INTO reintegro(" +
+                "idusuario_solicitante," +
+                "idusuario_receptor," +
+                "fecha_solicitud," +
+                "referencia," +
+                "estatus" +
+                ") VALUES({0},{1},'{2}','{3}','{4}')", 
+                idUsuarioSolicitante, idUsuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), referencia, "SOLICITADO");
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
 
         public void eliminar()
         {
             throw new NotImplementedException();
+        }
+
+        public void aceptar(int idReintegro)
+        {
+            comando.CommandText = string.Format(
+                "UPDATE reintegro SET " +
+                "estatus = 'ACEPTADO' " +
+                "WHERE idreintegro = {0}", idReintegro);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void rechazar(int idReintegro)
+        {
+            comando.CommandText = string.Format(
+                "UPDATE reintegro SET " +
+                "estatus = 'RECHAZADO' " +
+                "WHERE idreintegro = {0}", idReintegro);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MonyUCAB.DTO
     public class OperacionTarjetaDTO
     {
 		int _Idoperaciontarjeta;
-		int _Idusuarioreceptor;
+		int _IdUsuarioReceptor;
 		int _Idtarjeta;
 		DateTime _Fecha;
         TimeSpan _Hora;
@@ -16,7 +16,7 @@ namespace MonyUCAB.DTO
 		string _Referencia;
 
         public int Idoperaciontarjeta { get => _Idoperaciontarjeta; set => _Idoperaciontarjeta = value; }
-        public int Idusuarioreceptor { get => _Idusuarioreceptor; set => _Idusuarioreceptor = value; }
+        public int IdUsuarioReceptor { get => _IdUsuarioReceptor; set => _IdUsuarioReceptor = value; }
         public int Idtarjeta { get => _Idtarjeta; set => _Idtarjeta = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public TimeSpan Hora { get => _Hora; set => _Hora = value; }

@@ -9,7 +9,7 @@ namespace MonyUCAB.DTO
     {
 		int _Idoperacioncuenta;
 		int _Idcuenta;
-		int _Idusuarioreceptor;
+		int _IdUsuarioReceptor;
 		DateTime _Fecha;
 		TimeSpan _Hora;
 		float _Monto;
@@ -17,7 +17,7 @@ namespace MonyUCAB.DTO
 
         public int Idoperacioncuenta { get => _Idoperacioncuenta; set => _Idoperacioncuenta = value; }
         public int Idcuenta { get => _Idcuenta; set => _Idcuenta = value; }
-        public int Idusuarioreceptor { get => _Idusuarioreceptor; set => _Idusuarioreceptor = value; }
+        public int IdUsuarioReceptor { get => _IdUsuarioReceptor; set => _IdUsuarioReceptor = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public TimeSpan Hora { get => _Hora; set => _Hora = value; }
         public float Monto { get => _Monto; set => _Monto = value; }

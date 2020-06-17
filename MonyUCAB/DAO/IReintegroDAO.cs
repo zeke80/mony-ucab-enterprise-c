@@ -11,7 +11,9 @@ namespace MonyUCAB.DAO
     {
         ReintegroDTO buscarReintegro(int idReintegro);
         List<ReintegroDTO> buscarReintegros(int idUsuario);
-        void crear();
+        void solicitar(int idUsuarioSolicitante, int idUsuarioReceptor, string referencia);
+        void aceptar(int idReintegro);
+        void rechazar(int idReintegro);
         void actualizar();
         void eliminar();
     }

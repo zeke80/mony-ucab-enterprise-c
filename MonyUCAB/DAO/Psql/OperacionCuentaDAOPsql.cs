@@ -19,7 +19,7 @@ namespace MonyUCAB.DAO.Psql
             "SELECT " +
                 "opc.idoperacioncuenta," +
                 "opc.idcuenta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.fecha," +
                 "opc.hora," +
                 "opc.monto," +
@@ -35,7 +35,7 @@ namespace MonyUCAB.DAO.Psql
                 {
                     Idoperacioncuenta = filas.GetInt32(0),
                     Idcuenta = filas.GetInt32(1),
-                    Idusuarioreceptor = filas.GetInt32(2),
+                    IdUsuarioReceptor = filas.GetInt32(2),
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
                     Monto = filas.GetFloat(5),
@@ -53,7 +53,7 @@ namespace MonyUCAB.DAO.Psql
             "SELECT " +
                 "opc.idoperacioncuenta," +
                 "opc.idcuenta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.fecha," +
                 "opc.hora," +
                 "opc.monto," +
@@ -65,13 +65,13 @@ namespace MonyUCAB.DAO.Psql
             "SELECT " +
                 "opc.idoperacioncuenta," +
                 "opc.idcuenta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.fecha," +
                 "opc.hora," +
                 "opc.monto," +
                 "opc.referencia " +
             "FROM operacioncuenta opc " +
-            "WHERE opc.idusuarioreceptor = {0}", idUsuario);
+            "WHERE opc.IdUsuarioReceptor = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<OperacionCuentaDTO> operacionCuentaDTOs = new List<OperacionCuentaDTO>();
@@ -81,7 +81,7 @@ namespace MonyUCAB.DAO.Psql
                 {
                     Idoperacioncuenta = filas.GetInt32(0),
                     Idcuenta = filas.GetInt32(1),
-                    Idusuarioreceptor = filas.GetInt32(2),
+                    IdUsuarioReceptor = filas.GetInt32(2),
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
                     Monto = filas.GetFloat(5),

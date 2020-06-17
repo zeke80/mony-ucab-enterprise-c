@@ -18,7 +18,7 @@ namespace MonyUCAB.DAO.Psql
             comando.CommandText = string.Format(
             "SELECT " +
                 "opc.idoperaciontarjeta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.idtarjeta," +
                 "opc.fecha," +
                 "opc.hora," +
@@ -34,7 +34,7 @@ namespace MonyUCAB.DAO.Psql
                 operacionTarjetaDTO = new OperacionTarjetaDTO
                 {
                     Idoperaciontarjeta = filas.GetInt32(0),
-                    Idusuarioreceptor = filas.GetInt32(1),
+                    IdUsuarioReceptor = filas.GetInt32(1),
                     Idtarjeta = filas.GetInt32(2),
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
@@ -52,7 +52,7 @@ namespace MonyUCAB.DAO.Psql
             comando.CommandText = string.Format(
             "SELECT " +
                 "opc.idoperaciontarjeta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.idtarjeta," +
                 "opc.fecha," +
                 "opc.hora," +
@@ -64,14 +64,14 @@ namespace MonyUCAB.DAO.Psql
             "UNION " +
             "SELECT " +
                 "opc.idoperaciontarjeta," +
-                "opc.idusuarioreceptor," +
+                "opc.IdUsuarioReceptor," +
                 "opc.idtarjeta," +
                 "opc.fecha," +
                 "opc.hora," +
                 "opc.monto," +
                 "opc.referencia " +
             "FROM operaciontarjeta opc " +
-            "WHERE opc.idusuarioreceptor = {0}", idUsuario);
+            "WHERE opc.IdUsuarioReceptor = {0}", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
@@ -80,7 +80,7 @@ namespace MonyUCAB.DAO.Psql
                 operacionTarjetaDTOs.Add(new OperacionTarjetaDTO
                 {
                     Idoperaciontarjeta = filas.GetInt32(0),
-                    Idusuarioreceptor = filas.GetInt32(1),
+                    IdUsuarioReceptor = filas.GetInt32(1),
                     Idtarjeta = filas.GetInt32(2),
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
