@@ -163,3 +163,16 @@ insert into reintegro(
 values
 (2,1,'11-11-1111','1',1),
 (2,1,'11-11-1111','1',1);
+
+
+insert into pago(
+	idpago,
+	idusuario_solicitante,
+	idusuario_receptor,
+	fecha_solicitus,
+	monto,
+	estatus,
+	referencia
+)
+values 
+(1,1,2,to_date('11-11-1111','dd-MM-yyyy'),111,'SOLICITADO',null);
