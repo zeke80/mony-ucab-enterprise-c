@@ -45,13 +45,19 @@ export class OperacionDetalleRPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.router.navigate(['/tabs/operaciones']);
+            this._operacionServices.aceptarReintegro(this.operacion.idreintegro)
+                .subscribe((data: any) => {
+                  this.router.navigate(['/tabs/operaciones']);
+                });
           }
         },
         {
           text: 'Denegar',
           handler: () => {
-            this.router.navigate(['/tabs/operaciones']);
+            this._operacionServices.recharzarReintegro(this.operacion.idreintegro)
+                .subscribe((data: any) => {
+                  this.router.navigate(['/tabs/operaciones']);
+                });
           }
         },
         {

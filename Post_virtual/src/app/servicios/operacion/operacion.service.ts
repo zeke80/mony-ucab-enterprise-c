@@ -14,7 +14,7 @@ export class OperacionService {
     {
       idoperacioncuenta: 0,
       idcuenta: 0,
-      idusuarioreceptor: 0,
+      idUsuarioReceptor: 0,
       fecha: '',
       hora: '',
       monto: 0,
@@ -35,7 +35,7 @@ export class OperacionService {
   operacionesTarjeta: OperacionTarjeta[] = [
     {
       idoperaciontarjeta: 0,
-      idusuarioreceptor: 0,
+      idUsuarioReceptor: 0,
       idtarjeta: 0,
       fecha: '',
       hora: '',
@@ -171,6 +171,26 @@ export class OperacionService {
         return operacion.idreintegro === operacionID;
       })
     };
+  }
+
+  aceptarReintegro(operacionID: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/aceptarReintegro';
+
+    let data = {
+      "id" : operacionID
+    };
+
+    return this.http.post(url, data);
+  }
+
+  recharzarReintegro(operacionID: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/rechazarReintegro';
+
+    let data = {
+      "id" : operacionID
+    };
+
+    return this.http.post(url, data);
   }
 
 }

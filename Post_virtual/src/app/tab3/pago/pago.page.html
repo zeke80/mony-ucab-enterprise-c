@@ -12,7 +12,7 @@
 <ion-content>
 
 
-    <div class="contaier-perfil">
+    <div class="contaier-monto">
         <ion-card>
             <ion-card-header>
                 <ion-row>
@@ -24,16 +24,12 @@
             <ion-card-contend>
                 <form #f='ngForm' (ngSubmit)="realizarSolicitud( f )">
                     <ion-item>
+                        <ion-label position="floating"><strong>Usuario a solicitar: </strong></ion-label>
+                        <ion-input [ngModel]="user" name="user"></ion-input>
+                    </ion-item>
+                    <ion-item>
                         <ion-label position="floating"><strong>Monto: </strong></ion-label>
                         <ion-input [ngModel]="monto" name="monto"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="floating"><strong>Usuario del receptor:</strong></ion-label>
-                        <ion-input [ngModel]="userRecep" name="userRecep"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="floating"><strong>referencia:</strong></ion-label>
-                        <ion-input [ngModel]="referencia" name="referencia"></ion-input>
                     </ion-item>
                     <ion-button type="submit" fill="solid" expand="full">
                         Realizar
@@ -42,6 +38,24 @@
 
             </ion-card-contend>
         </ion-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
     </div>
 

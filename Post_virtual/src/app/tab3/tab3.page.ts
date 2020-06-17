@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OperacionService } from '../servicios/operacion/operacion.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 
@@ -21,7 +21,8 @@ export class Tab3Page implements OnInit{
   constructor(
     public _operacionServices: OperacionService,
     public _usuarioServices: UsuarioService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    public router: Router
   ) {
     this._activatedRoute.paramMap.subscribe(params => {
       this.ngOnInit();
@@ -59,9 +60,10 @@ export class Tab3Page implements OnInit{
           this.reintegros = data;
           this._operacionServices.guardarReintegros(this.reintegros);
         });
-    console.log('hola');
   }
 
-
+  solicitudPago() {
+    this.router.navigate(['tabs/operaciones/pago']);
+  }
 
 }

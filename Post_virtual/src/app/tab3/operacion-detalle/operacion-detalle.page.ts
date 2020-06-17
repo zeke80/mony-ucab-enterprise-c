@@ -31,7 +31,7 @@ export class OperacionDetallePage implements OnInit {
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionCuenta(id);
     });
-    this._usuarioServices.inforUsurio(this.operacion.idusuarioreceptor)
+    this._usuarioServices.inforUsurio(this.operacion.idUsuarioReceptor)
         .subscribe((data: any) => {
           this.user = data.usuario;
         });

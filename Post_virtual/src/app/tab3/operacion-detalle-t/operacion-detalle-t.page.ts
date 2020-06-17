@@ -29,7 +29,7 @@ export class OperacionDetalleTPage implements OnInit {
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionTarjeta(id);
     });
-    this._usuarioServices.inforUsurio(this.operacion.idusuarioreceptor)
+    this._usuarioServices.inforUsurio(this.operacion.idUsuarioReceptor)
     .subscribe((data: any) => {
       this.user = data.usuario;
     });
