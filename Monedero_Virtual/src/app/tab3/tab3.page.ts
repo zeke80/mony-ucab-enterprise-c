@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OperacionService } from '../servicios/operacion/operacion.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 
@@ -20,8 +20,13 @@ export class Tab3Page implements OnInit{
   constructor(
     public _operacionServices: OperacionService,
     public router: Router,
-    public _usuarioServices: UsuarioService
-  ) {}
+    public _usuarioServices: UsuarioService,
+    private _activatedRoute: ActivatedRoute,
+  ) {
+    this._activatedRoute.paramMap.subscribe(params => {
+      this.ngOnInit();
+  });
+  }
 
   ngOnInit(){
     this.cuentas = this._operacionServices.getoperacionesCuentaVacio();
@@ -33,6 +38,7 @@ export class Tab3Page implements OnInit{
         .subscribe((data: any) => {
           this.cuentas = data;
           this._operacionServices.guardarCuentas(this.cuentas);
+
         });
     this._operacionServices.getoperacionesTarjeta(this.usuario.idUsuario)
         .subscribe((data: any) => {
@@ -49,7 +55,7 @@ export class Tab3Page implements OnInit{
         .subscribe((data: any) => {
           this.reintegros = data;
           this._operacionServices.guardarReintegros(this.reintegros);
-        })
+        });
   }
 
   

@@ -37,6 +37,10 @@ const routes: Routes = [
         loadChildren: () => import ('../tab3/operacion-detalle-r/oparecion-detalle-r.module').then(m => m.OparecionDetalleRPageModule)
       },
       {
+        path: 'cuenta/pago',
+        loadChildren: () => import ('../tab3/pago/pago.module').then(m => m.PagoPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/cuenta',
         pathMatch: 'full'

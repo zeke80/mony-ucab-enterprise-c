@@ -5,6 +5,7 @@ import { OperacionMonedero } from '../../models/operacionMonedero.model';
 import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { Usuario } from '../../models/usuario.model';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -23,7 +24,9 @@ export class OperacionDetalleMPage implements OnInit {
     public _activatedRoute: ActivatedRoute,
     public _operacionServices: OperacionService,
     public _usuarioServices: UsuarioService,
-    public _cuentaServices: CuentaService
+    public _cuentaServices: CuentaService,
+    public router: Router,
+    public alert: AlertController,
   ) { }
 
   ngOnInit() {
@@ -42,9 +45,33 @@ export class OperacionDetalleMPage implements OnInit {
   }
 
   SolicitarReintegro() {
-    console.log('id del usuario solicitante: ' + this.usuario.idUsuario);
-    console.log('id usuario receptor: ' + this.idreceptor);
-    console.log('referencia:' + this.operacion.referencia);
+    this.reintegroS();
+  }
+
+  async reintegroS() {
+    const alertElement = await this.alert.create({
+      header: '¿Esta seguro que solicitar reintegro?',
+      message: 'Va a solicitar el reintegro de esta operación',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor )
+                .subscribe((data: any) => {
+                  this.router.navigate(['/tabs/operaciones']);
+                });
+          }
+        },
+
+        {
+          text: 'Cancelar',
+          role: 'cancelar'
+        }
+      ]
+    });
+
+    await alertElement.present();
+
   }
 
 }

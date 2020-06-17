@@ -21,6 +21,29 @@
 
         </ion-card>
 
+        <ion-button (click)="solicitudPago()" color="warning" fill="solid" expand="full">
+            Realizar pago
+        </ion-button>
+
+        <ion-card>
+            <ion-card-header>
+                <h2>Pagos solicitados al usuario</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let pago of pagos">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <ion-label>
+                            Pago: <strong>{{pago.idpago}}</strong>
+                            <h1>
+                                Monto: {{pago.monto}}
+                            </h1>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
         <ion-card>
             <ion-card-header>
                 <h2>Cuentas registradas del usuario</h2>
