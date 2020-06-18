@@ -127,28 +127,6 @@ $BODY$ LANGUAGE 'plpgsql'
 
 
 
-/* INFO COMERCIO */
-
-CREATE OR REPLACE FUNCTION infoComercio(id integer)
-RETURNS TABLE(com_idusuario integer, com_razon_social varchar(200), com_nombre_representante varchar(45), com_apellido_representante varchar(45)) AS
-$BODY$
-DECLARE
-    reg RECORD;
-BEGIN
-    FOR REG IN SELECT idusuario, razon_social, nombre_representante, apellido_representante 
-    FROM comercio WHERE idusuario = id LOOP
-        com_idusuario := reg.idusuario;
-        com_razon_social:= reg.razon_social;
-        com_nombre_representante:= reg.nombre_representante;
-        com_apellido_representante:= reg.apellido_representante;
-        RETURN NEXT;
-    END LOOP;
-    RETURN;
-END
-$BODY$ LANGUAGE 'plpgsql'
-
-
-
 /* INFO TARJETAS */
 
 CREATE OR REPLACE FUNCTION infoTarjetas(id integer)
@@ -191,6 +169,63 @@ BEGIN
         opc_fecha:= reg.fecha;
         opc_hora:= reg.hora;
         opc_monto:= reg.monto;
+        opc_referencia:= reg.referencia;
+        RETURN NEXT;
+    END LOOP;
+    RETURN;
+END
+$BODY$ LANGUAGE 'plpgsql'
+
+
+
+/* OPERACION CUENTAS */
+
+CREATE OR REPLACE FUNCTION operacionesCuentas(id integer)
+RETURNS TABLE(opc_idoperacioncuenta integer, opc_idcuenta integer, opc_idusuarioreceptor integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia varchar(45)) AS
+$BODY$
+DECLARE
+    reg RECORD;
+BEGIN
+    FOR REG IN SELECT opc.idoperacioncuenta, opc.idcuenta, opc.idusuarioreceptor, opc.fecha, opc.hora, opc.monto, opc.referencia
+    FROM cuenta cue, operacioncuenta opc WHERE cue.idcuenta = opc.idcuenta AND cue.idusuario = id
+    UNION SELECT opc.idoperacioncuenta, opc.idcuenta, opc.idusuarioreceptor, opc.fecha, opc.hora, opc.monto, opc.referencia 
+    FROM operacioncuenta opc WHERE opc.idusuarioreceptor = id LOOP
+    
+        opc_idoperacioncuenta := reg.idoperacioncuenta;
+        opc_idcuenta:= reg.idcuenta;
+        opc_idusuarioreceptor:= reg.idusuarioreceptor;
+        opc_fecha:= reg.fecha;
+        opc_hora:= reg.hora;
+        opc_monto := reg.monto;
+        opc_referencia:= reg.referencia;
+        RETURN NEXT;
+    END LOOP;
+    RETURN;
+END
+$BODY$ LANGUAGE 'plpgsql'
+
+
+
+
+/* OPERACIONES TARJETAS */
+
+CREATE OR REPLACE FUNCTION operacionesTarjetas(id integer)
+RETURNS TABLE(opc_idoperaciontarjeta integer, opc_idusuarioreceptor integer, opc_idtarjeta integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia varchar(45)) AS
+$BODY$
+DECLARE
+    reg RECORD;
+BEGIN
+    FOR REG IN SELECT opc.idoperaciontarjeta, opc.idusuarioreceptor, opc.idtarjeta, opc.fecha, opc.hora, opc.monto, opc.referencia
+    FROM tarjeta tar, operaciontarjeta opc WHERE tar.idtarjeta = opc.idtarjeta AND tar.idusuario = id
+    UNION SELECT opc.idoperaciontarjeta, opc.idusuarioreceptor, opc.idtarjeta, opc.fecha, opc.hora, opc.monto, opc.referencia 
+    FROM operaciontarjeta opc WHERE opc.idusuarioreceptor = id LOOP
+    
+        opc_idoperaciontarjeta := reg.idoperaciontarjeta;
+        opc_idusuarioreceptor:= reg.idusuarioreceptor;
+        opc_idtarjeta:= reg.idtarjeta;
+        opc_fecha:= reg.fecha;
+        opc_hora:= reg.hora;
+        opc_monto := reg.monto;
         opc_referencia:= reg.referencia;
         RETURN NEXT;
     END LOOP;
