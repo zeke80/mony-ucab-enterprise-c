@@ -5,5 +5,5 @@ export class OperacionMonedero {
     monto: number;
     fecha: string;
     hora: string;
-    referencia: string;
+    referencia: number;
 }

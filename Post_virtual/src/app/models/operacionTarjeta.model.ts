@@ -5,5 +5,5 @@ export class OperacionTarjeta {
     fecha: string;
     hora: string;
     monto: number;
-    referencia: string;
+    referencia: number;
 }

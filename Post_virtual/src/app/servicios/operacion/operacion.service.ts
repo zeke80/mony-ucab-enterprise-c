@@ -18,7 +18,7 @@ export class OperacionService {
       fecha: '',
       hora: '',
       monto: 0,
-      referencia: ''
+      referencia: 0
     }
   ];
   operacionesMonedero: OperacionMonedero[] = [
@@ -29,7 +29,7 @@ export class OperacionService {
       monto: 0,
       fecha: '',
       hora: '',
-      referencia: ''
+      referencia: 0
     }
   ];
   operacionesTarjeta: OperacionTarjeta[] = [
@@ -40,7 +40,7 @@ export class OperacionService {
       fecha: '',
       hora: '',
       monto: 0,
-      referencia: ''
+      referencia: 0
     }
   ];
 
