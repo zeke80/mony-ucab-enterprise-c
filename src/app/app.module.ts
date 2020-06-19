@@ -10,6 +10,8 @@ import { NavMenuComponent } from './home/nav-menu/nav-menu.component';
 import { LoginFormComponent } from './home/login-form/login-form.component';
 import { SignupFormComponent } from './home/signup-form/signup-form.component';
 import { HomeComponent } from './home/home/home.component';
+import { SideNavTogglerComponent } from './authorised/side-nav-toggler/side-nav-toggler.component';
+import { SideNavComponent } from './authorised/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HomeComponent } from './home/home/home.component';
     NavMenuComponent,
     LoginFormComponent,
     SignupFormComponent,
-    HomeComponent
+    HomeComponent,
+    SideNavTogglerComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
