@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthorisedSideNavService } from './../side-nav/services/authorised-side-nav.service';
 @Component({
   selector: 'app-side-nav-toggler',
   templateUrl: './side-nav-toggler.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavTogglerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public sideNavService: AuthorisedSideNavService) { }
 
   ngOnInit(): void {
   }
