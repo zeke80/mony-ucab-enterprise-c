@@ -119,7 +119,7 @@ CREATE TABLE pago (
 	fecha_solicitus       varchar(45) NOT NULL,
 	monto                 varchar(45) NOT NULL,
 	estatus               varchar(45) NOT NULL,
-	referencia            varchar(45)
+	referencia            serial not null
 );
 -- ALTER TABLE pago
 -- ADD CONSTRAINT estatuspago_check (estatus IN ('',''));
@@ -130,7 +130,7 @@ CREATE TABLE reintegro (
 	idusuario_solicitante integer NOT NULL,
 	idusuario_receptor    integer NOT NULL,
 	fecha_solicitud       varchar(45) NOT NULL,
-	referencia            varchar(45) NOT NULL,
+	referencia            integer NOT NULL,
 	estatus               varchar(45) NOT NULL
 );
 -- ALTER TABLE reintegro
@@ -163,7 +163,7 @@ CREATE TABLE operacionesmonedero (
 	monto                 decimal NOT NULL,
 	fecha                 date NOT NULL,
 	hora                  time NOT NULL,
-	referencia            varchar(45) NOT NULL
+	referencia            integer NOT NULL
 );
 
 
@@ -250,7 +250,7 @@ CREATE TABLE operacioncuenta (
 	fecha             date NOT NULL,
 	hora              time NOT NULL,
 	monto             decimal NOT NULL,
-	referencia        varchar(45) NOT NULL
+	referencia        integer NOT NULL
 );
 
 
@@ -275,7 +275,7 @@ CREATE TABLE operaciontarjeta (
 	fecha              date NOT NULL,
 	hora               time NOT NULL,
 	monto              decimal NOT NULL,
-	referencia         varchar(45) NOT NULL
+	referencia         integer NOT NULL
 );
 
 

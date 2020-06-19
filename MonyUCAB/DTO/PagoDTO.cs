@@ -13,7 +13,7 @@ namespace MonyUCAB.DTO
         string _Fecha_solicitus;
         string _Monto;
         string _Estatus;
-        string _Referencia;
+        int _Referencia;
 
         public int Idpago { get => _Idpago; set => _Idpago = value; }
         public int Idusuario_solicitante { get => _Idusuario_solicitante; set => _Idusuario_solicitante = value; }
@@ -21,6 +21,6 @@ namespace MonyUCAB.DTO
         public string Fecha_solicitus { get => _Fecha_solicitus; set => _Fecha_solicitus = value; }
         public string Monto { get => _Monto; set => _Monto = value; }
         public string Estatus { get => _Estatus; set => _Estatus = value; }
-        public string Referencia { get => _Referencia; set => _Referencia = value; }
+        public int Referencia { get => _Referencia; set => _Referencia = value; }
     }
 }

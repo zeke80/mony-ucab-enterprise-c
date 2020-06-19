@@ -39,7 +39,7 @@ namespace MonyUCAB.DAO.Psql
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
                     Monto = filas.GetFloat(5),
-                    Referencia = filas.GetString(6),
+                    Referencia = filas.GetInt32(6),
                 };
             }
             filas.Close();
@@ -71,7 +71,8 @@ namespace MonyUCAB.DAO.Psql
                 "opc.monto," +
                 "opc.referencia " +
             "FROM operaciontarjeta opc " +
-            "WHERE opc.IdUsuarioReceptor = {0}", idUsuario);
+            "WHERE opc.IdUsuarioReceptor = {0} " +
+            "ORDER BY idoperaciontarjeta DESC", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
@@ -85,7 +86,7 @@ namespace MonyUCAB.DAO.Psql
                     Fecha = filas.GetDateTime(3),
                     Hora = filas.GetTimeSpan(4),
                     Monto = filas.GetFloat(5),
-                    Referencia = filas.GetString(6),
+                    Referencia = filas.GetInt32(6),
             });
             }
             filas.Close();
@@ -101,6 +102,30 @@ namespace MonyUCAB.DAO.Psql
         public void eliminar()
         {
             throw new NotImplementedException();
+        }
+
+        public void realizar(int idTarjeta, string usuarioReceptor, float monto, int referencia)
+        {
+            comando.CommandText = string.Format(
+                "insert into operaciontarjeta(" +
+                    "idtarjeta," +
+                    "idusuarioreceptor," +
+                    "fecha," +
+                    "hora," +
+                    "monto," +
+                    "referencia" +
+                ") " +
+                "values" +
+                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), to_date('{2}','dd-MM-yyyy'), TO_TIMESTAMP('{3}','HH24:MI:SS'), {4}, {5})",
+                idTarjeta, usuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy"), DateTime.Now.ToString("HH:mm:ss"), monto.ToString(), referencia);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+
+            comando.CommandText = string.Format("update pago set estatus = 'PAGADO' where referencia = {0}", referencia);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }

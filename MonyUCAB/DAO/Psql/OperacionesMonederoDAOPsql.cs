@@ -42,7 +42,7 @@ namespace MonyUCAB.DAO
                     Monto = filas.GetFloat(3),
                     Fecha = filas.GetDateTime(4),
                     Hora = filas.GetTimeSpan(5),
-                    Referencia = filas.GetString(6),
+                    Referencia = filas.GetInt32(6),
                 };
             }
             filas.Close();
@@ -62,7 +62,8 @@ namespace MonyUCAB.DAO
                     "opm.hora," +
                     "opm.referencia " +
                 "FROM operacionesmonedero opm " +
-                "WHERE opm.idusuario = {0}", idUsuario);
+                "WHERE opm.idusuario = {0} " +
+                "ORDER BY idoperacionesmonedero DESC", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();
@@ -76,7 +77,7 @@ namespace MonyUCAB.DAO
                     Monto = filas.GetFloat(3),
                     Fecha = filas.GetDateTime(4),
                     Hora = filas.GetTimeSpan(5),
-                    Referencia = filas.GetString(6),
+                    Referencia = filas.GetInt32(6),
                 });
             }
             filas.Close();

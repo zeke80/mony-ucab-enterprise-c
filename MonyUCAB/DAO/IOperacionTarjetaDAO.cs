@@ -14,5 +14,6 @@ namespace MonyUCAB.DAO
         void crear();
         void actualizar();
         void eliminar();
+        void realizar(int idTarjeta, string usuarioReceptor, float monto, int referencia);
     }
 }

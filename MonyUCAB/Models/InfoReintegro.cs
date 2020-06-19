@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace MonyUCAB.Models
 {
-    public class InfoOperacion
+    public class InfoReintegro
     {
-        public int idOrigen { get; set; }
-        public string usuarioReceptor { get; set; }
-        public float monto { get; set; }
+        public int idUsuarioSolicitante { get; set; }
+        public int idUsuarioReceptor { get; set; }
         public int referencia { get; set; }
     }
 }

@@ -39,7 +39,7 @@ namespace MonyUCAB.DAO
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
                     Fecha_solicitud = filas.GetString(3),
-                    Referencia = filas.GetString(4),
+                    Referencia = filas.GetInt32(4),
                     Estatus = filas.GetString(5),
                 };
             }
@@ -60,7 +60,8 @@ namespace MonyUCAB.DAO
                     "rei.estatus " +
                 "FROM reintegro rei " +
                 "WHERE rei.idusuario_solicitante = {0} " +
-                "OR rei.idusuario_receptor = {0}", idUsuario);
+                "OR rei.idusuario_receptor = {0} " +
+                "ORDER BY idreintegro DESC", idUsuario);
             conexion.Open();
             filas = comando.ExecuteReader();
             List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();
@@ -72,7 +73,7 @@ namespace MonyUCAB.DAO
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
                     Fecha_solicitud = filas.GetString(3),
-                    Referencia = filas.GetString(4),
+                    Referencia = filas.GetInt32(4),
                     Estatus = filas.GetString(5),
                 });
             }
@@ -81,7 +82,7 @@ namespace MonyUCAB.DAO
             return reintegroDTOs;
         }
 
-        public void solicitar(int idUsuarioSolicitante, int idUsuarioReceptor, string referencia)
+        public void solicitar(int idUsuarioSolicitante, int idUsuarioReceptor, int referencia)
         {
             comando.CommandText = string.Format(
                 "INSERT INTO reintegro(" +
@@ -90,8 +91,8 @@ namespace MonyUCAB.DAO
                 "fecha_solicitud," +
                 "referencia," +
                 "estatus" +
-                ") VALUES({0},{1},'{2}','{3}','{4}')", 
-                idUsuarioSolicitante, idUsuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), referencia, "SOLICITADO");
+                ") VALUES({0},{1},'{2}',{3},'SOLICITADO')", 
+                idUsuarioSolicitante, idUsuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), referencia);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
