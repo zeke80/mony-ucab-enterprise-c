@@ -12,6 +12,8 @@ import { SignupFormComponent } from './home/signup-form/signup-form.component';
 import { HomeComponent } from './home/home/home.component';
 import { SideNavTogglerComponent } from './authorised/side-nav-toggler/side-nav-toggler.component';
 import { SideNavComponent } from './authorised/side-nav/side-nav.component';
+import { LayoutComponent } from './authorised/layout/layout.component';
+import { TopNavComponent } from './authorised/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SideNavComponent } from './authorised/side-nav/side-nav.component';
     SignupFormComponent,
     HomeComponent,
     SideNavTogglerComponent,
-    SideNavComponent
+    SideNavComponent,
+    LayoutComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { SideNavComponent } from './authorised/side-nav/side-nav.component';
       
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'sign-up', component: SignupFormComponent },
-      { path: 'login', component: LoginFormComponent }
+      { path: 'login', component: LoginFormComponent },
+      { path: 'dashboard', component: LayoutComponent }
       
     ])
   ],
