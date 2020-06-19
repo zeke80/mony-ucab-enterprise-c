@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OperacionCuenta } from '../../models/operacionCuenta.model';
 import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { CuentaService } from '../../servicios/cuenta/cuenta.service';
+import { Usuario } from '../../models/usuario.model';
 
 
 @Component({
@@ -15,7 +16,11 @@ export class OperacionDetallePage implements OnInit {
 
   operacion: OperacionCuenta;
   user: string;
+  userR: string
   nroCuenta: string;
+  idreceptor: number;
+  usuario: Usuario;
+  idusuarioRealizador: number;
 
   constructor(
     public _operacionServices: OperacionService,
@@ -31,13 +36,20 @@ export class OperacionDetallePage implements OnInit {
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionCuenta(id);
     });
+    this.usuario = this._usuarioServices.getUsuario();
     this._usuarioServices.inforUsurio(this.operacion.idUsuarioReceptor)
         .subscribe((data: any) => {
           this.user = data.usuario;
+          this.idreceptor = data.idusuario;
         });
     this._cuentaServices.infoCuenta(this.operacion.idcuenta)
         .subscribe((data: any) => {
           this.nroCuenta = data.numero;
+          this.idusuarioRealizador = data.idusuario;
+          this._usuarioServices.inforUsurio(this.idusuarioRealizador)
+              .subscribe((data: any) => {
+                this.userR = data.usuario;
+              });
         });
 
   }

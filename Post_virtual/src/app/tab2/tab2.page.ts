@@ -49,7 +49,7 @@ export class Tab2Page implements OnInit {
         .subscribe((data: any) => {
           this.pagos = data;
           this._pagoServices.guardarPago(this.pagos);
-        })
+        });
   }
 
   

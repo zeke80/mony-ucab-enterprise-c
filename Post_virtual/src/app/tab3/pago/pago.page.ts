@@ -42,7 +42,7 @@ export class PagoPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this.router.navigate(['/tabs/cuenta']);
+            this.router.navigate(['/tabs/operaciones']);
           }
         }
       ]

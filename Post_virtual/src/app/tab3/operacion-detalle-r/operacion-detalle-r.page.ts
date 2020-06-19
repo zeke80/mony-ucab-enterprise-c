@@ -15,6 +15,7 @@ export class OperacionDetalleRPage implements OnInit {
 
   operacion: Reintegro;
   userS: string;
+  userR: string;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -35,6 +36,10 @@ export class OperacionDetalleRPage implements OnInit {
         .subscribe((data: any) => {
           this.userS = data.usuario;
         });
+    this._usuarioServices.inforUsurio(this.operacion.idusuario_receptor)
+    .subscribe((data: any) => {
+      this.userR = data.usuario;
+    });
   }
 
   async aceptarReintegro() {
