@@ -173,12 +173,13 @@ export class OperacionService {
     };
   }
 
-  SolicitarReintegro(idUsuario: number, idreceptor: number) {
+  SolicitarReintegro(idUsuario: number, idreceptor: number, ref: number) {
     let url: string = 'http://monyucab.somee.com/api/Usuario/solicitarReintegro';
 
     let data = {
       "idUsuarioSolicitante": idUsuario,
       "idUsuarioReceptor": idreceptor,
+      "referencia": ref
     };
 
     return this.http.post(url, data);

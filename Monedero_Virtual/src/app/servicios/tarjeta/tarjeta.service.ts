@@ -28,4 +28,14 @@ export class TarjetaService {
 
     return this.http.post(url, data);
   }
+
+  infoTarjeta(idtarjeta: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/infoTarjeta';
+
+    let data = {
+      "id" : idtarjeta
+    };
+
+    return this.http.post(url, data);
+  }
 }

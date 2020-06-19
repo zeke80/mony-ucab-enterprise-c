@@ -18,10 +18,12 @@ export class OperacionDetallePage implements OnInit {
 
   operacion: OperacionCuenta;
   user: string;
+  userR: string
   nroCuenta: string;
   idreceptor: number;
   usuario: Usuario;
   aux: boolean = true;
+  idusuarioRealizador: number;
 
   constructor(
     public _operacionServices: OperacionService,
@@ -49,6 +51,11 @@ export class OperacionDetallePage implements OnInit {
     this._cuentaServices.infoCuenta(this.operacion.idcuenta)
         .subscribe((data: any) => {
           this.nroCuenta = data.numero;
+          this.idusuarioRealizador = data.idusuario;
+          this._usuarioServices.inforUsurio(this.idusuarioRealizador)
+              .subscribe((data: any) => {
+                this.userR = data.usuario;
+              });
         });
     this._personaServices.getPersona(this.operacion.idUsuarioReceptor)
         .subscribe((data: any) => {
@@ -70,7 +77,7 @@ export class OperacionDetallePage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor)
+            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor, this.operacion.referencia)
                 .subscribe((data: any) => {
                   this.router.navigate(['/tabs/operaciones']);
                 });

@@ -56,7 +56,7 @@ export class OperacionDetalleMPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor )
+            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor, this.operacion.referencia )
                 .subscribe((data: any) => {
                   this.router.navigate(['/tabs/operaciones']);
                 });
