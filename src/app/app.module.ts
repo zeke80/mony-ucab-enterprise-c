@@ -14,6 +14,10 @@ import { SideNavTogglerComponent } from './authorised/side-nav-toggler/side-nav-
 import { SideNavComponent } from './authorised/side-nav/side-nav.component';
 import { LayoutComponent } from './authorised/layout/layout.component';
 import { TopNavComponent } from './authorised/top-nav/top-nav.component';
+import { BloquearComponent } from './authorised/bloquear/bloquear.component';
+import { TablaMovimientosComponent } from './authorised/tabla-movimientos/tabla-movimientos.component';
+import { TransferirCardComponent } from './authorised/transferir-card/transferir-card.component';
+import { PerfilComponent } from './authorised/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { TopNavComponent } from './authorised/top-nav/top-nav.component';
     SideNavTogglerComponent,
     SideNavComponent,
     LayoutComponent,
-    TopNavComponent
+    TopNavComponent,
+    BloquearComponent,
+    TablaMovimientosComponent,
+    TransferirCardComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
