@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NavMenuService} from './home/nav-menu/services/nav-menu.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +50,9 @@ import { PerfilComponent } from './authorised/perfil/perfil.component';
       
     ])
   ],
-  providers: [],
+  providers: [
+    NavMenuService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
