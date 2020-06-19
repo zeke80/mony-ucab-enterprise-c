@@ -13,7 +13,7 @@ namespace MonyUCAB.DTO
 		DateTime _Fecha;
         TimeSpan _Hora;
 		float _Monto;
-		string _Referencia;
+		int _Referencia;
 
         public int Idoperaciontarjeta { get => _Idoperaciontarjeta; set => _Idoperaciontarjeta = value; }
         public int IdUsuarioReceptor { get => _IdUsuarioReceptor; set => _IdUsuarioReceptor = value; }
@@ -21,6 +21,6 @@ namespace MonyUCAB.DTO
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public TimeSpan Hora { get => _Hora; set => _Hora = value; }
         public float Monto { get => _Monto; set => _Monto = value; }
-        public string Referencia { get => _Referencia; set => _Referencia = value; }
+        public int Referencia { get => _Referencia; set => _Referencia = value; }
     }
 }

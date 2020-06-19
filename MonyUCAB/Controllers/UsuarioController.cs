@@ -222,10 +222,10 @@ namespace MonyUCAB.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public async Task<ActionResult<bool>> solicitarReintegro(InfoOperacion infoOperacion)
+        public async Task<ActionResult<bool>> solicitarReintegro(InfoReintegro infoReintegro)
         {
             IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
-            reintegroDAO.solicitar(infoOperacion.idUsuarioSolicitante, infoOperacion.idUsuarioReceptor, infoOperacion.referencia);
+            reintegroDAO.solicitar(infoReintegro.idUsuarioSolicitante, infoReintegro.idUsuarioReceptor, infoReintegro.referencia);
 
             return true;
         }
@@ -246,6 +246,66 @@ namespace MonyUCAB.Controllers
         {
             IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
             reintegroDAO.rechazar(idReintegro.id);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<int>> solicitarPago(InfoPago infoPago)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            int idPago = pagoDAO.solicitar(infoPago.idUsuarioSolicitante, infoPago.userReceptor, infoPago.monto);
+
+            return idPago;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<List<PagoDTO>>> pagosSolicitadosSolicitante(Id idUsuarioSolicitante)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            List<PagoDTO> pagoDTOs = pagoDAO.pagosSolicitadosSolicitante(idUsuarioSolicitante.id);
+
+            return pagoDTOs;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<List<PagoDTO>>> pagosSolicitadosReceptor(Id idUsuarioReceptor)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            List<PagoDTO> pagoDTOs = pagoDAO.pagosSolicitadosReceptor(idUsuarioReceptor.id);
+
+            return pagoDTOs;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> realizarPagoCuenta(InfoOperacion infoOperacion)
+        {
+            IOperacionCuentaDAO operacionCuentaDAO = new OperacionCuentaDAOPsql();
+            operacionCuentaDAO.realizar(infoOperacion.idOrigen, infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> realizarPagoTarjeta(InfoOperacion infoOperacion)
+        {
+            IOperacionTarjetaDAO operacionTarjetaDAO = new OperacionTarjetaDAOPsql();
+            operacionTarjetaDAO.realizar(infoOperacion.idOrigen, infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> realizarPagoMonedero(InfoPago infoPago)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            pagoDAO.solicitar(infoPago.idUsuarioSolicitante, infoPago.userReceptor, infoPago.monto);
 
             return true;
         }

@@ -525,7 +525,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":\"1\"\r\n}",
+							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -603,6 +603,156 @@
 								"api",
 								"Usuario",
 								"rechazarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\": 1,\r\n    \"userReceptor\": \"user2\",\r\n    \"monto\": 1.11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/solicitarPago",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosSolicitante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/pagosSolicitadosSolicitante",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosSolicitante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosReceptor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/pagosSolicitadosReceptor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosReceptor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/realizarPagoCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/realizarPagoTarjeta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoTarjeta"
 							]
 						}
 					},
@@ -1148,7 +1298,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":\"1\"\r\n}",
+							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1229,6 +1379,161 @@
 								"api",
 								"Usuario",
 								"rechazarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\": 1,\r\n    \"userReceptor\": \"user2\",\r\n    \"monto\": 1.11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/solicitarPago",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosSolicitante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/pagosSolicitadosSolicitante",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosSolicitante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosReceptor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/pagosSolicitadosReceptor",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosReceptor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/realizarPagoCuenta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/realizarPagoTarjeta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoTarjeta"
 							]
 						}
 					},

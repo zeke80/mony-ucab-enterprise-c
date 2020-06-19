@@ -39,12 +39,13 @@ values
 (2,'2',0,1);
 
 insert into comercio(
+	idusuario,
     razon_social,
     nombre_representante,
     apellido_representante
 )
 values
-('1','1','1');
+(1,'1','1','1');
 
 insert into estadocivil(
 	descripcion,
@@ -55,13 +56,14 @@ values
 ('1','1',1);
 
 insert into persona(
+	idusuario,
     idestadocivil,
     nombre,
 	apellido,
     fecha_nacimiento
 )
 values
-(1,'1','1',to_date('11-11-1111','dd-MM-yyyy'));
+(2,1,'1','1',to_date('11-11-1111','dd-MM-yyyy'));
 
 insert into tipocuenta(
 	descripcion,
@@ -116,9 +118,9 @@ insert into operaciontarjeta(
 	referencia
 )
 values
-(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
-(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1');
+(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
+(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);
 
 insert into operacioncuenta(
 	idcuenta,
@@ -129,9 +131,9 @@ insert into operacioncuenta(
 	referencia
 )
 values
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1'),
-(2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,'1');
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
+(2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);
 
 insert into tipooperacion(
 	descripcion,
@@ -149,9 +151,9 @@ insert into operacionesmonedero(
 	referencia
 )
 values
-(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1'),
-(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1'),
-(2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),'1');
+(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
+(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
+(2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1);
 
 insert into reintegro(
 	idusuario_solicitante,
@@ -161,18 +163,16 @@ insert into reintegro(
 	estatus
 )
 values
-(2,1,'11-11-1111','1',1),
-(2,1,'11-11-1111','1',1);
+(2,1,'11-11-1111',1,1),
+(2,1,'11-11-1111',1,1);
 
 
 insert into  pago(
-	idpago,
 	idusuario_solicitante,
 	idusuario_receptor,
 	fecha_solicitus,
 	monto,
-	estatus,
-	referencia
+	estatus
 )
 values 
-(1,1,2,to_date('11-11-1111','dd-MM-yyyy'),111,'SOLICITADO',null);
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),1.11,'SOLICITADO');
