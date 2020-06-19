@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: Tab2Page,
+  },
+  {
+    path: 'solicitud-pago',
+    loadChildren: () => import('./solicitud-pago/solicitud-pago.module').then( m => m.SolicitudPagoPageModule)
+  },
+  {
+    path: 'pagos-sin-sol',
+    loadChildren: () => import('./pagos-sin-sol/pagos-sin-sol.module').then( m => m.PagosSinSolPageModule)
   }
 ];
 

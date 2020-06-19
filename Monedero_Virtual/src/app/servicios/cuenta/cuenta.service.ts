@@ -7,7 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CuentaService {
 
-  cuentas: Cuenta[] = [];
+  cuentas: Cuenta[] = [
+    {
+      idCuenta: 0,
+      idUsuario: 0,
+      idTipoCuenta: 0,
+      idBanco: 0,
+      numero: '00000'
+    }
+  ];
 
   constructor(
     public http: HttpClient

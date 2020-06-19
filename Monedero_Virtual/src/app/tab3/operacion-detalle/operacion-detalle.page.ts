@@ -70,7 +70,7 @@ export class OperacionDetallePage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor, this.operacion.referencia )
+            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor)
                 .subscribe((data: any) => {
                   this.router.navigate(['/tabs/operaciones']);
                 });

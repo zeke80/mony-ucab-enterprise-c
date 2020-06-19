@@ -1,9 +1,9 @@
 export class Pago {
     idpago: number;
-    idusuariosolicitante: number;
-    idusuarioreceptor: number;
+    idusuario_solicitante: number;
+    idusuario_receptor: number;
     fechasolicitud: string;
     monto: number;
     estatus: string;
-    referencia?: string;
+    referencia?: number;
 }

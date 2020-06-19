@@ -31,10 +31,10 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-list>
-                    <ion-item *ngFor="let pago of pagos">
+                    <ion-item *ngFor="let pago of pagos" [routerLink]="['/tabs/cuenta/solicitudPago', pago.idpago]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Pago: <strong>{{pago.idpago}}</strong>
+                            Pago: <strong>{{pago.idpago}}</strong>, estatus: <strong>{{pago.estatus}}</strong>
                             <h1>
                                 Monto: {{pago.monto}}
                             </h1>

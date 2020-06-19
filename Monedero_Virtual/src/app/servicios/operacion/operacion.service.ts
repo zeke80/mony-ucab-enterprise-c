@@ -18,7 +18,7 @@ export class OperacionService {
       fecha: '',
       hora: '',
       monto: 0,
-      referencia: ''
+      referencia: 0
     }
   ];
   operacionesMonedero: OperacionMonedero[] = [
@@ -29,7 +29,7 @@ export class OperacionService {
       monto: 0,
       fecha: '',
       hora: '',
-      referencia: ''
+      referencia: 0
     }
   ];
   operacionesTarjeta: OperacionTarjeta[] = [
@@ -40,7 +40,7 @@ export class OperacionService {
       fecha: '',
       hora: '',
       monto: 0,
-      referencia: ''
+      referencia: 0
     }
   ];
 
@@ -173,13 +173,12 @@ export class OperacionService {
     };
   }
 
-  SolicitarReintegro(idUsuario: number, idreceptor: number, referencia: string) {
+  SolicitarReintegro(idUsuario: number, idreceptor: number) {
     let url: string = 'http://monyucab.somee.com/api/Usuario/solicitarReintegro';
 
     let data = {
       "idUsuarioSolicitante": idUsuario,
       "idUsuarioReceptor": idreceptor,
-      "referencia": referencia
     };
 
     return this.http.post(url, data);

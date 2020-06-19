@@ -4,7 +4,7 @@ import { TarjetaService } from '../servicios/tarjeta/tarjeta.service';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { PagoService } from '../servicios/pago/pago.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -23,8 +23,13 @@ export class Tab2Page implements OnInit{
     public _tarjetaService: TarjetaService,
     public _usuarioService: UsuarioService,
     public _pagoServices: PagoService,
-    public router: Router
-  ) {}
+    public router: Router,
+    public _activatedRoute: ActivatedRoute
+  ) {
+    this._activatedRoute.paramMap.subscribe(params => {
+      this.ngOnInit();
+  });
+  }
 
   ngOnInit(){
     this.usuario = this._usuarioService.getUsuario();
@@ -32,7 +37,6 @@ export class Tab2Page implements OnInit{
     this.cuentas = this._cuentaServices.getVacio();
     this._cuentaServices.getCuentas(this.usuario.idUsuario)
          .subscribe((data: any) => {
-           console.log(data);
            this.cuentas = data;
          });
     this.tarjetas = this._tarjetaService.getVacio();
@@ -40,7 +44,12 @@ export class Tab2Page implements OnInit{
          .subscribe((data: any) => {
            this.tarjetas = data;
          });
-    this._pagoServices.getVacio();
+    this.pagos = this._pagoServices.getVacio();
+    this._pagoServices.getPagos(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.pagos = data;
+          this._pagoServices.guardarPago(this.pagos);
+        });
   }
 
   solicitudPago() {
