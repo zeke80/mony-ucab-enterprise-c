@@ -1,11 +1,11 @@
 
-  <body class="text-center">
-    <form class="form-signin">
+  <body class="text-center" >
+    <form class="form-signin" (ngSubmit)="ingresar()">
     <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
-    <input type="email" id="inputEmail" class="form-control " placeholder="Email address" required>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="text" id="user" class="form-control" placeholder="Usuario" name="user" [(ngModel)] ="user" required>
+    <input type="password" id="contra" class="form-control" placeholder="Contraseña" name="contra" [(ngModel)] ="contra" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
   </form>
 </body>
 
