@@ -1,5 +1,5 @@
-import { NavMenuService } from './services/nav-menu.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavMenuComponent {
   isExpanded = false;
 
-  constructor( public nav: NavMenuService ) {}
+  constructor( public router : Router ) {}
   
   collapse() {
     this.isExpanded = false;
@@ -20,6 +20,5 @@ export class NavMenuComponent {
   }
 
   ngOnInit(){
-    this.nav.show();
   }
 }
