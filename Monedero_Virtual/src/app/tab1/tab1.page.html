@@ -21,29 +21,16 @@
             <ion-card-contend>
                 <form #f='ngForm' (ngSubmit)="modificarUsuario( f )">
                     <ion-item>
-                        <ion-label position="floating"><strong>Usuario: </strong></ion-label>
-                        <ion-input [ngModel]="usuario.usuario" name="user"></ion-input>
-                    </ion-item>
-                    <ion-item>
                         <ion-label position="floating"><strong>Fecha de registro:</strong></ion-label>
-                        <ion-input [ngModel]="usuario.fechaRegistro" name="fecha"></ion-input>
+                        <br>
+                        <h4 class="ion-text-center">{{fechaR}}</h4>
                     </ion-item>
                     <ion-item>
-                        <ion-label position="floating"><strong>Numero de identificación:</strong></ion-label>
-                        <ion-input [ngModel]="usuario.nroIdentificacion" name="identificacion"></ion-input>
+                        <ion-label position="floating"><strong>Fecha de nacimineto:</strong></ion-label>
+                        <br>
+                        <h4 class="ion-text-center">{{fecha}}</h4>
                     </ion-item>
-                    <ion-item>
-                        <ion-label position="floating"><strong>Email:</strong></ion-label>
-                        <ion-input [ngModel]="usuario.email" name="email"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="floating"><strong>Telefono:</strong></ion-label>
-                        <ion-input [ngModel]="usuario.telefono" name="telefono"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="floating"><strong>Dirección:</strong></ion-label>
-                        <ion-input [ngModel]="usuario.direccion" name="direccion"></ion-input>
-                    </ion-item>
+
                     <ion-item>
                         <ion-label position="floating"><strong>Nombre:</strong></ion-label>
                         <ion-input [ngModel]="persona.nombre" name="nombre"></ion-input>
@@ -52,10 +39,31 @@
                         <ion-label position="floating"><strong>Apellido:</strong></ion-label>
                         <ion-input [ngModel]="persona.apellido" name="apellido"></ion-input>
                     </ion-item>
+
                     <ion-item>
-                        <ion-label position="floating"><strong>Fecha de Nacimiento:</strong></ion-label>
-                        <ion-input [ngModel]="persona.fecha_nacimiento" name="fechaNacimiento"></ion-input>
+                        <ion-label position="floating"><strong>Usuario: </strong></ion-label>
+                        <ion-input [ngModel]="usuario.usuario" name="user"></ion-input>
                     </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating"><strong>Email:</strong></ion-label>
+                        <ion-input [ngModel]="usuario.email" name="email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"><strong>Numero de identificación:</strong></ion-label>
+                        <ion-input [ngModel]="usuario.nroIdentificacion" name="identificacion"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating"><strong>Telefono:</strong></ion-label>
+                        <ion-input [ngModel]="usuario.telefono" name="telefono"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating"><strong>Dirección:</strong></ion-label>
+                        <ion-input [ngModel]="usuario.direccion" name="direccion"></ion-input>
+                    </ion-item>
+
+
 
                     <ion-button type="submit" fill="solid" expand="full">
                         Guardar

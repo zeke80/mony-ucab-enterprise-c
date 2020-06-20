@@ -4,5 +4,5 @@ export class Persona {
     idEstadoCivil: number;
     nombre: string;
     apellido: string;
-    fechaNacimiento: string;
+    fecha_nacimiento: string;
 }

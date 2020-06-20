@@ -13,7 +13,7 @@ export class PersonaService {
       idEstadoCivil: 0,
       nombre: '',
       apellido: '',
-      fechaNacimiento: ''
+      fecha_nacimiento: ''
     }
   ];
 
@@ -30,6 +30,18 @@ export class PersonaService {
 
     let data = {
       "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+
+  }
+  ajustarPersona(idusuario: number, nombreP:string, apellidoP: string){
+    let url: string = 'http://monyucab.somee.com/api/Usuario/ajustarPersona';
+
+    let data = {
+      "idUsuario" : idusuario,
+      "nombre" : nombreP,
+      "apellido" : apellidoP
     };
 
     return this.http.post(url, data);
