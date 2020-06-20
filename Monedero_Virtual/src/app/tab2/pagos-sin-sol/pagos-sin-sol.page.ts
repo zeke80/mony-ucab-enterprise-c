@@ -38,16 +38,14 @@ export class PagosSinSolPage implements OnInit {
       const recipeID = paramMap.get('pagoID');
       let id: number = +recipeID;
       this.operacion = this._pagoServices.getpagoSol(id);
-      console.log(this.operacion);
     });
-    this._usuarioServices.inforUsurio(this.operacion.idusuario_solicitante)
+    this._usuarioServices.inforUsurio(this.operacion.idusuario_receptor)
         .subscribe((data: any) => {
           this.user = data.usuario;
         });
     this.usuario = this._usuarioServices.getUsuario();
     this._cuentaServices.getCuentas(this.usuario.idUsuario)
         .subscribe((data: any) => {
-          console.log(data);
           this.metodoPagoC = data;
         });
     this._tarjetaServices.getTarjetas(this.usuario.idUsuario)
@@ -83,6 +81,7 @@ export class PagosSinSolPage implements OnInit {
 
     this._pagoServices.pagoTarjeta(id, this.user, cant, ref)
         .subscribe((data: any) => {
+          console.log(data);
           this.router.navigate(['/tabs/cuenta']);
         });
 

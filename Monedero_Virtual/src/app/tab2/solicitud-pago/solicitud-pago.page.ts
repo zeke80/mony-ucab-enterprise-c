@@ -39,7 +39,6 @@ export class SolicitudPagoPage implements OnInit {
       const recipeID = paramMap.get('pagoID');
       let id: number = +recipeID;
       this.operacion = this._pagoServices.getpago(id);
-      console.log(this.operacion);
     });
     this._usuarioServices.inforUsurio(this.operacion.idusuario_solicitante)
         .subscribe((data: any) => {

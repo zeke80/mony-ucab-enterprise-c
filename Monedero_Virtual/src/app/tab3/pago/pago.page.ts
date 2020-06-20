@@ -35,6 +35,7 @@ export class PagoPage implements OnInit {
               .subscribe((data: any) => {
                 this.pagos = data;
                 this._pagoSercives.guardarPagoSol(this.pagos);
+                console.log(this.pagos);
                 this.router.navigate(['/tabs/cuenta/pagoSinSolicitud', this.aux]);
 
               });

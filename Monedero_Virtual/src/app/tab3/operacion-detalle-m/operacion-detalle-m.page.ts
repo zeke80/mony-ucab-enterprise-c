@@ -19,6 +19,7 @@ export class OperacionDetalleMPage implements OnInit {
   user: string;
   idreceptor: number;
   usuario: Usuario;
+  fecha: any;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -42,6 +43,7 @@ export class OperacionDetalleMPage implements OnInit {
       this.user = data.usuario;
       this.idreceptor = data.idusuario;
     });
+    this.fecha = this.operacion.fecha.split('T', 1 );
   }
 
   SolicitarReintegro() {

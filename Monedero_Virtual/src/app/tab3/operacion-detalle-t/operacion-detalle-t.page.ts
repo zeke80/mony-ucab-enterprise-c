@@ -25,6 +25,7 @@ export class OperacionDetalleTPage implements OnInit {
   usuario: Usuario;
   idusuarioRealizador: number;
   aux: boolean = false;
+  fecha: any;
 
   constructor(
     public _operacionServices: OperacionService,
@@ -41,6 +42,7 @@ export class OperacionDetalleTPage implements OnInit {
       const recipeID = paramMap.get('operacionID');
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionTarjeta(id);
+      this.aux = false;
     });
     this.usuario = this._usuarioServices.getUsuario();
     this._usuarioServices.inforUsurio(this.operacion.idUsuarioReceptor)
@@ -58,6 +60,7 @@ export class OperacionDetalleTPage implements OnInit {
                 this.userS = data.usuario;
               });
         });
+    this.fecha = this.operacion.fecha.split('T', 1 );
     this._personaServices.getPersona(this.operacion.idUsuarioReceptor)
     .subscribe((data: any) => {
     }),

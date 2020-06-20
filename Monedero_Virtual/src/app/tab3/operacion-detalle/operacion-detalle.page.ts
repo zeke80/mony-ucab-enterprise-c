@@ -22,6 +22,7 @@ export class OperacionDetallePage implements OnInit {
   nroCuenta: string;
   idreceptor: number;
   usuario: Usuario;
+  fecha: any;
   aux: boolean = true;
   idusuarioRealizador: number;
 
@@ -62,7 +63,9 @@ export class OperacionDetallePage implements OnInit {
           if (!data) {
             this.aux = true;
           }
-        })
+        });
+    this.fecha = this.operacion.fecha.split('T', 1 );
+
   }
 
   SolicitarReintegro() {
