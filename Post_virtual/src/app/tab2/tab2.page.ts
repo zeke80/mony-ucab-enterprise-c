@@ -16,6 +16,7 @@ export class Tab2Page implements OnInit {
   cuentas = [];
   tarjetas = [];
   pagos = [];
+  saldo = 0;
   usuario: Usuario
 
   constructor(
@@ -36,7 +37,6 @@ export class Tab2Page implements OnInit {
     this.cuentas = this._cuentaServices.getVacio();
     this._cuentaServices.getCuentas(this.usuario.idUsuario)
          .subscribe((data: any) => {
-           console.log(data);
            this.cuentas = data;
          });
     this.tarjetas = this._tarjetaService.getVacio();
@@ -50,8 +50,10 @@ export class Tab2Page implements OnInit {
           this.pagos = data;
           this._pagoServices.guardarPago(this.pagos);
         });
+    this._usuarioService.saldo(this.usuario.idUsuario)
+        .subscribe((data: any) => {
+          this.saldo = data;
+        });
   }
-
-  
 
 }

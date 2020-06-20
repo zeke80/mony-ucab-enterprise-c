@@ -14,6 +14,7 @@ export class OperacionDetalleMPage implements OnInit {
 
   operacion: OperacionMonedero;
   user: string;
+  fecha: any;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -32,6 +33,7 @@ export class OperacionDetalleMPage implements OnInit {
     .subscribe((data: any) => {
       this.user = data.usuario;
     });
+    this.fecha = this.operacion.fecha.split('T', 1 );
   }
 
 }

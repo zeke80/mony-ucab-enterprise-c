@@ -34,4 +34,17 @@ export class ComercioService {
     return this.http.post(url, data);
 
   }
+
+  ajustarComercio(idusuario: number, razon:string, nombreR:string, apellidoR) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/ajustarComercio';
+
+    let data = {
+      "idUsuario" : idusuario,
+      "razonSocial" : razon,
+      "nombre" : nombreR,
+      "apellido" : apellidoR
+    };
+
+    return this.http.post(url, data);
+  }
 }

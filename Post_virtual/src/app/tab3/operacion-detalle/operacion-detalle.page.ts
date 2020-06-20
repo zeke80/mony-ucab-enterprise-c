@@ -20,6 +20,7 @@ export class OperacionDetallePage implements OnInit {
   nroCuenta: string;
   idreceptor: number;
   usuario: Usuario;
+  fecha: any;
   idusuarioRealizador: number;
 
   constructor(
@@ -51,7 +52,7 @@ export class OperacionDetallePage implements OnInit {
                 this.userR = data.usuario;
               });
         });
-
+    this.fecha = this.operacion.fecha.split('T', 1 );
   }
 
 }

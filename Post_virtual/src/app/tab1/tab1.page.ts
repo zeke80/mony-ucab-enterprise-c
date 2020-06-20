@@ -31,7 +31,18 @@ export class Tab1Page implements OnInit {
   }
 
   modificarUsuario( f: NgForm) {
-    console.log(f);
+    let ident: number = + f.value.identificacion;
+    this._usuarioService.ajustarUsurio(this.usuario.idUsuario, f.value.user, ident, f.value.email, f.value.telefono,
+                                        f.value.direccion )
+        .subscribe((data: any) => {
+          console.log('se modifico el usuario');
+        });
+
+    this._comercioService.ajustarComercio(this.usuario.idUsuario, f.value.razon, f.value.nombre, f.value.apellido)
+        .subscribe((data: any) => {
+          console.log('se modifico el comercio');
+        });
+
   }
 
 }

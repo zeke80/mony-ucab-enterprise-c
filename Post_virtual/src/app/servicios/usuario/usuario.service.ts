@@ -55,4 +55,31 @@ export class UsuarioService {
 
     return this.http.post(url, data);
   }
+
+  ajustarUsurio(idusuario: number, user:string, di:number, correo:string, telefono:string, direccion:string) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/ajustarUsuario';
+
+    let data = {
+      "idUsuario" : idusuario,
+      "user" : user,
+      "di" : di,
+      "email": correo,
+      "telf" : telefono,
+      "dir" : direccion
+    };
+
+    return this.http.post(url, data);
+  }
+
+  saldo(idusuario: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/saldo';
+
+    let data = {
+      "id" : idusuario
+    };
+
+    return this.http.post(url, data);
+  }
+
+
 }

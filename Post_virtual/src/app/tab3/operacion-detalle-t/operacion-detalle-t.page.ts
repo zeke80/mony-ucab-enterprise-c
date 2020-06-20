@@ -19,6 +19,7 @@ export class OperacionDetalleTPage implements OnInit {
   nrotarjeta: string;
   idreceptor: number;
   usuario: Usuario;
+  fecha: any;
   idusuarioRealizador: number;
 
   constructor(
@@ -50,6 +51,7 @@ export class OperacionDetalleTPage implements OnInit {
                 this.userS = data.usuario;
               });
         });
+    this.fecha = this.operacion.fecha.split('T', 1 );
   }
 
 }
