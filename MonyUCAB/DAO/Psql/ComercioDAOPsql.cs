@@ -16,6 +16,18 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
+        public void ajustar(int idUsuario, string razonSocial, string nombre, string apellido)
+        {
+            comando.CommandText = string.Format("UPDATE comercio SET " +
+                "razon_social = '{0}', " +
+                "nombre_representante = '{1}', " +
+                "apellido_representante = '{2}' " +
+                "WHERE idusuario = {3}", razonSocial, nombre, apellido, idUsuario);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+
         public ComercioDTO buscar(int idUsuario)
         {
             comando.CommandText = string.Format("SELECT " +

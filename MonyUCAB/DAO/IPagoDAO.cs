@@ -16,5 +16,6 @@ namespace MonyUCAB.DAO
         void eliminar();
         List<PagoDTO> pagosSolicitadosSolicitante(int idUsuarioSolicitante);
         List<PagoDTO> pagosSolicitadosReceptor(int idUsuarioReceptor);
+        decimal saldo(int idUsuario);
     }
 }

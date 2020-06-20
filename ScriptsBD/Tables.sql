@@ -117,7 +117,7 @@ CREATE TABLE pago (
 	idusuario_solicitante integer NOT NULL,
 	idusuario_receptor    integer NOT NULL,
 	fecha_solicitus       varchar(45) NOT NULL,
-	monto                 varchar(45) NOT NULL,
+	monto                 decimal NOT NULL,
 	estatus               varchar(45) NOT NULL,
 	referencia            serial not null
 );

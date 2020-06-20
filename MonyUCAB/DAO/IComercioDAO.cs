@@ -13,5 +13,6 @@ namespace MonyUCAB.DAO
         void crear();
         void actualizar();
         void eliminar();
+        void ajustar(int idUsuario, string razonSocial, string nombre, string apellido);
     }
 }

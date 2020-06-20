@@ -19,6 +19,16 @@ namespace MonyUCAB.Controllers
     {
         [Route("[action]")]
         [HttpPost]
+        public async Task<ActionResult<decimal>> saldo(Id idUsuario)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            decimal saldo = pagoDAO.saldo(idUsuario.id);
+
+            return saldo;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
         public async Task<ActionResult<UsuarioDTO>> loginPersona(InfoLogin infoLogin)
         {
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
@@ -306,6 +316,36 @@ namespace MonyUCAB.Controllers
         {
             IPagoDAO pagoDAO = new PagoDAOPsql();
             pagoDAO.solicitar(infoPago.idUsuarioSolicitante, infoPago.userReceptor, infoPago.monto);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> ajustarUsuario(InfoUsuario infoUsuario)
+        {
+            IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
+            usuarioDAO.ajustar(infoUsuario.idUsuario, infoUsuario.user, infoUsuario.di, infoUsuario.email, infoUsuario.telf, infoUsuario.dir);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> ajustarComercio(InfoComercio infoComercio)
+        {
+            IComercioDAO comercioDAO = new ComercioDAOPsql();
+            comercioDAO.ajustar(infoComercio.idUsuario, infoComercio.razonSocial, infoComercio.nombre, infoComercio.apellido);
+
+            return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> ajustarPersona(InfoPersona infoPersona)
+        {
+            IPersonaDAO personaDAO = new PersonaDAOPsql();
+            personaDAO.ajustar(infoPersona.idUsuario, infoPersona.nombre, infoPersona.apellido);
 
             return true;
         }

@@ -757,6 +757,126 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ajustarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"user\": \"user1\",\r\n    \"di\": 1,\r\n    \"email\": \"1\",\r\n    \"telf\": \"1\",\r\n    \"dir\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"razonSocial\": \"1\",\r\n    \"nombre\": \"1\",\r\n    \"apellido\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarComercio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"nombre\": \"2\",\r\n    \"apellido\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarPersona",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/saldo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"saldo"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1534,6 +1654,130 @@
 								"api",
 								"Usuario",
 								"realizarPagoTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"user\": \"user1\",\r\n    \"di\": 1,\r\n    \"email\": \"1\",\r\n    \"telf\": \"1\",\r\n    \"dir\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarUsuario",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"razonSocial\": \"1\",\r\n    \"nombre\": \"1\",\r\n    \"apellido\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarComercio",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"nombre\": \"2\",\r\n    \"apellido\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarPersona",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/saldo",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"saldo"
 							]
 						}
 					},

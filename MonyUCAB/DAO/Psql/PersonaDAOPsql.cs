@@ -13,6 +13,17 @@ namespace MonyUCAB.DAO.Psql
             throw new NotImplementedException();
         }
 
+        public void ajustar(int idUsuario, string nombre, string apellido)
+        {
+            comando.CommandText = string.Format("UPDATE persona SET " +
+                "nombre = '{0}', " +
+                "apellido = '{1}' " +
+                "WHERE idusuario = {2}", nombre, apellido, idUsuario);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+
         public PersonaDTO buscar(int idUsuario)
         {
             comando.CommandText = string.Format("SELECT " +

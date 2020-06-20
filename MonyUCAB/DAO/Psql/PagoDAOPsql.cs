@@ -56,7 +56,7 @@ namespace MonyUCAB.DAO
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
                     Fecha_solicitus = filas.GetString(3),
-                    Monto = filas.GetString(4),
+                    Monto = filas.GetFloat(4),
                     Estatus = filas.GetString(5),
                     Referencia = filas.GetInt32(6),
                 });
@@ -91,7 +91,7 @@ namespace MonyUCAB.DAO
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
                     Fecha_solicitus = filas.GetString(3),
-                    Monto = filas.GetString(4),
+                    Monto = filas.GetFloat(4),
                     Estatus = filas.GetString(5),
                     Referencia = filas.GetInt32(6),
                 });
@@ -112,13 +112,36 @@ namespace MonyUCAB.DAO
                     "estatus" +
                 ") " +
                 "values" +
-                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), '{2}', '{3}', 'SOLICITADO') " +
+                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), '{2}', {3}, 'SOLICITADO') " +
                 "RETURNING idpago",
-                idUsuarioSolicitante, userReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), monto.ToString());
+                idUsuarioSolicitante, userReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), monto);
             conexion.Open();
             int idPago = (int)comando.ExecuteScalar();
             conexion.Close();
             return idPago;
+        }
+
+        public decimal saldo(int idUsuario)
+        {
+            comando.CommandText = string.Format(
+                "SELECT SUM(mo) saldo " +
+                "FROM " +
+                    "(SELECT monto mo " +
+                        "FROM pago " +
+                        "WHERE " +
+                        "idUsuario_solicitante = {0} " +
+                        "AND estatus = 'ACEPTADO' " +
+                        "UNION ALL " +
+                        "SELECT (-monto) mo " +
+                        "FROM pago " +
+                        "WHERE " +
+                        "idusuario_receptor = {0} " +
+                        "AND estatus = 'ACEPTADO'" +
+                    ") pa", idUsuario);
+            conexion.Open();
+            decimal saldo = (decimal)comando.ExecuteScalar();
+            conexion.Close();
+            return saldo;
         }
     }
 }

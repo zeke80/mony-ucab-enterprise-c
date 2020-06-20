@@ -146,5 +146,19 @@ namespace MonyUCAB.DAO
         {
             throw new NotImplementedException();
         }
+
+        public void ajustar(int idUsuario, string user, int di, string email, string telf, string dir)
+        {
+            comando.CommandText = string.Format("UPDATE usuario SET " +
+                "usuario = '{0}', " +
+                "nro_identificacion = {1}, " +
+                "email = '{2}', " +
+                "telefono = '{3}', " +
+                "direccion = '{4}' " +
+                "WHERE idusuario = {5}", user, di, email, telf, dir, idUsuario);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }
