@@ -16,6 +16,7 @@ export class Tab2Page implements OnInit{
   tarjetas = [];
   cuentas = [];
   pagos = [];
+  saldo = 0;
   usuario: Usuario;
 
   constructor(
@@ -50,6 +51,10 @@ export class Tab2Page implements OnInit{
           this.pagos = data;
           this._pagoServices.guardarPago(this.pagos);
         });
+    this._usuarioService.saldo(this.usuario.idUsuario)
+    .subscribe((data: any) => {
+      this.saldo = data;
+    });
   }
 
   solicitudPago() {
