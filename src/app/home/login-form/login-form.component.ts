@@ -17,8 +17,14 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresar(){
-    this.service.postData(this.user,this.contra).subscribe((data: any) => {
+  ingresarPersona(){
+    this.service.loginPersona(this.user,this.contra).subscribe((data: any) => {
+      this.router.navigate(['/dashboard'])
+    });
+  }
+
+  ingresarComercio(){
+    this.service.loginComercio(this.user,this.contra).subscribe((data: any) => {
       this.router.navigate(['/dashboard'])
     });
   }

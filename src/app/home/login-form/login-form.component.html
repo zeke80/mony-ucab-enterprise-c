@@ -1,11 +1,14 @@
-
-  <body class="text-center" >
-    <form class="form-signin" (ngSubmit)="ingresar()">
+<body class="text-center" >
+    <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
     <input type="text" id="user" class="form-control" placeholder="Usuario" name="user" [(ngModel)] ="user" required>
     <input type="password" id="contra" class="form-control" placeholder="Contraseña" name="contra" [(ngModel)] ="contra" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="ingresarPersona()" >Iniciar Sesión como persona natural</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="ingresarComercio()">Iniciar Sesión como comercio</button>
+    
+    <p><em>¿No estás registrado? Regístrate <a href="/sign-up">aquí</a></em></p>
   </form>
 </body>
+
 
