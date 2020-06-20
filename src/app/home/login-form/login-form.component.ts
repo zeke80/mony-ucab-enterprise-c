@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http' 
 
 @Component({
   selector: 'app-login-form',
@@ -18,14 +19,36 @@ export class LoginFormComponent implements OnInit {
   }
 
   ingresarPersona(){
-    this.service.loginPersona(this.user,this.contra).subscribe((data: any) => {
+    this.service.loginPersona(this.user,this.contra)
+    .subscribe(
+      (data: any) => {
       this.router.navigate(['/dashboard'])
-    });
+    },
+      (error : HttpErrorResponse) => {
+        if (error.status == 404){
+          alert("Usuario no encontrado.")
+        }
+        else{
+          alert("Ha ocurrido un error. Intente de nuevo")
+        }
+      }
+    );
   }
 
   ingresarComercio(){
-    this.service.loginComercio(this.user,this.contra).subscribe((data: any) => {
+    this.service.loginComercio(this.user,this.contra)
+    .subscribe(
+      (data: any) => {
       this.router.navigate(['/dashboard'])
-    });
+    },
+      (error : HttpErrorResponse) => {
+        if (error.status == 404){
+          alert("Usuario no encontrado.")
+        }
+        else{
+          alert("Ha ocurrido un error. Intente de nuevo")
+        }
+      }
+    );
   }
 }
