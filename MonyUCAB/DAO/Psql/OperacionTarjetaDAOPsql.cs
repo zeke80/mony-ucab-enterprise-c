@@ -121,11 +121,6 @@ namespace MonyUCAB.DAO.Psql
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
-
-            comando.CommandText = string.Format("update pago set estatus = 'PAGADO' where referencia = {0}", referencia);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
         }
     }
 }

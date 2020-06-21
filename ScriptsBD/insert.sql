@@ -109,7 +109,7 @@ values
 (2,1,1,1,to_date('11-11-1111','dd-MM-yyyy'),1,1),
 (2,1,1,1,to_date('11-11-1111','dd-MM-yyyy'),1,1);
 
-insert into operaciontarjeta(
+/*insert into operaciontarjeta(
 	idusuarioreceptor,
 	idtarjeta,
 	fecha,
@@ -120,9 +120,9 @@ insert into operaciontarjeta(
 values
 (1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
 (1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);*/
 
-insert into operacioncuenta(
+/*insert into operacioncuenta(
 	idcuenta,
 	idusuarioreceptor,
 	fecha,
@@ -133,16 +133,17 @@ insert into operacioncuenta(
 values
 (1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
 (1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);
+(2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);*/
 
 insert into tipooperacion(
-	descripcion,
+	descripcion, 
 	estatus
 )
 values
-('1',1);
+('DEBITO', 1),
+('CREDITO', 1);
 
-insert into operacionesmonedero(
+/*insert into operacionesmonedero(
 	idusuario,
 	idtipooperacion,
 	monto,
@@ -153,9 +154,9 @@ insert into operacionesmonedero(
 values
 (1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
 (1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
-(2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1);
+(2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1);*/
 
-insert into reintegro(
+/*insert into reintegro(
 	idusuario_solicitante,
 	idusuario_receptor,
 	fecha_solicitud,
@@ -164,10 +165,9 @@ insert into reintegro(
 )
 values
 (2,1,'11-11-1111',1,1),
-(2,1,'11-11-1111',1,1);
+(2,1,'11-11-1111',1,1);*/
 
-
-insert into  pago(
+/*insert into  pago(
 	idusuario_solicitante,
 	idusuario_receptor,
 	fecha_solicitus,
@@ -175,4 +175,4 @@ insert into  pago(
 	estatus
 )
 values 
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),1.11,'SOLICITADO');
+(1,2,to_date('11-11-1111','dd-MM-yyyy'),1.11,'SOLICITADO');*/

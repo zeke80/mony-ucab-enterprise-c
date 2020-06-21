@@ -14,5 +14,7 @@ namespace MonyUCAB.DAO
         void crear();
         void actualizar();
         void eliminar();
+        void registrarOperacionMonederoRemitente(int idUsuario, float monto, int referencia);
+        void registrarOperacionMonederoDestinatario(string usuarioReceptor, float monto, int referencia);
     }
 }

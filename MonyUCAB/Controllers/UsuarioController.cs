@@ -19,16 +19,6 @@ namespace MonyUCAB.Controllers
     {
         [Route("[action]")]
         [HttpPost]
-        public async Task<ActionResult<decimal>> saldo(Id idUsuario)
-        {
-            IPagoDAO pagoDAO = new PagoDAOPsql();
-            decimal saldo = pagoDAO.saldo(idUsuario.id);
-
-            return saldo;
-        }
-
-        [Route("[action]")]
-        [HttpPost]
         public async Task<ActionResult<UsuarioDTO>> loginPersona(InfoLogin infoLogin)
         {
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
@@ -247,6 +237,9 @@ namespace MonyUCAB.Controllers
             IReintegroDAO reintegroDAO = new ReintegroDAOPsql();
             reintegroDAO.aceptar(idReintegro.id);
 
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            pagoDAO.actualizarPagoReintegrado(idReintegro.id);
+
             return true;
         }
 
@@ -297,6 +290,12 @@ namespace MonyUCAB.Controllers
             IOperacionCuentaDAO operacionCuentaDAO = new OperacionCuentaDAOPsql();
             operacionCuentaDAO.realizar(infoOperacion.idOrigen, infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
 
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            pagoDAO.actualizarSolicitudPagada(infoOperacion.referencia);
+
+            IOperacionesMonederoDAO operacionesMonederoDAO = new OperacionesMonederoDAOPsql();
+            operacionesMonederoDAO.registrarOperacionMonederoDestinatario(infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
+
             return true;
         }
 
@@ -307,15 +306,25 @@ namespace MonyUCAB.Controllers
             IOperacionTarjetaDAO operacionTarjetaDAO = new OperacionTarjetaDAOPsql();
             operacionTarjetaDAO.realizar(infoOperacion.idOrigen, infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
 
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            pagoDAO.actualizarSolicitudPagada(infoOperacion.referencia);
+
+            IOperacionesMonederoDAO operacionesMonederoDAO = new OperacionesMonederoDAOPsql();
+            operacionesMonederoDAO.registrarOperacionMonederoDestinatario(infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
+
             return true;
         }
 
         [Route("[action]")]
         [HttpPost]
-        public async Task<ActionResult<bool>> realizarPagoMonedero(InfoPago infoPago)
+        public async Task<ActionResult<bool>> realizarPagoMonedero(InfoOperacion infoOperacion)
         {
+            IOperacionesMonederoDAO operacionesMonederoDAO = new OperacionesMonederoDAOPsql();
+            operacionesMonederoDAO.registrarOperacionMonederoRemitente(infoOperacion.idOrigen, infoOperacion.monto, infoOperacion.referencia);
+            operacionesMonederoDAO.registrarOperacionMonederoDestinatario(infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
+
             IPagoDAO pagoDAO = new PagoDAOPsql();
-            pagoDAO.solicitar(infoPago.idUsuarioSolicitante, infoPago.userReceptor, infoPago.monto);
+            pagoDAO.actualizarSolicitudPagada(infoOperacion.referencia);
 
             return true;
         }
@@ -348,6 +357,16 @@ namespace MonyUCAB.Controllers
             personaDAO.ajustar(infoPersona.idUsuario, infoPersona.nombre, infoPersona.apellido);
 
             return true;
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<decimal>> saldo(Id idUsuario)
+        {
+            IPagoDAO pagoDAO = new PagoDAOPsql();
+            decimal saldo = pagoDAO.saldo(idUsuario.id);
+
+            return saldo;
         }
     }
 }

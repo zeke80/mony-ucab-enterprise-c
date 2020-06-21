@@ -124,24 +124,43 @@ namespace MonyUCAB.DAO
         public decimal saldo(int idUsuario)
         {
             comando.CommandText = string.Format(
-                "SELECT SUM(mo) saldo " +
+                "SELECT SUM(opemon.mo) " +
                 "FROM " +
-                    "(SELECT monto mo " +
-                        "FROM pago " +
-                        "WHERE " +
-                        "idUsuario_solicitante = {0} " +
-                        "AND estatus = 'ACEPTADO' " +
-                        "UNION ALL " +
-                        "SELECT (-monto) mo " +
-                        "FROM pago " +
-                        "WHERE " +
-                        "idusuario_receptor = {0} " +
-                        "AND estatus = 'ACEPTADO'" +
-                    ") pa", idUsuario);
+                "( " +
+                        "SELECT monto mo, idusuario, referencia " +
+                        "FROM operacionesmonedero " +
+                        "WHERE idtipooperacion = 1 " +
+                    "UNION ALL " +
+                        "SELECT -monto mo, idusuario, referencia " +
+                        "FROM operacionesmonedero " +
+                        "WHERE idtipooperacion = 2 " +
+                ") opemon, pago pag " +
+                "WHERE opemon.idusuario = {0} " +
+                "AND pag.referencia = opemon.referencia " +
+                "AND pag.estatus = 'PAGADO'", idUsuario);
             conexion.Open();
             decimal saldo = (decimal)comando.ExecuteScalar();
             conexion.Close();
             return saldo;
+        }
+
+        public void actualizarSolicitudPagada(int referencia)
+        {
+            comando.CommandText = string.Format("update pago set estatus = 'PAGADO' where referencia = {0}", referencia);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void actualizarPagoReintegrado(int idReintegro)
+        {
+            comando.CommandText = string.Format(
+                "UPDATE pago SET " +
+                "estatus = 'REINTEGRADO' " +
+                "WHERE referencia = (SELECT referencia FROM reintegro WHERE idreintegro = {0})", idReintegro);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }

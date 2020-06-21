@@ -17,5 +17,7 @@ namespace MonyUCAB.DAO
         List<PagoDTO> pagosSolicitadosSolicitante(int idUsuarioSolicitante);
         List<PagoDTO> pagosSolicitadosReceptor(int idUsuarioReceptor);
         decimal saldo(int idUsuario);
+        void actualizarSolicitudPagada(int referencia);
+        void actualizarPagoReintegrado(int idReintegro);
     }
 }

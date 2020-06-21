@@ -111,7 +111,7 @@ namespace MonyUCAB.DAO
                 "WHERE idreintegro = {0}", idReintegro);
             conexion.Open();
             comando.ExecuteNonQuery();
-            conexion.Close();
+            conexion.Close();        
         }
 
         public void rechazar(int idReintegro)
