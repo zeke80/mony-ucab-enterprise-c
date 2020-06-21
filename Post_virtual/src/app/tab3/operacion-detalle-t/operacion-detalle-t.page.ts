@@ -52,6 +52,7 @@ export class OperacionDetalleTPage implements OnInit {
               });
         });
     this.fecha = this.operacion.fecha.split('T', 1 );
+    console.log(this.operacion);
   }
 
 }

@@ -46,6 +46,10 @@ const routes: Routes = [
         loadChildren: () => import ('../tab3/pago/pago.module').then(m => m.PagoPageModule)
       },
       {
+        path: 'operaciones/cierre',
+        loadChildren: () => import ('../tab3/cierre/cierre.module').then(m => m.CierrePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/cuenta',
         pathMatch: 'full'

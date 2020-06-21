@@ -53,6 +53,7 @@ export class Tab2Page implements OnInit {
     this._usuarioService.saldo(this.usuario.idUsuario)
         .subscribe((data: any) => {
           this.saldo = data;
+          console.log(this.saldo);
         });
   }
 

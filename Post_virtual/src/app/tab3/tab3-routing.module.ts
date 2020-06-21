@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'pago',
     loadChildren: () => import('./pago/pago.module').then( m => m.PagoPageModule)
+  },
+  {
+    path: 'cierre',
+    loadChildren: () => import('./cierre/cierre.module').then( m => m.CierrePageModule)
   }
 
 ];
