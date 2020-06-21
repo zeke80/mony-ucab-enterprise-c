@@ -24,7 +24,7 @@ export class OperacionDetalleTPage implements OnInit {
   idreceptor: number;
   usuario: Usuario;
   idusuarioRealizador: number;
-  aux: boolean = false;
+  aux: boolean = true;
   fecha: any;
 
   constructor(
@@ -35,14 +35,14 @@ export class OperacionDetalleTPage implements OnInit {
     public _personaServices: PersonaService,
     public router: Router,
     public alert: AlertController,
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(paramMap => {
       const recipeID = paramMap.get('operacionID');
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionTarjeta(id);
-      this.aux = false;
     });
     this.usuario = this._usuarioServices.getUsuario();
     this._usuarioServices.inforUsurio(this.operacion.idUsuarioReceptor)
@@ -63,11 +63,13 @@ export class OperacionDetalleTPage implements OnInit {
     this.fecha = this.operacion.fecha.split('T', 1 );
     this._personaServices.getPersona(this.operacion.idUsuarioReceptor)
     .subscribe((data: any) => {
-    }),
-    (error: HttpErrorResponse) => {
-      console.log('el receptor es un comercio');
-      this.aux = true;
-    }
+      if (data) {
+        this.aux = false;
+      }
+      else {
+        this.aux = true;
+      }
+    });
   }
 
   SolicitarReintegro() {

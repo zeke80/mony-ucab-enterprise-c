@@ -60,8 +60,13 @@ export class OperacionDetallePage implements OnInit {
         });
     this._personaServices.getPersona(this.operacion.idUsuarioReceptor)
         .subscribe((data: any) => {
-          if (!data) {
+          if (data) {
+            this.aux = false;
+            console.log('estado 2 de aux: ' + this.aux);
+          }
+          else {
             this.aux = true;
+            console.log('estado 2 de aux: ' + this.aux);
           }
         });
     this.fecha = this.operacion.fecha.split('T', 1 );

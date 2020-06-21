@@ -7,6 +7,8 @@ import { Pago } from '../../models/pago.model';
 })
 export class PagoService {
 
+  saldo: number;
+
   public pagos: Pago[] = [
     {
       idpago: 1,
@@ -32,6 +34,14 @@ export class PagoService {
   constructor(
     public http: HttpClient
   ) { }
+
+  guardarSaldo(sald: number) {
+    this.saldo = sald;
+  }
+
+  getSaldo() {
+    return this.saldo;
+  }
 
   getVacio() {
     return [...this.pagos];

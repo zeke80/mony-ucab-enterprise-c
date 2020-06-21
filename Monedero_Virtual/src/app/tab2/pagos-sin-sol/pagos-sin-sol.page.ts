@@ -6,6 +6,7 @@ import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
 import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pagos-sin-sol',
@@ -15,8 +16,9 @@ import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
 export class PagosSinSolPage implements OnInit {
 
   operacion: Pago;
-  usuario: Usuario
+  usuario: Usuario;
   user: string;
+  saldo: number;
   metodoPagoC = [];
   metodoPagoT = [];
   auxT = false;
@@ -30,7 +32,9 @@ export class PagosSinSolPage implements OnInit {
     public _usuarioServices: UsuarioService,
     public _cuentaServices: CuentaService,
     public _tarjetaServices: TarjetaService,
-    public router: Router
+    public router: Router,
+    public alert: AlertController,
+
   ) { }
 
   ngOnInit() {
@@ -95,13 +99,35 @@ export class PagosSinSolPage implements OnInit {
   }
 
   pagarMonedero() {
-    let ref: number = + this.operacion.referencia;
-    let cant: number = + this.operacion.monto;
+    if (this.saldo >= this.operacion.monto) {
+      let ref: number = + this.operacion.referencia;
+      let cant: number = + this.operacion.monto;
 
-    this._pagoServices.pagoMonedero(this.usuario.idUsuario, this.user, cant, ref)
-        .subscribe((data: any) => {
-          this.router.navigate(['/tabs/cuenta']);
-        });
+      this._pagoServices.pagoMonedero(this.usuario.idUsuario, this.user, cant, ref)
+          .subscribe((data: any) => {
+            this.router.navigate(['/tabs/cuenta']);
+          });
+    }
+    else {
+      this.AlertaError();
+    }
+
+  }
+
+  async AlertaError() {
+    const alertElement = await this.alert.create({
+      header: 'Error en pago',
+      message: 'El saldo no es suficiente',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+      ]
+    });
+    await alertElement.present();
+
   }
 
 }
