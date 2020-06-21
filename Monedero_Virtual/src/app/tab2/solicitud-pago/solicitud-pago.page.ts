@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
 export class SolicitudPagoPage implements OnInit {
 
   operacion: Pago;
-  usuario: Usuario
+  usuario: Usuario;
   user: string;
   metodoPagoC = [];
   metodoPagoT = [];
@@ -77,6 +77,7 @@ export class SolicitudPagoPage implements OnInit {
     console.log('id tarjeta: ' + this.tarjeta);
     console.log('monto: ' + this.operacion.monto);
     console.log('referencia: ' + this.operacion.referencia);
+    
     let id: number = + this.tarjeta;
     let ref: number = + this.operacion.referencia
     let cant: number = + this.operacion.monto;
@@ -98,6 +99,16 @@ export class SolicitudPagoPage implements OnInit {
     let cant: number = + this.operacion.monto;
 
     this._pagoServices.pagoCuenta(id, this.user, cant, ref)
+        .subscribe((data: any) => {
+          this.router.navigate(['/tabs/cuenta']);
+        });
+  }
+
+  pagarMonedero() {
+    console.log('hola');
+    let ref: number = + this.operacion.referencia;
+    let cant: number = + this.operacion.monto;
+    this._pagoServices.pagoMonedero(this.operacion.idusuario_receptor, this.user, cant, ref)
         .subscribe((data: any) => {
           this.router.navigate(['/tabs/cuenta']);
         });

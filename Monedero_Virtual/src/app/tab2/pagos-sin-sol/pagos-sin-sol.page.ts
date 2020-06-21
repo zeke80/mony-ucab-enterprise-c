@@ -71,12 +71,8 @@ export class PagosSinSolPage implements OnInit {
   }
 
   pagarTarjeta() {
-    console.log('user del usuario receptor: ' + this.user);
-    console.log('id tarjeta: ' + this.tarjeta);
-    console.log('monto: ' + this.operacion.monto);
-    console.log('referencia: ' + this.operacion.referencia);
     let id: number = + this.tarjeta;
-    let ref: number = + this.operacion.referencia
+    let ref: number = + this.operacion.referencia;
     let cant: number = + this.operacion.monto;
 
     this._pagoServices.pagoTarjeta(id, this.user, cant, ref)
@@ -88,15 +84,21 @@ export class PagosSinSolPage implements OnInit {
   }
 
   pagarCuenta() {
-    console.log('user del usuario receptor: ' + this.user);
-    console.log('id cuenta: ' + this.cuenta);
-    console.log('monto: ' + this.operacion.monto);
-    console.log('referencia: ' + this.operacion.referencia);
     let id: number = + this.cuenta;
-    let ref: number = + this.operacion.referencia
+    let ref: number = + this.operacion.referencia;
     let cant: number = + this.operacion.monto;
 
     this._pagoServices.pagoCuenta(id, this.user, cant, ref)
+        .subscribe((data: any) => {
+          this.router.navigate(['/tabs/cuenta']);
+        });
+  }
+
+  pagarMonedero() {
+    let ref: number = + this.operacion.referencia;
+    let cant: number = + this.operacion.monto;
+
+    this._pagoServices.pagoMonedero(this.usuario.idUsuario, this.user, cant, ref)
         .subscribe((data: any) => {
           this.router.navigate(['/tabs/cuenta']);
         });

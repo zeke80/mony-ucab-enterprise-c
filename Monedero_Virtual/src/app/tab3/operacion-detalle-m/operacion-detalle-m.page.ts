@@ -36,6 +36,7 @@ export class OperacionDetalleMPage implements OnInit {
       const recipeID = paramMap.get('operacionID');
       let id: number = +recipeID;
       this.operacion = this._operacionServices.getoperacionMonedero(id);
+      console.log(this.operacion);
     });
     this.usuario = this._usuarioServices.getUsuario();
     this._usuarioServices.inforUsurio(this.operacion.idusuario)
@@ -46,34 +47,5 @@ export class OperacionDetalleMPage implements OnInit {
     this.fecha = this.operacion.fecha.split('T', 1 );
   }
 
-  SolicitarReintegro() {
-    this.reintegroS();
-  }
-
-  async reintegroS() {
-    const alertElement = await this.alert.create({
-      header: '¿Esta seguro que solicitar reintegro?',
-      message: 'Va a solicitar el reintegro de esta operación',
-      buttons: [
-        {
-          text: 'Aceptar',
-          handler: () => {
-            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor, this.operacion.referencia )
-                .subscribe((data: any) => {
-                  this.router.navigate(['/tabs/operaciones']);
-                });
-          }
-        },
-
-        {
-          text: 'Cancelar',
-          role: 'cancelar'
-        }
-      ]
-    });
-
-    await alertElement.present();
-
-  }
 
 }

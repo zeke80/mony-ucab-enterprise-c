@@ -119,4 +119,17 @@ export class PagoService {
 
     return this.http.post(url, data);
   }
+
+  pagoMonedero(id:number, user: string, mont: number, ref: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/realizarPagoMonedero';
+
+    let data = {
+      "idOrigen" : id,
+      "usuarioReceptor" : user,
+      "monto" : mont,
+      "referencia": ref
+    };
+
+    return this.http.post(url, data);
+  }
 }
