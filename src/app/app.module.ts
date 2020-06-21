@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { LoginService } from './home/login-form/services/login.service';
+import { AuthorisedSideNavService } from './authorised/side-nav/services/authorised-side-nav.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './home/nav-menu/nav-menu.component';
@@ -50,6 +53,8 @@ import { PerfilComponent } from './authorised/perfil/perfil.component';
     ])
   ],
   providers: [
+    LoginService, 
+    AuthorisedSideNavService
   ],
   bootstrap: [AppComponent]
 })
