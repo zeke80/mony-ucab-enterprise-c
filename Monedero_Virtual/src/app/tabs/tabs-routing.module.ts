@@ -49,6 +49,14 @@ const routes: Routes = [
         loadChildren: () => import ('../tab2/pagos-sin-sol/pagos-sin-sol.module').then(m => m.PagosSinSolPageModule)
       },
       {
+        path: 'cuenta/recarga',
+        loadChildren: () => import ('../tab2/recarga/recarga.module').then(m => m.RecargaPageModule)
+      },
+      {
+        path: 'cuenta/pagoRecarga/:pagoID',
+        loadChildren: () => import ('../tab2/pago-recarga/pago-recarga.module').then(m => m.PagoRecargaPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/cuenta',
         pathMatch: 'full'

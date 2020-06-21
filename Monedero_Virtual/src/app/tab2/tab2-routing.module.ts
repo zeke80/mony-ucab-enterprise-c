@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'pagos-sin-sol',
     loadChildren: () => import('./pagos-sin-sol/pagos-sin-sol.module').then( m => m.PagosSinSolPageModule)
+  },  {
+    path: 'recarga',
+    loadChildren: () => import('./recarga/recarga.module').then( m => m.RecargaPageModule)
+  },
+  {
+    path: 'pago-recarga',
+    loadChildren: () => import('./pago-recarga/pago-recarga.module').then( m => m.PagoRecargaPageModule)
   }
+
 ];
 
 @NgModule({

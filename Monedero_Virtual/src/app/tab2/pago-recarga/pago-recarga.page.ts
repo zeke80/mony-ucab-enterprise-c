@@ -8,12 +8,13 @@ import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
-  selector: 'app-pagos-sin-sol',
-  templateUrl: './pagos-sin-sol.page.html',
-  styleUrls: ['./pagos-sin-sol.page.scss'],
+  selector: 'app-pago-recarga',
+  templateUrl: './pago-recarga.page.html',
+  styleUrls: ['./pago-recarga.page.scss'],
 })
-export class PagosSinSolPage implements OnInit {
+export class PagoRecargaPage implements OnInit {
 
   operacion: Pago;
   usuario: Usuario;
@@ -99,36 +100,5 @@ export class PagosSinSolPage implements OnInit {
         });
   }
 
-  pagarMonedero() {
-    if (this.saldo >= this.operacion.monto) {
-      let ref: number = + this.operacion.referencia;
-      let cant: number = + this.operacion.monto;
-
-      this._pagoServices.pagoMonedero(this.usuario.idUsuario, this.user, cant, ref)
-          .subscribe((data: any) => {
-            this.router.navigate(['/tabs/cuenta']);
-          });
-    }
-    else {
-      this.AlertaError();
-    }
-
-  }
-
-  async AlertaError() {
-    const alertElement = await this.alert.create({
-      header: 'Error en pago',
-      message: 'El saldo no es suficiente',
-      buttons: [
-        {
-          text: 'Aceptar',
-          handler: () => {
-          }
-        },
-      ]
-    });
-    await alertElement.present();
-
-  }
 
 }
