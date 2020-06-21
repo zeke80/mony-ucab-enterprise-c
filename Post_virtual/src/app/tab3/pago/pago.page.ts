@@ -5,6 +5,7 @@ import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { PagoService } from '../../servicios/pago/pago.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-pago',
@@ -31,6 +32,9 @@ export class PagoPage implements OnInit {
     this._pagoSercives.solicitudPago(this.usuario.idUsuario, f.value.user, cant )
         .subscribe((data: any) => {
           this.realizarSol();
+        },
+        (error: HttpErrorResponse) => {
+          this.AlertaError();
         });
   }
 
@@ -45,6 +49,23 @@ export class PagoPage implements OnInit {
             this.router.navigate(['/tabs/operaciones']);
           }
         }
+      ]
+    });
+
+    await alertElement.present();
+
+  }
+
+  async AlertaError() {
+    const alertElement = await this.alert.create({
+      header: 'Error al realizar apgo',
+      message: 'El usuario no existe en el sistema',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
       ]
     });
 

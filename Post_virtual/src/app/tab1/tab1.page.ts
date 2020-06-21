@@ -4,6 +4,8 @@ import { Usuario } from '../models/usuario.model';
 import { Comercio } from '../models/comercio.model';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { ComercioService } from '../servicios/comercio/comercio.service';
+import { AlertController } from '@ionic/angular';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab1',
@@ -17,7 +19,8 @@ export class Tab1Page implements OnInit {
 
   constructor(
     public _usuarioService: UsuarioService,
-    public _comercioService: ComercioService
+    public _comercioService: ComercioService,
+    public alert: AlertController
   ) {
   }
 
@@ -32,16 +35,36 @@ export class Tab1Page implements OnInit {
 
   modificarUsuario( f: NgForm) {
     let ident: number = + f.value.identificacion;
-    this._usuarioService.ajustarUsurio(this.usuario.idUsuario, f.value.user, ident, f.value.email, f.value.telefono,
-                                        f.value.direccion )
-        .subscribe((data: any) => {
-          console.log('se modifico el usuario');
-        });
 
     this._comercioService.ajustarComercio(this.usuario.idUsuario, f.value.razon, f.value.nombre, f.value.apellido)
         .subscribe((data: any) => {
           console.log('se modifico el comercio');
         });
+
+    this._usuarioService.ajustarUsurio(this.usuario.idUsuario, f.value.user, ident, f.value.email, f.value.telefono,
+                                        f.value.direccion )
+        .subscribe((data: any) => {
+          console.log('se modifico el usuario');
+        },
+        (error: HttpErrorResponse) => {
+          this.AlertaError();
+        });
+  }
+
+  async AlertaError() {
+    const alertElement = await this.alert.create({
+      header: 'Error al modificar usuario',
+      message: 'El usuario debe de ser unico ',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+      ]
+    });
+
+    await alertElement.present();
 
   }
 
