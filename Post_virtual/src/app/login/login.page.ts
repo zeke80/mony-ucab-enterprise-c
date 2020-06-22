@@ -29,6 +29,8 @@ export class LoginPage implements OnInit {
 
                let fecha =  data.fecha_registro.split('T', 1);
 
+               this._loginServices.login();
+
               let usuario = new Usuario(data.idusuario, data.idtipousuario, data.idtipoidentificacion, data.usuario, fecha,
                 data.nro_identificacion, data.email, data.telefono, data.direccion, data.estatus);
               this._usuarioServices.guardarStorage(usuario, usuario.idUsuario, usuario.idTipoUsuario, usuario.usuario, usuario.fechaRegistro,
@@ -37,7 +39,12 @@ export class LoginPage implements OnInit {
 
             },
             (error: HttpErrorResponse) => {
-              this.AlertaError();
+              if (error.status === 409) {
+                this.AlertServer();
+              }
+              else {
+                this.AlertaError();
+              }
             });
   }
 
@@ -50,6 +57,24 @@ export class LoginPage implements OnInit {
           text: 'Aceptar',
           handler: () => {
             this.router.navigate(['/login']);
+          }
+        },
+
+      ]
+    });
+
+    await alertElement.present();
+
+  }
+
+  async AlertServer() {
+    const alertElement = await this.alert.create({
+      header: 'Error inesperado',
+      message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
           }
         },
 

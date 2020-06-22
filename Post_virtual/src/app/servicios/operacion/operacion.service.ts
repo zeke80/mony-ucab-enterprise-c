@@ -193,4 +193,14 @@ export class OperacionService {
     return this.http.post(url, data);
   }
 
+  cierre(usuarioID: number) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/cierre';
+
+    let data = {
+      "id" : usuarioID
+    };
+
+    return this.http.post(url, data);
+  }
+
 }
