@@ -24,7 +24,7 @@
             </div>
             <div class="col-2">
                 <br>
-                <button type="button" class="btn btn-primary float-right" type="submit">Filtrar</button>
+                <button type="button" class="btn btn-primary float-right" type="submit" (click) = "s_movimientos.consultarCuentas()" >Filtrar</button>
             </div>
         </div>
     </div>
@@ -59,10 +59,36 @@
         <tr>
             <th>REF</th>
             <th>Fecha</th>
-            <th>Hora</th>
+            <th>Hora (24h)</th>
             <th>Monto (Bs.)</th>
-            <th>Tipo operacion (monedero...)</th>
+            <th>Tipo operación</th>
             <th>Estatus</th>
+        </tr>
+        <tr *ngFor = "let movimiento of movimientosCuenta">
+            <td>{{movimiento.referencia}}</td>
+            <td>{{movimiento.fecha.split('T',1)}}</td>
+            <td>{{movimiento.hora.hours}}:{{movimiento.hora.minutes}}</td>
+            <td>{{movimiento.monto}}</td>
+            <td>Cuenta</td>
+            <td>Procesada</td>
+        </tr>
+
+        <tr *ngFor = "let movimiento of movimientosTarjeta">
+            <td>{{movimiento.referencia}}</td>
+            <td>{{movimiento.fecha.split('T',1)}}</td>
+            <td>{{movimiento.hora.hours}}:{{movimiento.hora.minutes}}</td>
+            <td>{{movimiento.monto}}</td>
+            <td>Tarjeta</td>
+            <td>Procesada</td>
+        </tr>
+
+        <tr *ngFor = "let movimiento of movimientosMonedero">
+            <td>{{movimiento.referencia}}</td>
+            <td>{{movimiento.fecha.split('T',1)}}</td>
+            <td>{{movimiento.hora.hours}}:{{movimiento.hora.minutes}}</td>
+            <td>{{movimiento.monto}}</td>
+            <td>Monedero</td>
+            <td>Procesada</td>
         </tr>
     </thead>
 </table>
