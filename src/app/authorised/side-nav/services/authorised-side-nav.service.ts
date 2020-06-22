@@ -1,3 +1,5 @@
+import { MovimientosService } from './../../tabla-movimientos/services/movimientos.service';
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,9 +8,10 @@ import { Injectable } from '@angular/core';
 export class AuthorisedSideNavService {
   hideSideNav: boolean = false;
  
-  constructor() { }
+  constructor(public s_movimientos : MovimientosService) { }
  
   toggleSideNav(): void {
     this.hideSideNav = !this.hideSideNav;
   }
+
 }

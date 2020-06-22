@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthorisedSideNavService } from './services/authorised-side-nav.service';
 
@@ -14,5 +15,6 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

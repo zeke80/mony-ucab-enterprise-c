@@ -1,57 +1,28 @@
 <nav id="sidebar" class="navbar-dark bg-dark" [ngClass]="{'hidden': sideNavService.hideSideNav }">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav fa-ul">
       <li class="nav-item active">
-        <div style="text-align: center">
           <br>
-          <a class="nav-link" href="#">
-            <i class="fas fa-donate fa-3x" title="Transferir" ></i>
-          </a>
-        </div>
+          <p><i class="fas fa-donate fa-1x " title="Transferir" ></i> Transferir</p>
       </li>
 
       <li class="nav-item">
-          <div style="text-align: center">
-            <br>
-            <a class="nav-link" href="#"> 
-              <i class="fas fa-coins fa-3x" title="Cuenta"></i>
-            </a>
-          </div>
+        <p (click) = "sideNavService.s_movimientos.toggleShow()"><i class="fas fa-coins fa-1x" title="Movimientos" ></i> Movimientos</p>
       </li>
 
       <li class="nav-item">
-        <div style="text-align: center">
-          <br>
-          <a class="nav-link" href="#"> 
-            <i class="fas fa-credit-card fa-3x" title="Agregar Producto"></i>
-          </a>
-        </div>
+        <p><i class="fas fa-credit-card fa-1x" title="Agregar Producto"></i> Productos</p>
     </li>
 
       <li class="nav-item">
-        <div style="text-align: center">
-          <br>
-          <a class="nav-link" href="#">
-            <i class="fas fa-ban fa-3x" title="Bloquear Transacciones"></i>
-          </a>
-        </div>
+        <p><i class="fas fa-ban fa-1x" title="Bloquear"></i> Bloquear</p>
       </li>
 
       <li class="nav-item">
-        <div style="text-align: center">
-          <br>
-          <a class="nav-link" href="#">
-            <i class="fas fa-user fa-3x" title="Perfil"></i>
-          </a>
-        </div>     
+        <p><i class="fas fa-user fa-1x" title="Perfil"></i>  Perfil</p>    
       </li>
 
       <li class="nav-item">
-        <div style="text-align: center">
-          <br>
-          <a  class="nav-link" href="#">
-            <i class="fas fa-cog fa-3x" title="Configuraciones"></i>
-          </a>
-        </div>
+        <p><i class="fas fa-cog fa-1x" title="Configuraciones"></i> Configuraciones</p>
       </li>
 
     </ul>
