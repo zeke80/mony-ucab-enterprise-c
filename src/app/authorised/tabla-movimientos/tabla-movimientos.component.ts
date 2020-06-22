@@ -15,6 +15,10 @@ export class TablaMovimientosComponent implements OnInit {
   constructor(public s_movimientos : MovimientosService) { }
 
   ngOnInit(): void {
+
+  }
+
+  lmao(){
     this.s_movimientos.consultarCuentas().subscribe(data =>{
       this.movimientosCuenta = data;
     });
@@ -26,7 +30,5 @@ export class TablaMovimientosComponent implements OnInit {
     this.s_movimientos.consutarMonedero() .subscribe(data =>{
       this.movimientosMonedero = data;
     });
-    
   }
-
 }
