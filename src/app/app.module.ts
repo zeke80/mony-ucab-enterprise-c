@@ -6,6 +6,11 @@ import { RouterModule } from '@angular/router';
 
 import { LoginService } from './home/login-form/services/login.service';
 import { AuthorisedSideNavService } from './authorised/side-nav/services/authorised-side-nav.service';
+import { MovimientosService } from './authorised/tabla-movimientos/services/movimientos.service';
+import { BloquearService } from './authorised/bloquear/services/bloquear.service';
+import { PerfilService } from './authorised/perfil/services/perfil.service';
+import { TransferirService } from './authorised/transferir-card/services/transferir.service';
+import { ConfiguracionesService } from './authorised/configuraciones/services/configuraciones.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +26,7 @@ import { BloquearComponent } from './authorised/bloquear/bloquear.component';
 import { TablaMovimientosComponent } from './authorised/tabla-movimientos/tabla-movimientos.component';
 import { TransferirCardComponent } from './authorised/transferir-card/transferir-card.component';
 import { PerfilComponent } from './authorised/perfil/perfil.component';
+import { ConfiguracionesComponent } from './authorised/configuraciones/configuraciones.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,8 @@ import { PerfilComponent } from './authorised/perfil/perfil.component';
     BloquearComponent,
     TablaMovimientosComponent,
     TransferirCardComponent,
-    PerfilComponent
+    PerfilComponent,
+    ConfiguracionesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +61,12 @@ import { PerfilComponent } from './authorised/perfil/perfil.component';
   ],
   providers: [
     LoginService, 
-    AuthorisedSideNavService
+    AuthorisedSideNavService,
+    MovimientosService,
+    BloquearService,
+    PerfilService,
+    TransferirService,
+    ConfiguracionesService
   ],
   bootstrap: [AppComponent]
 })
