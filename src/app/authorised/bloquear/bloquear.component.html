@@ -1,66 +1,68 @@
-<br>
-<h1 class="display-4">Bloquear Transacciones</h1>
-<hr>
-<div class="row">
-    <div class="col-xl-12">
-        <div class="form-row">
-            <div class="col-4">
-                <label for="mes1"><h6>Desde</h6></label>
-                <select class="form-control form-control-sm" id="dia">
-                    <option>Messs</option>
-                  </select>
-            </div>
-            <div class="col-4">
-                <label for="mes2"><h6>Hasta</h6></label>
-                <select class="form-control form-control-sm" id="mes2">
-                    <option>Messs</option>
-                  </select>
-            </div>
-            <div class="col-2">
-                <label for="anio"><h6>Año</h6></label>
-                <select class="form-control form-control-sm" id="anio">
-                    <option>Año</option>
-                  </select>
-            </div>
-            <div class="col-2">
-                <br>
-                <button class="btn btn-primary float-right" type="submit">Filtrar</button>
+<div *ngIf = "s_bloquear.show">
+    <br>
+    <h1 class="display-4">Bloquear Transacciones</h1>
+    <hr>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-row">
+                <div class="col-4">
+                    <label for="mes1"><h6>Desde</h6></label>
+                    <select class="form-control form-control-sm" id="dia">
+                        <option>Messs</option>
+                      </select>
+                </div>
+                <div class="col-4">
+                    <label for="mes2"><h6>Hasta</h6></label>
+                    <select class="form-control form-control-sm" id="mes2">
+                        <option>Messs</option>
+                      </select>
+                </div>
+                <div class="col-2">
+                    <label for="anio"><h6>Año</h6></label>
+                    <select class="form-control form-control-sm" id="anio">
+                        <option>Año</option>
+                      </select>
+                </div>
+                <div class="col-2">
+                    <br>
+                    <button class="btn btn-primary float-right" type="submit">Filtrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br>
-
-
-<div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">REF</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Hora</th>
-              <th scope="col">Monto (en Bs.)</th>
-              <th scope="col">Tipo operacion (monedero...)</th>
-              <th scope="col">Estatus</th>
-              <th scope="col">Bloquear</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            <td>
-              <button type="button" class="btn btn-danger"><i class="fa fa-ban fa-2x"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <br>
+    
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">REF</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Hora</th>
+                  <th scope="col">Monto (en Bs.)</th>
+                  <th scope="col">Tipo operacion (monedero...)</th>
+                  <th scope="col">Estatus</th>
+                  <th scope="col">Bloquear</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                <td>
+                  <button type="button" class="btn btn-danger"><i class="fa fa-ban fa-2x"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+</div>

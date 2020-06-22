@@ -1,96 +1,99 @@
-<h1 class="display-4">Informacion personal</h1>
-<hr>
+<div *ngIf = "s_perfil.show">
+    
+    <h1 class="display-4">Informacion personal</h1>
+    <hr>
 
-<div class="container">
-    <div class="row">
-  		<div class="col-xl-12">
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label for="nombre"><h4>Nombre</h4></label>
-                    <input type="text" class="form-control" id="nombre">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="nombre"><h4>Nombre</h4></label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apellido"><h4>Apellido</h4></label>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="apellido"><h4>Apellido</h4></label>
-                      <input type="text" class="form-control" id="apellido">
-                  </div>
-            </div>
-            <br>
-            
+                <br>
+                
 
-            <div class="form-row">
-                <div class="col-md-1">
-                    <label for="tipo_id"><h4>Nro.</h4></label>
-                    <select id="tipo_id" class="form-control">
-                        <option selected>V</option>
-                        <option>...</option>
-                    </select>
+                <div class="form-row">
+                    <div class="col-md-1">
+                        <label for="tipo_id"><h4>Nro.</h4></label>
+                        <select id="tipo_id" class="form-control">
+                            <option selected>V</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="identificacion"><h4>Identificacion</h4></label>
+                        <label for="identificacion"><h4> </h4></label>
+                        <input type="text" class="form-control" id="identificacion">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="correo"><h4>Correo Electronico</h4></label>
+                        <input type="text" class="form-control" id="correo">
+                    </div>
                 </div>
-                <div class="col-md-5">
-                    <label for="identificacion"><h4>Identificacion</h4></label>
-                    <label for="identificacion"><h4> </h4></label>
-                    <input type="text" class="form-control" id="identificacion">
-                </div>
-                <div class="col-md-6">
-                    <label for="correo"><h4>Correo Electronico</h4></label>
-                    <input type="text" class="form-control" id="correo">
-                </div>
-            </div>
-            <br>
+                <br>
 
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label for="fecha_nat"><h4>Fecha Nacimiento</h4></label>
-                    <input type="date" class="form-control" id="fecha_nat">
-                </div>
-                <div class="col-md-6">
-                    <label for="estado_civil"><h4>Estado Civil</h4></label>
-                    <select id="estado_civil" class="form-control">
-                        <option selected>Soltero</option>
-                        <option>Casado</option>
-                        <option>Divorciado</option>
-                        <option>Viudo</option>
-                    </select>
-                 </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="fecha_nat"><h4>Fecha Nacimiento</h4></label>
+                        <input type="date" class="form-control" id="fecha_nat">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="estado_civil"><h4>Estado Civil</h4></label>
+                        <select id="estado_civil" class="form-control">
+                            <option selected>Soltero</option>
+                            <option>Casado</option>
+                            <option>Divorciado</option>
+                            <option>Viudo</option>
+                        </select>
+                    </div>
 
-            </div>
-            <br>
-
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label for="telefono"><h4>Telefono</h4></label>
-                    <input type="text" class="form-control" id="telefono">
                 </div>
-            </div>
-            <br>
+                <br>
 
-            <div class="form-row">
-                <div class="col-md-12">
-                    <label for="direccion"><h4>Direccion</h4></label>
-                    <input type="text" class="form-control" id="direccion">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="telefono"><h4>Telefono</h4></label>
+                        <input type="text" class="form-control" id="telefono">
+                    </div>
                 </div>
-            </div>
-            <br>
+                <br>
 
-            <hr>
-            
-            <label><h3>Representantes</h3></label>
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label for="r_nombre"><h4>Nombre</h4></label>
-                    <input type="text" class="form-control" id="r_nombre">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label for="direccion"><h4>Direccion</h4></label>
+                        <input type="text" class="form-control" id="direccion">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="r_apellido"><h4>Apellido</h4></label>
-                    <input type="text" class="form-control" id="r_apellido">
-                </div>
+                <br>
 
-            </div>
-            <br>
+                <hr>
+                
+                <label><h3>Representantes</h3></label>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="r_nombre"><h4>Nombre</h4></label>
+                        <input type="text" class="form-control" id="r_nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="r_apellido"><h4>Apellido</h4></label>
+                        <input type="text" class="form-control" id="r_apellido">
+                    </div>
 
-            <div class="form-group">
-                <div class="col-xl-12">
-                    <button class="btn btn-primary float-right" type="submit">Editar</button>
                 </div>
-            </div>
-        </div><!--/col-9-->
-    </div><!--/row-->
+                <br>
+
+                <div class="form-group">
+                    <div class="col-xl-12">
+                        <button class="btn btn-primary float-right" type="submit">Editar</button>
+                    </div>
+                </div>
+            </div><!--/col-9-->
+        </div><!--/row-->
+</div>

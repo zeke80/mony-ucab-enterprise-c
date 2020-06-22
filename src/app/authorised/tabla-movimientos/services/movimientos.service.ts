@@ -49,8 +49,4 @@ export class MovimientosService {
     return this.http.post(url, {'id' : id});
   }
 
-  toggleShow(){
-    this.show = !this.show;
-  }
-
 }

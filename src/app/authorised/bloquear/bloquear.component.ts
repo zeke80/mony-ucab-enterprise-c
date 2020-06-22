@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BloquearService } from './services/bloquear.service';
 
 @Component({
   selector: 'app-bloquear',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BloquearComponent implements OnInit {
 
-  constructor() { }
+  constructor(public s_bloquear : BloquearService) { }
 
   ngOnInit(): void {
   }
