@@ -2,11 +2,11 @@
     <ul class="navbar-nav fa-ul">
       <li class="nav-item active">
           <br>
-          <p><i class="fas fa-donate fa-1x " title="Transferir" ></i> Transferir</p>
+          <p (click) = "sideNavService.toggleTransferir()"><i class="fas fa-donate fa-1x " title="Transferir" ></i> Transferir</p>
       </li>
 
       <li class="nav-item">
-        <p (click) = "sideNavService.s_movimientos.toggleShow()"><i class="fas fa-coins fa-1x" title="Movimientos" ></i> Movimientos</p>
+        <p (click) = "sideNavService.toggleMovimientos()"><i class="fas fa-coins fa-1x" title="Movimientos" ></i> Movimientos</p>
       </li>
 
       <li class="nav-item">
@@ -14,15 +14,15 @@
     </li>
 
       <li class="nav-item">
-        <p><i class="fas fa-ban fa-1x" title="Bloquear"></i> Bloquear</p>
+        <p (click) = "sideNavService.toggleBloquear()"><i class="fas fa-ban fa-1x" title="Bloquear"></i> Bloquear</p>
       </li>
 
       <li class="nav-item">
-        <p><i class="fas fa-user fa-1x" title="Perfil"></i>  Perfil</p>    
+        <p (click) = "sideNavService.togglePerfil()"><i class="fas fa-user fa-1x" title="Perfil"></i>  Perfil</p>    
       </li>
 
       <li class="nav-item">
-        <p><i class="fas fa-cog fa-1x" title="Configuraciones"></i> Configuraciones</p>
+        <p (click) = "sideNavService.toggleConfiguraciones()"><i class="fas fa-cog fa-1x" title="Configuraciones"></i> Configuraciones</p>
       </li>
 
     </ul>
