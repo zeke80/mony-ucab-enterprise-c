@@ -6,6 +6,8 @@ import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recarga',
@@ -25,6 +27,7 @@ export class RecargaPage implements OnInit {
     public _tarjetaServices: TarjetaService,
     public _pagoSercives: PagoService,
     public router: Router,
+    public alert: AlertController
   ) { }
 
   ngOnInit() {
@@ -43,9 +46,30 @@ export class RecargaPage implements OnInit {
                 console.log(this.pagos);
                 this.router.navigate(['/tabs/cuenta/pagoRecarga', this.aux]);
 
+              },
+              (error: HttpErrorResponse) => {
+                  this.AlertServer();
+      
               });
         });
   }
 
+  async AlertServer() {
+    const alertElement = await this.alert.create({
+      header: 'Error inesperado',
+      message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+
+      ]
+    });
+
+    await alertElement.present();
+
+  }
 
 }

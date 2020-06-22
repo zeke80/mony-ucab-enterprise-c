@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  loginState = new BehaviorSubject(false);
 
   constructor(
     public http: HttpClient
@@ -22,5 +25,18 @@ export class LoginService {
     return this.http.post(url, data);
 
   }
+
+  login(){
+    this.loginState.next(true);
+  }
+
+  estaLogueado() {
+    return this.loginState.value;
+  }
+
+  logout() {
+    this.loginState.next(false);
+  }
+
   
 }

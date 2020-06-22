@@ -84,7 +84,7 @@ export class OperacionDetalleTPage implements OnInit {
         {
           text: 'Aceptar',
           handler: () => {
-            this._operacionServices.SolicitarReintegro(this.usuario.idUsuario, this.idreceptor, this.operacion.referencia )
+            this._operacionServices.SolicitarReintegro(this.operacion.referencia )
                 .subscribe((data: any) => {
                   this.router.navigate(['/tabs/operaciones']);
                 });

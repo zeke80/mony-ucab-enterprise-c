@@ -5,6 +5,9 @@ import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { PagoService } from '../servicios/pago/pago.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from '../servicios/login/login.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -25,7 +28,9 @@ export class Tab2Page implements OnInit{
     public _usuarioService: UsuarioService,
     public _pagoServices: PagoService,
     public router: Router,
-    public _activatedRoute: ActivatedRoute
+    public _activatedRoute: ActivatedRoute,
+    public _logiServices: LoginService,
+    public alert: AlertController
   ) {
     this._activatedRoute.paramMap.subscribe(params => {
       this.ngOnInit();
@@ -55,7 +60,10 @@ export class Tab2Page implements OnInit{
     .subscribe((data: any) => {
       this.saldo = data;
       this._pagoServices.guardarSaldo(data);
-    });
+    },
+      (error: HttpErrorResponse) => {
+          this.AlertServer();
+      });
   }
 
   solicitudPago() {
@@ -64,6 +72,29 @@ export class Tab2Page implements OnInit{
 
   recarga() {
     this.router.navigate(['tabs/cuenta/recarga']);
+  }
+
+  logout() {
+    this._logiServices.logout();
+    this.router.navigate(['/login']);
+  }
+
+  async AlertServer() {
+    const alertElement = await this.alert.create({
+      header: 'Error inesperado',
+      message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+
+      ]
+    });
+
+    await alertElement.present();
+
   }
 
 }

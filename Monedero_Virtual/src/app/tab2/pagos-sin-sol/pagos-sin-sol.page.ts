@@ -7,6 +7,7 @@ import { Usuario } from '../../models/usuario.model';
 import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
 import { AlertController } from '@ionic/angular';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-pagos-sin-sol',
@@ -33,7 +34,7 @@ export class PagosSinSolPage implements OnInit {
     public _cuentaServices: CuentaService,
     public _tarjetaServices: TarjetaService,
     public router: Router,
-    public alert: AlertController,
+    public alert: AlertController
 
   ) { }
 
@@ -55,6 +56,10 @@ export class PagosSinSolPage implements OnInit {
     this._tarjetaServices.getTarjetas(this.usuario.idUsuario)
         .subscribe((data: any) => {
           this.metodoPagoT = data;
+        },
+        (error: HttpErrorResponse) => {
+            this.AlertServer();
+
         });
     this.saldo = this._pagoServices.getSaldo();
   }
@@ -127,6 +132,24 @@ export class PagosSinSolPage implements OnInit {
         },
       ]
     });
+    await alertElement.present();
+
+  }
+
+  async AlertServer() {
+    const alertElement = await this.alert.create({
+      header: 'Error inesperado',
+      message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+
+      ]
+    });
+
     await alertElement.present();
 
   }

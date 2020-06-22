@@ -8,6 +8,7 @@ import { CuentaService } from '../../servicios/cuenta/cuenta.service';
 import { TarjetaService } from '../../servicios/tarjeta/tarjeta.service';
 import { NgForm } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-solicitud-pago',
@@ -89,6 +90,10 @@ export class SolicitudPagoPage implements OnInit {
     this._pagoServices.pagoTarjeta(id, this.user, cant, ref)
         .subscribe((data: any) => {
           this.router.navigate(['/tabs/cuenta']);
+        },
+        (error: HttpErrorResponse) => {
+            this.AlertServer();
+
         });
 
   }
@@ -135,6 +140,24 @@ export class SolicitudPagoPage implements OnInit {
         },
       ]
     });
+    await alertElement.present();
+
+  }
+
+  async AlertServer() {
+    const alertElement = await this.alert.create({
+      header: 'Error inesperado',
+      message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+
+      ]
+    });
+
     await alertElement.present();
 
   }
