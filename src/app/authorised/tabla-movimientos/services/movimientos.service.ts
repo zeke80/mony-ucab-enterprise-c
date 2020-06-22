@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class MovimientosService {
 
+  show = false;
+
   constructor( private http : HttpClient) { }
 
   consultarCuentas(){
@@ -45,6 +47,10 @@ export class MovimientosService {
     )
 
     return this.http.post(url, {'id' : id});
+  }
+
+  toggleShow(){
+    this.show = !this.show;
   }
 
 }
