@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../../home/login-form/services/login.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public user_service : LoginService) { 
+  }
 
   ngOnInit(): void {
+        for (var i = 0; i < localStorage.length; i++){
+          console.log(localStorage.getItem(localStorage.key(i)));
+          // do something with ;
+      }
   }
 
 }
