@@ -38,7 +38,7 @@ namespace MonyUCAB.DAO
                     Idreintegro = filas.GetInt32(0),
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitud = filas.GetString(3),
+                    Fecha_solicitud = filas.GetDateTime(3),
                     Referencia = filas.GetInt32(4),
                     Estatus = filas.GetString(5),
                 };
@@ -72,7 +72,7 @@ namespace MonyUCAB.DAO
                     Idreintegro = filas.GetInt32(0),
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitud = filas.GetString(3),
+                    Fecha_solicitud = filas.GetDateTime(3),
                     Referencia = filas.GetInt32(4),
                     Estatus = filas.GetString(5),
                 });
@@ -82,7 +82,7 @@ namespace MonyUCAB.DAO
             return reintegroDTOs;
         }
 
-        public void solicitar(int idUsuarioSolicitante, int idUsuarioReceptor, int referencia)
+        public void solicitar(int referencia)
         {
             comando.CommandText = string.Format(
                 "INSERT INTO reintegro(" +
@@ -91,8 +91,10 @@ namespace MonyUCAB.DAO
                 "fecha_solicitud," +
                 "referencia," +
                 "estatus" +
-                ") VALUES({0},{1},'{2}',{3},'SOLICITADO')", 
-                idUsuarioSolicitante, idUsuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), referencia);
+                ") VALUES((SELECT idusuario_receptor FROM pago WHERE referencia = {0})," +
+                "(SELECT idusuario_solicitante FROM pago WHERE referencia = {0})," +
+                "now(),{0},'SOLICITADO')",
+                referencia);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();

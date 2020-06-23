@@ -38,7 +38,6 @@
 					},
 					"response": []
 				},
-				
 				{
 					"name": "loginComercio",
 					"request": {
@@ -526,7 +525,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":1\r\n}",
+							"raw": "{\r\n    \"referencia\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -904,6 +903,36 @@
 								"api",
 								"Usuario",
 								"saldo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cierre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/cierre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"cierre"
 							]
 						}
 					},
@@ -1449,7 +1478,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuarioSolicitante\":1,\r\n    \"idUsuarioReceptor\":2,\r\n    \"referencia\":1\r\n}",
+							"raw": "{\r\n    \"referencia\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1812,17 +1841,16 @@
 							]
 						}
 					},
-					
 					"response": []
 				},
 				{
-					"name": "enviarEmail",
+					"name": "cierre",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"user\" : \"user2\",\r\n\t\"email\" :\" ezequiel@gmail.com\"\r\n}",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1830,16 +1858,17 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Usuario/enviarEmail",
+							"raw": "http://monyucab.somee.com/api/Usuario/cierre",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"monyucab",
+								"somee",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Usuario",
-								"enviarEmail"
+								"cierre"
 							]
 						}
 					},

@@ -10,7 +10,7 @@ CREATE TABLE usuario (
 	idtipousuario        integer NOT NULL,
 	idtipoidentificacion integer NOT NULL,
 	usuario              varchar(20) NOT NULL UNIQUE,
-	fecha_registro       date NOT NULL,
+	fecha_registro       DATE NOT NULL,
 	nro_identificacion   integer NOT NULL,
 	email                varchar(200) NOT NULL,
 	telefono             varchar(12) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE bitacora (
 	idauditoria     serial PRIMARY KEY,
 	idevento        integer NOT NULL,
 	idusuario       integer NOT NULL,
-	fecha           date NOT NULL,
+	fecha           DATE NOT NULL,
 	hora            time NOT NULL,
 	datos_operacion varchar(2500) NOT NULL,
 	causa_error     varchar(2500)
@@ -116,7 +116,7 @@ CREATE TABLE pago (
 	idpago                serial PRIMARY KEY,
 	idusuario_solicitante integer NOT NULL,
 	idusuario_receptor    integer NOT NULL,
-	fecha_solicitus       varchar(45) NOT NULL,
+	fecha_solicitus       DATE NOT NULL,
 	monto                 decimal NOT NULL,
 	estatus               varchar(45) NOT NULL,
 	referencia            serial not null
@@ -129,7 +129,7 @@ CREATE TABLE reintegro (
 	idreintegro           serial PRIMARY KEY,
 	idusuario_solicitante integer NOT NULL,
 	idusuario_receptor    integer NOT NULL,
-	fecha_solicitud       varchar(45) NOT NULL,
+	fecha_solicitud       DATE NOT NULL,
 	referencia            integer NOT NULL,
 	estatus               varchar(45) NOT NULL
 );
@@ -161,7 +161,7 @@ CREATE TABLE operacionesmonedero (
 	idusuario             integer NOT NULL,
 	idtipooperacion       integer NOT NULL,
 	monto                 decimal NOT NULL,
-	fecha                 date NOT NULL,
+	fecha                 DATE NOT NULL,
 	hora                  time NOT NULL,
 	referencia            integer NOT NULL
 );
@@ -247,7 +247,7 @@ CREATE TABLE operacioncuenta (
 	idoperacioncuenta serial PRIMARY KEY,
 	idcuenta          integer NOT NULL,
 	idusuarioreceptor integer NOT NULL,
-	fecha             date NOT NULL,
+	fecha             DATE NOT NULL,
 	hora              time NOT NULL,
 	monto             decimal NOT NULL,
 	referencia        integer NOT NULL
@@ -272,7 +272,7 @@ CREATE TABLE operaciontarjeta (
 	idoperaciontarjeta serial PRIMARY KEY,
 	idusuarioreceptor  integer NOT NULL,
 	idtarjeta          integer NOT NULL,
-	fecha              date NOT NULL,
+	fecha              DATE NOT NULL,
 	hora               time NOT NULL,
 	monto              decimal NOT NULL,
 	referencia         integer NOT NULL

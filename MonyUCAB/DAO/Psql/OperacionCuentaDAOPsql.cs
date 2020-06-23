@@ -116,8 +116,8 @@ namespace MonyUCAB.DAO.Psql
                     "referencia" +
                 ") " +
                 "values" +
-                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), to_date('{2}','dd-MM-yyyy'), TO_TIMESTAMP('{3}','HH24:MI:SS'), {4}, {5})",
-                idCuenta, usuarioReceptor, DateTime.Now.ToString("dd-MM-yyyy"), DateTime.Now.ToString("HH:mm:ss"), monto.ToString(), referencia);
+                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), now(), CURRENT_TIMESTAMP, {2}, {3})",
+                idCuenta, usuarioReceptor, monto, referencia);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
