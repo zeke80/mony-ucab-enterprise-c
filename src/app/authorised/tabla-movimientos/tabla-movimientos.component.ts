@@ -11,14 +11,11 @@ export class TablaMovimientosComponent implements OnInit {
   movimientosCuenta : any;
   movimientosTarjeta : any;
   movimientosMonedero : any;
+  saldo : any;
 
   constructor(public s_movimientos : MovimientosService) { }
 
   ngOnInit(): void {
-
-  }
-
-  lmao(){
     this.s_movimientos.consultarCuentas().subscribe(data =>{
       this.movimientosCuenta = data;
     });
@@ -30,5 +27,45 @@ export class TablaMovimientosComponent implements OnInit {
     this.s_movimientos.consutarMonedero() .subscribe(data =>{
       this.movimientosMonedero = data;
     });
+
+    this.s_movimientos.consultarSaldo().subscribe(data => {
+      this.saldo = data;
+    });
+    
   }
+
+  consultarSoloTarjeta(){
+
+    this.s_movimientos.consultarTarjeta().subscribe(data =>{
+      this.movimientosTarjeta = data;
+    });
+
+    this.movimientosCuenta = null;
+
+    this.movimientosMonedero = null;
+  }
+
+  consultarSoloMonedero(){
+
+    this.s_movimientos.consutarMonedero() .subscribe(data =>{
+      this.movimientosMonedero = data;
+    });
+
+    this.movimientosCuenta = null;
+    
+    this.movimientosTarjeta = null;
+  }
+
+
+  consultarSoloCuenta(){
+
+    this.s_movimientos.consultarCuentas().subscribe(data =>{
+      this.movimientosCuenta = data;
+    });
+    
+    this.movimientosCuenta = null;
+
+    this.movimientosTarjeta = null;
+  }
+
 }
