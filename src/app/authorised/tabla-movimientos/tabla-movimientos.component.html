@@ -7,25 +7,25 @@
             <div class="form-row">
                 <div class="col-4">
                     <label for="mes1"><h6>Desde</h6></label>
-                    <select class="form-control form-control-sm" id="dia">
+                    <select class="form-control form-control-sm" [(ngModel)] ="mes1">
                         <option>Messs</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <label for="mes2"><h6>Hasta</h6></label>
-                    <select class="form-control form-control-sm" id="mes2">
+                    <select class="form-control form-control-sm" [(ngModel)]="mes2">
                         <option>Messs</option>
                     </select>
                 </div>
                 <div class="col-2">
                     <label for="anio"><h6>Año</h6></label>
-                    <select class="form-control form-control-sm" id="anio">
+                    <select class="form-control form-control-sm" [(ngModel)]="anio">
                         <option>Año</option>
                     </select>
                 </div>
                 <div class="col-2">
                     <br>
-                    <button type="button" class="btn btn-primary float-right" type="submit" (click) = "s_movimientos.consultarCuentas()" >Filtrar</button>
+                    <button type="button" class="btn btn-primary float-right" type="submit" (click) = "filtrar()">Filtrar</button>
                 </div>
             </div>
         </div>
@@ -34,22 +34,22 @@
 
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-        <input class="form-check-input" type="radio" id="todos" name="opcion" checked="checked"> Todos
+        <input class="form-check-input" type="radio" value="todos" name="opcion" checked="checked" [(ngModel)]="opcion"> Todos
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-        <input class="form-check-input" type="radio" id="tarjeta" name="opcion"> Solo tarjeta
+        <input class="form-check-input" type="radio" value="tarjeta" name="opcion" [(ngModel)]="opcion"> Solo tarjeta
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-        <input class="form-check-input" type="radio" id="monedero" name="opcion"> Solo monedero
+        <input class="form-check-input" type="radio" value="monedero" name="opcion" [(ngModel)]="opcion"> Solo monedero
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-        <input class="form-check-input" type="radio"  id="cuenta" name="opcion"> Solo cuenta
+        <input class="form-check-input" type="radio"  value="cuenta" name="opcion" [(ngModel)]="opcion"> Solo cuenta
         </label>
     </div>
     <br>
