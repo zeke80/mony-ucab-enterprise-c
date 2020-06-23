@@ -137,12 +137,100 @@ namespace MonyUCAB.DAO
             return usuarioDTO;
         }
 
-        public void crear()
+        public UsuarioDTO buscarPersonabyEmail(string email){
+            comando.CommandText = string.Format("SELECT " +
+                "us.idusuario," +
+                "us.idtipousuario," +
+                "us.idtipoidentificacion," +
+                "us.usuario," +
+                "us.fecha_registro," +
+                "us.nro_identificacion," +
+                "us.email," +
+                "us.telefono," +
+                "us.direccion," +
+                "us.estatus " +
+                "FROM usuario us, contrasena co, persona pe " +
+                "WHERE us.email = '{0}'", email);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            UsuarioDTO usuarioDTO = null;
+            if(filas.Read())
+            {
+                usuarioDTO = new UsuarioDTO
+                {
+                    Idusuario = filas.GetInt32(0),
+                    Idtipousuario = filas.GetInt32(1),
+                    Idtipoidentificacion = filas.GetInt32(2),
+                    Usuario = filas.GetString(3),
+                    Fecha_registro = filas.GetDateTime(4),
+                    Nro_identificacion = filas.GetInt32(5),
+                    Email = filas.GetString(6),
+                    Telefono = filas.GetString(7),
+                    Direccion = filas.GetString(8),
+                    Estatus = filas.GetInt32(9),
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return usuarioDTO;
+        }
+
+        public UsuarioDTO buscarUserAndPass(string email){
+            comando.CommandText = string.Format("SELECT " +
+                "us.usuario, " +
+                "con.contrasena " +
+                "FROM usuario us, contrasena con " +
+                "WHERE  us.idusuario = con.idusuario " +
+                "and us.email = '{0}' " +
+                "order by con.idcontrasena desc " +
+                "limit 1",email);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            UsuarioDTO usuarioDTO = null;
+            if(filas.Read())
+            {
+                usuarioDTO = new UsuarioDTO
+                {
+                    Contrasena = filas.GetString(0),
+                    Usuario = filas.GetString(1)
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return usuarioDTO;
+        }
+
+        public void RegistrarUser(int idtipousuario, int idtipoidentificacion,
+        string usuario, int nro_identificacion, string email, string telefono,
+        string direccion, int estatus)
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO usuario(" +
+                "idtipousuario," +
+                "idtipoidentificacion," +
+                "usuario," +
+                "fecha_registro," +
+                "nro_identificacion," +
+                "email," +
+                "telefono," +
+                "direccion," +
+                "estatus" +
+                
+                ") VALUES({0},{1},'{2}',{3},'SOLICITADO')", 
+                idtipousuario, idtipoidentificacion, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"),
+                nro_identificacion,email,telefono,direccion,estatus);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        
+        }
+
+        public void eliminar()
         {
             throw new NotImplementedException();
         }
 
-        public void eliminar()
+        public void crear()
         {
             throw new NotImplementedException();
         }

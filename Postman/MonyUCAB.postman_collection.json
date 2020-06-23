@@ -38,6 +38,7 @@
 					},
 					"response": []
 				},
+				
 				{
 					"name": "loginComercio",
 					"request": {
@@ -1808,6 +1809,37 @@
 								"api",
 								"Usuario",
 								"saldo"
+							]
+						}
+					},
+					
+					"response": []
+				},
+				{
+					"name": "enviarEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\" : \"user2\",\r\n\t\"email\" :\" ezequiel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/enviarEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"enviarEmail"
 							]
 						}
 					},

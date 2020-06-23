@@ -10,6 +10,8 @@ using MonyUCAB.DAO;
 using MonyUCAB.DAO.Psql;
 using MonyUCAB.DTO;
 using Microsoft.AspNetCore.Cors;
+using System.Net;
+using System.Net.Mail;
 
 namespace MonyUCAB.Controllers
 {
@@ -367,6 +369,41 @@ namespace MonyUCAB.Controllers
             decimal saldo = pagoDAO.saldo(idUsuario.id);
 
             return saldo;
+        }
+        public async Task<ActionResult<string>> enviarEmail(InfoRecuperarPass infoRecuperarPass)
+        {
+            string respuesta = "Correo enviado";
+            //verificas que el usuario sea valido
+           IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO = usuarioDAO.buscarPersonabyEmail(infoRecuperarPass.email);
+            if (usuarioDTO == null)
+                return NotFound();
+
+            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO1 = usuarioDAO1.buscarUserAndPass(infoRecuperarPass.email);
+
+            string emailOrigen = "carlosjpa1305@gmail.com";
+            string contrasena = "26473558";
+            
+
+            MailMessage mailRecuperacion = new MailMessage
+            (emailOrigen,
+            infoRecuperarPass.email,
+            "Recuperacion de contraseña",
+            "Esperamos tenga un buen dia, ha solicitado recuperar su contraseña :" + usuarioDTO1.Usuario);
+
+            mailRecuperacion.IsBodyHtml = true;
+
+            SmtpClient smtpClient = new SmtpClient ("smtp.gmail.com");
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Port= 587;
+            smtpClient.Credentials = new System.Net.NetworkCredential(emailOrigen, contrasena);;
+
+            smtpClient.Send(mailRecuperacion);
+            smtpClient.Dispose();
+            //puse return solo para devolver algo
+            return respuesta;
         }
     }
 }

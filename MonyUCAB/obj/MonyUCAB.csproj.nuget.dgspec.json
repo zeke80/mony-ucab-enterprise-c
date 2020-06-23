@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {}
+    "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {
+    "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
+        "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
         "projectName": "MonyUCAB",
-        "projectPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
-        "packagesPath": "C:\\Users\\eze\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\obj\\",
+        "projectPath": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
+        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\eze\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
