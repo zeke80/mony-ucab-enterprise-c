@@ -55,7 +55,7 @@ namespace MonyUCAB.DAO
                     Idpago = filas.GetInt32(0),
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitus = filas.GetString(3),
+                    Fecha_solicitus = filas.GetDateTime(3),
                     Monto = filas.GetFloat(4),
                     Estatus = filas.GetString(5),
                     Referencia = filas.GetInt32(6),
@@ -90,7 +90,7 @@ namespace MonyUCAB.DAO
                     Idpago = filas.GetInt32(0),
                     Idusuario_solicitante = filas.GetInt32(1),
                     Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitus = filas.GetString(3),
+                    Fecha_solicitus = filas.GetDateTime(3),
                     Monto = filas.GetFloat(4),
                     Estatus = filas.GetString(5),
                     Referencia = filas.GetInt32(6),
@@ -112,9 +112,9 @@ namespace MonyUCAB.DAO
                     "estatus" +
                 ") " +
                 "values" +
-                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), '{2}', {3}, 'SOLICITADO') " +
+                "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), now(), {2}, 'SOLICITADO') " +
                 "RETURNING idpago",
-                idUsuarioSolicitante, userReceptor, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"), monto);
+                idUsuarioSolicitante, userReceptor, monto);
             conexion.Open();
             int idPago = (int)comando.ExecuteScalar();
             conexion.Close();
@@ -124,7 +124,7 @@ namespace MonyUCAB.DAO
         public decimal saldo(int idUsuario)
         {
             comando.CommandText = string.Format(
-                "SELECT SUM(opemon.mo) " +
+                "SELECT coalesce(SUM(opemon.mo), 0) " +
                 "FROM " +
                 "( " +
                         "SELECT monto mo, idusuario, referencia " +
@@ -161,6 +161,43 @@ namespace MonyUCAB.DAO
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
+        }
+
+        public List<PagoDTO> cierre(int idUsuario)
+        {
+            comando.CommandText = string.Format(
+                "SELECT " +
+                    "idpago, " +
+                    "idusuario_solicitante, " +
+                    "idusuario_receptor, " +
+                    "fecha_solicitus, " +
+                    "monto, " +
+                    "estatus, " +
+                    "referencia " +
+                "FROM pago " +
+                "WHERE(idusuario_solicitante = {0} " +
+                "OR idusuario_receptor = {0}) " +
+                "AND fecha_solicitus = DATE_TRUNC('day', now())",
+                idUsuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<PagoDTO> pagoDTOs = new List<PagoDTO>();
+            while (filas.Read())
+            {
+                pagoDTOs.Add(new PagoDTO
+                {
+                    Idpago = filas.GetInt32(0),
+                    Idusuario_solicitante = filas.GetInt32(1),
+                    Idusuario_receptor = filas.GetInt32(2),
+                    Fecha_solicitus = filas.GetDateTime(3),
+                    Monto = filas.GetFloat(4),
+                    Estatus = filas.GetString(5),
+                    Referencia = filas.GetInt32(6),
+                });
+            }
+            filas.Close();
+            conexion.Close();
+            return pagoDTOs;
         }
     }
 }

@@ -107,8 +107,8 @@ namespace MonyUCAB.DAO
                     "referencia" +
                 ") " +
                 "values" +
-                "({0}, 2, {1}, to_date('{2}','dd-MM-yyyy'), TO_TIMESTAMP('{3}','HH24:MI:SS'), {4})",
-                idUsuario, monto, DateTime.Now.ToString("dd-MM-yyyy"), DateTime.Now.ToString("HH:mm:ss"), referencia);
+                "({0}, 2, {1}, now(), CURRENT_TIMESTAMP, {2})",
+                idUsuario, monto, referencia);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
@@ -126,8 +126,8 @@ namespace MonyUCAB.DAO
                     "referencia" +
                 ") " +
                 "values" +
-                "((SELECT idusuario FROM usuario WHERE usuario = '{0}'), 1, {1}, to_date('{2}','dd-MM-yyyy'), TO_TIMESTAMP('{3}','HH24:MI:SS'), {4}) ",
-                usuarioReceptor, monto, DateTime.Now.ToString("dd-MM-yyyy"), DateTime.Now.ToString("HH:mm:ss"), referencia);
+                "((SELECT idusuario FROM usuario WHERE usuario = '{0}'), 1, {1}, now(), CURRENT_TIMESTAMP, {2}) ",
+                usuarioReceptor, monto, referencia);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
