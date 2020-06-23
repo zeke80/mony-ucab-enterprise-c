@@ -8,9 +8,18 @@ import { BloquearService } from './services/bloquear.service';
 })
 export class BloquearComponent implements OnInit {
 
+  pagos : any;
+
   constructor(public s_bloquear : BloquearService) { }
 
   ngOnInit(): void {
+    this.consultarPagos();
+  }
+
+  consultarPagos(){
+    this.s_bloquear.consultarPagos().subscribe(data =>{
+      this.pagos = data;
+    });;
   }
 
 }

@@ -43,22 +43,19 @@
                   <th scope="col">Fecha</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Monto (en Bs.)</th>
-                  <th scope="col">Tipo operacion (monedero...)</th>
                   <th scope="col">Estatus</th>
                   <th scope="col">Bloquear</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                <td>
-                  <button type="button" class="btn btn-danger"><i class="fa fa-ban fa-2x"></i></button>
-                  </td>
+                <tr *ngFor = "let pago of pagos">
+                  <td>{{pago.referencia}}</td>
+                  <td>{{pago.fecha_solicitus.split('T',1)}}</td>
+                  <td>{{pago.fecha_solicitus.substr(11,5)}}</td>
+                  <td>{{pago.monto}}</td>
+                  <td>{{pago.estatus}}</td>
+                  <td><button type="button" class="btn btn-danger"><i class="fa fa-ban fa-2x"></i></button></td>
+                  
                 </tr>
               </tbody>
             </table>
