@@ -7,7 +7,8 @@ using System.Data.SqlClient;
 using MonyUCAB.DTO;
 
 
-namespace MonyUCAB.DAO
+
+namespace MonyUCAB.DAO.Psql
 {
     public class ContrasenaDAOPsql : DAOPsql, IContrasenaDAO
     {

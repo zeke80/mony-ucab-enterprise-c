@@ -17,6 +17,7 @@ namespace MonyUCAB.DTO
 		string _Telefono;
 		string _Direccion;
 		int _Estatus;
+        string _Contrasena;
 
         public int Idusuario { get => _Idusuario; set => _Idusuario = value; }
         public int Idtipousuario { get => _Idtipousuario; set => _Idtipousuario = value; }
@@ -28,5 +29,7 @@ namespace MonyUCAB.DTO
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Direccion { get => _Direccion; set => _Direccion = value; }
         public int Estatus { get => _Estatus; set => _Estatus = value; }
+
+        public string Contrasena { get =>_Contrasena; set => _Contrasena = value; }
     }
 }
