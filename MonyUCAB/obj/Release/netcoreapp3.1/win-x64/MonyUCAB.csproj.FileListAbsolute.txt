@@ -146,3 +146,6 @@ C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcorea
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\win-x64\MonyUCAB.pdb
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\win-x64\MonyUCAB.genruntimeconfig.cache
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\win-x64\MonyUCAB.csprojAssemblyReference.cache
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\win-x64\MailKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\win-x64\MimeKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\win-x64\BouncyCastle.Crypto.dll

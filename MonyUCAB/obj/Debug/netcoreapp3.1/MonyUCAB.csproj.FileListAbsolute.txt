@@ -496,3 +496,6 @@ C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\
 C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\netcoreapp3.1\staticwebassets\MonyUCAB.StaticWebAssets.Manifest.cache
 C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\netcoreapp3.1\staticwebassets\MonyUCAB.StaticWebAssets.xml
 C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\obj\Debug\netcoreapp3.1\MonyUCAB.genruntimeconfig.cache
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

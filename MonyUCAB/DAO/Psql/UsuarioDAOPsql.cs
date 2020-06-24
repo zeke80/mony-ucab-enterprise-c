@@ -191,8 +191,8 @@ namespace MonyUCAB.DAO
             {
                 usuarioDTO = new UsuarioDTO
                 {
-                    Contrasena = filas.GetString(0),
-                    Usuario = filas.GetString(1)
+                    Usuario = filas.GetString(0),
+                    Contrasena = filas.GetString(1),                    
                 };
             }
             filas.Close();

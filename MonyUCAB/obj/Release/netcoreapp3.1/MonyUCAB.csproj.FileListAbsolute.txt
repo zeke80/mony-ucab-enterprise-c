@@ -307,8 +307,6 @@ C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcorea
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.csprojAssemblyReference.cache
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.AssemblyInfoInputs.cache
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.AssemblyInfo.cs
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.csproj.CoreCompileInputs.cache
-C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.RazorAssemblyInfo.cache
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.RazorAssemblyInfo.cs
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.TagHelpers.input.cache
@@ -330,3 +328,8 @@ C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcorea
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.dll
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.pdb
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.genruntimeconfig.cache
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\MailKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\MimeKit.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Release\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.csproj.CoreCompileInputs.cache
+C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\obj\Release\netcoreapp3.1\MonyUCAB.MvcApplicationPartsAssemblyInfo.cache

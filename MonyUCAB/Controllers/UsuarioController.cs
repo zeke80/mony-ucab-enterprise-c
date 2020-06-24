@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MonyUCAB.Models;
 using MonyUCAB.DAO;
 using MonyUCAB.DAO.Psql;
 using MonyUCAB.DTO;
-using Microsoft.AspNetCore.Cors;
-using System.Net;
-using System.Net.Mail;
-using System.Linq.Expressions;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace MonyUCAB.Controllers
 {
@@ -600,42 +595,42 @@ namespace MonyUCAB.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public async Task<ActionResult<string>> enviarEmail(InfoRecuperarPass infoRecuperarPass)
+        public async Task<ActionResult<bool>> enviarEmail(InfoRecuperarPass infoRecuperarPass)
         {
             try
             {
-                string respuesta = "Correo enviado";
-                //verificas que el usuario sea valido
                 IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-                UsuarioDTO usuarioDTO = usuarioDAO.buscarPersonabyEmail(infoRecuperarPass.email);
-                if (usuarioDTO == null)
-                    return NotFound();
+                UsuarioDTO usuarioDTO = usuarioDAO.buscarUserAndPass(infoRecuperarPass.email);
 
-                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
-                UsuarioDTO usuarioDTO1 = usuarioDAO1.buscarUserAndPass(infoRecuperarPass.email);
+                if (usuarioDTO != null)
+                {
+                    MimeMessage message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("MonyUCAB", "monyucabempresac@gmail.com"));
+                    message.To.Add(new MailboxAddress(infoRecuperarPass.email));
+                    message.Subject = "MonyUCAB - Recuperacion de usuario y contraseña";
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = String.Format(@"Hola {0}!,
 
-                string emailOrigen = "carlosjpa1305@gmail.com";
-                string contrasena = "26473558";
-                
+                        Este es un correo de recuperacion de usuario y contraseña
+                          
+                        Usuario   : {0}
+                        Contraseña: {1}"
+                        , usuarioDTO.Usuario, usuarioDTO.Contrasena)
+                    };
 
-                MailMessage mailRecuperacion = new MailMessage
-                (emailOrigen,
-                infoRecuperarPass.email,
-                "Recuperacion de contraseña",
-                "Esperamos tenga un buen dia, ha solicitado recuperar su contraseña :" + usuarioDTO1.Usuario);
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);
+                        client.Authenticate("monyucabempresac@gmail.com", "monyucab123");
+                        client.Send(message);
+                        client.Disconnect(true);
+                        client.Dispose();
+                    }
 
-                mailRecuperacion.IsBodyHtml = true;
+                }
 
-                SmtpClient smtpClient = new SmtpClient ("smtp.gmail.com");
-                smtpClient.EnableSsl = true;
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Port= 587;
-                smtpClient.Credentials = new System.Net.NetworkCredential(emailOrigen, contrasena);;
-
-                smtpClient.Send(mailRecuperacion);
-                smtpClient.Dispose();
-                //puse return solo para devolver algo
-                return respuesta;
+                return true;
             }
             catch (Exception e)
             {
