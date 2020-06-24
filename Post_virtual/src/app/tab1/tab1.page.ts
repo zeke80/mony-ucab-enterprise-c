@@ -47,43 +47,20 @@ export class Tab1Page implements OnInit {
           console.log('se modifico el usuario');
         },
         (error: HttpErrorResponse) => {
-          if (error.status === 409) {
-            this.AlertServer();
-          }
-          else {
             this.AlertaError();
-          }
         });
   }
 
   async AlertaError() {
     const alertElement = await this.alert.create({
       header: 'Error al modificar usuario',
-      message: 'El usuario debe de ser unico ',
+      message: 'El usuario y/o correo debe de ser unico ',
       buttons: [
         {
           text: 'Aceptar',
           handler: () => {
           }
         },
-      ]
-    });
-
-    await alertElement.present();
-
-  }
-
-  async AlertServer() {
-    const alertElement = await this.alert.create({
-      header: 'Error inesperado',
-      message: 'intentelo mas tarde',
-      buttons: [
-        {
-          text: 'Aceptar',
-          handler: () => {
-          }
-        },
-
       ]
     });
 

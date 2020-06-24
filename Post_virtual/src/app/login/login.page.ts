@@ -14,6 +14,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+  aux = false;
+
   constructor(public router: Router,
               public _loginServices: LoginService,
               public _usuarioServices: UsuarioService,
@@ -71,6 +73,36 @@ export class LoginPage implements OnInit {
     const alertElement = await this.alert.create({
       header: 'Error inesperado',
       message: 'intentelo mas tarde',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+
+      ]
+    });
+
+    await alertElement.present();
+
+  }
+
+  cambiar() {
+    this.aux = true;
+  }
+
+  recuperar(email: string) {
+    console.log(email);
+    this._loginServices.recuperarUserContra(email)
+        .subscribe((data: any) => {
+          this.correo();
+        });
+  }
+
+  async correo() {
+    const alertElement = await this.alert.create({
+      header: 'Correo enviado',
+      message: 'revisar la la informacion del correo',
       buttons: [
         {
           text: 'Aceptar',

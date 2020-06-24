@@ -38,4 +38,14 @@ export class LoginService {
     this.loginState.next(false);
   }
 
+  recuperarUserContra(email: string) {
+    let url: string = 'http://monyucab.somee.com/api/Usuario/enviarEmail';
+
+    let data = {
+      "email": email
+    };
+
+    return this.http.post(url, data);
+  }
+
 }
