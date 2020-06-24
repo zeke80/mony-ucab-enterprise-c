@@ -50,12 +50,7 @@ export class Tab1Page implements OnInit {
           console.log('se modifico el usuario');
         },
         (error: HttpErrorResponse) => {
-          if (error.status === 409) {
-            this.AlertServer();
-          }
-          else {
             this.AlertaError();
-          }
         });
 
   }
@@ -70,24 +65,6 @@ export class Tab1Page implements OnInit {
           handler: () => {
           }
         },
-      ]
-    });
-
-    await alertElement.present();
-
-  }
-
-  async AlertServer() {
-    const alertElement = await this.alert.create({
-      header: 'Error inesperado',
-      message: 'intentelo mas tarde',
-      buttons: [
-        {
-          text: 'Aceptar',
-          handler: () => {
-          }
-        },
-
       ]
     });
 
