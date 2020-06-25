@@ -27,6 +27,9 @@ import { TablaMovimientosComponent } from './authorised/tabla-movimientos/tabla-
 import { TransferirCardComponent } from './authorised/transferir-card/transferir-card.component';
 import { PerfilComponent } from './authorised/perfil/perfil.component';
 import { ConfiguracionesComponent } from './authorised/configuraciones/configuraciones.component';
+import { ProductosComponent } from './authorised/productos/productos.component';
+import { AgregarTarjetaComponent } from './authorised/agregar-tarjeta/agregar-tarjeta.component';
+import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { ConfiguracionesComponent } from './authorised/configuraciones/configura
     TablaMovimientosComponent,
     TransferirCardComponent,
     PerfilComponent,
-    ConfiguracionesComponent
+    ConfiguracionesComponent,
+    ProductosComponent,
+    AgregarTarjetaComponent,
+    AgregarCuentaComponent
   ],
   imports: [
     BrowserModule,
