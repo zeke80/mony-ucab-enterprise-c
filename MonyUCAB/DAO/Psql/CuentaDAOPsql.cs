@@ -13,14 +13,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "idcuenta," +
-                    "idusuario," +
-                    "idtipocuenta," +
-                    "idbanco," +
-                    "numero " +
-                    "FROM cuenta " +
-                    "WHERE idcuenta = {0}", idCuenta);
+                comando.CommandText = string.Format("SELECT" + 
+                "CuentaDAOPsqlbuscarCuenta({0})", idCuenta);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 CuentaDTO cuentaDTO = null;
@@ -52,14 +46,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "idcuenta," +
-                    "idusuario," +
-                    "idtipocuenta," +
-                    "idbanco," +
-                    "numero " +
-                    "FROM cuenta " +
-                    "WHERE idusuario = {0}", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "CuentaDAOPsqlbuscarCuentas({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<CuentaDTO> cuentaDTOs = new List<CuentaDTO>();

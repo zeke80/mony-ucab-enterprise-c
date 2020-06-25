@@ -16,20 +16,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                "SELECT " +
-                    "us.idusuario," +
-                    "us.idTipoUsuario," +
-                    "us.idTipoIdentificacion," +
-                    "us.usuario," +
-                    "us.fecha_registro," +
-                    "us.nro_identificacion," +
-                    "us.email," +
-                    "us.telefono," +
-                    "us.direccion," +
-                    "us.estatus " +
-                "FROM Usuario AS us " +
-                "WHERE us.idUsuario = {0}", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "UsuarioDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -65,22 +53,8 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarPersona(string user, string contra){
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "us.idusuario," +
-                    "us.idtipousuario," +
-                    "us.idtipoidentificacion," +
-                    "us.usuario," +
-                    "us.fecha_registro," +
-                    "us.nro_identificacion," +
-                    "us.email," +
-                    "us.telefono," +
-                    "us.direccion," +
-                    "us.estatus " +
-                    "FROM usuario us, contrasena co, persona pe " +
-                    "WHERE us.idusuario = pe.idusuario " +
-                    "AND us.idusuario = co.idusuario " +
-                    "AND us.usuario = '{0}' " +
-                    "AND co.contrasena = '{1}'", user, contra);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarPersona('{0}', '{1}')", user, contra);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -115,22 +89,8 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarComercio(string user, string contra){
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "us.idusuario," +
-                    "us.idtipousuario," +
-                    "us.idtipoidentificacion," +
-                    "us.usuario," +
-                    "us.fecha_registro," +
-                    "us.nro_identificacion," +
-                    "us.email," +
-                    "us.telefono," +
-                    "us.direccion," +
-                    "us.estatus " +
-                    "FROM usuario us, contrasena co, comercio com " +
-                    "WHERE us.idusuario = com.idusuario " +
-                    "AND us.idusuario = co.idusuario " +
-                    "AND us.usuario = '{0}' " +
-                    "AND co.contrasena = '{1}'", user, contra);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarComercio('{0}','{1}')", user, contra);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -166,19 +126,8 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarPersonabyEmail(string email){
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "us.idusuario," +
-                    "us.idtipousuario," +
-                    "us.idtipoidentificacion," +
-                    "us.usuario," +
-                    "us.fecha_registro," +
-                    "us.nro_identificacion," +
-                    "us.email," +
-                    "us.telefono," +
-                    "us.direccion," +
-                    "us.estatus " +
-                    "FROM usuario us, contrasena co, persona pe " +
-                    "WHERE us.email = '{0}'", email);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarPersonabyEmail('{0}')", email);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -214,14 +163,8 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarUserAndPass(string email){
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "us.usuario, " +
-                    "con.contrasena " +
-                    "FROM usuario us, contrasena con " +
-                    "WHERE  us.idusuario = con.idusuario " +
-                    "and us.email = '{0}' " +
-                    "order by con.idcontrasena desc " +
-                    "limit 1", email);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarUserAndPass('{0}')", email);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -275,13 +218,9 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("UPDATE usuario SET " +
-                    "usuario = '{0}', " +
-                    "nro_identificacion = {1}, " +
-                    "email = '{2}', " +
-                    "telefono = '{3}', " +
-                    "direccion = '{4}' " +
-                    "WHERE idusuario = {5}", user, di, email, telf, dir, idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "UsuarioDAOPsqlajustar( {5}, '{0}', {1}, '{2}', '{3}', '{4}')", 
+                user, di, email, telf, dir, idUsuario);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

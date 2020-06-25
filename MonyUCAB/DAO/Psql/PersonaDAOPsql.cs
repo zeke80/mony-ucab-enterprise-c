@@ -13,10 +13,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("UPDATE persona SET " +
-                    "nombre = '{0}', " +
-                    "apellido = '{1}' " +
-                    "WHERE idusuario = {2}", nombre, apellido, idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "PersonaDAOPsqlajustar( {2}, '{0}', '{1}')", nombre, apellido, idUsuario);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -34,14 +32,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "per.idusuario," +
-                    "per.idestadocivil," +
-                    "per.nombre," +
-                    "per.apellido," +
-                    "per.fecha_nacimiento " +
-                    "FROM persona per " +
-                    "WHERE per.idusuario = {0}", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "PersonaDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 PersonaDTO personaDTO = null;

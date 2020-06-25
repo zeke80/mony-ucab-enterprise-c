@@ -15,16 +15,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "SELECT " +
-                        "rei.idreintegro," +
-                        "rei.idusuario_solicitante," +
-                        "rei.idusuario_receptor," +
-                        "rei.fecha_solicitud," +
-                        "rei.referencia," +
-                        "rei.estatus " +
-                    "FROM reintegro rei " +
-                    "WHERE rei.idreintegro = {0}", idReintegro);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarReintegro({0})", idReintegro);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 ReintegroDTO reintegroDTO = null;
@@ -57,18 +49,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "SELECT " +
-                        "rei.idreintegro," +
-                        "rei.idusuario_solicitante," +
-                        "rei.idusuario_receptor," +
-                        "rei.fecha_solicitud," +
-                        "rei.referencia," +
-                        "rei.estatus " +
-                    "FROM reintegro rei " +
-                    "WHERE rei.idusuario_solicitante = {0} " +
-                    "OR rei.idusuario_receptor = {0} " +
-                    "ORDER BY idreintegro DESC", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarReintegros({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();
@@ -101,17 +83,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "INSERT INTO reintegro(" +
-                    "idusuario_solicitante," +
-                    "idusuario_receptor," +
-                    "fecha_solicitud," +
-                    "referencia," +
-                    "estatus" +
-                    ") VALUES((SELECT idusuario_receptor FROM pago WHERE referencia = {0})," +
-                    "(SELECT idusuario_solicitante FROM pago WHERE referencia = {0})," +
-                    "now(),{0},'SOLICITADO')",
-                    referencia);
+                comando.CommandText = string.Format("SELECT" + 
+                "ReintegroDAOPsqlsolicitar('{0}')",referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -129,10 +102,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "UPDATE reintegro SET " +
-                    "estatus = 'ACEPTADO' " +
-                    "WHERE idreintegro = {0}", idReintegro);
+                comando.CommandText = string.Format("SELECT" + 
+                "ReintegroDAOPsqlaceptar({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -150,10 +121,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "UPDATE reintegro SET " +
-                    "estatus = 'RECHAZADO' " +
-                    "WHERE idreintegro = {0}", idReintegro);
+                comando.CommandText = string.Format("SELECT" + 
+                "ReintegroDAOPsqlrechazar({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

@@ -15,18 +15,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                "SELECT " +
-                "idpago," +
-                "idusuario_solicitante," +
-                "idusuario_receptor," +
-                "fecha_solicitus," +
-                "monto," +
-                "estatus," +
-                "referencia " +
-                "FROM pago " +
-                "WHERE idusuario_solicitante = {0} AND estatus = 'SOLICITADO' " +
-                "ORDER BY idpago DESC", idUsuarioSolicitante);
+                comando.CommandText = string.Format("SELECT" + 
+                "pagosSolicitadosSolicitante({0})", idUsuarioSolicitante);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -60,18 +50,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                "SELECT " +
-                "idpago," +
-                "idusuario_solicitante," +
-                "idusuario_receptor," +
-                "fecha_solicitus," +
-                "monto," +
-                "estatus," +
-                "referencia " +
-                "FROM pago " +
-                "WHERE idusuario_receptor = {0} AND estatus = 'SOLICITADO' " +
-                "ORDER BY idpago DESC", idUsuarioReceptor);
+                comando.CommandText = string.Format("SELECT" + 
+                "pagosSolicitadosReceptor({0})", idUsuarioReceptor);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -105,18 +85,9 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "insert into pago(" +
-                        "idusuario_solicitante," +
-                        "idusuario_receptor," +
-                        "fecha_solicitus," +
-                        "monto," +
-                        "estatus" +
-                    ") " +
-                    "values" +
-                    "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), now(), {2}, 'SOLICITADO') " +
-                    "RETURNING idpago",
-                    idUsuarioSolicitante, userReceptor, monto);
+                comando.CommandText = string.Format("SELECT" + 
+                "PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
+                idUsuarioSolicitante, userReceptor, monto);
                 conexion.Open();
                 int idPago = (int)comando.ExecuteScalar();
                 return idPago;
@@ -168,7 +139,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("update pago set estatus = 'PAGADO' where referencia = {0}", referencia);
+                comando.CommandText = string.Format("SELECT" + 
+                "actualizarSolicitudPagada( '{0}')", referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -186,10 +158,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "UPDATE pago SET " +
-                    "estatus = 'REINTEGRADO' " +
-                    "WHERE referencia = (SELECT referencia FROM reintegro WHERE idreintegro = {0})", idReintegro);
+                comando.CommandText = string.Format("SELECT" + 
+                "actualizarPagoReintegrado({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

@@ -16,17 +16,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "SELECT " +
-                        "opm.idoperacionesmonedero," +
-                        "opm.idusuario," +
-                        "opm.idtipooperacion," +
-                        "opm.monto," +
-                        "opm.fecha," +
-                        "opm.hora," +
-                        "opm.referencia " +
-                    "FROM operacionesmonedero opm " +
-                    "WHERE opm.idoperacionesmonedero = {0}", idOperacionMonedero);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarOperacionMonedero({0})", idOperacionMonedero);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 OperacionesMonederoDTO operacionesMonederoDTO = null;
@@ -60,18 +51,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "SELECT " +
-                        "opm.idoperacionesmonedero," +
-                        "opm.idusuario," +
-                        "opm.idtipooperacion," +
-                        "opm.monto," +
-                        "opm.fecha," +
-                        "opm.hora," +
-                        "opm.referencia " +
-                    "FROM operacionesmonedero opm " +
-                    "WHERE opm.idusuario = {0} " +
-                    "ORDER BY idoperacionesmonedero DESC", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarOperacionesMonederos({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();
@@ -105,18 +86,9 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "INSERT INTO operacionesmonedero(" +
-                        "idusuario," +
-                        "idtipooperacion," +
-                        "monto," +
-                        "fecha," +
-                        "hora," +
-                        "referencia" +
-                    ") " +
-                    "values" +
-                    "({0}, 2, {1}, now(), CURRENT_TIMESTAMP, {2})",
-                    idUsuario, monto, referencia);
+                comando.CommandText = string.Format("SELECT" + 
+                "registrarOperacionMonederoRemitente({0}, {1}, '{2}')",
+                idUsuario, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -134,18 +106,9 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "INSERT INTO operacionesmonedero(" +
-                        "idusuario," +
-                        "idtipooperacion," +
-                        "monto," +
-                        "fecha," +
-                        "hora," +
-                        "referencia" +
-                    ") " +
-                    "values" +
-                    "((SELECT idusuario FROM usuario WHERE usuario = '{0}'), 1, {1}, now(), CURRENT_TIMESTAMP, {2}) ",
-                    usuarioReceptor, monto, referencia);
+                comando.CommandText = string.Format("SELECT" + 
+                "registrarOperacionMonederoDestinatario('{0}', {1}, '{2}')",
+                usuarioReceptor, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

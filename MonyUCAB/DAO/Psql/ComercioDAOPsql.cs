@@ -16,11 +16,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("UPDATE comercio SET " +
-                    "razon_social = '{0}', " +
-                    "nombre_representante = '{1}', " +
-                    "apellido_representante = '{2}' " +
-                    "WHERE idusuario = {3}", razonSocial, nombre, apellido, idUsuario);
+                comando.CommandText = string.Format("SELECT " + 
+                "ComercioDAOPsqlAjustar( {3}, '{0}', '{1}', '{2}')", razonSocial, nombre, apellido, idUsuario);
                 conexion.Open();
                 comando.ExecuteNonQuery();                
             }
@@ -37,13 +34,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT " +
-                    "com.idusuario," +
-                    "com.razon_social," +
-                    "com.nombre_representante," +
-                    "com.apellido_representante " +
-                    "FROM comercio com " +
-                    "WHERE com.idusuario = {0}", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "ComercioDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 ComercioDTO comercioDTO = null;

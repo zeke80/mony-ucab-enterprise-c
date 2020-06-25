@@ -13,17 +13,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format(
-                "SELECT " +
-                    "opc.idoperaciontarjeta," +
-                    "opc.IdUsuarioReceptor," +
-                    "opc.idtarjeta," +
-                    "opc.fecha," +
-                    "opc.hora," +
-                    "opc.monto," +
-                    "opc.referencia " +
-                "FROM operaciontarjeta opc " +
-                "WHERE opc.idoperaciontarjeta = {0}", idOperacionTarjeta);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarOperacionTarjeta({0})", idOperacionTarjeta);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 OperacionTarjetaDTO operacionTarjetaDTO = null;
@@ -57,30 +48,8 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format(
-                "SELECT " +
-                    "opc.idoperaciontarjeta," +
-                    "opc.IdUsuarioReceptor," +
-                    "opc.idtarjeta," +
-                    "opc.fecha," +
-                    "opc.hora," +
-                    "opc.monto," +
-                    "opc.referencia " +
-                "FROM tarjeta tar, operaciontarjeta opc " +
-                "WHERE tar.idtarjeta = opc.idtarjeta " +
-                "AND tar.idusuario = {0} " +
-                "UNION " +
-                "SELECT " +
-                    "opc.idoperaciontarjeta," +
-                    "opc.IdUsuarioReceptor," +
-                    "opc.idtarjeta," +
-                    "opc.fecha," +
-                    "opc.hora," +
-                    "opc.monto," +
-                    "opc.referencia " +
-                "FROM operaciontarjeta opc " +
-                "WHERE opc.IdUsuarioReceptor = {0} " +
-                "ORDER BY idoperaciontarjeta DESC", idUsuario);
+                comando.CommandText = string.Format("SELECT" + 
+                "buscarOperacionesTarjetas({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
@@ -114,18 +83,9 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format(
-                    "insert into operaciontarjeta(" +
-                        "idtarjeta," +
-                        "idusuarioreceptor," +
-                        "fecha," +
-                        "hora," +
-                        "monto," +
-                        "referencia" +
-                    ") " +
-                    "values" +
-                    "({0}, (SELECT us.idusuario FROM usuario us WHERE us.usuario = '{1}'), now(), CURRENT_TIMESTAMP, {2}, {3})",
-                    idTarjeta, usuarioReceptor, monto, referencia);
+                comando.CommandText = string.Format("SELECT" + 
+                "OperacionTarjetaDAOPsqlrealizar({0}, '{1}', {2}, {3})",
+                idTarjeta, usuarioReceptor, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
