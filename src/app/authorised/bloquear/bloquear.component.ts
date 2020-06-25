@@ -19,7 +19,7 @@ export class BloquearComponent implements OnInit {
   consultarPagos(){
     this.s_bloquear.consultarPagos().subscribe(data =>{
       this.pagos = data;
-    });;
+    });
   }
 
 }
