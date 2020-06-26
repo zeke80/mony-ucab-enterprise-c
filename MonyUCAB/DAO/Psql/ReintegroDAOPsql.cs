@@ -15,8 +15,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarReintegro({0})", idReintegro);
+                comando.CommandText = string.Format("SELECT buscarReintegro({0})", idReintegro);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 ReintegroDTO reintegroDTO = null;
@@ -49,8 +48,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarReintegros({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT buscarReintegros({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();
@@ -83,8 +81,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "ReintegroDAOPsqlsolicitar('{0}')",referencia);
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlsolicitar('{0}')",referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -102,8 +99,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "ReintegroDAOPsqlaceptar({0})", idReintegro);
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlaceptar({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -121,8 +117,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "ReintegroDAOPsqlrechazar({0})", idReintegro);
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlrechazar({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

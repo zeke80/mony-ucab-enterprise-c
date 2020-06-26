@@ -15,8 +15,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "pagosSolicitadosSolicitante({0})", idUsuarioSolicitante);
+                comando.CommandText = string.Format("SELECT pagosSolicitadosSolicitante({0})", idUsuarioSolicitante);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -50,8 +49,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "pagosSolicitadosReceptor({0})", idUsuarioReceptor);
+                comando.CommandText = string.Format("SELECT pagosSolicitadosReceptor({0})", idUsuarioReceptor);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -85,8 +83,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
+                comando.CommandText = string.Format("SELECT PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
                 idUsuarioSolicitante, userReceptor, monto);
                 conexion.Open();
                 int idPago = (int)comando.ExecuteScalar();
@@ -139,8 +136,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "actualizarSolicitudPagada( '{0}')", referencia);
+                comando.CommandText = string.Format("SELECT actualizarSolicitudPagada( '{0}')", referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -158,8 +154,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "actualizarPagoReintegrado({0})", idReintegro);
+                comando.CommandText = string.Format("SELECT actualizarPagoReintegrado({0})", idReintegro);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

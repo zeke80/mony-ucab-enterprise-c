@@ -13,8 +13,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarTarjeta({0})", idTarjeta);
+                comando.CommandText = string.Format("SELECT buscarTarjeta({0})", idTarjeta);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 TarjetaDTO tarjetaDTO = null;
@@ -49,8 +48,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarTarjetas({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT buscarTarjetas({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<TarjetaDTO> tarjetaDTOs = new List<TarjetaDTO>();

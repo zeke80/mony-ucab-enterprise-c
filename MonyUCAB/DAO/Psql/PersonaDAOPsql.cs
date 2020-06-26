@@ -13,8 +13,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "PersonaDAOPsqlajustar( {2}, '{0}', '{1}')", nombre, apellido, idUsuario);
+                comando.CommandText = string.Format("SELECT PersonaDAOPsqlajustar( {2}, '{0}', '{1}')", nombre, apellido, idUsuario);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
@@ -32,8 +31,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "PersonaDAOPsqlbuscar({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT PersonaDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 PersonaDTO personaDTO = null;

@@ -16,8 +16,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarOperacionMonedero({0})", idOperacionMonedero);
+                comando.CommandText = string.Format("SELECT buscarOperacionMonedero({0})", idOperacionMonedero);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 OperacionesMonederoDTO operacionesMonederoDTO = null;
@@ -51,8 +50,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarOperacionesMonederos({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT buscarOperacionesMonederos({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();
@@ -86,8 +84,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "registrarOperacionMonederoRemitente({0}, {1}, '{2}')",
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoRemitente({0}, {1}, '{2}')",
                 idUsuario, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
@@ -106,8 +103,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "registrarOperacionMonederoDestinatario('{0}', {1}, '{2}')",
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoDestinatario('{0}', {1}, '{2}')",
                 usuarioReceptor, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();

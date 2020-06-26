@@ -16,8 +16,8 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT " + 
-                "ComercioDAOPsqlAjustar( {3}, '{0}', '{1}', '{2}')", razonSocial, nombre, apellido, idUsuario);
+                comando.CommandText = string.Format("SELECT ComercioDAOPsqlAjustar( {3}, '{0}', '{1}', '{2}')", 
+                razonSocial, nombre, apellido, idUsuario);
                 conexion.Open();
                 comando.ExecuteNonQuery();                
             }

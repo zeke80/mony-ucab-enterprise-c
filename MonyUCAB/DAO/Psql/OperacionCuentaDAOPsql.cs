@@ -13,8 +13,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarOperacionCuenta({0})", idOperacionCuenta);
+                comando.CommandText = string.Format("SELECT buscarOperacionCuenta({0})", idOperacionCuenta);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 OperacionCuentaDTO operacionCuentaDTO = null;
@@ -48,8 +47,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "buscarOperacionesCuentas({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT buscarOperacionesCuentas({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<OperacionCuentaDTO> operacionCuentaDTOs = new List<OperacionCuentaDTO>();
@@ -83,8 +81,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "OperacionCuentaDAOPsqlrealizar({0}, '{1}', {2}, {3})",
+                comando.CommandText = string.Format("SELECT OperacionCuentaDAOPsqlrealizar({0}, '{1}', {2}, {3})",
                 idCuenta, usuarioReceptor, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
