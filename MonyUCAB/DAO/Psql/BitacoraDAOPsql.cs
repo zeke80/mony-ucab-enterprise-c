@@ -11,24 +11,5 @@ namespace MonyUCAB.DAO
 {
     public class BitacoraDAOPsql : DAOPsql, IBitacoraDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<BitacoraDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

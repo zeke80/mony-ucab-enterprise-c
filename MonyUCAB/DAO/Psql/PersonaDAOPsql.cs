@@ -1,4 +1,5 @@
 ﻿using MonyUCAB.DTO;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,59 +9,64 @@ namespace MonyUCAB.DAO.Psql
 {
     public class PersonaDAOPsql : DAOPsql, IPersonaDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
         public void ajustar(int idUsuario, string nombre, string apellido)
         {
-            comando.CommandText = string.Format("UPDATE persona SET " +
-                "nombre = '{0}', " +
-                "apellido = '{1}' " +
-                "WHERE idusuario = {2}", nombre, apellido, idUsuario);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format("UPDATE persona SET " +
+                    "nombre = '{0}', " +
+                    "apellido = '{1}' " +
+                    "WHERE idusuario = {2}", nombre, apellido, idUsuario);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public PersonaDTO buscar(int idUsuario)
         {
-            comando.CommandText = string.Format("SELECT " +
-                "per.idusuario," +
-                "per.idestadocivil," +
-                "per.nombre," +
-                "per.apellido," +
-                "per.fecha_nacimiento " +
-                "FROM persona per " +
-                "WHERE per.idusuario = {0}", idUsuario);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            PersonaDTO personaDTO = null;
-            if (filas.Read())
+            try
             {
-                personaDTO = new PersonaDTO
+                comando.CommandText = string.Format("SELECT " +
+                    "per.idusuario," +
+                    "per.idestadocivil," +
+                    "per.nombre," +
+                    "per.apellido," +
+                    "per.fecha_nacimiento " +
+                    "FROM persona per " +
+                    "WHERE per.idusuario = {0}", idUsuario);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                PersonaDTO personaDTO = null;
+                if (filas.Read())
                 {
-                    Idusuario = filas.GetInt32(0),
-                    Idestadocivil = filas.GetInt32(1),
-                    Nombre = filas.GetString(2),
-                    Apellido = filas.GetString(3),
-                    Fecha_nacimiento = filas.GetDateTime(4),
-                };
+                    personaDTO = new PersonaDTO
+                    {
+                        Idusuario = filas.GetInt32(0),
+                        Idestadocivil = filas.GetInt32(1),
+                        Nombre = filas.GetString(2),
+                        Apellido = filas.GetString(3),
+                        Fecha_nacimiento = filas.GetDateTime(4),
+                    };
+                }
+                filas.Close();
+                return personaDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return personaDTO;
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

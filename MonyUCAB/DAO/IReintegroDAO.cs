@@ -14,7 +14,5 @@ namespace MonyUCAB.DAO
         void solicitar(int referencia);
         void aceptar(int idReintegro);
         void rechazar(int idReintegro);
-        void actualizar();
-        void eliminar();
     }
 }

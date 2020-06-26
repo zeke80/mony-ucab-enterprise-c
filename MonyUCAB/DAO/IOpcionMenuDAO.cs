@@ -9,9 +9,5 @@ namespace MonyUCAB.DAO
 {
     interface IOpcionMenuDAO
     {
-        List<OpcionMenuDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

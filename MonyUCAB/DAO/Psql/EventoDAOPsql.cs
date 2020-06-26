@@ -11,24 +11,5 @@ namespace MonyUCAB.DAO
 {
     public class EventoDAOPsql : DAOPsql, IEventoDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<EventoDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

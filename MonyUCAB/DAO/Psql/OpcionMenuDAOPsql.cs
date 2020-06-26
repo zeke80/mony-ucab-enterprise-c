@@ -11,24 +11,5 @@ namespace MonyUCAB.DAO
 {
     public class OpcionMenuDAOPsql : DAOPsql, IOpcionMenuDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<OpcionMenuDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

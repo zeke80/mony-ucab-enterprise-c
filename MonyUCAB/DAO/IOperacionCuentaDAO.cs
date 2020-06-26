@@ -11,9 +11,6 @@ namespace MonyUCAB.DAO
     {
         OperacionCuentaDTO buscarOperacionCuenta(int idOperacionCuenta);
         List<OperacionCuentaDTO> buscarOperacionesCuentas(int idUsuario);
-        void crear();
-        void actualizar();
-        void eliminar();
         void realizar(int idCuenta, string usuarioReceptor, float monto, int referencia);
     }
 }

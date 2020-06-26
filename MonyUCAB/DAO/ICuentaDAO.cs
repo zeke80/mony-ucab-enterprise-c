@@ -11,8 +11,5 @@ namespace MonyUCAB.DAO
     {
         CuentaDTO buscarCuenta(int idCuenta);
         List<CuentaDTO> buscarCuentas(int idUsuario);
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

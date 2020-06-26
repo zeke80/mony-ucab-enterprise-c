@@ -11,8 +11,5 @@ namespace MonyUCAB.DAO
     {
         TarjetaDTO buscarTarjeta(int idTarjeta);
         List<TarjetaDTO> buscarTarjetas(int idUsuario);
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

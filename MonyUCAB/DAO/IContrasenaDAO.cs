@@ -9,9 +9,5 @@ namespace MonyUCAB.DAO
 {
     interface IContrasenaDAO
     {
-        List<ContrasenaDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

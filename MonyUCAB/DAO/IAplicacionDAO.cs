@@ -9,9 +9,5 @@ namespace MonyUCAB.DAO
 {
     interface IAplicacionDAO
     {
-        List<AplicacionDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

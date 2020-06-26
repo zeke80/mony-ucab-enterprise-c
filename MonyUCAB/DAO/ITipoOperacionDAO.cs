@@ -9,9 +9,5 @@ namespace MonyUCAB.DAO
 {
     interface ITipoOperacionDAO
     {
-        List<TipoOperacionDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }
