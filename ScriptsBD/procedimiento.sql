@@ -814,16 +814,16 @@ DECLARE
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
     FROM usuario us, contrasena co, persona pe WHERE us.idusuario = pe.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
-        us_idusuario := reg.us.idusuario;
-        us_idtipousuario:= reg.us.idtipousuario;
-        us_idtipoidentificacion:= reg.us.idtipoidentificacion;
-        us_usuario:= reg.us.usuario;
-        us_fecha_registro:= reg.us.fecha_registro;
-        us_nro_identificacion := reg.us.nro_identificacion;
-        us_email:= reg.us.email;
-        us_telefono:= reg.us.telefono;
-        us_direccion:= reg.us.direccion;
-        us_estatus:= reg.us.estatus;
+        us_idusuario := reg.idusuario;
+        us_idtipousuario:= reg.idtipousuario;
+        us_idtipoidentificacion:= reg.idtipoidentificacion;
+        us_usuario:= reg.usuario;
+        us_fecha_registro:= reg.fecha_registro;
+        us_nro_identificacion := reg.nro_identificacion;
+        us_email:= reg.email;
+        us_telefono:= reg.telefono;
+        us_direccion:= reg.direccion;
+        us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
     RETURN;
@@ -841,16 +841,16 @@ DECLARE
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
     FROM usuario us, contrasena co, comercio com WHERE us.idusuario = com.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
-        us_idusuario := reg.us.idusuario;
-        us_idtipousuario:= reg.us.idtipousuario;
-        us_idtipoidentificacion:= reg.us.idtipoidentificacion;
-        us_usuario:= reg.us.usuario;
-        us_fecha_registro:= reg.us.fecha_registro;
-        us_nro_identificacion := reg.us.nro_identificacion;
-        us_email:= reg.us.email;
-        us_telefono:= reg.us.telefono;
-        us_direccion:= reg.us.direccion;
-        us_estatus:= reg.us.estatus;
+        us_idusuario := reg.idusuario;
+        us_idtipousuario:= reg.idtipousuario;
+        us_idtipoidentificacion:= reg.idtipoidentificacion;
+        us_usuario:= reg.usuario;
+        us_fecha_registro:= reg.fecha_registro;
+        us_nro_identificacion := reg.nro_identificacion;
+        us_email:= reg.email;
+        us_telefono:= reg.telefono;
+        us_direccion:= reg.direccion;
+        us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
     RETURN;
