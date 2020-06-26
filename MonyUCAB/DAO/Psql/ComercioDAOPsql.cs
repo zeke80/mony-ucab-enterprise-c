@@ -34,8 +34,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT" + 
-                "ComercioDAOPsqlbuscar({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT * FROM ComercioDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 ComercioDTO comercioDTO = null;

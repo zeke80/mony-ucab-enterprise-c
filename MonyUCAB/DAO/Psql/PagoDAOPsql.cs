@@ -15,7 +15,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT pagosSolicitadosSolicitante({0})", idUsuarioSolicitante);
+                comando.CommandText = string.Format("SELECT * FROM pagosSolicitadosSolicitante({0})", idUsuarioSolicitante);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -49,7 +49,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT pagosSolicitadosReceptor({0})", idUsuarioReceptor);
+                comando.CommandText = string.Format("SELECT * FROM pagosSolicitadosReceptor({0})", idUsuarioReceptor);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<PagoDTO> operacionPagoDTOs = new List<PagoDTO>();
@@ -83,7 +83,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
+                comando.CommandText = string.Format("SELECT * FROM PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
                 idUsuarioSolicitante, userReceptor, monto);
                 conexion.Open();
                 int idPago = (int)comando.ExecuteScalar();

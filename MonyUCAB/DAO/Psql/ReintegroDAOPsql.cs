@@ -15,7 +15,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT buscarReintegro({0})", idReintegro);
+                comando.CommandText = string.Format("SELECT * FROM buscarReintegro({0})", idReintegro);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 ReintegroDTO reintegroDTO = null;
@@ -48,7 +48,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT buscarReintegros({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT * FROM buscarReintegros({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();

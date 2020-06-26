@@ -16,7 +16,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT UsuarioDAOPsqlbuscar({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT * FROM UsuarioDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -52,7 +52,7 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarPersona(string user, string contra){
             try
             {
-                comando.CommandText = string.Format("SELECT buscarPersona('{0}', '{1}')", user, contra);
+                comando.CommandText = string.Format("SELECT * FROM buscarPersona('{0}', '{1}')", user, contra);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -87,7 +87,7 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarComercio(string user, string contra){
             try
             {
-                comando.CommandText = string.Format("SELECT buscarComercio('{0}','{1}')", user, contra);
+                comando.CommandText = string.Format("SELECT * FROM buscarComercio('{0}','{1}')", user, contra);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -123,7 +123,7 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarPersonabyEmail(string email){
             try
             {
-                comando.CommandText = string.Format("SELECT buscarPersonabyEmail('{0}')", email);
+                comando.CommandText = string.Format("SELECT * FROM buscarPersonabyEmail('{0}')", email);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;
@@ -159,7 +159,7 @@ namespace MonyUCAB.DAO
         public UsuarioDTO buscarUserAndPass(string email){
             try
             {
-                comando.CommandText = string.Format("SELECT buscarUserAndPass('{0}')", email);
+                comando.CommandText = string.Format("SELECT * FROM buscarUserAndPass('{0}')", email);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 UsuarioDTO usuarioDTO = null;

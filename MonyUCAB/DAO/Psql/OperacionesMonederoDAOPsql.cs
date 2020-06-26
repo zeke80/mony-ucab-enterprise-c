@@ -16,7 +16,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT buscarOperacionMonedero({0})", idOperacionMonedero);
+                comando.CommandText = string.Format("SELECT * FROM buscarOperacionMonedero({0})", idOperacionMonedero);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 OperacionesMonederoDTO operacionesMonederoDTO = null;
@@ -50,7 +50,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT buscarOperacionesMonederos({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT * FROM buscarOperacionesMonederos({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();

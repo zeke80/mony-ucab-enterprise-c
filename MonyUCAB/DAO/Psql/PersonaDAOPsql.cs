@@ -31,7 +31,7 @@ namespace MonyUCAB.DAO.Psql
         {
             try
             {
-                comando.CommandText = string.Format("SELECT PersonaDAOPsqlbuscar({0})", idUsuario);
+                comando.CommandText = string.Format("SELECT * FROM PersonaDAOPsqlbuscar({0})", idUsuario);
                 conexion.Open();
                 filas = comando.ExecuteReader();
                 PersonaDTO personaDTO = null;
