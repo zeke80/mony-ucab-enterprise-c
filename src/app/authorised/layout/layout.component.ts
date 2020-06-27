@@ -12,10 +12,6 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-        for (var i = 0; i < localStorage.length; i++){
-          console.log(localStorage.getItem(localStorage.key(i)));
-          // do something with ;
-      }
   }
 
 }
