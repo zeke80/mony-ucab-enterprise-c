@@ -43,26 +43,36 @@ export class PerfilService {
     let url = "http://monyucab.somee.com/api/Usuario/infoComercio";
 
     let id = parseInt(localStorage.getItem('idUsuario'), 10);
-
-
-    this.http.post(url, {'id' : id}).
-    toPromise().then((data : any) =>{
-    }
-    )
     
     return this.http.post(url, {'id' : id});
 
   }
 
-  ajustarPersona(){
+  ajustarPersona(nombre : string, apellido : string){
+    let url = "http://monyucab.somee.com/api/Usuario/ajustarPersona";
+
+    let id = parseInt(localStorage.getItem('idUsuario'), 10);
+    
+    return this.http.post(url, {'idUsuario' : id, 'nombre' : nombre, 'apellido' : apellido});
+  }
+
+  ajustarComercio(razonSocial : string, nombre : string, apellido : string){
+    let url = "http://monyucab.somee.com/api/Usuario/ajustarComercio";
+
+    let id = parseInt(localStorage.getItem('idUsuario'), 10);
+    
+    return this.http.post(url, {'idUsuario' : id, 'razonSocial': razonSocial,'nombre' : nombre, 'apellido' : apellido});
 
   }
 
-  ajustarComercio(){
+  ajustarUsuario(email : string, telefono : string, direccion : string, di : number){
+    let url = "http://monyucab.somee.com/api/Usuario/ajustarComercio";
 
-  }
+    let id = parseInt(localStorage.getItem('idUsuario'), 10);
 
-  ajustarUsuario(){
+    let user = localStorage.getItem('usuario');
+    
+    return this.http.post(url, {'idUsuario' : id, 'user': user,  'di': di ,'email' : email, 'telf' : telefono, 'dir' : direccion});
 
   }
 }

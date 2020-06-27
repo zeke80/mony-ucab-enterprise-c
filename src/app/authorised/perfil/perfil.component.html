@@ -10,11 +10,11 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <label for="nombre"><h4>Nombre</h4></label>
-                            <input type="text" class="form-control"  value = {{infoPersona.nombre}} [disabled] = "isDisabled">
+                            <input type="text" class="form-control" [(ngModel)] =  "infoPersona.nombre" value = {{infoPersona.nombre}} [disabled] = "isDisabled">
                         </div>
                         <div class="col-md-6">
                             <label for="apellido"><h4>Apellido</h4></label>
-                            <input type="text" class="form-control"  value = {{infoPersona.apellido}} [disabled] = "isDisabled">
+                            <input type="text" class="form-control" [(ngModel)]="infoPersona.apellido" value = {{infoPersona.apellido}} [disabled] = "isDisabled">
                         </div>
                     </div>
                     <br>
@@ -24,8 +24,7 @@
                     <div class="form-row">
                         <div class="col-md-12">
                             <label ><h4>Razón Social</h4></label>
-                            <input type="text" class="form-control"  value = {{infoComercio.razonSocial}} [disabled] = "isDisabled">
-                            
+                            <input type="text" class="form-control" [(ngModel)]="infoComercio.razonSocial" value = {{infoComercio.razonSocial}} [disabled] = "isDisabled">    
                         </div>
                     </div>
                 </div>
@@ -33,22 +32,19 @@
 
                 <div class="form-row">
                     <div class="col-md-1">
-                        <label for="tipo_id"><h4>Nro.</h4></label>
-                        <select id="tipo_id" class="form-control" [(ngModel)] = "tipoIdentificacion" [disabled] = "isDisabled">
-                            <option [ngValue]="tipoId" *ngIf = "infoUsuario.idTipoIdentificacion != tipoId">1</option>
-                            <option [ngValue]="tipoId" *ngIf = "infoUsuario.idTipoIdentificacion != tipoId">2</option>
-                            <option [ngValue]="tipoId" *ngIf = "infoUsuario.idTipoIdentificacion != tipoId">3</option>
-                            <option [ngValue]="tipoId" *ngIf = "infoUsuario.idTipoIdentificacion != tipoId">4</option>
+                        <label><h4>Nro.</h4></label>
+                        <select class="form-control" disabled>
+                            <option>{{infoUsuario.idTipoIdentificacion}}</option>
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label ><h4>Identificación</h4></label>
-                        <label ><h4> </h4></label>
-                        <input type="text" class="form-control"  value={{infoUsuario.nroIdentificacion}} [disabled] = "isDisabled">
+                        <label><h4>Identificación</h4></label>
+                        <label><h4> </h4></label>
+                        <input type="text" class="form-control" [(ngModel)]="infoUsuario.nroIdentificacion" value = {{infoUsuario.nroIdentificacion}} [disabled] = "isDisabled">
                     </div>
                     <div class="col-md-6">
                         <label ><h4>Correo Electrónico</h4></label>
-                        <input type="text" class="form-control" value={{infoUsuario.email}} [disabled] = "isDisabled">
+                        <input type="text" class="form-control" [(ngModel)]="infoUsuario.email" value={{infoUsuario.email}} [disabled] = "isDisabled">
                     </div>
                 </div>
                 <br>
@@ -57,15 +53,12 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <label ><h4>Fecha Nacimiento</h4></label>
-                            <input type="date" class="form-control"  [value]="infoPersona.fechaNacimiento | date:'yyyy-MM-dd' " [disabled] = "isDisabled">
+                            <input type="date" class="form-control" [value]="infoPersona.fechaNacimiento | date:'yyyy-MM-dd' " disabled>
                         </div>
                         <div class="col-md-6">
                             <label ><h4>Estado Civil</h4></label>
-                            <select class="form-control" [(ngModel)]="estadoCivil" [disabled] = "isDisabled">
-                                <option [ngValue]="estado" *ngIf = "infoPersona.estadoCivil != estado">1</option>
-                                <option [ngValue]="estado" *ngIf = "infoPersona.estadoCivil != estado">2</option>
-                                <option [ngValue]="estado" *ngIf = "infoPersona.estadoCivil != estado">3</option>
-                                <option [ngValue]="estado" *ngIf = "infoPersona.estadoCivil != estado">4</option>
+                            <select class="form-control" disabled>
+                                <option>{{infoPersona.estadoCivil}}</option>
                             </select>
                         </div>
 
@@ -76,7 +69,7 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <label><h4>Teléfono</h4></label>
-                        <input type="text" class="form-control" value={{infoUsuario.telefono}} [disabled] = "isDisabled">
+                        <input type="text" class="form-control" [(ngModel)]="infoUsuario.telefono" value={{infoUsuario.telefono}} [disabled] = "isDisabled">
                     </div>
                 </div>
                 <br>
@@ -84,7 +77,7 @@
                 <div class="form-row">
                     <div class="col-md-12">
                         <label ><h4>Dirección</h4></label>
-                        <input type="text" class="form-control" value = {{infoUsuario.direccion}} [disabled] = "isDisabled">
+                        <input type="text" class="form-control" [(ngModel)]="infoUsuario.direccion" value = {{infoUsuario.direccion}} [disabled] = "isDisabled">
                     </div>
                 </div>
                 <br>
@@ -96,11 +89,11 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <label ><h4>Nombre</h4></label>
-                            <input type="text" class="form-control"value = {{infoComercio.nombreRepresentante}} [disabled] = "isDisabled">
+                            <input type="text" class="form-control" [(ngModel)]="infoComercio.nombreRepresentante" value = {{infoComercio.nombreRepresentante}} [disabled] = "isDisabled">
                         </div>
                         <div class="col-md-6">
                             <label><h4>Apellido</h4></label>
-                            <input type="text" class="form-control" value = {{infoComercio.apellidoRepresentante}} [disabled] = "isDisabled">
+                            <input type="text" class="form-control" [(ngModel)]="infoComercio.apellidoRepresentante" value = {{infoComercio.apellidoRepresentante}} [disabled] = "isDisabled">
                         </div>
                     </div>
                     <br>
@@ -109,7 +102,7 @@
                 <div class="form-group">
                     <div class="col-xl-12">
                         <button class="btn btn-primary float-right" type="submit" (click) ="editar()" [disabled] = "!isDisabled" *ngIf = "isDisabled">Editar</button>
-                        <button type="button" class="btn btn-success float-right mr-2" *ngIf = "!isDisabled">Guardar</button>
+                        <button type="button" class="btn btn-success float-right mr-2" *ngIf = "!isDisabled" (click) = "guardarCambios()">Guardar</button>
                         <button type="button" class="btn btn-danger float-right mr-2" (click) ="cancelar()" *ngIf = "!isDisabled">Cancelar</button>
                     </div>
                 </div>

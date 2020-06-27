@@ -40,7 +40,6 @@ export class PerfilComponent implements OnInit {
   };
   estado : number;
   estadoCivil : number;
-  tipoIdentificacion : number;
   tipoId : number;
   isDisabled : boolean = true;
 
@@ -104,4 +103,31 @@ export class PerfilComponent implements OnInit {
   cancelar(){
     this.isDisabled = true;
   }
+
+  guardarCambios(){
+    this.s_perfil.ajustarUsuario(
+      this.infoUsuario.email, this.infoUsuario.telefono, this.infoUsuario.direccion, this.infoUsuario.nroIdentificacion)
+      .subscribe((data : any) =>{
+    });
+
+
+    if(this.infoUsuario.idTipoUsuario == 1){      
+      this.s_perfil.ajustarPersona(this.infoPersona.nombre, this.infoPersona.apellido).subscribe((data:any) => 
+      {
+        if (data ==true)
+        alert('Cambios guardados');
+      })
+    }
+    else if (this.infoUsuario.idTipoUsuario == 2) {
+      this.s_perfil.ajustarComercio(this.infoComercio.razonSocial, this.infoComercio.nombreRepresentante, this.infoComercio.apellidoRepresentante)
+      .subscribe((data : any) =>{
+          if (data ==true)
+          alert('Cambios guardados');
+      });
+    }
+    
+
+    this.cancelar();
+  }
+
 }
