@@ -27,21 +27,13 @@ export class LoginService {
 
   loginPersona(usuario:String, contrasena:String){
     let url= "http://monyucab.somee.com/api/Usuario/loginPersona"
-    this.http.post(url, 
-      {user: usuario, contra: contrasena}).
-      toPromise().then((data : any) =>{
-      }
-      )
+
       return this.http.post(url, {user: usuario, contra: contrasena});
   }
 
   loginComercio(usuario:String, contrasena:String){
     let url= "http://monyucab.somee.com/api/Usuario/loginComercio"
-    this.http.post(url, 
-      {user: usuario, contra: contrasena}).
-      toPromise().then((data : any) =>{
-      }
-      )
+
 
       return this.http.post(url, {user: usuario, contra: contrasena});
   }

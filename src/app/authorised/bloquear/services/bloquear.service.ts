@@ -15,11 +15,6 @@ export class BloquearService {
 
     let id = parseInt(localStorage.getItem('idUsuario'), 10);
 
-    this.http.post(url, {'id' : id}).
-    toPromise().then((data : any) =>{
-    }
-    )
-    
     return this.http.post(url, {'id' : id});
   }
 }
