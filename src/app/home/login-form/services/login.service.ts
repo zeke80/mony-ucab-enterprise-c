@@ -42,6 +42,7 @@ export class LoginService {
       toPromise().then((data : any) =>{
       }
       )
+
       return this.http.post(url, {user: usuario, contra: contrasena});
   }
 
@@ -56,8 +57,6 @@ export class LoginService {
      telefono : string,
      direccion : string,
      estatus : number){
-
-     // let fecha = fechaRegistro.split('T',1).toString();
 
         localStorage.setItem('idUsuario', idUsuario.toString());
         localStorage.setItem('idTipoUsuario', idTipoUsuario.toString());
