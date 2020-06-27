@@ -29,29 +29,52 @@ export class PagoPage implements OnInit {
 
   realizarSolicitud( f: NgForm) {
     let cant: number = + f.value.monto;
-    this._pagoSercives.solicitudPago(this.usuario.idUsuario, f.value.user, cant )
-        .subscribe((data: any) => {
-          this.realizarSol();
-        },
-        (error: HttpErrorResponse) => {
-          if (error.status === 409) {
-            this.AlertServer();
-          }
-          else {
-            this.AlertaError();
-          }
-        });
+    if (this.usuario.usuario === f.value.user) {
+      this.pagoError()
+    }
+    else{
+      this._pagoSercives.solicitudPago(this.usuario.idUsuario, f.value.user, cant )
+      .subscribe((data: any) => {
+        this.realizarSol();
+      },
+      (error: HttpErrorResponse) => {
+        if (error.status === 409) {
+          this.AlertaError();
+        }
+        else {
+          this.AlertaError();
+        }
+      });
+    }
+    
   }
 
   async realizarSol() {
     const alertElement = await this.alert.create({
-      header: 'Notificacion',
-      message: 'se manda la solicitud de pago',
+      header: 'Transaccion exitosa',
+      message: 'se mando la solicitud de pago',
       buttons: [
         {
           text: 'Aceptar',
           handler: () => {
             this.router.navigate(['/tabs/operaciones']);
+          }
+        }
+      ]
+    });
+
+    await alertElement.present();
+
+  }
+
+  async pagoError() {
+    const alertElement = await this.alert.create({
+      header: 'Error',
+      message: 'no se puede solicitar un pago a uno mismo',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
           }
         }
       ]

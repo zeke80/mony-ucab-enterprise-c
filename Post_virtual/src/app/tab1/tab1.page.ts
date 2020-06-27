@@ -38,13 +38,12 @@ export class Tab1Page implements OnInit {
 
     this._comercioService.ajustarComercio(this.usuario.idUsuario, f.value.razon, f.value.nombre, f.value.apellido)
         .subscribe((data: any) => {
-          console.log('se modifico el comercio');
         });
 
     this._usuarioService.ajustarUsurio(this.usuario.idUsuario, f.value.user, ident, f.value.email, f.value.telefono,
                                         f.value.direccion )
         .subscribe((data: any) => {
-          console.log('se modifico el usuario');
+          this.modificado();
         },
         (error: HttpErrorResponse) => {
             this.AlertaError();
@@ -67,5 +66,23 @@ export class Tab1Page implements OnInit {
     await alertElement.present();
 
   }
+
+  async modificado() {
+    const alertElement = await this.alert.create({
+      header: 'Exito al modificar usuario',
+      message: 'se modificaron los datos satisfactoriamente',
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+          }
+        },
+      ]
+    });
+
+    await alertElement.present();
+
+  }
+
 
 }
