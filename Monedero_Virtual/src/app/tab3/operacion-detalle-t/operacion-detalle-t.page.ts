@@ -70,6 +70,7 @@ export class OperacionDetalleTPage implements OnInit {
         this.aux = true;
       }
     });
+
   }
 
   SolicitarReintegro() {

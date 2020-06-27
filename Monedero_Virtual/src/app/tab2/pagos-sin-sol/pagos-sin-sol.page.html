@@ -62,7 +62,7 @@
         <ion-item *ngIf="auxT">
             <ion-label>Escoja una tarjeta</ion-label>
             <ion-select [(ngModel)]="tarjeta" (ionChange)="obtenerIDtajeta()">
-                <ion-select-option value="{{metodo.idtarjeta}}" *ngFor="let metodo of metodoPagoT">Nro tarjeta: {{metodo.numero}}</ion-select-option>
+                <ion-select-option value="{{metodo.idtarjeta}}" *ngFor="let metodo of metodoPagoT">{{metodo.numero}}</ion-select-option>
             </ion-select>
         </ion-item>
         <br>
@@ -75,7 +75,7 @@
         <ion-item *ngIf="auxC">
             <ion-label>Escoja una cuenta</ion-label>
             <ion-select [(ngModel)]="cuenta" (ionChange)="obtenerIDcuenta()">
-                <ion-select-option value="{{metodo.idCuenta}}" *ngFor="let metodo of metodoPagoC">Nro cuenta: {{metodo.numero}}</ion-select-option>
+                <ion-select-option value="{{metodo.idCuenta}}" *ngFor="let metodo of metodoPagoC">{{metodo.numero}}</ion-select-option>
             </ion-select>
         </ion-item>
         <br>

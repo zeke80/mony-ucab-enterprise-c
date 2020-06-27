@@ -17,7 +17,7 @@
                 <ion-row>
                     <ion-col>
                         <h1 class="ion-text-center">Saldo disponible:</h1>
-                        <h2 class="ion-text-center">{{saldo}}</h2>
+                        <h2 class="ion-text-center">$ {{saldo}}</h2>
                     </ion-col>
                 </ion-row>
             </ion-card-header>
@@ -41,10 +41,14 @@
                     <ion-item *ngFor="let pago of pagos" [routerLink]="['/tabs/cuenta/solicitudPago', pago.idpago]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Pago: <strong>{{pago.idpago}}</strong>, estatus: <strong>{{pago.estatus}}</strong>
+
                             <h1>
-                                Monto: {{pago.monto}}
+                                $ {{pago.monto}}
                             </h1>
+                            <h2>
+                                Fecha: {{pago.fecha_solicitus}}
+                            </h2>
+
                         </ion-label>
                     </ion-item>
                 </ion-list>
@@ -60,7 +64,7 @@
                     <ion-item *ngFor="let cuenta of cuentas">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Numero de cuenta: <strong>{{cuenta.numero}}</strong>
+                            <strong>{{cuenta.numero}}</strong>
                         </ion-label>
                     </ion-item>
                 </ion-list>
@@ -75,7 +79,7 @@
                     <ion-item *ngFor="let tarjeta of tarjetas">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Numero de tarjeta: <strong>{{tarjeta.numero}}</strong>
+                            <strong>{{tarjeta.numero}}</strong>
                         </ion-label>
                     </ion-item>
                 </ion-list>

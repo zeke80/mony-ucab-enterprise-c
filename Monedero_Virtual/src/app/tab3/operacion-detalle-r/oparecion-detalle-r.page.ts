@@ -15,6 +15,7 @@ export class OparecionDetalleRPage implements OnInit {
   operacion: Reintegro;
   userS: string;
   userR: string;
+  fecha: any;
 
   constructor(
     public _activatedRoute: ActivatedRoute,
@@ -39,6 +40,7 @@ export class OparecionDetalleRPage implements OnInit {
     .subscribe((data: any) => {
       this.userR = data.usuario;
     });
+    this.fecha = this.operacion.fecha_solicitud.split('T', 1 );
   }
 
 }

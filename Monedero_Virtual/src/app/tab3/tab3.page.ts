@@ -34,6 +34,7 @@ export class Tab3Page implements OnInit{
     this.monederos = this._operacionServices.getoperacionesMonederoVacio();
     this.reintegros = this._operacionServices.getreintegrosVacio();
     this.usuario = this._usuarioServices.getUsuario();
+    console.log(this.usuario.idUsuario)
     this._operacionServices.getoperacionesCuenta(this.usuario.idUsuario)
         .subscribe((data: any) => {
           this.cuentas = data;
@@ -43,6 +44,7 @@ export class Tab3Page implements OnInit{
     this._operacionServices.getoperacionesTarjeta(this.usuario.idUsuario)
         .subscribe((data: any) => {
           this.tarjetas = data;
+          console.log(this.tarjetas);
           this._operacionServices.guardarTarjetas(this.tarjetas);
 
         });

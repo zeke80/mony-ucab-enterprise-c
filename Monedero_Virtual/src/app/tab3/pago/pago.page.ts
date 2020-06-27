@@ -45,7 +45,7 @@ export class PagoPage implements OnInit {
         },
         (error: HttpErrorResponse) => {
           if (error.status === 409) {
-            this.AlertServer();
+            this.AlertaError();
           }
           else {
             this.AlertaError();

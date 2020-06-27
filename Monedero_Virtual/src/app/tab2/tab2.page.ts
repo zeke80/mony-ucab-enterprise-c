@@ -64,6 +64,7 @@ export class Tab2Page implements OnInit{
       (error: HttpErrorResponse) => {
           this.AlertServer();
       });
+    
   }
 
   solicitudPago() {

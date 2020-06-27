@@ -11,6 +11,42 @@
 
     <div class="contaier-monto">
 
+        <ion-card>
+            <ion-card-header>
+                <h2>Operaciones del monedero</h2>
+            </ion-card-header>
+            <ion-card-contend>
+                <ion-list>
+                    <ion-item *ngFor="let monedero of monederos" [routerLink]="['/tabs/operaciones/monedero', monedero.idoperacionesmonedero]">
+                        <ion-icon slot="start" name="reader-outline"></ion-icon>
+                        <div *ngIf="monedero.idtipooperacion === 2">
+                            <ion-label>
+                                <h1>
+                                    $ -{{monedero.monto}}
+                                </h1>
+                                <h2>
+                                    Fecha: {{monedero.fecha.split('T', 1 )}}
+                                </h2>
+                                Hora: {{monedero.hora.hours}}:{{monedero.hora.minutes}}
+                            </ion-label>
+                        </div>
+                        <div *ngIf="monedero.idtipooperacion === 1">
+                            <ion-label>
+                                <h1>
+                                    $ +{{monedero.monto}}
+                                </h1>
+                                <h2>
+                                    Fecha: {{monedero.fecha.split('T', 1 )}}
+                                </h2>
+                                Hora: {{monedero.hora.hours}}:{{monedero.hora.minutes}}
+                            </ion-label>
+                        </div>
+
+                    </ion-item>
+                </ion-list>
+            </ion-card-contend>
+        </ion-card>
+
 
         <ion-card>
             <ion-card-header>
@@ -22,35 +58,21 @@
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
 
-                            Operacion: {{cuenta.idoperacioncuenta}}
-
                             <h1>
-                                Monto: <strong>{{cuenta.monto}}</strong>
+                                $ -{{cuenta.monto}}
                             </h1>
+                            <h2>
+                                Fecha: {{cuenta.fecha.split('T', 1 )}}
+                            </h2>
+
+                            Hora: {{cuenta.hora.hours}}:{{cuenta.hora.minutes}}
                         </ion-label>
                     </ion-item>
                 </ion-list>
             </ion-card-contend>
         </ion-card>
 
-        <ion-card>
-            <ion-card-header>
-                <h2>Operaciones del monedero</h2>
-            </ion-card-header>
-            <ion-card-contend>
-                <ion-list>
-                    <ion-item *ngFor="let monedero of monederos" [routerLink]="['/tabs/operaciones/monedero', monedero.idoperacionesmonedero]">
-                        <ion-icon slot="start" name="reader-outline"></ion-icon>
-                        <ion-label>
-                            Operacion {{monedero.idoperacionesmonedero}}
-                            <h1>
-                                Monto: <strong>{{monedero.monto}}</strong>
-                            </h1>
-                        </ion-label>
-                    </ion-item>
-                </ion-list>
-            </ion-card-contend>
-        </ion-card>
+
 
         <ion-card>
             <ion-card-header>
@@ -61,11 +83,17 @@
                     <ion-item *ngFor="let tarjeta of tarjetas" [routerLink]="['/tabs/operaciones/tarjeta', tarjeta.idoperaciontarjeta]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Operacion: {{tarjeta.idoperaciontarjeta}}
+
                             <h1>
-                                Monto: <strong>{{tarjeta.monto}}</strong>
+                                $ -{{tarjeta.monto}}
                             </h1>
+                            <h2>
+                                Fecha: {{tarjeta.fecha.split('T', 1 )}}
+                            </h2>
+
+                            Hora: {{tarjeta.hora.hours}}:{{tarjeta.hora.minutes}}
                         </ion-label>
+
                     </ion-item>
                 </ion-list>
             </ion-card-contend>
@@ -80,11 +108,12 @@
                     <ion-item *ngFor="let reintegro of reintegros" [routerLink]="['/tabs/operaciones/reintegro', reintegro.idreintegro]">
                         <ion-icon slot="start" name="reader-outline"></ion-icon>
                         <ion-label>
-                            Reintegro: {{reintegro.idreintegro}}
-                            <h1>
-                                Estatus: <strong>{{reintegro.estatus}}</strong>
-                            </h1>
+                            Estatus: {{reintegro.estatus}}
+                            <h2>
+                                Fecha: {{reintegro.fecha_solicitud.split('T', 1 )}}
+                            </h2>
                         </ion-label>
+
                     </ion-item>
                 </ion-list>
             </ion-card-contend>

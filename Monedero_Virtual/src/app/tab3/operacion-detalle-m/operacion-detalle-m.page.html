@@ -17,9 +17,26 @@
             </ion-card-header>
             <ion-card-contend>
                 <ion-item>
-                    <ion-label position="floating"><strong>Monto:</strong></ion-label>
+
                     <br>
-                    <h4 class="ion-text-center">{{operacion.monto}}</h4>
+                    <div *ngIf="operacion.idtipooperacion === 2">
+                        <ion-label position="floating"><strong>Monto:</strong></ion-label>
+                        <br>
+                        <h4>
+                            $ -{{operacion.monto}}
+                        </h4>
+
+
+                    </div>
+                    <div *ngIf="operacion.idtipooperacion === 1">
+                        <ion-label position="floating"><strong>Monto:</strong></ion-label>
+                        <br>
+                        <h4>
+                            $ +{{operacion.monto}}
+                        </h4>
+
+
+                    </div>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating"><strong>Fecha:</strong></ion-label>

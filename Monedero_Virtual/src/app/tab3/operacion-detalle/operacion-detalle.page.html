@@ -17,16 +17,16 @@
                 <h4 class="ion-text-center"><strong>Detalle de la operación</strong></h4>
             </ion-card-header>
             <ion-card-contend>
-                <ion-item>
-                    <ion-label position="floating"><strong>Usuario que realizo la operacion:</strong></ion-label>
-                    <br>
-                    <h4 class="ion-text-center">{{userR}}</h4>
-                </ion-item>
-                <ion-item>
-                    <ion-label position="floating"><strong>Usuario receptor de la operacion:</strong></ion-label>
-                    <br>
-                    <h4 class="ion-text-center">{{user}}</h4>
-                </ion-item>
+                <div *ngIf="user != userR">
+                    <ion-item>
+                        <ion-label position="floating"><strong>Usuario receptor:</strong></ion-label>
+                        <br>
+                        <h4 class="ion-text-center">{{user}}</h4>
+                    </ion-item>
+                </div>
+                <div *ngIf="user === userR">
+                    <h4 class="ion-text-center"><strong>Recarga</strong></h4>
+                </div>
                 <ion-item>
                     <ion-label position="floating"><strong>Numero de cuenta:</strong></ion-label>
                     <br>
@@ -35,7 +35,7 @@
                 <ion-item>
                     <ion-label position="floating"><strong>Monto:</strong></ion-label>
                     <br>
-                    <h4 class="ion-text-center">{{operacion.monto}}</h4>
+                    <h4 class="ion-text-center">$ -{{operacion.monto}}</h4>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating"><strong>Fecha:</strong></ion-label>
