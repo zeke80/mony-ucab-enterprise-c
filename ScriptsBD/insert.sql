@@ -1,178 +1,82 @@
-insert into tipousuario(
-    descripcion,
-    estatus
-)
+insert into tipousuario(descripcion,estatus)
 values
-('1',1);
+('COMERCIO',1),
+('PERSONA',2);
 
-insert into tipoidentificacion(
-    codigo,
-    descripcion,
-    estatus
-)
+insert into tipoidentificacion(codigo,descripcion,estatus)
 values
-(1,'1',1);
+(1,'1',1),
+(2,'2',2),
+(3,'3',3),
+(4,'4',4);
 
-insert into usuario(
-    idtipousuario,
-    idtipoidentificacion,
-    usuario,
-	fecha_registro,
-    nro_identificacion,
-    email,
-    telefono,
-    direccion,
-    estatus
-)
+insert into usuario(idtipousuario,idtipoidentificacion,usuario,fecha_registro,nro_identificacion,email,telefono,direccion,estatus)
 values
-(1,1,'user1',to_date('11-11-1111','dd-MM-yyyy'),1,'1','1','1',1),
-(1,1,'user2',to_date('11-11-1111','dd-MM-yyyy'),2,'2','2','2',1);
+(1,1,'JUANPABLOF',to_date('06-02-2018','dd-MM-yyyy'),1,'JUANPABLOFER@GMAIL.COM','04143255886','DE SANTO TOMAS A PALO BLANCO, SAN JOSE, VENEZUELA',1),
+(1,2,'BRAYANDS',to_date('30-11-2018','dd-MM-yyyy'),2,'BRAYANDESOUSA@GMAIL.COM','04243698514','AV FERNANDO PENALVERT, SAN BERNARDINO, VENEZUELA',1),
+(2,3,'ANAPACHECO',to_date('16-12-2019','dd-MM-yyyy'),3,'ANAPACHECO92@GMAIL.COM','04161478523','DE TORO A CARDONE, LA PASTORA, VENEZUELA',1),
+(2,4,'ADRAIANAJACO',to_date('31-07-2019','dd-MM-yyyy'),4,'JACOMEADRIANA@GMAIL.COM','04122581436','AV MICHELENA, SAN BERNARDINO, VENEZUELA',1);
 
-insert into contrasena(
-	idusuario,
-	contrasena,
-	intentos_fallidos,
-	estatus
-)
+insert into contrasena(idusuario,contrasena,intentos_fallidos,estatus)
 values
-(1,'1',0,1),
-(2,'2',0,1);
+(1,'JUANPA10263',0,1),
+(1,'FERREIRA0236',0,1),
+(2,'DS140203',0,1),
+(2,'DS965231',0,1),
+(3,'AP148752',0,1),
+(3,'PACHECO9036',0,1),
+(4,'JACO02014',0,1),
+(4,'ADRIANITA0136',0,1);
 
-insert into comercio(
-	idusuario,
-    razon_social,
-    nombre_representante,
-    apellido_representante
-)
+insert into estadocivil(descripcion,codigo,estatus)
 values
-(1,'1','1','1');
+('SOLTERO','1',1),
+('CASADO','2',1);
 
-insert into estadocivil(
-	descripcion,
-	codigo,
-	estatus
-)
-values
-('1','1',1);
-
-insert into persona(
-	idusuario,
-    idestadocivil,
-    nombre,
-	apellido,
-    fecha_nacimiento
-)
+insert into persona(idusuario,idestadocivil,nombre,apellido,fecha_nacimiento)
 values
 (2,1,'1','1',to_date('11-11-1111','dd-MM-yyyy'));
 
-insert into tipocuenta(
-	descripcion,
-	estatus
-)
+insert into tipocuenta(descripcion,estatus)
 values
-('1',1);
+('AHORRO',1),
+('CORRIENTE',1);
 
-insert into banco(
-	nombre,
-	estatus
-)
+insert into banco(nombre,estatus)
 values
-('1',1);
+('MERCANTIL',1),
+('BOD',1),
+('BANCO DE VENEZUELA',1),
+('BANCARIBE',1),
+('BANCO PLAZA',1),
+('BANCO BICENTENARIO',1);
 
-insert into cuenta(
-	idusuario,
-	idtipocuenta,
-	idbanco,
-	numero
-)
+insert into cuenta(idusuario,idtipocuenta,idbanco,numero)
 values
-(1,1,1,'1'),
-(1,1,1,'1');
+(1,1,1,'5018782000003652'),
+(1,2,2,'1424662365639532'),
+(2,1,3,'1255896365422665'),
+(2,2,3,'7852366236652236'),
+(3,2,4,'8962236222265123'),
+(4,1,6,'1221221122100224');
 
-insert into tipotarjeta(
-	descripcion,
-	estatus
-)
+insert into tipotarjeta(descripcion,estatus)
 values
-('1',1);
+('DEBITO',1),
+('CREDITO',2);
 
-insert into tarjeta(
-	idusuario,
-	idtipotarjeta,
-	idbanco,
-	numero,
-	fecha_vencimiento,
-	cvc,
-	estatus
-)
+insert into tarjeta(idusuario,idtipotarjeta,idbanco,numero,fecha_vencimiento,cvc,estatus)
 values
-(2,1,1,1,to_date('11-11-1111','dd-MM-yyyy'),1,1),
-(2,1,1,1,to_date('11-11-1111','dd-MM-yyyy'),1,1);
+(1,1,1,5015500236655898,to_date('15-07-2020','dd-MM-yyyy'),114,1),
+(1,2,4,1236589652321457,to_date('02-02-2021','dd-MM-yyyy'),889,1),
+(2,2,1,1478536985022561,to_date('12-08-2026','dd-MM-yyyy'),036,1),
+(2,2,1,1258935550033665,to_date('12-08-2020','dd-MM-yyyy'),991,1),
+(3,2,1,3202563694422554,to_date('24-08-2023','dd-MM-yyyy'),361,1),
+(3,1,1,1033265897400069,to_date('18-02-2024','dd-MM-yyyy'),032,1),
+(4,1,1,1256955426652366,to_date('02-09-2028','dd-MM-yyyy'),785,1),
+(4,1,1,1188568422336655,to_date('20-01-2022','dd-MM-yyyy'),742,1);
 
-/*insert into operaciontarjeta(
-	idusuarioreceptor,
-	idtarjeta,
-	fecha,
-	hora,
-	monto,
-	referencia
-)
-values
-(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(1,1,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);*/
-
-/*insert into operacioncuenta(
-	idcuenta,
-	idusuarioreceptor,
-	fecha,
-	hora,
-	monto,
-	referencia
-)
-values
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1),
-(2,2,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1.11,1);*/
-
-insert into tipooperacion(
-	descripcion, 
-	estatus
-)
+insert into tipooperacion(descripcion,estatus)
 values
 ('DEBITO', 1),
 ('CREDITO', 1);
-
-/*insert into operacionesmonedero(
-	idusuario,
-	idtipooperacion,
-	monto,
-	fecha,
-	hora,
-	referencia
-)
-values
-(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
-(1,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1),
-(2,1,1.11,to_date('11-11-1111','dd-MM-yyyy'),TO_TIMESTAMP('11-11-1111','dd-MM-yyyy'),1);*/
-
-/*insert into reintegro(
-	idusuario_solicitante,
-	idusuario_receptor,
-	fecha_solicitud,
-	referencia,
-	estatus
-)
-values
-(2,1,'11-11-1111',1,1),
-(2,1,'11-11-1111',1,1);*/
-
-/*insert into  pago(
-	idusuario_solicitante,
-	idusuario_receptor,
-	fecha_solicitus,
-	monto,
-	estatus
-)
-values 
-(1,2,to_date('11-11-1111','dd-MM-yyyy'),1.11,'SOLICITADO');*/
