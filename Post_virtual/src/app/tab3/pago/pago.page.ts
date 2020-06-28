@@ -29,11 +29,12 @@ export class PagoPage implements OnInit {
 
   realizarSolicitud( f: NgForm) {
     let cant: number = + f.value.monto;
+    let text = f.value.user.toUpperCase();
     if (this.usuario.usuario === f.value.user) {
       this.pagoError()
     }
     else{
-      this._pagoSercives.solicitudPago(this.usuario.idUsuario, f.value.user, cant )
+      this._pagoSercives.solicitudPago(this.usuario.idUsuario, text, cant )
       .subscribe((data: any) => {
         this.realizarSol();
       },

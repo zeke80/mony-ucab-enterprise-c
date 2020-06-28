@@ -26,7 +26,8 @@ export class LoginPage implements OnInit {
   }
 
   ingresar( f: NgForm ) {
-    this._loginServices.verificarUsuario(f.value.user, f.value.password)
+    let userM: string = f.value.user.toUpperCase();
+    this._loginServices.verificarUsuario(userM, f.value.password)
               .subscribe((data: any) => {
 
                let fecha =  data.fecha_registro.split('T', 1);
@@ -93,7 +94,8 @@ export class LoginPage implements OnInit {
 
   recuperar(email: string) {
     console.log(email);
-    this._loginServices.recuperarUserContra(email)
+    let correoMay: string = email.toUpperCase();
+    this._loginServices.recuperarUserContra(correoMay)
         .subscribe((data: any) => {
           this.correo();
         });

@@ -35,12 +35,14 @@ export class Tab1Page implements OnInit {
 
   modificarUsuario( f: NgForm) {
     let ident: number = + f.value.identificacion;
+    let correo: string = f.value.email.toUpperCase();
+    let userMas: string = f.value.user.toUpperCase();
 
     this._comercioService.ajustarComercio(this.usuario.idUsuario, f.value.razon, f.value.nombre, f.value.apellido)
         .subscribe((data: any) => {
         });
 
-    this._usuarioService.ajustarUsurio(this.usuario.idUsuario, f.value.user, ident, f.value.email, f.value.telefono,
+    this._usuarioService.ajustarUsurio(this.usuario.idUsuario, userMas, ident, correo, f.value.telefono,
                                         f.value.direccion )
         .subscribe((data: any) => {
           this.modificado();
