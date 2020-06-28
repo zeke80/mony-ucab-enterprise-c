@@ -140,9 +140,9 @@ RETURNS void AS
 $BODY$
 BEGIN
                 UPDATE comercio SET 
-                razon_social = rs, 
-                nombre_representante = nombre, 
-                apellido_representante = apellido 
+                razon_social = upper(rs), 
+                nombre_representante = upper(nombre), 
+                apellido_representante = upper(apellido) 
                 WHERE idusuario = id;
 END
 $BODY$ LANGUAGE 'plpgsql';
@@ -159,9 +159,9 @@ BEGIN
     FOR REG IN SELECT idusuario, razon_social, nombre_representante, apellido_representante 
     FROM comercio WHERE idusuario = id LOOP
         com_idusuario := reg.idusuario;
-        com_razon_social:= reg.razon_social;
-        com_nombre_representante:= reg.nombre_representante;
-        com_apellido_representante := reg.apellido_representante;
+        com_razon_social:= upper(reg.razon_social);
+        com_nombre_representante:= upper(reg.nombre_representante);
+        com_apellido_representante := upper(reg.apellido_representante);
         RETURN NEXT;
     END LOOP;
     RETURN;
@@ -282,7 +282,7 @@ $BODY$
 BEGIN
 
 insert into operacioncuenta( idcuenta,idusuarioreceptor, fecha, hora,monto, referencia)  
-values (id, (SELECT us.idusuario FROM usuario us WHERE us.usuario = usu), now(), CURRENT_TIMESTAMP, mont, refe);
+values (id, (SELECT us.idusuario FROM usuario us WHERE us.usuario = upper(usu)), now(), CURRENT_TIMESTAMP, mont, refe);
 
 END
 $BODY$ LANGUAGE 'plpgsql';
@@ -351,7 +351,7 @@ $BODY$
 BEGIN
 
 insert into operaciontarjeta( idtarjeta,idusuarioreceptor, fecha, hora,monto, referencia)  
-values (id, (SELECT us.idusuario FROM usuario us WHERE us.usuario = usu), now(), CURRENT_TIMESTAMP, mont, refe);
+values (id, (SELECT us.idusuario FROM usuario us WHERE us.usuario = upper(usu)), now(), CURRENT_TIMESTAMP, mont, refe);
 
 END
 $BODY$ LANGUAGE 'plpgsql';
@@ -575,7 +575,7 @@ FROM pago  WHERE(idusuario_solicitante = id OR idusuario_receptor = id) AND fech
         pa_idusuario_receptor:= reg.idusuario_receptor;
         pa_fecha_solicitus:= reg.fecha_solicitus;
         pa_monto:= reg.monto;
-        pa_estatus := reg.estatus;
+        pa_estatus := upper(reg.estatus();
         pa_referencia := reg.referencia;
         RETURN NEXT;
     END LOOP;
@@ -596,7 +596,7 @@ RETURNS void AS
 $BODY$
 BEGIN
 
-UPDATE persona SET  nombre = nom ,  apellido = ape 
+UPDATE persona SET  nombre = upper(nom) ,  apellido = upper(ape) 
 WHERE idusuario = id;
 
 END
@@ -615,8 +615,8 @@ BEGIN
     FROM persona WHERE idusuario = id LOOP
         p_idusuario := reg.idusuario;
         p_idestadocivil:= reg.idestadocivil;
-        p_nombre:= reg.nombre;
-        p_apellido:= reg.apellido;
+        p_nombre:= upper(reg.nombre);
+        p_apellido:= upper(reg.apellido);
         p_fecha_nacimiento:= reg.fecha_nacimiento;
         RETURN NEXT;
     END LOOP;
@@ -790,12 +790,12 @@ BEGIN
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idTipoUsuario;
         us_idtipoidentificacion:= reg.idTipoIdentificacion;
-        us_usuario:= reg.usuario;
+        us_usuario:= upper(reg.usuario);
         us_fecha_registro:= reg.fecha_registro;
         us_nro_identificacion:= reg.nro_identificacion;
-        us_email:= reg.email;
+        us_email:= upper(reg.email);
         us_telefono:= reg.telefono;
-        us_direccion:= reg.direccion;
+        us_direccion:= upper(reg.direccion);
         us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
@@ -817,12 +817,12 @@ BEGIN
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
-        us_usuario:= reg.usuario;
+        us_usuario:= upper(reg.usuario);
         us_fecha_registro:= reg.fecha_registro;
         us_nro_identificacion := reg.nro_identificacion;
-        us_email:= reg.email;
+        us_email:= upper(reg.email);
         us_telefono:= reg.telefono;
-        us_direccion:= reg.direccion;
+        us_direccion:= upper(reg.direccion);
         us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
@@ -844,12 +844,12 @@ BEGIN
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
-        us_usuario:= reg.usuario;
+        us_usuario:= upper(reg.usuario);
         us_fecha_registro:= reg.fecha_registro;
         us_nro_identificacion := reg.nro_identificacion;
-        us_email:= reg.email;
+        us_email:= upper(reg.email);
         us_telefono:= reg.telefono;
-        us_direccion:= reg.direccion;
+        us_direccion:= upper(reg.direccion);
         us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
@@ -871,12 +871,12 @@ BEGIN
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
-        us_usuario:= reg.usuario;
+        us_usuario:= upper(reg.usuario);
         us_fecha_registro:= reg.fecha_registro;
         us_nro_identificacion := reg.nro_identificacion;
-        us_email:= reg.email;
+        us_email:= upper(reg.email);
         us_telefono:= reg.telefono;
-        us_direccion:= reg.direccion;
+        us_direccion:= upper(reg.direccion);
         us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
@@ -896,7 +896,7 @@ BEGIN
     FOR REG IN SELECT  us.usuario,  con.contrasena  
     FROM usuario us, contrasena con  
     WHERE  us.idusuario = con.idusuario and us.email = correo LOOP
-        us_usuario := reg.usuario;
+        us_usuario := upper(reg.usuario);
         con_contrasena:= reg.contrasena;
         RETURN NEXT;
     END LOOP;
@@ -912,7 +912,7 @@ RETURNS void AS
 $BODY$
 BEGIN
 
-UPDATE usuario SET usuario = usu, nro_identificacion = num, email = correo, telefono = telf,  direccion = dir  
+UPDATE usuario SET usuario = upper(usu), nro_identificacion = num, email = upper(correo), telefono = telf,  direccion = upper(dir)  
 WHERE idusuario = id;
 
 END
