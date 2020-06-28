@@ -199,5 +199,16 @@ namespace MonyUCAB.DAO
             conexion.Close();
             return pagoDTOs;
         }
+
+        public void bloquearPago(int referencia)
+        {
+            comando.CommandText = string.Format(
+                "UPDATE pago SET " +
+                "estatus = 'BLOQUEADO' " +
+                "WHERE referencia = {0}", referencia);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }

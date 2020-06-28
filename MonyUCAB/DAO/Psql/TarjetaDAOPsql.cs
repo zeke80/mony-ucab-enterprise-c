@@ -92,5 +92,25 @@ namespace MonyUCAB.DAO.Psql
         {
             throw new NotImplementedException();
         }
+
+        public void AgregarTarjeta(int idusuario, int idtipotarjeta, int idbanco,int numero,
+         string fecha_vencimiento, int cvc )
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO tarjeta(" +
+                "idusuario," +
+                "idtipotarjeta," +
+                "idbanco," +
+                "numero," +
+                "fecha_vencimiento," +
+                "cvc," +
+                "estatus" +
+                ") VALUES({0},{1},{2},{3}, to_date('{4}','yyyy-MM-dd'),{5},1)",idusuario,idtipotarjeta,idbanco,
+                numero,fecha_vencimiento,cvc);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        
+        }
     }
 }

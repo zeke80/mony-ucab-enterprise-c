@@ -13,5 +13,6 @@ namespace MonyUCAB.DAO
         void crear();
         void actualizar();
         void eliminar();
+        void registrarContrasena(int idUsuario, string contrasena);
     }
 }

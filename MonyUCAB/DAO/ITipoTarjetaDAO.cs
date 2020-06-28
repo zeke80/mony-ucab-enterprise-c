@@ -1,4 +1,4 @@
-﻿using MonyUCAB.DTO;
+using MonyUCAB.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MonyUCAB.DAO
 {
-    interface ITipoUsuarioDAO
+    interface ITipoTarjetaDAO
     {
-        List<TipoUsuarioDTO> buscar();
+        List<TipoTarjetaDTO> buscar();
         void crear();
         void actualizar();
         void eliminar();
-        void RegistrarTipoUsuario(string descripcion );
+        TipoTarjetaDTO buscarIdTipotarjeta(string descripcion);
     }
 }

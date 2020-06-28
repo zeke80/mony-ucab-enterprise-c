@@ -20,5 +20,6 @@ namespace MonyUCAB.DAO
         void actualizarSolicitudPagada(int referencia);
         void actualizarPagoReintegrado(int idReintegro);
         List<PagoDTO> cierre(int idUsuario);
+        void bloquearPago(int referencia);
     }
 }

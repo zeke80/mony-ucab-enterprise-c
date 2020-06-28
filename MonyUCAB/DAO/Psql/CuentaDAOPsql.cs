@@ -80,5 +80,35 @@ namespace MonyUCAB.DAO.Psql
         {
             throw new NotImplementedException();
         }
+
+        public void registrarCuenta(int idUsuario, int idtipocuenta, int idbanco, string numero)
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO cuenta(" +
+                    "idusuario, " +
+                    "idtipocuenta, " +
+                    "idbanco, " +
+                    "numero " +   
+                ") " +
+                "values" +
+                "({0}, {1}, {2}, '{3}')",idUsuario, idtipocuenta, idbanco, numero);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+         public void registrarTipocuenta(string descripcion)
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO tipocuenta(" +
+                    "descripcion," +
+                    "estatus" +  
+                ") " +
+                "values" +
+                "('{0}',1)",descripcion);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace MonyUCAB.DAO
         void actualizar();
         void eliminar();
         void realizar(int idTarjeta, string usuarioReceptor, float monto, int referencia);
+        List<OperacionTarjetaDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal);
     }
 }

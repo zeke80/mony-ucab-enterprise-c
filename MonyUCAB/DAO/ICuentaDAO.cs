@@ -11,6 +11,8 @@ namespace MonyUCAB.DAO
     {
         CuentaDTO buscarCuenta(int idCuenta);
         List<CuentaDTO> buscarCuentas(int idUsuario);
+        void registrarCuenta(int idUsuario, int idtipocuenta, int idbanco, string numero);
+        void registrarTipocuenta(string descripcion);
         void crear();
         void actualizar();
         void eliminar();

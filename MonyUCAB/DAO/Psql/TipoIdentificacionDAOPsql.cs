@@ -30,5 +30,20 @@ namespace MonyUCAB.DAO
         {
             throw new NotImplementedException();
         }
+
+        public void RegistrarTipoIdentificacion(string descripcion )
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO tipoidentificacion(" +
+                "codigo, " +
+                "descripcion, " +
+                "estatus " +
+                ") VALUES ( 1,'{0}', 1)", descripcion);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        
+        }
+        
     }
 }

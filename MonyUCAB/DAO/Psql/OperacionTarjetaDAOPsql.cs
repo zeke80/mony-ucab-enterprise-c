@@ -122,5 +122,37 @@ namespace MonyUCAB.DAO.Psql
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+
+         public List<OperacionTarjetaDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal)
+        {
+            comando.CommandText = string.Format(
+            "SELECT " +
+            "op.fecha, " +
+            "op.hora, " + 
+            "op.monto, " +
+            "op.referencia " +
+            "FROM operaciontarjeta op, usuario us, tarjeta ta " +
+            "WHERE op.fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd') " +
+            "AND us.idusuario = {0} " +
+            "AND us.idusuario = ta.idusuario ", idusuario,fechainicio, fechafinal
+                );
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<OperacionTarjetaDTO> operacionTarjetaDTOs = new List<OperacionTarjetaDTO>();
+            while (filas.Read())
+            {
+                operacionTarjetaDTOs.Add (new OperacionTarjetaDTO
+                {
+                    Fecha = filas.GetDateTime(0),
+                    Hora = filas.GetTimeSpan(1),
+                    Monto = filas.GetInt32(2),
+                    Referencia = filas.GetInt32(3),
+                });
+                    
+            }
+            filas.Close();
+            conexion.Close();
+            return operacionTarjetaDTOs;
+        }
     }
 }

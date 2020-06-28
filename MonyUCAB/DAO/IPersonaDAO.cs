@@ -14,5 +14,6 @@ namespace MonyUCAB.DAO
         void actualizar();
         void eliminar();
         void ajustar(int idUsuario, string nombre, string apellido);
+        void registraPersona(int idUsuario, int idestadocivil, string nombre, string apellido, string fecha_nacimiento);
     }
 }

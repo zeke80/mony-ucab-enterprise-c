@@ -18,5 +18,9 @@ namespace MonyUCAB.DAO
         void actualizar();
         void eliminar();
         void ajustar(int idUsuario, string user, int di, string email, string telf, string dir);
+        UsuarioDTO buscarIdByUser(string usuario);
+
+        void RegistrarUser(int idtipousuario, int idtipoidentificacion, string usuario, int nro_identificacion,
+         string email, string telefono, string direccion, int estatus );
     }
 }

@@ -8,6 +8,7 @@ using MonyUCAB.DAO.Psql;
 using MonyUCAB.DTO;
 using MailKit.Net.Smtp;
 using MimeKit;
+using System.Globalization;
 
 namespace MonyUCAB.Controllers
 {
@@ -631,6 +632,257 @@ namespace MonyUCAB.Controllers
                 }
 
                 return true;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+       [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<string>> registrarCuentaBanco(InfoCuenta infoCuenta)
+        {
+            try{
+            string respuesta = "Cuenta de Banco Registrada";
+
+            ICuentaDAO cuentaDAO = new CuentaDAOPsql();
+            IBancoDAO bancoDAO1 = new BancoDAOPsql();
+            bancoDAO1.registrarBanco(infoCuenta.nombre, 1);
+            cuentaDAO.registrarTipocuenta(infoCuenta.descripcion);
+            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoCuenta.usuario);
+
+            IBancoDAO bancoDAO = new BancoDAOPsql();
+            BancoDTO bancoDTO = bancoDAO.buscarIdbanco(infoCuenta.nombre);
+
+            cuentaDAO.registrarCuenta(usuarioDTO.Idusuario,1,bancoDTO.IdBanco,infoCuenta.numero);
+
+           return respuesta;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<string>> BloquearPagos(int referencia)
+        {
+            try{
+                string respuesta = "Transaccion bloqueada";
+
+                IPagoDAO pagoDAO = new PagoDAOPsql();
+                pagoDAO.bloquearPago(referencia);
+            
+                return respuesta; 
+            }  
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        } 
+        
+        [Route("[action]")]
+        [HttpPost]
+         public async Task<ActionResult<string>> registrarUsuario(InfoRegistro infoRegistro)
+        {
+            try {
+            string respuesta = "usuario registrado";
+            
+            //Registro a al usuario
+            IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
+            usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
+               infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
+               infoRegistro.estatus);
+            
+            //Registras el tipo de identificacion
+            ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
+            tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
+
+            //Registra tipo de usuario
+            ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
+            tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
+               
+            //Guardo el id de ese usuario
+            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoRegistro.usuario);
+
+            //Registra la contrasena del usuario creado
+            IContrasenaDAO contrasenaDAO = new ContrasenaDAOPsql();
+            contrasenaDAO.registrarContrasena(usuarioDTO.Idusuario, infoRegistro.contrasena);  
+
+            //Registras a la persona del usuario
+            IPersonaDAO personaDAO = new PersonaDAOPsql();
+            personaDAO.registraPersona(usuarioDTO.Idusuario, infoRegistro.idestadocivil, 
+            infoRegistro.nombre, infoRegistro.apellido, infoRegistro.fecha_nacimiento );
+
+           return respuesta;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<string>> registrarTarjeta(InfoTarjeta infoTarjeta)
+        {
+            try{
+            string respuesta = "Tarjeta registrada exitosamente";
+            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoTarjeta.user);
+
+            ITipoTarjetaDAO tipoTarjetaDAO = new TipoTarjetaDAOPsql();
+            TipoTarjetaDTO tipoTarjetaDTO = tipoTarjetaDAO.buscarIdTipotarjeta(infoTarjeta.tipotarjeta);
+
+            IBancoDAO bancoDAO = new BancoDAOPsql();
+            BancoDTO bancoDTO = bancoDAO.buscarIdbanco(infoTarjeta.banco);
+
+            ITarjetaDAO tarjetaDAO = new TarjetaDAOPsql();
+            tarjetaDAO.AgregarTarjeta(usuarioDTO.Idusuario,tipoTarjetaDTO.IdTipoTarjeta,bancoDTO.IdBanco,infoTarjeta.numero,infoTarjeta.fecha_vencimiento,infoTarjeta.cvc);
+
+            return respuesta;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<string>> registrarComercio(InfoRegistro infoRegistro)
+        {
+            try{
+            string respuesta = "comercio registrado";
+            
+            //Registro a al usuario
+            IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
+            usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
+               infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
+               infoRegistro.estatus);
+            
+            //Registras el tipo de identificacion
+            ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
+            tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
+
+            //Registra tipo de usuario
+            ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
+            tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
+               
+            //Guardo el id de ese usuario
+            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoRegistro.usuario);
+
+            //Registra la contrasena del usuario creado
+            IContrasenaDAO contrasenaDAO = new ContrasenaDAOPsql();
+            contrasenaDAO.registrarContrasena(usuarioDTO.Idusuario, infoRegistro.contrasena);  
+
+            IComercioDAO comercioDAO = new ComercioDAOPsql();
+            comercioDAO.registrarComercio(usuarioDTO.Idusuario,infoRegistro.razon_social,infoRegistro.nombre_representante,infoRegistro.apellido_representante);
+        
+
+           return respuesta;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+        
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<ActionResult<List<FiltrarOperacionesDTO>>> Filtrartodasoperaciones(InfoFiltrarOperaciones filtrarOperaciones)
+        {
+            
+            try
+            {
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(filtrarOperaciones.usuario);
+
+                IFiltrarOperacionesDAO filtrarOperacionesDAO = new FiltrarOperacionesDAOPsql();
+                List<FiltrarOperacionesDTO> filtrarOperacionesDTO = filtrarOperacionesDAO.FiltrarByFechas(
+                    usuarioDTO.Idusuario,filtrarOperaciones.fechainicio,filtrarOperaciones.fechafinal);
+
+                if (filtrarOperaciones == null)
+                    return NotFound();
+
+                return filtrarOperacionesDTO;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+         public async Task<ActionResult<List<OperacionTarjetaDTO>>> FiltraroperacionesTarjeta(InfoFiltrarOperaciones filtrarOperaciones)
+        {
+            
+            try
+            {
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(filtrarOperaciones.usuario);
+
+                IOperacionTarjetaDAO tarjetaDAO = new OperacionTarjetaDAOPsql();
+                List<OperacionTarjetaDTO> tarjetaDTO = tarjetaDAO.FiltrarByFechas(usuarioDTO.Idusuario, filtrarOperaciones.fechainicio, filtrarOperaciones.fechafinal);
+
+                if (filtrarOperaciones == null)
+                    return NotFound();
+
+                return tarjetaDTO;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<ActionResult<List<OperacionCuentaDTO>>> FiltraroperacionesCuenta(InfoFiltrarOperaciones filtrarOperaciones)
+        {
+            
+            try
+            {
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(filtrarOperaciones.usuario);
+
+                IOperacionCuentaDAO cuentaDAO = new OperacionCuentaDAOPsql();
+                List<OperacionCuentaDTO> cuentaDTO = cuentaDAO.FiltrarByFechas(usuarioDTO.Idusuario, filtrarOperaciones.fechainicio, filtrarOperaciones.fechafinal);
+
+                if (filtrarOperaciones == null)
+                    return NotFound();
+
+                return cuentaDTO;
+            }
+            catch (Exception e)
+            {
+                return Conflict();
+            }
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<ActionResult<List<OperacionesMonederoDTO>>> FiltraroperacionesMonedero(InfoFiltrarOperaciones filtrarOperaciones)
+        {
+            
+            try
+            {
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(filtrarOperaciones.usuario);
+
+                IOperacionesMonederoDAO monederoDAO = new OperacionesMonederoDAOPsql();
+                List<OperacionesMonederoDTO> monederoDTO = monederoDAO.FiltrarByFechas(usuarioDTO.Idusuario, filtrarOperaciones.fechainicio, filtrarOperaciones.fechafinal);
+
+                if (filtrarOperaciones == null)
+                    return NotFound();
+
+                return monederoDTO;
             }
             catch (Exception e)
             {

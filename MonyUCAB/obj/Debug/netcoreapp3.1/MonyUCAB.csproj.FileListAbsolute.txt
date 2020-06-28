@@ -499,3 +499,6 @@ C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\eze\Developer\Projects\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\carlo\OneDrive\Desktop\Semestre\Desarrollo\Proyecto\MonyUCAB-Empresa-C\MonyUCAB\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

@@ -30,5 +30,19 @@ namespace MonyUCAB.DAO
         {
             throw new NotImplementedException();
         }
+
+        public void RegistrarTipoUsuario(string descripcion )
+        {
+            comando.CommandText = string.Format(
+                "INSERT INTO tipousuario(" +
+                "descripcion," +
+                "estatus" +
+                ") VALUES('{0}',1)", descripcion);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        
+        }
+
     }
 }

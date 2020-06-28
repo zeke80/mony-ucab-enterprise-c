@@ -13,5 +13,7 @@ namespace MonyUCAB.DAO
         void crear();
         void actualizar();
         void eliminar();
+
+        void RegistrarTipoIdentificacion(string descripcion );
     }
 }

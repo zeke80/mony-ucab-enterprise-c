@@ -16,5 +16,6 @@ namespace MonyUCAB.DAO
         void eliminar();
         void registrarOperacionMonederoRemitente(int idUsuario, float monto, int referencia);
         void registrarOperacionMonederoDestinatario(string usuarioReceptor, float monto, int referencia);
+        List<OperacionesMonederoDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal);
     }
 }

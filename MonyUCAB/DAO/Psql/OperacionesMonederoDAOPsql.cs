@@ -132,5 +132,36 @@ namespace MonyUCAB.DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+
+         public List<OperacionesMonederoDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal)
+        {
+            comando.CommandText = string.Format(
+            "SELECT " + 
+            "op.fecha, " +
+            "op.hora, " + 
+            "op.monto, " +
+            "op.referencia " +
+            "FROM operacionesmonedero op , usuario us " +
+            "WHERE fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd')" +
+            "AND us.idusuario = {0} ", idusuario,fechainicio, fechafinal
+                );
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            List<OperacionesMonederoDTO> filtrarOperaciones = new List<OperacionesMonederoDTO>();
+            while (filas.Read())
+            {
+                filtrarOperaciones.Add (new OperacionesMonederoDTO
+                {
+                    Fecha = filas.GetDateTime(0),
+                    Hora = filas.GetTimeSpan(1),
+                    Monto = filas.GetInt32(2),
+                    Referencia = filas.GetInt32(3),
+                });
+                    
+            }
+            filas.Close();
+            conexion.Close();
+            return filtrarOperaciones;
+        }
     }
 }

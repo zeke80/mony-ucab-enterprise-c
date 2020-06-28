@@ -200,24 +200,23 @@ namespace MonyUCAB.DAO
             return usuarioDTO;
         }
 
-        public void RegistrarUser(int idtipousuario, int idtipoidentificacion,
-        string usuario, int nro_identificacion, string email, string telefono,
-        string direccion, int estatus)
+           public void RegistrarUser(int idtipousuario, int idtipoidentificacion, string usuario, int nro_identificacion,
+         string email, string telefono, string direccion, int estatus )
         {
             comando.CommandText = string.Format(
                 "INSERT INTO usuario(" +
-                "idtipousuario," +
-                "idtipoidentificacion," +
-                "usuario," +
-                "fecha_registro," +
-                "nro_identificacion," +
-                "email," +
-                "telefono," +
-                "direccion," +
-                "estatus" +
+                "idtipousuario, " +
+                "idtipoidentificacion, " +
+                "usuario, " +
+                "fecha_registro, " +
+                "nro_identificacion, " +
+                "email, " +
+                "telefono, " +
+                "direccion, " +
+                "estatus " +
                 
-                ") VALUES({0},{1},'{2}',{3},'SOLICITADO')", 
-                idtipousuario, idtipoidentificacion, DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"),
+                ") VALUES({0},{1},'{2}',to_date('{3}','dd-MM-yyyy'),{4},'{5}','{6}','{7}','{8}')", 
+                idtipousuario, idtipoidentificacion,usuario, DateTime.Now.ToString("dd-MM-yyyy"),
                 nro_identificacion,email,telefono,direccion,estatus);
             conexion.Open();
             comando.ExecuteNonQuery();
@@ -248,5 +247,26 @@ namespace MonyUCAB.DAO
             comando.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public UsuarioDTO buscarIdByUser(string usuario){
+            comando.CommandText = string.Format("SELECT " +
+                "us.idusuario " +
+                "FROM usuario us " +
+                "WHERE  us.usuario = '{0}' ",usuario);
+            conexion.Open();
+            filas = comando.ExecuteReader();
+            UsuarioDTO usuarioDTO = null;
+            if(filas.Read())
+            {
+                usuarioDTO = new UsuarioDTO
+                {
+                    Idusuario = filas.GetInt32(0)
+                };
+            }
+            filas.Close();
+            conexion.Close();
+            return usuarioDTO;
+        }
+
     }
 }
