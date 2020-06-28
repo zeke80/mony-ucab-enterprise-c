@@ -813,7 +813,7 @@ DECLARE
     reg RECORD;
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
-    FROM usuario us, contrasena co, persona pe WHERE us.idusuario = pe.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
+    FROM usuario us, contrasena co, persona pe WHERE us.idusuario = pe.idusuario AND us.idusuario = co.idusuario AND us.usuario = upper(usu) AND co.contrasena = clave LOOP
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
@@ -840,7 +840,7 @@ DECLARE
     reg RECORD;
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
-    FROM usuario us, contrasena co, comercio com WHERE us.idusuario = com.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
+    FROM usuario us, contrasena co, comercio com WHERE us.idusuario = com.idusuario AND us.idusuario = co.idusuario AND us.usuario = upper(usu) AND co.contrasena = clave LOOP
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
@@ -867,7 +867,7 @@ DECLARE
     reg RECORD;
 BEGIN
     FOR REG IN SELECT idusuario, idtipousuario, idtipoidentificacion, usuario, fecha_registro, nro_identificacion, email, telefono, direccion, estatus
-    FROM usuario WHERE email = correo LOOP
+    FROM usuario WHERE email = upper(correo) LOOP
         us_idusuario := reg.idusuario;
         us_idtipousuario:= reg.idtipousuario;
         us_idtipoidentificacion:= reg.idtipoidentificacion;
@@ -895,7 +895,7 @@ DECLARE
 BEGIN
     FOR REG IN SELECT  us.usuario,  con.contrasena  
     FROM usuario us, contrasena con  
-    WHERE  us.idusuario = con.idusuario and us.email = correo LOOP
+    WHERE  us.idusuario = con.idusuario and us.email = upper(correo) LOOP
         us_usuario := upper(reg.usuario);
         con_contrasena:= reg.contrasena;
         RETURN NEXT;
