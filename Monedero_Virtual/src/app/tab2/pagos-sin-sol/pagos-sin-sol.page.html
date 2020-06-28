@@ -75,7 +75,7 @@
         <ion-item *ngIf="auxC">
             <ion-label>Escoja una cuenta</ion-label>
             <ion-select [(ngModel)]="cuenta" (ionChange)="obtenerIDcuenta()">
-                <ion-select-option value="{{metodo.idCuenta}}" *ngFor="let metodo of metodoPagoC">{{metodo.numero}}</ion-select-option>
+                <ion-select-option value="{{metodo.idcuenta}}" *ngFor="let metodo of metodoPagoC">{{metodo.numero}}</ion-select-option>
             </ion-select>
         </ion-item>
         <br>

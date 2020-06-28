@@ -78,6 +78,7 @@ export class PagosSinSolPage implements OnInit {
   }
 
   obtenerIDcuenta() {
+    console.log(this.cuenta);
   }
 
   pagarTarjeta() {
@@ -97,6 +98,7 @@ export class PagosSinSolPage implements OnInit {
     let id: number = + this.cuenta;
     let ref: number = + this.operacion.referencia;
     let cant: number = + this.operacion.monto;
+
 
     this._pagoServices.pagoCuenta(id, this.user, cant, ref)
         .subscribe((data: any) => {

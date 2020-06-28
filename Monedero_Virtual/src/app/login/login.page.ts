@@ -26,26 +26,27 @@ ngOnInit() {
 }
 
 ingresar( f: NgForm ) {
-this._loginServices.verificarUsuario(f.value.user, f.value.password)
-    .subscribe((data: any) => {
+    let userM: string = f.value.user.toUpperCase();
+    this._loginServices.verificarUsuario(userM, f.value.password)
+      .subscribe((data: any) => {
 
-      this._loginServices.login();
+        this._loginServices.login();
 
-    let usuario = new Usuario(data.idusuario, data.idtipousuario, data.idtipoidentificacion, data.usuario, data.fecha_registro,
-      data.nro_identificacion, data.email, data.telefono, data.direccion, data.estatus);
-    this._usuarioServices.guardarStorage(usuario, usuario.idUsuario, usuario.idTipoUsuario, usuario.usuario, usuario.fechaRegistro,
-      usuario.nroIdentificacion, usuario.email, usuario.telefono, usuario.direccion);
-    this.router.navigate(['/tabs/cuenta']);
+      let usuario = new Usuario(data.idusuario, data.idtipousuario, data.idtipoidentificacion, data.usuario, data.fecha_registro,
+        data.nro_identificacion, data.email, data.telefono, data.direccion, data.estatus);
+      this._usuarioServices.guardarStorage(usuario, usuario.idUsuario, usuario.idTipoUsuario, usuario.usuario, usuario.fechaRegistro,
+        usuario.nroIdentificacion, usuario.email, usuario.telefono, usuario.direccion);
+      this.router.navigate(['/tabs/cuenta']);
 
-  },
-  (error: HttpErrorResponse) => {
-    if (error.status === 409) {
-      this.AlertServer();
-    }
-    else {
-      this.AlertaError();
-    }
-  });
+    },
+    (error: HttpErrorResponse) => {
+      if (error.status === 409) {
+        this.AlertServer();
+      }
+      else {
+        this.AlertaError();
+      }
+    });
 }
 
 async AlertaError() {
@@ -90,8 +91,9 @@ async AlertaError() {
   }
 
   recuperar(email: string) {
-    console.log(email);
-    this._loginServices.recuperarUserContra(email)
+    let correoMay: string = email.toUpperCase();
+    console.log(correoMay);
+    this._loginServices.recuperarUserContra(correoMay)
         .subscribe((data: any) => {
           this.correo();
         });
