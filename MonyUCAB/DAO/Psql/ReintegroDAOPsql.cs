@@ -5,126 +5,130 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
-
+using Npgsql;
 
 namespace MonyUCAB.DAO
 {
     public class ReintegroDAOPsql : DAOPsql, IReintegroDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
         public ReintegroDTO buscarReintegro(int idReintegro)
         {
-            comando.CommandText = string.Format(
-                "SELECT " +
-                    "rei.idreintegro," +
-                    "rei.idusuario_solicitante," +
-                    "rei.idusuario_receptor," +
-                    "rei.fecha_solicitud," +
-                    "rei.referencia," +
-                    "rei.estatus " +
-                "FROM reintegro rei " +
-                "WHERE rei.idreintegro = {0}", idReintegro);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            ReintegroDTO reintegroDTO = null;
-            if (filas.Read())
+            try
             {
-                reintegroDTO = new ReintegroDTO
+                comando.CommandText = string.Format("SELECT * FROM buscarReintegro({0})", idReintegro);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                ReintegroDTO reintegroDTO = null;
+                if (filas.Read())
                 {
-                    Idreintegro = filas.GetInt32(0),
-                    Idusuario_solicitante = filas.GetInt32(1),
-                    Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitud = filas.GetDateTime(3),
-                    Referencia = filas.GetInt32(4),
-                    Estatus = filas.GetString(5),
-                };
+                    reintegroDTO = new ReintegroDTO
+                    {
+                        Idreintegro = filas.GetInt32(0),
+                        Idusuario_solicitante = filas.GetInt32(1),
+                        Idusuario_receptor = filas.GetInt32(2),
+                        Fecha_solicitud = filas.GetDateTime(3),
+                        Referencia = filas.GetInt32(4),
+                        Estatus = filas.GetString(5),
+                    };
+                }
+                filas.Close();
+                return reintegroDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return reintegroDTO;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public List<ReintegroDTO> buscarReintegros(int idUsuario)
         {
-            comando.CommandText = string.Format(
-                "SELECT " +
-                    "rei.idreintegro," +
-                    "rei.idusuario_solicitante," +
-                    "rei.idusuario_receptor," +
-                    "rei.fecha_solicitud," +
-                    "rei.referencia," +
-                    "rei.estatus " +
-                "FROM reintegro rei " +
-                "WHERE rei.idusuario_solicitante = {0} " +
-                "OR rei.idusuario_receptor = {0} " +
-                "ORDER BY idreintegro DESC", idUsuario);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();
-            while (filas.Read())
+            try
             {
-                reintegroDTOs.Add(new ReintegroDTO
+                comando.CommandText = string.Format("SELECT * FROM buscarReintegros({0})", idUsuario);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                List<ReintegroDTO> reintegroDTOs = new List<ReintegroDTO>();
+                while (filas.Read())
                 {
-                    Idreintegro = filas.GetInt32(0),
-                    Idusuario_solicitante = filas.GetInt32(1),
-                    Idusuario_receptor = filas.GetInt32(2),
-                    Fecha_solicitud = filas.GetDateTime(3),
-                    Referencia = filas.GetInt32(4),
-                    Estatus = filas.GetString(5),
-                });
+                    reintegroDTOs.Add(new ReintegroDTO
+                    {
+                        Idreintegro = filas.GetInt32(0),
+                        Idusuario_solicitante = filas.GetInt32(1),
+                        Idusuario_receptor = filas.GetInt32(2),
+                        Fecha_solicitud = filas.GetDateTime(3),
+                        Referencia = filas.GetInt32(4),
+                        Estatus = filas.GetString(5),
+                    });
+                }
+                filas.Close();
+                return reintegroDTOs;
             }
-            filas.Close();
-            conexion.Close();
-            return reintegroDTOs;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void solicitar(int referencia)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO reintegro(" +
-                "idusuario_solicitante," +
-                "idusuario_receptor," +
-                "fecha_solicitud," +
-                "referencia," +
-                "estatus" +
-                ") VALUES((SELECT idusuario_receptor FROM pago WHERE referencia = {0})," +
-                "(SELECT idusuario_solicitante FROM pago WHERE referencia = {0})," +
-                "now(),{0},'SOLICITADO')",
-                referencia);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
+            try
+            {
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlsolicitar('{0}')",referencia);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void aceptar(int idReintegro)
         {
-            comando.CommandText = string.Format(
-                "UPDATE reintegro SET " +
-                "estatus = 'ACEPTADO' " +
-                "WHERE idreintegro = {0}", idReintegro);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();        
+            try
+            {
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlaceptar({0})", idReintegro);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void rechazar(int idReintegro)
         {
-            comando.CommandText = string.Format(
-                "UPDATE reintegro SET " +
-                "estatus = 'RECHAZADO' " +
-                "WHERE idreintegro = {0}", idReintegro);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlrechazar({0})", idReintegro);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MonyUCAB.DTO;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,77 +9,68 @@ namespace MonyUCAB.DAO.Psql
 {
     public class CuentaDAOPsql : DAOPsql, ICuentaDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
         public CuentaDTO buscarCuenta(int idCuenta)
         {
-            comando.CommandText = string.Format("SELECT " +
-                "idcuenta," +
-                "idusuario," +
-                "idtipocuenta," +
-                "idbanco," +
-                "numero " +
-                "FROM cuenta " +
-                "WHERE idcuenta = {0}", idCuenta);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            CuentaDTO cuentaDTO = null;
-            if (filas.Read())
+            try
             {
-                cuentaDTO = new CuentaDTO
+                comando.CommandText = string.Format("SELECT * FROM CuentaDAOPsqlbuscarCuenta({0})", idCuenta);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                CuentaDTO cuentaDTO = null;
+                if (filas.Read())
                 {
-                    Idcuenta = filas.GetInt32(0),
-                    Idusuario = filas.GetInt32(1),
-                    Idtipocuenta = filas.GetInt32(2),
-                    Idbanco = filas.GetInt32(3),
-                    Numero = filas.GetString(4),
-                };
+                    cuentaDTO = new CuentaDTO
+                    {
+                        Idcuenta = filas.GetInt32(0),
+                        Idusuario = filas.GetInt32(1),
+                        Idtipocuenta = filas.GetInt32(2),
+                        Idbanco = filas.GetInt32(3),
+                        Numero = filas.GetString(4),
+                    };
+                }
+                filas.Close();
+                return cuentaDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return cuentaDTO;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public List<CuentaDTO> buscarCuentas(int idUsuario)
         {
-            comando.CommandText = string.Format("SELECT " +
-                "idcuenta," +
-                "idusuario," +
-                "idtipocuenta," +
-                "idbanco," +
-                "numero " +
-                "FROM cuenta " +
-                "WHERE idusuario = {0}", idUsuario);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            List<CuentaDTO> cuentaDTOs = new List<CuentaDTO>();
-            while (filas.Read())
+            try
             {
-                cuentaDTOs.Add(new CuentaDTO
+                comando.CommandText = string.Format("SELECT * FROM CuentaDAOPsqlbuscarCuentas({0})", idUsuario);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                List<CuentaDTO> cuentaDTOs = new List<CuentaDTO>();
+                while (filas.Read())
                 {
-                    Idcuenta = filas.GetInt32(0),
-                    Idusuario = filas.GetInt32(1),
-                    Idtipocuenta = filas.GetInt32(2),
-                    Idbanco = filas.GetInt32(3),
-                    Numero = filas.GetString(4),
-                });
+                    cuentaDTOs.Add(new CuentaDTO
+                    {
+                        Idcuenta = filas.GetInt32(0),
+                        Idusuario = filas.GetInt32(1),
+                        Idtipocuenta = filas.GetInt32(2),
+                        Idbanco = filas.GetInt32(3),
+                        Numero = filas.GetString(4),
+                    });
+                }
+                filas.Close();
+                return cuentaDTOs;
             }
-            filas.Close();
-            conexion.Close();
-            return cuentaDTOs;
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void registrarCuenta(int idUsuario, int idtipocuenta, int idbanco, string numero)

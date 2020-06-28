@@ -12,25 +12,7 @@ namespace MonyUCAB.DAO.Psql
 {
     public class ContrasenaDAOPsql : DAOPsql, IContrasenaDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<ContrasenaDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void registrarContrasena(int idUsuario, string contrasena)
         {

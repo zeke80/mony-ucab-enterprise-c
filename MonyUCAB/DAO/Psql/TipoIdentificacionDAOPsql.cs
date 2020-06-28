@@ -11,25 +11,6 @@ namespace MonyUCAB.DAO
 {
     public class TipoIdentificacionDAOPsql : DAOPsql, ITipoIdentificacionDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TipoIdentificacionDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
 
         public void RegistrarTipoIdentificacion(string descripcion )
         {

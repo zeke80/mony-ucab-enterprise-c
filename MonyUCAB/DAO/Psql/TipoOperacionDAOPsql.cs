@@ -11,24 +11,5 @@ namespace MonyUCAB.DAO
 {
     public class TipoOperacionDAOPsql : DAOPsql, ITipoOperacionDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TipoOperacionDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

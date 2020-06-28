@@ -11,24 +11,5 @@ namespace MonyUCAB.DAO
 {
     public class AplicacionDAOPsql : DAOPsql, IAplicacionDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<AplicacionDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

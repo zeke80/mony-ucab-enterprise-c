@@ -5,132 +5,117 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
-
+using Npgsql;
 
 namespace MonyUCAB.DAO
 {
     public class OperacionesMonederoDAOPsql : DAOPsql, IOperacionesMonederoDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
 
         public OperacionesMonederoDTO buscarOperacionMonedero(int idOperacionMonedero)
         {
-            comando.CommandText = string.Format(
-                "SELECT " +
-                    "opm.idoperacionesmonedero," +
-                    "opm.idusuario," +
-                    "opm.idtipooperacion," +
-                    "opm.monto," +
-                    "opm.fecha," +
-                    "opm.hora," +
-                    "opm.referencia " +
-                "FROM operacionesmonedero opm " +
-                "WHERE opm.idoperacionesmonedero = {0}", idOperacionMonedero);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            OperacionesMonederoDTO operacionesMonederoDTO = null;
-            if (filas.Read())
+            try
             {
-                operacionesMonederoDTO = new OperacionesMonederoDTO
+                comando.CommandText = string.Format("SELECT * FROM buscarOperacionMonedero({0})", idOperacionMonedero);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                OperacionesMonederoDTO operacionesMonederoDTO = null;
+                if (filas.Read())
                 {
-                    Idoperacionesmonedero = filas.GetInt32(0),
-                    Idusuario = filas.GetInt32(1),
-                    Idtipooperacion = filas.GetInt32(2),
-                    Monto = filas.GetFloat(3),
-                    Fecha = filas.GetDateTime(4),
-                    Hora = filas.GetTimeSpan(5),
-                    Referencia = filas.GetInt32(6),
-                };
+                    operacionesMonederoDTO = new OperacionesMonederoDTO
+                    {
+                        Idoperacionesmonedero = filas.GetInt32(0),
+                        Idusuario = filas.GetInt32(1),
+                        Idtipooperacion = filas.GetInt32(2),
+                        Monto = filas.GetFloat(3),
+                        Fecha = filas.GetDateTime(4),
+                        Hora = filas.GetTimeSpan(5),
+                        Referencia = filas.GetInt32(6),
+                    };
+                }
+                filas.Close();
+                return operacionesMonederoDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return operacionesMonederoDTO;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public List<OperacionesMonederoDTO> buscarOperacionesMonedero(int idUsuario)
         {
-            comando.CommandText = string.Format(
-                "SELECT " +
-                    "opm.idoperacionesmonedero," +
-                    "opm.idusuario," +
-                    "opm.idtipooperacion," +
-                    "opm.monto," +
-                    "opm.fecha," +
-                    "opm.hora," +
-                    "opm.referencia " +
-                "FROM operacionesmonedero opm " +
-                "WHERE opm.idusuario = {0} " +
-                "ORDER BY idoperacionesmonedero DESC", idUsuario);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();
-            while (filas.Read())
+            try
             {
-                operacionesMonederoDTOs.Add(new OperacionesMonederoDTO
+                comando.CommandText = string.Format("SELECT * FROM buscarOperacionesMonederos({0})", idUsuario);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                List<OperacionesMonederoDTO> operacionesMonederoDTOs = new List<OperacionesMonederoDTO>();
+                while (filas.Read())
                 {
-                    Idoperacionesmonedero = filas.GetInt32(0),
-                    Idusuario = filas.GetInt32(1),
-                    Idtipooperacion = filas.GetInt32(2),
-                    Monto = filas.GetFloat(3),
-                    Fecha = filas.GetDateTime(4),
-                    Hora = filas.GetTimeSpan(5),
-                    Referencia = filas.GetInt32(6),
-                });
+                    operacionesMonederoDTOs.Add(new OperacionesMonederoDTO
+                    {
+                        Idoperacionesmonedero = filas.GetInt32(0),
+                        Idusuario = filas.GetInt32(1),
+                        Idtipooperacion = filas.GetInt32(2),
+                        Monto = filas.GetFloat(3),
+                        Fecha = filas.GetDateTime(4),
+                        Hora = filas.GetTimeSpan(5),
+                        Referencia = filas.GetInt32(6),
+                    });
+                }
+                filas.Close();
+                return operacionesMonederoDTOs;
             }
-            filas.Close();
-            conexion.Close();
-            return operacionesMonederoDTOs;
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void registrarOperacionMonederoRemitente(int idUsuario, float monto, int referencia)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO operacionesmonedero(" +
-                    "idusuario," +
-                    "idtipooperacion," +
-                    "monto," +
-                    "fecha," +
-                    "hora," +
-                    "referencia" +
-                ") " +
-                "values" +
-                "({0}, 2, {1}, now(), CURRENT_TIMESTAMP, {2})",
+            try
+            {
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoRemitente({0}, {1}, '{2}')",
                 idUsuario, monto, referencia);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void registrarOperacionMonederoDestinatario(string usuarioReceptor, float monto, int referencia)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO operacionesmonedero(" +
-                    "idusuario," +
-                    "idtipooperacion," +
-                    "monto," +
-                    "fecha," +
-                    "hora," +
-                    "referencia" +
-                ") " +
-                "values" +
-                "((SELECT idusuario FROM usuario WHERE usuario = '{0}'), 1, {1}, now(), CURRENT_TIMESTAMP, {2}) ",
+            try
+            {
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoDestinatario('{0}', {1}, '{2}')",
                 usuarioReceptor, monto, referencia);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
          public List<OperacionesMonederoDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal)

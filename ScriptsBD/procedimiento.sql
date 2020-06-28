@@ -80,7 +80,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* OPERACIONES MONEDEROS */
 
 CREATE OR REPLACE FUNCTION operacionesMonederos(id integer)
-RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia varchar(45)) AS
+RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -104,7 +104,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* INFO REINTEGROS */
 
 CREATE OR REPLACE FUNCTION infoReintegros(id integer)
-RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia varchar(45), rei_estatus varchar(45)) AS
+RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia integer, rei_estatus varchar(45)) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -226,7 +226,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionCuenta */
 
 CREATE OR REPLACE FUNCTION buscarOperacionCuenta(id integer)
-RETURNS TABLE(opc_idoperacioncuenta integer, opc_idcuenta integer, opc_idusuarioreceptor integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia varchar(45)) AS
+RETURNS TABLE(opc_idoperacioncuenta integer, opc_idcuenta integer, opc_idusuarioreceptor integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -250,7 +250,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionesCuentas */
 
 CREATE OR REPLACE FUNCTION buscarOperacionesCuentas(id integer)
-RETURNS TABLE(opc_idoperacioncuenta integer, opc_idcuenta integer, opc_idusuarioreceptor integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia varchar(45)) AS
+RETURNS TABLE(opc_idoperacioncuenta integer, opc_idcuenta integer, opc_idusuarioreceptor integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -295,7 +295,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionTarjeta */
 
 CREATE OR REPLACE FUNCTION buscarOperacionTarjeta(id integer)
-RETURNS TABLE(opt_idoperaciontarjeta integer, opt_idusuarioreceptor integer, opt_idtarjeta integer, opt_fecha date, opt_hora time, opt_monto decimal, opt_referencia  varchar(45)) AS
+RETURNS TABLE(opt_idoperaciontarjeta integer, opt_idusuarioreceptor integer, opt_idtarjeta integer, opt_fecha date, opt_hora time, opt_monto decimal, opt_referencia  integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -319,7 +319,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionesTarjetas */
 
 CREATE OR REPLACE FUNCTION buscarOperacionesTarjetas(id integer)
-RETURNS TABLE(opc_idoperaciontarjeta integer, opc_idusuarioreceptor integer, opc_idtarjeta integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia varchar(45)) AS
+RETURNS TABLE(opc_idoperaciontarjeta integer, opc_idusuarioreceptor integer, opc_idtarjeta integer, opc_fecha date, opc_hora time, opc_monto decimal, opc_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -365,7 +365,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionMonedero */
 
 CREATE OR REPLACE FUNCTION buscarOperacionMonedero(id integer)
-RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia varchar(45)) AS
+RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -389,7 +389,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarOperacionesMonederos */
 
 CREATE OR REPLACE FUNCTION buscarOperacionesMonederos(id integer)
-RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia varchar(45)) AS
+RETURNS TABLE(opm_idoperacionesmonedero integer, opm_idusuario integer, opm_idtipooperacion integer, opm_monto decimal, opm_fecha date, opm_hora time, opm_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -412,7 +412,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* registrarOperacionMonederoRemitente */
 
-CREATE OR REPLACE FUNCTION registrarOperacionMonederoRemitente(id integer, mont float, refe varchar(45))
+CREATE OR REPLACE FUNCTION registrarOperacionMonederoRemitente(id integer, mont float, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -426,7 +426,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* registrarOperacionMonederoDestinatario */
 
-CREATE OR REPLACE FUNCTION registrarOperacionMonederoDestinatario( usu varchar(20) , mont float, refe varchar(45))
+CREATE OR REPLACE FUNCTION registrarOperacionMonederoDestinatario( usu varchar(20) , mont float, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -441,7 +441,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* pagosSolicitadosSolicitante */
 
 CREATE OR REPLACE FUNCTION pagosSolicitadosSolicitante(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia varchar(45)) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -465,7 +465,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* pagosSolicitadosReceptor */
 
 CREATE OR REPLACE FUNCTION pagosSolicitadosReceptor(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia varchar(45)) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -535,7 +535,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* actualizarSolicitudPagada */
 
-CREATE OR REPLACE FUNCTION actualizarSolicitudPagada( refe varchar(20))
+CREATE OR REPLACE FUNCTION actualizarSolicitudPagada( refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -563,7 +563,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* cierre */
 
 CREATE OR REPLACE FUNCTION PagoDAOPsqlcierre(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia varchar(45)) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -633,7 +633,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarReintegro */
 
 CREATE OR REPLACE FUNCTION buscarReintegro(id integer)
-RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia varchar(45), rei_estatus varchar(45)) AS
+RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia integer, rei_estatus varchar(45)) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -656,7 +656,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarReintegros */ 
 
 CREATE OR REPLACE FUNCTION buscarReintegros(id integer)
-RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia varchar(45), rei_estatus varchar(45)) AS
+RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia integer, rei_estatus varchar(45)) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -678,7 +678,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* ReintegroDAOPsqlsolicitar */
 
-CREATE OR REPLACE FUNCTION ReintegroDAOPsqlsolicitar( refe varchar(45))
+CREATE OR REPLACE FUNCTION ReintegroDAOPsqlsolicitar( refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -814,16 +814,16 @@ DECLARE
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
     FROM usuario us, contrasena co, persona pe WHERE us.idusuario = pe.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
-        us_idusuario := reg.us.idusuario;
-        us_idtipousuario:= reg.us.idtipousuario;
-        us_idtipoidentificacion:= reg.us.idtipoidentificacion;
-        us_usuario:= reg.us.usuario;
-        us_fecha_registro:= reg.us.fecha_registro;
-        us_nro_identificacion := reg.us.nro_identificacion;
-        us_email:= reg.us.email;
-        us_telefono:= reg.us.telefono;
-        us_direccion:= reg.us.direccion;
-        us_estatus:= reg.us.estatus;
+        us_idusuario := reg.idusuario;
+        us_idtipousuario:= reg.idtipousuario;
+        us_idtipoidentificacion:= reg.idtipoidentificacion;
+        us_usuario:= reg.usuario;
+        us_fecha_registro:= reg.fecha_registro;
+        us_nro_identificacion := reg.nro_identificacion;
+        us_email:= reg.email;
+        us_telefono:= reg.telefono;
+        us_direccion:= reg.direccion;
+        us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
     RETURN;
@@ -841,16 +841,16 @@ DECLARE
 BEGIN
     FOR REG IN SELECT us.idusuario, us.idtipousuario, us.idtipoidentificacion, us.usuario, us.fecha_registro, us.nro_identificacion, us.email, us.telefono, us.direccion, us.estatus
     FROM usuario us, contrasena co, comercio com WHERE us.idusuario = com.idusuario AND us.idusuario = co.idusuario AND us.usuario = usu AND co.contrasena = clave LOOP
-        us_idusuario := reg.us.idusuario;
-        us_idtipousuario:= reg.us.idtipousuario;
-        us_idtipoidentificacion:= reg.us.idtipoidentificacion;
-        us_usuario:= reg.us.usuario;
-        us_fecha_registro:= reg.us.fecha_registro;
-        us_nro_identificacion := reg.us.nro_identificacion;
-        us_email:= reg.us.email;
-        us_telefono:= reg.us.telefono;
-        us_direccion:= reg.us.direccion;
-        us_estatus:= reg.us.estatus;
+        us_idusuario := reg.idusuario;
+        us_idtipousuario:= reg.idtipousuario;
+        us_idtipoidentificacion:= reg.idtipoidentificacion;
+        us_usuario:= reg.usuario;
+        us_fecha_registro:= reg.fecha_registro;
+        us_nro_identificacion := reg.nro_identificacion;
+        us_email:= reg.email;
+        us_telefono:= reg.telefono;
+        us_direccion:= reg.direccion;
+        us_estatus:= reg.estatus;
         RETURN NEXT;
     END LOOP;
     RETURN;

@@ -11,9 +11,6 @@ namespace MonyUCAB.DAO
     {
         TarjetaDTO buscarTarjeta(int idTarjeta);
         List<TarjetaDTO> buscarTarjetas(int idUsuario);
-        void crear();
-        void actualizar();
-        void eliminar();
         void AgregarTarjeta(int idusuario, int idtipotarjeta, int idbanco,int numero,
          string fecha_vencimiento, int cvc );
         

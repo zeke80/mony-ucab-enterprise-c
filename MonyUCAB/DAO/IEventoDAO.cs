@@ -9,9 +9,5 @@ namespace MonyUCAB.DAO
 {
     interface IEventoDAO
     {
-        List<EventoDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
     }
 }

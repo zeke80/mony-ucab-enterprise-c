@@ -11,26 +11,6 @@ namespace MonyUCAB.DAO
 {
     public class TipoUsuarioDAOPsql : DAOPsql, ITipoUsuarioDAO
     {
-        public void actualizar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TipoUsuarioDTO> buscar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void crear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void eliminar()
-        {
-            throw new NotImplementedException();
-        }
-
         public void RegistrarTipoUsuario(string descripcion )
         {
             comando.CommandText = string.Format(

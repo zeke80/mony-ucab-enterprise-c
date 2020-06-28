@@ -14,9 +14,6 @@ namespace MonyUCAB.DAO
         UsuarioDTO buscarPersonabyEmail(string email);
         UsuarioDTO buscarUserAndPass(string email);
         UsuarioDTO buscarComercio(string user, string contra);
-        void crear();
-        void actualizar();
-        void eliminar();
         void ajustar(int idUsuario, string user, int di, string email, string telf, string dir);
         UsuarioDTO buscarIdByUser(string usuario);
 

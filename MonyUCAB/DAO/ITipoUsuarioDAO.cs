@@ -9,10 +9,6 @@ namespace MonyUCAB.DAO
 {
     interface ITipoUsuarioDAO
     {
-        List<TipoUsuarioDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
         void RegistrarTipoUsuario(string descripcion );
     }
 }

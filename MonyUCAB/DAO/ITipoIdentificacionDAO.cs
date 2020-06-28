@@ -9,11 +9,6 @@ namespace MonyUCAB.DAO
 {
     interface ITipoIdentificacionDAO
     {
-        List<TipoIdentificacionDTO> buscar();
-        void crear();
-        void actualizar();
-        void eliminar();
-
         void RegistrarTipoIdentificacion(string descripcion );
     }
 }
