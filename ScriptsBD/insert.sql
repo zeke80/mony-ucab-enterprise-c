@@ -35,7 +35,13 @@ values
 
 insert into persona(idusuario,idestadocivil,nombre,apellido,fecha_nacimiento)
 values
-(2,1,'1','1',to_date('11-11-1111','dd-MM-yyyy'));
+(1,1,'JUAN','FERREIRA',to_date('08-02-1997','dd-MM-yyyy')),
+(2,2,'BRAYAN','DE SOUSA',to_date('10-11-1996','dd-MM-yyyy'));
+
+insert into comercio(idusuario,razon_social,nombre_representante,apellido_representante)
+VALUES
+(3,'PACHECO Y ASOCIADOS S.R.L','ANA','PACHECO'),
+(4,'INVERSIONES 1996 C.A','ADRIANA','JACOME');
 
 insert into tipocuenta(descripcion,estatus)
 values
