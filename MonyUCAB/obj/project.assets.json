@@ -9078,19 +9078,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlo\\.nuget\\packages\\": {}
+    "C:\\Users\\eze\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
+      "projectUniqueName": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
       "projectName": "MonyUCAB",
-      "projectPath": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
-      "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\carlo\\OneDrive\\Desktop\\Semestre\\Desarrollo\\Proyecto\\MonyUCAB-Empresa-C\\MonyUCAB\\obj\\",
+      "projectPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\MonyUCAB.csproj",
+      "packagesPath": "C:\\Users\\eze\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eze\\Developer\\Projects\\MonyUCAB-Empresa-C\\MonyUCAB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eze\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

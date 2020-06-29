@@ -32,7 +32,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -51,7 +51,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -71,7 +71,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -91,7 +91,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -111,7 +111,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -131,7 +131,7 @@ namespace MonyUCAB.Controllers
 }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -148,7 +148,7 @@ namespace MonyUCAB.Controllers
 }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -168,7 +168,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -185,7 +185,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -205,7 +205,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -222,7 +222,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -242,7 +242,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -259,7 +259,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -279,7 +279,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -296,7 +296,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -316,7 +316,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -333,7 +333,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -350,7 +350,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -370,7 +370,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -387,7 +387,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -404,7 +404,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -421,7 +421,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -438,7 +438,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -461,7 +461,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -484,7 +484,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -505,7 +505,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -522,7 +522,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -539,7 +539,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -556,7 +556,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -573,7 +573,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -590,7 +590,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -609,14 +609,12 @@ namespace MonyUCAB.Controllers
                     message.From.Add(new MailboxAddress("MonyUCAB", "monyucabempresac@gmail.com"));
                     message.To.Add(new MailboxAddress(infoRecuperarPass.email));
                     message.Subject = "MonyUCAB - Recuperacion de usuario y contraseña";
-                    message.Body = new TextPart("plain")
+                    message.Body = new TextPart("html")
                     {
-                        Text = String.Format(@"Hola {0}!,
-
-                        Este es un correo de recuperacion de usuario y contraseña
-                          
-                        Usuario   : {0}
-                        Contraseña: {1}"
+                        Text = String.Format(@"<h3>Hola {0}!,<h3/>
+                            <h3>Correo de recuperacion de usuario y contraseña<h3/>                        
+                            <h4>Usuario: {0}<h4/>
+                            <h4>Contraseña: {1}<h4/>"
                         , usuarioDTO.Usuario, usuarioDTO.Contrasena)
                     };
 
@@ -635,7 +633,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -662,7 +660,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -680,7 +678,7 @@ namespace MonyUCAB.Controllers
             }  
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         } 
         
@@ -722,7 +720,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -748,7 +746,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -789,7 +787,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
         
@@ -814,7 +812,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -838,7 +836,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -862,7 +860,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
 
@@ -886,7 +884,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
     }

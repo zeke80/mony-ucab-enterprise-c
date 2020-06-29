@@ -83,7 +83,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT * FROM PagoDAOPsqlsolicitar( {0}, '{1}', {2}",
+                comando.CommandText = string.Format("SELECT * FROM PagoDAOPsqlsolicitar( {0}, '{1}', {2})",
                 idUsuarioSolicitante, userReceptor, monto);
                 conexion.Open();
                 int idPago = (int)comando.ExecuteScalar();
@@ -136,7 +136,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT actualizarSolicitudPagada( '{0}')", referencia);
+                comando.CommandText = string.Format("SELECT actualizarSolicitudPagada( {0})", referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
