@@ -19,14 +19,14 @@ values
 
 insert into contrasena(idusuario,contrasena,intentos_fallidos,estatus)
 values
-(1,'JUANPA10263',0,1),
-(1,'FERREIRA0236',0,1),
-(2,'DS140203',0,1),
-(2,'DS965231',0,1),
-(3,'AP148752',0,1),
-(3,'PACHECO9036',0,1),
-(4,'JACO02014',0,1),
-(4,'ADRIANITA0136',0,1);
+(1,'Juanpa1',0,1),
+(1,'Ferreira0236',0,0),
+(2,'Ds1234',0,1),
+(2,'DS965231',0,0),
+(3,'Ana0102',0,1),
+(3,'PACHECO9036',0,0),
+(4,'Jacome12',0,1),
+(4,'AdrianA0136',0,0);
 
 insert into estadocivil(descripcion,codigo,estatus)
 values
@@ -67,14 +67,14 @@ values
 
 insert into tarjeta(idusuario,idtipotarjeta,idbanco,numero,fecha_vencimiento,cvc,estatus)
 values
-(1,1,1,5015500236655898,to_date('15-07-2020','dd-MM-yyyy'),114,1),
-(1,2,4,1236589652321457,to_date('02-02-2021','dd-MM-yyyy'),889,1),
-(2,2,1,1478536985022561,to_date('12-08-2026','dd-MM-yyyy'),036,1),
-(2,2,1,1258935550033665,to_date('12-08-2020','dd-MM-yyyy'),991,1),
-(3,2,1,3202563694422554,to_date('24-08-2023','dd-MM-yyyy'),361,1),
-(3,1,1,1033265897400069,to_date('18-02-2024','dd-MM-yyyy'),032,1),
-(4,1,1,1256955426652366,to_date('02-09-2028','dd-MM-yyyy'),785,1),
-(4,1,1,1188568422336655,to_date('20-01-2022','dd-MM-yyyy'),742,1);
+(1,1,1,'5015500236655898',to_date('15-07-2020','dd-MM-yyyy'),114,1),
+(1,2,4,'1236589652321457',to_date('02-02-2021','dd-MM-yyyy'),889,1),
+(2,2,1,'1478536985022561',to_date('12-08-2026','dd-MM-yyyy'),036,1),
+(2,2,1,'1258935550033665',to_date('12-08-2020','dd-MM-yyyy'),991,1),
+(3,2,1,'3202563694422554',to_date('24-08-2023','dd-MM-yyyy'),361,1),
+(3,1,1,'1033265897400069',to_date('18-02-2024','dd-MM-yyyy'),032,1),
+(4,1,1,'1256955426652366',to_date('02-09-2028','dd-MM-yyyy'),785,1),
+(4,1,1,'1188568422336655',to_date('20-01-2022','dd-MM-yyyy'),742,1);
 
 insert into tipooperacion(descripcion,estatus)
 values

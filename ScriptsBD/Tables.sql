@@ -259,7 +259,7 @@ CREATE TABLE tarjeta (
 	idusuario         integer NOT NULL,
 	idtipotarjeta     integer NOT NULL,
 	idbanco           integer NOT NULL,
-	numero            integer NOT NULL,
+	numero            varchar(20) NOT NULL,
 	fecha_vencimiento date NOT NULL,
 	cvc               integer NOT NULL,
 	estatus           integer NOT NULL
