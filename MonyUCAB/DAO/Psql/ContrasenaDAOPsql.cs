@@ -18,8 +18,8 @@ namespace MonyUCAB.DAO.Psql
         {
             comando.CommandText = string.Format(
                 "INSERT INTO contrasena(" +
-                    "idusuario," +
-                    "contrasena," +
+                    "idusuario, " +
+                    "contrasena, " +
                     "intentos_fallidos," +
                     "estatus" +   
                 ") " +

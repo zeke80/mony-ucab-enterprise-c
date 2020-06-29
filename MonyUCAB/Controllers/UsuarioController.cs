@@ -693,17 +693,17 @@ namespace MonyUCAB.Controllers
             
             //Registro a al usuario
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-            usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
+            usuarioDAO.RegistrarUser(1 ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
                infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
                infoRegistro.estatus);
             
             //Registras el tipo de identificacion
-            ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
-            tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
+            //ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
+            //tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
 
             //Registra tipo de usuario
-            ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
-            tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
+            //ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
+            //tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
                
             //Guardo el id de ese usuario
             IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
@@ -761,7 +761,7 @@ namespace MonyUCAB.Controllers
             
             //Registro a al usuario
             IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-            usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
+            usuarioDAO.RegistrarUser(2 ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
                infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
                infoRegistro.estatus);
             
@@ -770,8 +770,8 @@ namespace MonyUCAB.Controllers
             tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
 
             //Registra tipo de usuario
-            ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
-            tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
+            //ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
+            //tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
                
             //Guardo el id de ese usuario
             IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
