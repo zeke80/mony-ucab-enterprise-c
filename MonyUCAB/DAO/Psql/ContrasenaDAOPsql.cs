@@ -15,28 +15,18 @@ namespace MonyUCAB.DAO.Psql
 
         public void registrarContrasena(int idUsuario, string contrasena)
         {
-            try
-            {
-                comando.CommandText = string.Format(
-                    "INSERT INTO contrasena(" +
-                        "idusuario," +
-                        "contrasena," +
-                        "intentos_fallidos," +
-                        "estatus" +
-                    ") " +
-                    "values" +
-                    "({0},{1},0,1)", idUsuario, contrasena);
-                conexion.Open();
-                comando.ExecuteNonQuery();
-            }
-            catch (NpgsqlException e)
-            {
-                throw e;
-            }
-            finally
-            {
-                conexion.Close();
-            }
+            comando.CommandText = string.Format(
+                "INSERT INTO contrasena(" +
+                    "idusuario, " +
+                    "contrasena, " +
+                    "intentos_fallidos," +
+                    "estatus" +   
+                ") " +
+                "values" +
+                "({0},'{1}',0,1)",idUsuario, contrasena);
+            conexion.Open();
+            comando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }
