@@ -32,13 +32,13 @@
 
                 <div class="form-row">
                     <div class="col-md-1">
-                        <label><h4>Nro.</h4></label>
+                        <label><h4>Tipo</h4></label>
                         <select class="form-control" disabled>
-                            <option>{{infoUsuario.idTipoIdentificacion}}</option>
+                            <option>{{tipoIdentificacion}}</option>
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label><h4>Identificación</h4></label>
+                        <label><h4>Nro. Identificación</h4></label>
                         <label><h4> </h4></label>
                         <input type="text" class="form-control" [(ngModel)]="infoUsuario.nroIdentificacion" value = {{infoUsuario.nroIdentificacion}} [disabled] = "isDisabled">
                     </div>
@@ -58,7 +58,7 @@
                         <div class="col-md-6">
                             <label ><h4>Estado Civil</h4></label>
                             <select class="form-control" disabled>
-                                <option>{{infoPersona.estadoCivil}}</option>
+                                <option>{{estadoCivil}}</option>
                             </select>
                         </div>
 

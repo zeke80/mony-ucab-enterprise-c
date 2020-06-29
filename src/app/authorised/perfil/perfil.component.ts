@@ -38,9 +38,10 @@ export class PerfilComponent implements OnInit {
     direccion : '',
     estatus : 0
   };
-  estado : number;
-  estadoCivil : number;
-  tipoId : number;
+
+  estadoCivil = '';
+  tipoIdentificacion = '';
+
   isDisabled : boolean = true;
 
   constructor(public s_perfil : PerfilService) { }
@@ -60,7 +61,12 @@ export class PerfilComponent implements OnInit {
   }
   consutarPersona(){
     this.s_perfil.consultarPersona().subscribe((data : any) => {
-      this.infoPersona.estadoCivil = data.idestadocivil;
+      if (data.idestadocivil == 1){
+        this.estadoCivil = "SOLTERO"
+      }
+      else {
+        this.estadoCivil = "CASADO"
+      }
       this.infoPersona.nombre = data.nombre;
       this.infoPersona.apellido = data.apellido;
       this.infoPersona.fechaNacimiento = data.fecha_nacimiento;
@@ -85,7 +91,18 @@ export class PerfilComponent implements OnInit {
     this.s_perfil.consultarUSuario().subscribe((data : any) =>{
       this.infoUsuario.idUsuario = data.idusuario;
       this.infoUsuario.idTipoUsuario = data.idtipousuario;
-      this.infoUsuario.idTipoIdentificacion = data.idtipoidentificacion;
+      if(data.idtipoidentificacion == 1){
+        this.tipoIdentificacion = "V"
+      }
+      else if(data.idtipoidentificacion == 2){
+        this.tipoIdentificacion ="P"
+      }
+      else if(data.idtipoidentificacion == 3){
+        this.tipoIdentificacion = "E"
+      }
+      else if(data.idtipoidentificacion == 4){
+        this.tipoIdentificacion = "J"
+      }
       this.infoUsuario.usuario = data.usuario;
       this.infoUsuario.fechaRegistro = data.fecha_registro;
       this.infoUsuario.nroIdentificacion = data.nro_identificacion;
