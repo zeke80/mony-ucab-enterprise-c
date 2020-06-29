@@ -1,7 +1,7 @@
 insert into tipousuario(descripcion,estatus)
 values
-('COMERCIO',1),
-('PERSONA',2);
+('PERSONA',1),
+('COMERCIO',2);
 
 insert into tipoidentificacion(codigo,descripcion,estatus)
 values

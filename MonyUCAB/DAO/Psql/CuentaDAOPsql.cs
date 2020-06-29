@@ -75,32 +75,52 @@ namespace MonyUCAB.DAO.Psql
 
         public void registrarCuenta(int idUsuario, int idtipocuenta, int idbanco, string numero)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO cuenta(" +
-                    "idusuario, " +
-                    "idtipocuenta, " +
-                    "idbanco, " +
-                    "numero " +   
-                ") " +
-                "values" +
-                "({0}, {1}, {2}, '{3}')",idUsuario, idtipocuenta, idbanco, numero);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO cuenta(" +
+                        "idusuario, " +
+                        "idtipocuenta, " +
+                        "idbanco, " +
+                        "numero " +
+                    ") " +
+                    "values" +
+                    "({0}, {1}, {2}, '{3}')", idUsuario, idtipocuenta, idbanco, numero);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
-         public void registrarTipocuenta(string descripcion)
+        public void registrarTipocuenta(string descripcion)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO tipocuenta(" +
-                    "descripcion," +
-                    "estatus" +  
-                ") " +
-                "values" +
-                "('{0}',1)",descripcion);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO tipocuenta(" +
+                        "descripcion," +
+                        "estatus" +
+                    ") " +
+                    "values" +
+                    "('{0}',1)", descripcion);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
-
+using Npgsql;
 
 namespace MonyUCAB.DAO
 {
@@ -18,53 +18,63 @@ namespace MonyUCAB.DAO
 
         public List<FiltrarOperacionesDTO> FiltrarByFechas(int idusuario,string fechainicio, string fechafinal)
         {
-            comando.CommandText = string.Format(
-            "SELECT " +
-            "op.fecha, " +
-            "op.hora, " + 
-            "op.monto, " +
-            "op.referencia " +
-            "FROM operaciontarjeta op, usuario us, tarjeta ta " +
-            "WHERE op.fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd') " +
-            "AND us.idusuario = {0} " +
-            "AND us.idusuario = ta.idusuario " +
-            "UNION ALL " +
-            "SELECT " +
-            "op.fecha, " +
-            "op.hora, " + 
-            "op.monto, " +
-            "op.referencia " + 
-            "FROM operacioncuenta op , usuario us, cuenta cu " +
-            "WHERE fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd')" + 
-            "AND us.idusuario = {0} " +
-            "AND us.idusuario = cu.idusuario " +
-            "UNION ALL " +
-            "SELECT " + 
-            "op.fecha, " +
-            "op.hora, " + 
-            "op.monto, " +
-            "op.referencia " +
-            "FROM operacionesmonedero op , usuario us " +
-            "WHERE fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd')" +
-            "AND us.idusuario = {0} ", idusuario,fechainicio, fechafinal
-                );
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            List<FiltrarOperacionesDTO> filtrarOperaciones = new List<FiltrarOperacionesDTO>();
-            while (filas.Read())
+            try
             {
-                filtrarOperaciones.Add (new FiltrarOperacionesDTO
+                comando.CommandText = string.Format(
+                "SELECT " +
+                "op.fecha, " +
+                "op.hora, " +
+                "op.monto, " +
+                "op.referencia " +
+                "FROM operaciontarjeta op, usuario us, tarjeta ta " +
+                "WHERE op.fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd') " +
+                "AND us.idusuario = {0} " +
+                "AND us.idusuario = ta.idusuario " +
+                "UNION ALL " +
+                "SELECT " +
+                "op.fecha, " +
+                "op.hora, " +
+                "op.monto, " +
+                "op.referencia " +
+                "FROM operacioncuenta op , usuario us, cuenta cu " +
+                "WHERE fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd')" +
+                "AND us.idusuario = {0} " +
+                "AND us.idusuario = cu.idusuario " +
+                "UNION ALL " +
+                "SELECT " +
+                "op.fecha, " +
+                "op.hora, " +
+                "op.monto, " +
+                "op.referencia " +
+                "FROM operacionesmonedero op , usuario us " +
+                "WHERE fecha between to_date('{1}','yyyy-MM-dd') and to_date('{2}','yyyy-MM-dd')" +
+                "AND us.idusuario = {0} ", idusuario, fechainicio, fechafinal
+                    );
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                List<FiltrarOperacionesDTO> filtrarOperaciones = new List<FiltrarOperacionesDTO>();
+                while (filas.Read())
                 {
-                    Fecha = filas.GetDateTime(0),
-                    Hora = filas.GetTimeSpan(1),
-                    Monto = filas.GetInt32(2),
-                    Referencia = filas.GetInt32(3),
-                });
-                    
+                    filtrarOperaciones.Add(new FiltrarOperacionesDTO
+                    {
+                        Fecha = filas.GetDateTime(0),
+                        Hora = filas.GetTimeSpan(1),
+                        Monto = filas.GetInt32(2),
+                        Referencia = filas.GetInt32(3),
+                    });
+
+                }
+                filas.Close();
+                return filtrarOperaciones;
             }
-            filas.Close();
-            conexion.Close();
-            return filtrarOperaciones;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void crear()

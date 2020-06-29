@@ -184,28 +184,37 @@ namespace MonyUCAB.DAO
             }
         }
 
-           public void RegistrarUser(int idtipousuario, int idtipoidentificacion, string usuario, int nro_identificacion,
-         string email, string telefono, string direccion, int estatus )
+        public void RegistrarUser(int idtipousuario, int idtipoidentificacion, string usuario, int nro_identificacion,
+        string email, string telefono, string direccion, int estatus )
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO usuario(" +
-                "idtipousuario, " +
-                "idtipoidentificacion, " +
-                "usuario, " +
-                "fecha_registro, " +
-                "nro_identificacion, " +
-                "email, " +
-                "telefono, " +
-                "direccion, " +
-                "estatus " +
-                
-                ") VALUES({0},{1},'{2}',to_date('{3}','dd-MM-yyyy'),{4},'{5}','{6}','{7}','{8}')", 
-                idtipousuario, idtipoidentificacion,usuario, DateTime.Now.ToString("dd-MM-yyyy"),
-                nro_identificacion,email,telefono,direccion,estatus);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
-        
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO usuario(" +
+                    "idtipousuario, " +
+                    "idtipoidentificacion, " +
+                    "usuario, " +
+                    "fecha_registro, " +
+                    "nro_identificacion, " +
+                    "email, " +
+                    "telefono, " +
+                    "direccion, " +
+                    "estatus " +
+
+                    ") VALUES({0},{1},'{2}',to_date('{3}','dd-MM-yyyy'),{4},'{5}','{6}','{7}','{8}')",
+                    idtipousuario, idtipoidentificacion, usuario, DateTime.Now.ToString("dd-MM-yyyy"),
+                    nro_identificacion, email, telefono, direccion, estatus);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void ajustar(int idUsuario, string user, int di, string email, string telf, string dir)
@@ -228,23 +237,33 @@ namespace MonyUCAB.DAO
         }
 
         public UsuarioDTO buscarIdByUser(string usuario){
-            comando.CommandText = string.Format("SELECT " +
-                "us.idusuario " +
-                "FROM usuario us " +
-                "WHERE  us.usuario = '{0}' ",usuario);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            UsuarioDTO usuarioDTO = null;
-            if(filas.Read())
+            try
             {
-                usuarioDTO = new UsuarioDTO
+                comando.CommandText = string.Format("SELECT " +
+                    "us.idusuario " +
+                    "FROM usuario us " +
+                    "WHERE  us.usuario = '{0}' ", usuario);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                UsuarioDTO usuarioDTO = null;
+                if (filas.Read())
                 {
-                    Idusuario = filas.GetInt32(0)
-                };
+                    usuarioDTO = new UsuarioDTO
+                    {
+                        Idusuario = filas.GetInt32(0)
+                    };
+                }
+                filas.Close();
+                return usuarioDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return usuarioDTO;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
     }

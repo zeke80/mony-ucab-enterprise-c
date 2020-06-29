@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
-
+using Npgsql;
 
 namespace MonyUCAB.DAO
 {
@@ -32,23 +32,33 @@ namespace MonyUCAB.DAO
         }
 
          public TipoTarjetaDTO buscarIdTipotarjeta(string descripcion){
-            comando.CommandText = string.Format("SELECT " +
-                "idtipotarjeta " +
-                "FROM tipotarjeta " +
-                "WHERE  descripcion = '{0}' ",descripcion);
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            TipoTarjetaDTO tipotarjetaDTO = null;
-            if(filas.Read())
+            try
             {
-                tipotarjetaDTO = new TipoTarjetaDTO
+                comando.CommandText = string.Format("SELECT " +
+                    "idtipotarjeta " +
+                    "FROM tipotarjeta " +
+                    "WHERE  descripcion = '{0}' ", descripcion);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                TipoTarjetaDTO tipotarjetaDTO = null;
+                if (filas.Read())
                 {
-                    IdTipoTarjeta = filas.GetInt32(0)
-                };
+                    tipotarjetaDTO = new TipoTarjetaDTO
+                    {
+                        IdTipoTarjeta = filas.GetInt32(0)
+                    };
+                }
+                filas.Close();
+                return tipotarjetaDTO;
             }
-            filas.Close();
-            conexion.Close();
-            return tipotarjetaDTO;
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

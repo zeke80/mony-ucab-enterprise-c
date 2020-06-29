@@ -61,20 +61,30 @@ namespace MonyUCAB.DAO
             }
         }
 
-         public void registrarComercio(int idusuario,string razon_social, string nombre_representante, string apellido_representante)
+        public void registrarComercio(int idusuario,string razon_social, string nombre_representante, string apellido_representante)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO comercio(" +
-                    "idusuario," +
-                    "razon_social," +
-                    "nombre_representante," +
-                    "apellido_representante" +  
-                ") " +
-                "values" +
-                "({0},'{1}','{2}', '{3}')",idusuario,razon_social,nombre_representante,apellido_representante);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO comercio(" +
+                        "idusuario," +
+                        "razon_social," +
+                        "nombre_representante," +
+                        "apellido_representante" +
+                    ") " +
+                    "values" +
+                    "({0},'{1}','{2}', '{3}')", idusuario, razon_social, nombre_representante, apellido_representante);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

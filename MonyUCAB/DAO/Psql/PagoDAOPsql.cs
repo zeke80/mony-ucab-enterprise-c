@@ -217,13 +217,23 @@ namespace MonyUCAB.DAO
 
         public void bloquearPago(int referencia)
         {
-            comando.CommandText = string.Format(
-                "UPDATE pago SET " +
-                "estatus = 'BLOQUEADO' " +
-                "WHERE referencia = {0}", referencia);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "UPDATE pago SET " +
+                    "estatus = 'BLOQUEADO' " +
+                    "WHERE referencia = {0}", referencia);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

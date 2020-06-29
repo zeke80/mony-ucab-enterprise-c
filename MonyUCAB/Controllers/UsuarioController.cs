@@ -642,21 +642,21 @@ namespace MonyUCAB.Controllers
         public async Task<ActionResult<string>> registrarCuentaBanco(InfoCuenta infoCuenta)
         {
             try{
-            string respuesta = "Cuenta de Banco Registrada";
+                string respuesta = "Cuenta de Banco Registrada";
 
-            ICuentaDAO cuentaDAO = new CuentaDAOPsql();
-            IBancoDAO bancoDAO1 = new BancoDAOPsql();
-            bancoDAO1.registrarBanco(infoCuenta.nombre, 1);
-            cuentaDAO.registrarTipocuenta(infoCuenta.descripcion);
-            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
-            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoCuenta.usuario);
+                ICuentaDAO cuentaDAO = new CuentaDAOPsql();
+                IBancoDAO bancoDAO1 = new BancoDAOPsql();
+                bancoDAO1.registrarBanco(infoCuenta.nombre, 1);
+                cuentaDAO.registrarTipocuenta(infoCuenta.descripcion);
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoCuenta.usuario);
 
-            IBancoDAO bancoDAO = new BancoDAOPsql();
-            BancoDTO bancoDTO = bancoDAO.buscarIdbanco(infoCuenta.nombre);
+                IBancoDAO bancoDAO = new BancoDAOPsql();
+                BancoDTO bancoDTO = bancoDAO.buscarIdbanco(infoCuenta.nombre);
 
-            cuentaDAO.registrarCuenta(usuarioDTO.Idusuario,1,bancoDTO.IdBanco,infoCuenta.numero);
+                cuentaDAO.registrarCuenta(usuarioDTO.Idusuario,1,bancoDTO.IdBanco,infoCuenta.numero);
 
-           return respuesta;
+               return respuesta;
             }
             catch (Exception e)
             {
@@ -684,39 +684,39 @@ namespace MonyUCAB.Controllers
         
         [Route("[action]")]
         [HttpPost]
-         public async Task<ActionResult<string>> registrarUsuario(InfoRegistro infoRegistro)
+        public async Task<ActionResult<string>> registrarUsuario(InfoRegistro infoRegistro)
         {
             try {
-            string respuesta = "usuario registrado";
+                string respuesta = "usuario registrado";
             
-            //Registro a al usuario
-            IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
-            usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
-               infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
-               infoRegistro.estatus);
+                //Registro a al usuario
+                IUsuarioDAO usuarioDAO = new UsuarioDAOPsql();
+                usuarioDAO.RegistrarUser(infoRegistro.idtipousuario ,infoRegistro.idtipoidentificacion,infoRegistro.usuario,
+                    infoRegistro.nro_identificacion,infoRegistro.email,infoRegistro.telefono,infoRegistro.direccion,
+                    infoRegistro.estatus);
             
-            //Registras el tipo de identificacion
-            ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
-            tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
+                //Registras el tipo de identificacion
+                ITipoIdentificacionDAO tipoIdentificacionDAO = new TipoIdentificacionDAOPsql();
+                tipoIdentificacionDAO.RegistrarTipoIdentificacion(infoRegistro.tipoidentificacion);
 
-            //Registra tipo de usuario
-            ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
-            tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
+                //Registra tipo de usuario
+                ITipoUsuarioDAO tipoUsuarioDAO = new TipoUsuarioDAOPsql();
+                tipoUsuarioDAO.RegistrarTipoUsuario(infoRegistro.descripciontipousuario);
                
-            //Guardo el id de ese usuario
-            IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
-            UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoRegistro.usuario);
+                //Guardo el id de ese usuario
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoRegistro.usuario);
 
-            //Registra la contrasena del usuario creado
-            IContrasenaDAO contrasenaDAO = new ContrasenaDAOPsql();
-            contrasenaDAO.registrarContrasena(usuarioDTO.Idusuario, infoRegistro.contrasena);  
+                //Registra la contrasena del usuario creado
+                IContrasenaDAO contrasenaDAO = new ContrasenaDAOPsql();
+                contrasenaDAO.registrarContrasena(usuarioDTO.Idusuario, infoRegistro.contrasena);  
 
-            //Registras a la persona del usuario
-            IPersonaDAO personaDAO = new PersonaDAOPsql();
-            personaDAO.registraPersona(usuarioDTO.Idusuario, infoRegistro.idestadocivil, 
-            infoRegistro.nombre, infoRegistro.apellido, infoRegistro.fecha_nacimiento );
+                //Registras a la persona del usuario
+                IPersonaDAO personaDAO = new PersonaDAOPsql();
+                personaDAO.registraPersona(usuarioDTO.Idusuario, infoRegistro.idestadocivil, 
+                infoRegistro.nombre, infoRegistro.apellido, infoRegistro.fecha_nacimiento );
 
-           return respuesta;
+                return respuesta;
             }
             catch (Exception e)
             {

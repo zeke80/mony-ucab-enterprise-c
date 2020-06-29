@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using MonyUCAB.DTO;
-
+using Npgsql;
 
 namespace MonyUCAB.DAO
 {
@@ -21,43 +21,63 @@ namespace MonyUCAB.DAO
             throw new NotImplementedException();
         }
 
-          public BancoDTO buscarIdbanco(string nombre)
+        public BancoDTO buscarIdbanco(string nombre)
         {
-            comando.CommandText = string.Format("SELECT " +
-                "ba.idbanco " +
-                "FROM banco ba, cuenta cu, usuario us, tipocuenta ti " +
-                "WHERE us.idusuario = cu.idusuario " +
-                "AND cu.idtipocuenta = ti.idtipocuenta " + 
-                "AND ba.nombre = '{0}' " + 
-                "order by ba.idbanco desc " + 
-                "limit 1", nombre );
-            conexion.Open();
-            filas = comando.ExecuteReader();
-            BancoDTO bancoDTO = null;
-             if (filas.Read())
+            try
             {
-                bancoDTO = new BancoDTO
+                comando.CommandText = string.Format("SELECT " +
+                    "ba.idbanco " +
+                    "FROM banco ba, cuenta cu, usuario us, tipocuenta ti " +
+                    "WHERE us.idusuario = cu.idusuario " +
+                    "AND cu.idtipocuenta = ti.idtipocuenta " +
+                    "AND ba.nombre = '{0}' " +
+                    "order by ba.idbanco desc " +
+                    "limit 1", nombre);
+                conexion.Open();
+                filas = comando.ExecuteReader();
+                BancoDTO bancoDTO = null;
+                if (filas.Read())
                 {
-                    IdBanco = filas.GetInt32(0),
-                };
-            } 
-            filas.Close();
-            conexion.Close();
-            return bancoDTO;
-        }
+                    bancoDTO = new BancoDTO
+                    {
+                        IdBanco = filas.GetInt32(0),
+                    };
+                }
+                filas.Close();
+                return bancoDTO;
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+    }
 
         public void registrarBanco(string nombre, int estatus)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO banco(" +
-                    "nombre, " +
-                    "estatus " +    
-                ") " +
-                "values" +
-                "('{0}', {1} )",nombre, estatus);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO banco(" +
+                        "nombre, " +
+                        "estatus " +
+                    ") " +
+                    "values" +
+                    "('{0}', {1} )", nombre, estatus);
+                conexion.Open();
+                comando.ExecuteNonQuery();                
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void crear()

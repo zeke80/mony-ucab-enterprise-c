@@ -61,20 +61,30 @@ namespace MonyUCAB.DAO.Psql
 
         public void registraPersona(int idUsuario, int idestadocivil, string nombre, string apellido, string fecha_nacimiento)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO persona(" +
-                    "idusuario, " +
-                    "idestadocivil, " +
-                    "nombre, " +
-                    "apellido, " +
-                    "fecha_nacimiento " +                   
-                ") " +
-                "values" +
-                "({0}, {1}, '{2}', '{3}', to_date('{4}','yyyy-MM-dd'))",
-                idUsuario, idestadocivil, nombre,apellido,fecha_nacimiento);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO persona(" +
+                        "idusuario, " +
+                        "idestadocivil, " +
+                        "nombre, " +
+                        "apellido, " +
+                        "fecha_nacimiento " +
+                    ") " +
+                    "values" +
+                    "({0}, {1}, '{2}', '{3}', to_date('{4}','yyyy-MM-dd'))",
+                    idUsuario, idestadocivil, nombre, apellido, fecha_nacimiento);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

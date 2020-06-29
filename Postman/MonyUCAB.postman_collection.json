@@ -981,7 +981,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"user\" : \"user2\",\r\n\t\"contra\" : \"2\"\r\n}",
+							"raw": "{\r\n\t\"user\" : \"BRAYANDS\",\r\n\t\"contra\" : \"DS140203\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1950,12 +1950,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/Usuario/enviarEmail",
+							"raw": "http://monyucab.somee.com/api/Usuario/enviarEmail",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"monyucab",
+								"somee",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"api",
 								"Usuario",
