@@ -15,11 +15,6 @@ export class PerfilService {
     let url = "http://monyucab.somee.com/api/Usuario/infoUsuario";
 
     let id = parseInt(localStorage.getItem('idUsuario'), 10);
-
-    this.http.post(url, {'id' : id}).
-    toPromise().then((data : any) =>{
-    }
-    )
     
     return this.http.post(url, {'id' : id});
 
@@ -29,11 +24,6 @@ export class PerfilService {
     let url = "http://monyucab.somee.com/api/Usuario/infoPersona";
 
     let id = parseInt(localStorage.getItem('idUsuario'), 10);
-
-    this.http.post(url, {'id' : id}).
-    toPromise().then((data : any) =>{
-    }
-    )
     
     return this.http.post(url, {'id' : id});
 
