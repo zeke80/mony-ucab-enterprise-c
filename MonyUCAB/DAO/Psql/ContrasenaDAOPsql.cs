@@ -24,7 +24,7 @@ namespace MonyUCAB.DAO.Psql
                     "estatus" +   
                 ") " +
                 "values" +
-                "({0},{1},0,1)",idUsuario, contrasena);
+                "({0},'{1}',0,1)",idUsuario, contrasena);
             conexion.Open();
             comando.ExecuteNonQuery();
             conexion.Close();
