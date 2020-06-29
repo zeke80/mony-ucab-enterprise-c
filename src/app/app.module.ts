@@ -9,8 +9,9 @@ import { AuthorisedSideNavService } from './authorised/side-nav/services/authori
 import { MovimientosService } from './authorised/tabla-movimientos/services/movimientos.service';
 import { BloquearService } from './authorised/bloquear/services/bloquear.service';
 import { PerfilService } from './authorised/perfil/services/perfil.service';
-import { TransferirService } from './authorised/transferir-card/services/transferir.service';
 import { ConfiguracionesService } from './authorised/configuraciones/services/configuraciones.service';
+import { InicioService } from './authorised/pantalla-inicio/services/inicio.service';
+import { RecuperarContrasenaService } from './home/recuperar-contrasena/services/recuperar-contrasena.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,12 +25,13 @@ import { LayoutComponent } from './authorised/layout/layout.component';
 import { TopNavComponent } from './authorised/top-nav/top-nav.component';
 import { BloquearComponent } from './authorised/bloquear/bloquear.component';
 import { TablaMovimientosComponent } from './authorised/tabla-movimientos/tabla-movimientos.component';
-import { TransferirCardComponent } from './authorised/transferir-card/transferir-card.component';
 import { PerfilComponent } from './authorised/perfil/perfil.component';
 import { ConfiguracionesComponent } from './authorised/configuraciones/configuraciones.component';
 import { ProductosComponent } from './authorised/productos/productos.component';
 import { AgregarTarjetaComponent } from './authorised/agregar-tarjeta/agregar-tarjeta.component';
 import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuenta.component';
+import { PantallaInicioComponent } from './authorised/pantalla-inicio/pantalla-inicio.component';
+import { RecuperarContrasenaComponent } from './home/recuperar-contrasena/recuperar-contrasena.component';
 
 @NgModule({
   declarations: [
@@ -44,12 +46,13 @@ import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuen
     TopNavComponent,
     BloquearComponent,
     TablaMovimientosComponent,
-    TransferirCardComponent,
     PerfilComponent,
     ConfiguracionesComponent,
     ProductosComponent,
     AgregarTarjetaComponent,
-    AgregarCuentaComponent
+    AgregarCuentaComponent,
+    PantallaInicioComponent,
+    RecuperarContrasenaComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuen
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'sign-up', component: SignupFormComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'dashboard', component: LayoutComponent }
+      { path: 'dashboard', component: LayoutComponent },
+      { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent }
       
     ])
   ],
@@ -71,8 +75,9 @@ import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuen
     MovimientosService,
     BloquearService,
     PerfilService,
-    TransferirService,
-    ConfiguracionesService
+    ConfiguracionesService, 
+    InicioService,
+    RecuperarContrasenaService
   ],
   bootstrap: [AppComponent]
 })
