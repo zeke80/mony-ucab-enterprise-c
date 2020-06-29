@@ -84,7 +84,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT registrarOperacionMonederoRemitente({0}, {1}, '{2}')",
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoRemitente({0}, {1}, {2})",
                 idUsuario, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
@@ -103,7 +103,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT registrarOperacionMonederoDestinatario('{0}', {1}, '{2}')",
+                comando.CommandText = string.Format("SELECT registrarOperacionMonederoDestinatario('{0}', {1}, {2})",
                 usuarioReceptor, monto, referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();

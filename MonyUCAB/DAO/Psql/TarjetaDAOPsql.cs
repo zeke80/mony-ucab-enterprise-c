@@ -2,6 +2,7 @@
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -25,7 +26,7 @@ namespace MonyUCAB.DAO.Psql
                         Idusuario = filas.GetInt32(1),
                         Idtipotarjeta = filas.GetInt32(2),
                         Idbanco = filas.GetInt32(3),
-                        Numero = filas.GetInt32(4),
+                        Numero = filas.GetString(4),
                         Fecha_vencimiento = filas.GetDateTime(5),
                         Cvc = filas.GetInt32(6),
                         Estatus = filas.GetInt32(7),
@@ -60,7 +61,7 @@ namespace MonyUCAB.DAO.Psql
                         Idusuario = filas.GetInt32(1),
                         Idtipotarjeta = filas.GetInt32(2),
                         Idbanco = filas.GetInt32(3),
-                        Numero = filas.GetInt32(4),
+                        Numero = filas.GetString(4),
                         Fecha_vencimiento = filas.GetDateTime(5),
                         Cvc = filas.GetInt32(6),
                         Estatus = filas.GetInt32(7),

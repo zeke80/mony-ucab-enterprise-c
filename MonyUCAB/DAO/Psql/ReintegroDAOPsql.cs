@@ -81,7 +81,7 @@ namespace MonyUCAB.DAO
         {
             try
             {
-                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlsolicitar('{0}')",referencia);
+                comando.CommandText = string.Format("SELECT ReintegroDAOPsqlsolicitar({0})",referencia);
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }

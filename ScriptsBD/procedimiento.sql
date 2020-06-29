@@ -276,7 +276,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* realizar operacion cuenta */
 
-CREATE OR REPLACE FUNCTION OperacionCuentaDAOPsqlrealizar(id integer, usu varchar(20), mont float, refe integer)
+CREATE OR REPLACE FUNCTION OperacionCuentaDAOPsqlrealizar(id integer, usu varchar(20), mont decimal, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -345,7 +345,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* realizar operacion tarjeta */
 
-CREATE OR REPLACE FUNCTION OperacionTarjetaDAOPsqlrealizar(id integer, usu varchar(20), mont float, refe integer)
+CREATE OR REPLACE FUNCTION OperacionTarjetaDAOPsqlrealizar(id integer, usu varchar(20), mont decimal, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -412,7 +412,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* registrarOperacionMonederoRemitente */
 
-CREATE OR REPLACE FUNCTION registrarOperacionMonederoRemitente(id integer, mont float, refe integer)
+CREATE OR REPLACE FUNCTION registrarOperacionMonederoRemitente(id integer, mont decimal, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -426,7 +426,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* registrarOperacionMonederoDestinatario */
 
-CREATE OR REPLACE FUNCTION registrarOperacionMonederoDestinatario( usu varchar(20) , mont float, refe integer)
+CREATE OR REPLACE FUNCTION registrarOperacionMonederoDestinatario( usu varchar(20) , mont decimal, refe integer)
 RETURNS void AS
 $BODY$
 BEGIN
@@ -441,7 +441,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* pagosSolicitadosSolicitante */
 
 CREATE OR REPLACE FUNCTION pagosSolicitadosSolicitante(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto decimal, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -465,7 +465,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* pagosSolicitadosReceptor */
 
 CREATE OR REPLACE FUNCTION pagosSolicitadosReceptor(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto decimal, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -488,7 +488,7 @@ $BODY$ LANGUAGE 'plpgsql';
 
 /* solicitar pago */
 
-CREATE OR REPLACE FUNCTION PagoDAOPsqlsolicitar( id integer , usu varchar(20), mont float)
+CREATE OR REPLACE FUNCTION PagoDAOPsqlsolicitar( id integer , usu varchar(20), mont decimal)
 RETURNS TABLE (pa_idpago integer) AS
 $BODY$
 DECLARE
@@ -510,7 +510,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* saldo */
 
 CREATE OR REPLACE FUNCTION PagoDAOPsqlsaldo( id integer)
-RETURNS TABLE (saldo float) AS
+RETURNS TABLE (saldo decimal) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -563,7 +563,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* cierre */
 
 CREATE OR REPLACE FUNCTION PagoDAOPsqlcierre(id integer)
-RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto float, pa_estatus varchar(45), pa_referencia integer) AS
+RETURNS TABLE(pa_idpago integer, pa_idusuario_solicitante integer, pa_idusuario_receptor integer, pa_fecha_solicitus date, pa_monto decimal, pa_estatus varchar(45), pa_referencia integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -633,7 +633,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarReintegro */
 
 CREATE OR REPLACE FUNCTION buscarReintegro(id integer)
-RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia integer, rei_estatus varchar(45)) AS
+RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud date, rei_referencia integer, rei_estatus varchar(45)) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -656,7 +656,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarReintegros */ 
 
 CREATE OR REPLACE FUNCTION buscarReintegros(id integer)
-RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud varchar(45), rei_referencia integer, rei_estatus varchar(45)) AS
+RETURNS TABLE(rei_idreintegro integer, rei_idusuario_solicitante integer, rei_idusuario_receptor integer, rei_fecha_solicitud date, rei_referencia integer, rei_estatus varchar(45)) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -725,7 +725,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarTarjeta */
 
 CREATE OR REPLACE FUNCTION buscarTarjeta(id integer)
-RETURNS TABLE(tar_idtarjeta integer, tar_idusuario integer, tar_idtipotarjeta integer, tar_idbanco integer, tar_numero integer, tar_fecha_vencimiento date, tar_cvc integer, tar_estatus integer) AS
+RETURNS TABLE(tar_idtarjeta integer, tar_idusuario integer, tar_idtipotarjeta integer, tar_idbanco integer, tar_numero varchar(20), tar_fecha_vencimiento date, tar_cvc integer, tar_estatus integer) AS
 $BODY$
 DECLARE
     reg RECORD;
@@ -750,7 +750,7 @@ $BODY$ LANGUAGE 'plpgsql';
 /* buscarTarjetas */
 
 CREATE OR REPLACE FUNCTION buscarTarjetas(id integer)
-RETURNS TABLE(tar_idtarjeta integer, tar_idusuario integer, tar_idtipotarjeta integer, tar_idbanco integer, tar_numero integer, tar_fecha_vencimiento date, tar_cvc integer, tar_estatus integer) AS
+RETURNS TABLE(tar_idtarjeta integer, tar_idusuario integer, tar_idtipotarjeta integer, tar_idbanco integer, tar_numero varchar(20), tar_fecha_vencimiento date, tar_cvc integer, tar_estatus integer) AS
 $BODY$
 DECLARE
     reg RECORD;
