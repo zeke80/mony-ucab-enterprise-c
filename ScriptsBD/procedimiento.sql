@@ -575,7 +575,7 @@ FROM pago  WHERE(idusuario_solicitante = id OR idusuario_receptor = id) AND fech
         pa_idusuario_receptor:= reg.idusuario_receptor;
         pa_fecha_solicitus:= reg.fecha_solicitus;
         pa_monto:= reg.monto;
-        pa_estatus := upper(reg.estatus();
+        pa_estatus := upper(reg.estatus());
         pa_referencia := reg.referencia;
         RETURN NEXT;
     END LOOP;
