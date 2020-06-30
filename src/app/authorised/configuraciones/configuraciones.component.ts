@@ -26,10 +26,10 @@ export class ConfiguracionesComponent implements OnInit {
     this.s_configuraciones.cambiarContra(this.formConfig.get('contraVieja').value,this.formConfig.get('contraNueva').value).subscribe(
       (data: any)=>{},
       (err :HttpErrorResponse) =>{
-        if (err.status != 200){
-          alert("Ha ocurrido un error")
-        }else {
+        if (err.status == 200){
           alert("Cambio exitoso")
+        }else {
+          alert("Ha ocurrido un error")
         }
       }
     );
