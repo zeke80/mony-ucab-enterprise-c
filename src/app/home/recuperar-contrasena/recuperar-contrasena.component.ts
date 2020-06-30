@@ -22,7 +22,6 @@ export class RecuperarContrasenaComponent implements OnInit {
   }
 
   recuperarContrasena(email : string){
-    console.log(email);
     this.s_contrasena.recuperContrasena(email.toLocaleUpperCase())
     .subscribe((data: any) =>{
       alert('Correo enviado');
