@@ -22,8 +22,9 @@ export class LoginFormComponent implements OnInit {
     this.service.loginPersona(this.user,this.contra)
     .subscribe(
       (data: any) => {
+          this.service.login();
           this.service.guardarUsuario(data.idusuario, data.idtipousuario, data.idtipoidentificacion, data.usuario);
-      this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
     },
       (error : HttpErrorResponse) => {
         if (error.status == 404){
@@ -41,6 +42,7 @@ export class LoginFormComponent implements OnInit {
     .subscribe(
       (data: any) => {
           this.service.guardarUsuario(data.idusuario, data.idtipousuario, data.idtipoidentificacion, data.usuario);
+          this.service.login();
           this.router.navigate(['/dashboard']);
     },
       (error : HttpErrorResponse) => {

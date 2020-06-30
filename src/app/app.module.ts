@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, CanActivate } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 import { LoginService } from './home/login-form/services/login.service';
@@ -13,6 +13,8 @@ import { PerfilService } from './authorised/perfil/services/perfil.service';
 import { ConfiguracionesService } from './authorised/configuraciones/services/configuraciones.service';
 import { InicioService } from './authorised/pantalla-inicio/services/inicio.service';
 import { RecuperarContrasenaService } from './home/recuperar-contrasena/services/recuperar-contrasena.service';
+
+import { LoginGuard } from './guard/login.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,7 +69,7 @@ import { RecuperarContrasenaComponent } from './home/recuperar-contrasena/recupe
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'sign-up', component: SignupFormComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'dashboard', component: LayoutComponent },
+      { path: 'dashboard', component: LayoutComponent, canActivate : [LoginGuard] },
       { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent }
       
     ])
@@ -82,7 +84,8 @@ import { RecuperarContrasenaComponent } from './home/recuperar-contrasena/recupe
     InicioService,
     RecuperarContrasenaService,
     DatePipe,
-    ProductosComponent
+    ProductosComponent, 
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

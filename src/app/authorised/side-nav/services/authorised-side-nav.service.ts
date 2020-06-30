@@ -8,6 +8,7 @@ import { PerfilService } from './../../perfil/services/perfil.service';
 import { ProductosService } from './../../productos/services/productos.service';
 import { ConfiguracionesService } from './../../configuraciones/services/configuraciones.service';
 import { InicioService } from './../../pantalla-inicio/services/inicio.service';
+import { LoginService } from './../../../home/login-form/services/login.service';
 
 import { ProductosComponent } from './../../productos/productos.component';
 
@@ -25,7 +26,8 @@ export class AuthorisedSideNavService {
     private s_inicio : InicioService,
     private c_producto : ProductosComponent,
     private router : Router,
-    private location: Location) { }
+    private location: Location,
+    private s_login : LoginService) { }
  
   toggleSideNav(): void {
     this.hideSideNav = !this.hideSideNav;
@@ -88,10 +90,12 @@ export class AuthorisedSideNavService {
     this.s_bloquear.show = false;
     this.s_perfil.show = false;
     this.s_inicio.show = false;
+    this.c_producto.ocultarAgregar();
   }
 
 
   logout(){
+    this.s_login.logout();
     localStorage.clear();
     this.location.back();
   }
