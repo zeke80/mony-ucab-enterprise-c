@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 import { LoginService } from './home/login-form/services/login.service';
 import { AuthorisedSideNavService } from './authorised/side-nav/services/authorised-side-nav.service';
@@ -32,6 +33,7 @@ import { AgregarTarjetaComponent } from './authorised/agregar-tarjeta/agregar-ta
 import { AgregarCuentaComponent } from './authorised/agregar-cuenta/agregar-cuenta.component';
 import { PantallaInicioComponent } from './authorised/pantalla-inicio/pantalla-inicio.component';
 import { RecuperarContrasenaComponent } from './home/recuperar-contrasena/recuperar-contrasena.component';
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { RecuperarContrasenaComponent } from './home/recuperar-contrasena/recupe
     PerfilService,
     ConfiguracionesService, 
     InicioService,
-    RecuperarContrasenaService
+    RecuperarContrasenaService,
+    DatePipe,
+    ProductosComponent
   ],
   bootstrap: [AppComponent]
 })
