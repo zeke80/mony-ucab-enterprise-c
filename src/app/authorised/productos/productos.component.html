@@ -2,7 +2,7 @@
     <br>
     <h1 class="display-4">Sus productos</h1>
     <div class="row float-right">
-        <button type="button" class="btn btn-primary">Agregar tarjeta</button>
+        <button type="button" class="btn btn-primary" (click) = "agregarTarjeta()">Agregar tarjeta</button>
     </div>
     <br>
     <br>
@@ -14,8 +14,9 @@
             <div class="container" *ngFor = "let tarjeta of tarjetas">
                 <div class="row"> 
                 <div class="col-4">
-                    <span style="font-weight: bold;"><i class="fas fa-credit-card"></i> Tipo: </span>
-                    <span>{{tarjeta.idtipotarjeta}}</span>
+                    <span><i class="fas fa-credit-card"></i></span>  
+                    <span style="font-weight: bold;"> Tipo: </span>
+                    <span>{{tipo}}</span>
                 </div>
                 <div class="col-6">
                     <span style="font-weight: bold;"><i class="fas fa-hashtag"></i> Numero de tarjeta: </span>
@@ -44,7 +45,7 @@
     <br>
     <br>
     <div class="row float-right">
-        <button type="button" class="btn btn-primary">Agregar cuenta</button>
+        <button type="button" class="btn btn-primary" (click) ="agregarCuenta()">Agregar cuenta</button>
     </div>
     <br>
     <br>
@@ -58,10 +59,6 @@
                 <div class="col">
                     <span style="font-weight: bold;"><i class="fas fa-credit-card"></i> Tipo: </span>
                     <span>{{cuenta.idtipocuenta}}</span>
-                </div>
-                <div class="col">
-                    <span style="font-weight: bold;"><i class="fas fa-landmark"></i> Banco: </span>
-                    <span>{{cuenta.idbanco}}</span>
                 </div>
                 <div class="col">
                     <span style="font-weight: bold;"><i class="fas fa-hashtag"></i> Numero de cuenta: </span>
