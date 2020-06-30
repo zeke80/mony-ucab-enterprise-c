@@ -1,7 +1,7 @@
 import { AgregarTarjetaService } from './../agregar-tarjeta/services/agregar-tarjeta.service';
 import { AgregarCuentaService } from './../agregar-cuenta/services/agregar-cuenta.service';
 import { ProductosService } from './services/productos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-productos',
@@ -14,13 +14,21 @@ export class ProductosComponent implements OnInit {
   cuentas : any;
   tipo : string;
   banco : string;
+  interval : any;
 
   constructor(public s_producto : ProductosService, public s_cuenta : AgregarCuentaService, public s_tarjeta : AgregarTarjetaService) { }
 
   ngOnInit(): void {
     this.consultarCuenta();
     this.consultarTarjeta();
+
+      
+      this.interval = setInterval(() => { 
+        this.consultarCuenta();
+        this.consultarTarjeta();
+      }, 5000);
   }
+
 
   consultarCuenta(){
     this.s_producto.consultarCuenta().subscribe((data : any )=>{
@@ -56,6 +64,12 @@ export class ProductosComponent implements OnInit {
     this.s_producto.show = false;
   }
 
+  ocultarAgregar(){
+    this.s_tarjeta.show = false;
+    this.s_cuenta.show = false;
+    this.s_producto.show = true;
+  }
+  
   ocultarProductos(){
     this.s_cuenta.show = false;
     this.s_tarjeta.show = false;
