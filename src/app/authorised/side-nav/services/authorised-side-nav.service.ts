@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { BloquearService } from './../../bloquear/services/bloquear.service';
 import { MovimientosService } from './../../tabla-movimientos/services/movimientos.service';
@@ -6,6 +8,8 @@ import { PerfilService } from './../../perfil/services/perfil.service';
 import { ProductosService } from './../../productos/services/productos.service';
 import { ConfiguracionesService } from './../../configuraciones/services/configuraciones.service';
 import { InicioService } from './../../pantalla-inicio/services/inicio.service';
+
+import { ProductosComponent } from './../../productos/productos.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +22,10 @@ export class AuthorisedSideNavService {
     private s_perfil : PerfilService,
     private s_configuraciones : ConfiguracionesService,
     private s_productos : ProductosService,
-    private s_inicio : InicioService) { }
+    private s_inicio : InicioService,
+    private c_producto : ProductosComponent,
+    private router : Router,
+    private location: Location) { }
  
   toggleSideNav(): void {
     this.hideSideNav = !this.hideSideNav;
@@ -31,6 +38,7 @@ export class AuthorisedSideNavService {
     this.s_configuraciones.show = false;
     this.s_productos.show = false;
     this.s_inicio.show = false;
+    this.c_producto.ocultarProductos();
   }
 
   toggleBloquear(){
@@ -40,6 +48,7 @@ export class AuthorisedSideNavService {
     this.s_configuraciones.show = false;
     this.s_productos.show = false;
     this.s_inicio.show = false;
+    this.c_producto.ocultarProductos();
   }
 
   togglePerfil(){
@@ -49,6 +58,7 @@ export class AuthorisedSideNavService {
     this.s_configuraciones.show = false;
     this.s_productos.show = false;
     this.s_inicio.show = false;
+    this.c_producto.ocultarProductos();
   }
 
   toggleInicio(){
@@ -58,6 +68,7 @@ export class AuthorisedSideNavService {
     this.s_perfil.show = false;
     this.s_configuraciones.show = false;
     this.s_productos.show = false;
+    this.c_producto.ocultarProductos();
   }
 
   toggleConfiguraciones(){
@@ -67,6 +78,7 @@ export class AuthorisedSideNavService {
     this.s_perfil.show = false;
     this.s_productos.show = false;
     this.s_inicio.show = false;
+    this.c_producto.ocultarProductos();
   }
 
   toogleProductos(){
@@ -76,5 +88,11 @@ export class AuthorisedSideNavService {
     this.s_bloquear.show = false;
     this.s_perfil.show = false;
     this.s_inicio.show = false;
+  }
+
+
+  logout(){
+    localStorage.clear();
+    this.location.back();
   }
 }
