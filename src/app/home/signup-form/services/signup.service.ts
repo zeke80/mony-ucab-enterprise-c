@@ -22,6 +22,8 @@ export class SignupService {
   ){
     let url = "http://monyucab.somee.com/api/Usuario/registrarComercio";
 
+    usuario = usuario.toLocaleUpperCase();
+    
     let body ={
       "usuario" : usuario,
       "contrasena" : contra,
@@ -82,24 +84,7 @@ export class SignupService {
       "descripciontipoidentificacion" :  descripcionTipoIdentificacion,
       "idestadocivil" : idEstadoCivil
      };
-     
-
-    let body = {
-      'usuario' : usuario,
-      'nombre' : nombre,
-      'apellido' : apellido,
-      'contrasena' : contra,
-      'fecha_nacimiento' : fechaNacimiento,
-      'email' : email,
-      'telefono' : telefono,
-      'direccion' : direccion,
-      'nro_identificacion' : nroIdentificacion,
-      'descripciontipousuario' : descripcionTipoUsuario,
-      'idtipousuario' : idTipoUsuario,
-      'idtipoidentificacion' : idTipoIdentificacion,
-      'descripciontipoidentificacion' : descripcionTipoIdentificacion,
-      'idestadocivil' : idEstadoCivil
-    };
+    
 
     return this.http.post(url, body2);
 
