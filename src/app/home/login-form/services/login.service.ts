@@ -9,10 +9,10 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   loginPersona(usuario:String, contrasena:String){
-    let url= "http://monyucab.somee.com/api/Usuario/loginPersona";
+    let url= "http://localhost:80/api/Usuario/loginPersona";
   
 
-    return this.http.post(url, {user: usuario, contra: contrasena});
+    return this.http.post(url, {"user": usuario, "contra": contrasena});
   }
 
   loginComercio(usuario:String, contrasena:String){
