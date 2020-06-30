@@ -100,22 +100,45 @@ export class SignupFormComponent implements OnInit {
       (data : any)=>{
       },
       (err : HttpErrorResponse) =>{
-        if (err.status == 400){
+        if (err.error == 400){
           alert("Datos repetidos. Intente de nuevo");
         }
-        else if(err.status == 200){
-          alert("Usuario creado")
+        else if (err.status == 200){
+          alert("Persona creado");
         }
         else {
-          alert("Error inesperado. Intente otra vez")
+          alert("Error inesperado. Vuelva a intentar")
         }
       }
     );
   }
 
   registarComercio(){
-
-
+    this.contrasena = this.formUsuario.get('contra').value;
+    this.s_signup.registrarComercio(
+      this.formUsuario.get('usuario').value,
+      this.contrasena,
+      this.formUsuario.get('correo').value,
+      this.formUsuario.get('telefono').value,
+      this.formUsuario.get('direccion').value,
+      parseInt(this.formUsuario.get('numeroId').value,10),
+      1,
+      this.formComercio.get('razonSocial').value,
+      this.formComercio.get('nombreRepresentante').value,
+      this.formComercio.get('apellidoRepresentante').value
+      ).subscribe((data: any)=>{
+      },
+      (err : HttpErrorResponse) =>{
+        if (err.status == 400){
+          alert("Datos duplicados. Intente nuevamente")
+        }
+        else if(err.status == 200){
+          alert("Comercio creado")
+        }
+        else {
+          alert("Error inesperado. Intente de nuevo")
+        }
+      });
   }
 
   enviar(){
