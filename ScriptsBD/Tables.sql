@@ -12,7 +12,7 @@ CREATE TABLE usuario (
 	usuario              varchar(20) NOT NULL UNIQUE,
 	fecha_registro       DATE NOT NULL,
 	nro_identificacion   integer NOT NULL,
-	email                varchar(200) NOT NULL,
+	email                varchar(200) NOT NULL UNIQUE,
 	telefono             varchar(12) NOT NULL,
 	direccion            varchar(500) NOT NULL,
 	estatus              integer NOT NULL

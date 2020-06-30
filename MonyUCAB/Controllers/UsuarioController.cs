@@ -494,11 +494,16 @@ namespace MonyUCAB.Controllers
         {
             try
             {
+                IPagoDAO pagoDAO = new PagoDAOPsql();
+                decimal saldo = pagoDAO.saldo(infoOperacion.idOrigen);
+
+                if (saldo < (decimal)infoOperacion.monto)
+                    throw new Exception();
+
                 IOperacionesMonederoDAO operacionesMonederoDAO = new OperacionesMonederoDAOPsql();
                 operacionesMonederoDAO.registrarOperacionMonederoRemitente(infoOperacion.idOrigen, infoOperacion.monto, infoOperacion.referencia);
                 operacionesMonederoDAO.registrarOperacionMonederoDestinatario(infoOperacion.usuarioReceptor, infoOperacion.monto, infoOperacion.referencia);
 
-                IPagoDAO pagoDAO = new PagoDAOPsql();
                 pagoDAO.actualizarSolicitudPagada(infoOperacion.referencia);
 
                 return true;
@@ -917,7 +922,7 @@ namespace MonyUCAB.Controllers
             }
             catch (Exception e)
             {
-                return Conflict();
+                return BadRequest(e.Message);
             }
         }
     }

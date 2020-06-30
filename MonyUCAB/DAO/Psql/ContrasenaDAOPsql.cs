@@ -17,29 +17,49 @@ namespace MonyUCAB.DAO.Psql
 
         public void registrarContrasena(int idUsuario, string contrasena)
         {
-            comando.CommandText = string.Format(
-                "INSERT INTO contrasena(" +
-                    "idusuario, " +
-                    "contrasena, " +
-                    "intentos_fallidos," +
-                    "estatus" +   
-                ") " +
-                "values" +
-                "({0},'{1}',0,1)",idUsuario, contrasena);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "INSERT INTO contrasena(" +
+                        "idusuario, " +
+                        "contrasena, " +
+                        "intentos_fallidos," +
+                        "estatus" +
+                    ") " +
+                    "values" +
+                    "({0},'{1}',0,1)", idUsuario, contrasena);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         public void CambiarPassword(int idusuario, string nuevaPass, string viejaPass)
         {
-            comando.CommandText = string.Format(
-                "UPDATE contrasena SET " +
-                "contrasena = '{0}' " +
-                "WHERE idusuario = {1}", nuevaPass, idusuario);
-            conexion.Open();
-            comando.ExecuteNonQuery();
-            conexion.Close();
+            try
+            {
+                comando.CommandText = string.Format(
+                    "UPDATE contrasena SET " +
+                    "contrasena = '{0}' " +
+                    "WHERE idusuario = {1}", nuevaPass, idusuario);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (NpgsqlException e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
          public ContrasenaDTO buscarcontrasenavieja(int idusuario)
