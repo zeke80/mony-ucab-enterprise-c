@@ -20,7 +20,7 @@ export class SignupService {
     nombre : string,
     apellido: string
   ){
-    let url = "http://localhost:80/api/Usuario/registrarComercio";
+    let url = "http://monyucab.somee.com/api/Usuario/registrarComercio";
 
     let body ={
       "usuario" : usuario,
@@ -58,7 +58,7 @@ export class SignupService {
     idEstadoCivil : number
   ){
 
-    let url = "http://localhost:80/api/Usuario/registrarUsuario";
+    let url = "http://monyucab.somee.com/api/Usuario/registrarUsuario";
 
 
     usuario = usuario.toLocaleUpperCase();
