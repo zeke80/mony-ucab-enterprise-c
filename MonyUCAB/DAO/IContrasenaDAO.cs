@@ -10,5 +10,7 @@ namespace MonyUCAB.DAO
     interface IContrasenaDAO
     {
         void registrarContrasena(int idUsuario, string contrasena);
+        void CambiarPassword(int idusuario, string nuevaPass, string viejaPass);
+        ContrasenaDTO buscarcontrasenavieja(int idusuario);
     }
 }

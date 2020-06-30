@@ -889,5 +889,38 @@ namespace MonyUCAB.Controllers
                 return Conflict();
             }
         }
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<ActionResult<string>> ActualizarPass(InfoCambioPass infoCambioPass)
+        {
+            
+          //  try
+            //{
+                string respuesta = "Contrasena Actualizada";
+                string respuesta2= "Contrasena actual incorrecta";
+                IUsuarioDAO usuarioDAO1 = new UsuarioDAOPsql();
+                UsuarioDTO usuarioDTO = usuarioDAO1.buscarIdByUser(infoCambioPass.usuario);
+                
+
+                IContrasenaDAO contrasenaDAO = new ContrasenaDAOPsql();
+                ContrasenaDTO contrasenaDTO = contrasenaDAO.buscarcontrasenavieja(usuarioDTO.Idusuario);
+
+                 if (contrasenaDTO == null)
+                    return NotFound();
+                    
+                string contravieja = contrasenaDTO.Contrasena;
+                if (contravieja !=infoCambioPass.viejacontra)
+                {
+                    return  respuesta2;
+                }
+                contrasenaDAO.CambiarPassword(usuarioDTO.Idusuario,infoCambioPass.nuevacontra,infoCambioPass.viejacontra);
+
+                return respuesta;
+            /*}
+            catch (Exception e)
+            {
+                return Conflict();
+            }*/
+        }
     }
 }
