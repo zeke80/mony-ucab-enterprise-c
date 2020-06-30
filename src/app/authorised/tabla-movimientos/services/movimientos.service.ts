@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -41,7 +41,78 @@ export class MovimientosService {
     let id = parseInt(localStorage.getItem('idUsuario'), 10);
 
     return this.http.post(url, {'id' : id});
-
   }
 
+  consutarTodoParam(inicio : string, fin : string){
+    let url = "http://monyucab.somee.com/api/Usuario/Filtrartodasoperaciones";
+
+    let user = localStorage.getItem('usuario').toLocaleUpperCase();
+  
+
+    let data = {
+      headers :  new HttpHeaders ({
+        "fechainicio" : inicio,
+        "fechafinal" : fin,
+        "usuario" : user  
+      }) 
+    };
+
+    return this.http.get<any>(url, data);
+  }
+
+
+  consutarMonederoParam(inicio : string, fin : string){
+    let url = "http://monyucab.somee.com/api/Usuario/FiltraroperacionesMonedero";
+
+    let user = localStorage.getItem('usuario').toLocaleUpperCase();
+  
+
+    let data = {
+      headers :  new HttpHeaders ({
+        "fechainicio" : inicio,
+        "fechafinal" : fin,
+        "usuario" : user 
+      }) 
+    };
+
+    console.log(data);
+
+    return this.http.get<any>(url, data);
+  }
+
+
+  
+  consultarTarjetaParam(inicio : string, fin : string){
+    let url = "http://monyucab.somee.com/api/Usuario/FiltraroperacionesTarjeta";
+
+    let user = localStorage.getItem('usuario').toLocaleUpperCase();
+  
+
+    let data = {
+      headers :  new HttpHeaders ({
+        "fechainicio" : inicio,
+        "fechafinal" : fin,
+        "usuario" : user 
+      }) 
+    };
+
+    return this.http.get<any>(url, data);
+  }
+
+  
+  consultarCuentasParam(inicio : string, fin : string){
+    let url = "http://monyucab.somee.com/api/Usuario/FiltraroperacionesCuenta";
+
+    let user = localStorage.getItem('usuario').toLocaleUpperCase();
+
+    let data = {
+      headers :  new HttpHeaders ({
+        "fechainicio" : inicio,
+        "fechafinal" : fin,
+        "usuario" : user 
+      }) 
+    };
+
+    return this.http.get<any>(url, data);
+  }
 }

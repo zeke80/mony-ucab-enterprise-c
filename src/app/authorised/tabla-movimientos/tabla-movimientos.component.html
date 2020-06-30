@@ -7,21 +7,12 @@
             <div class="form-row">
                 <div class="col-4">
                     <label for="mes1"><h6>Desde</h6></label>
-                    <select class="form-control form-control-sm" [(ngModel)] ="mes1">
-                        <option>Messs</option>
-                    </select>
+                    <input type="date" class="form-control" [(ngModel)]="fecha1">
+
                 </div>
                 <div class="col-4">
                     <label for="mes2"><h6>Hasta</h6></label>
-                    <select class="form-control form-control-sm" [(ngModel)]="mes2">
-                        <option>Messs</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <label for="anio"><h6>Año</h6></label>
-                    <select class="form-control form-control-sm" [(ngModel)]="anio">
-                        <option>Año</option>
-                    </select>
+                    <input type="date" class="form-control" [(ngModel)]="fecha2">
                 </div>
                 <div class="col-2">
                     <br>
