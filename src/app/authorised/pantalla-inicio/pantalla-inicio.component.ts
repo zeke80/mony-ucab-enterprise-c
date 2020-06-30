@@ -9,9 +9,16 @@ import { InicioService } from './services/inicio.service';
 })
 export class PantallaInicioComponent implements OnInit {
 
+  nombre = localStorage.getItem('usuario'); 
+  saldo : any ;
+
   constructor(public s_inicio : InicioService) { }
 
   ngOnInit(): void {
+    this.s_inicio.consultarSaldo().subscribe(data =>{
+      this.saldo = data;
+    });
   }
+
 
 }
