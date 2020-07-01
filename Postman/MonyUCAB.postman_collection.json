@@ -1,0 +1,1974 @@
+{
+	"info": {
+		"_postman_id": "6d7369aa-9ef0-4235-87c2-8a7bde0c912f",
+		"name": "MonyUCAB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "loginPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\" : \"BRAYANDS\",\r\n\t\"contra\" : \"DS140203\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/loginPersona",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"loginPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\" : \"user1\",\r\n\t\"contra\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/loginComercio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"loginComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoPersona",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoComercio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoCuentas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoCuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoCuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoTarjeta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoTarjetas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoTarjetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoTarjetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesCuentas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionesCuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesCuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionTarjeta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesTarjetas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionesTarjetas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesTarjetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionMonedero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/operacionesMonedero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoReintegros",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/infoReintegros",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"infoReintegros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"referencia\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/solicitarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aceptarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/aceptarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"aceptarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rechazarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/rechazarReintegro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"rechazarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\": 1,\r\n    \"userReceptor\": \"BRAYANDS\",\r\n    \"monto\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/solicitarPago",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosSolicitante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/pagosSolicitadosSolicitante",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosSolicitante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosReceptor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/pagosSolicitadosReceptor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosReceptor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"BRAYANDS\",\r\n    \"monto\": 100,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/realizarPagoCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"BRAYANDS\",\r\n    \"monto\": 100,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/realizarPagoTarjeta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"BRAYANDS\",\r\n    \"monto\": 100,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/realizarPagoMonedero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"user\": \"BRAYANDS\",\r\n    \"di\": 1,\r\n    \"email\": \"1\",\r\n    \"telf\": \"1\",\r\n    \"dir\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"razonSocial\": \"1\",\r\n    \"nombre\": \"1\",\r\n    \"apellido\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarComercio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"nombre\": \"2\",\r\n    \"apellido\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/ajustarPersona",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/saldo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"saldo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cierre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/cierre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"cierre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviarEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\" : \"robertocd98@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/enviarEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"enviarEmail"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Remoto",
+			"item": [
+				{
+					"name": "loginPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\" : \"BRAYANDS\",\r\n\t\"contra\" : \"DS140203\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/loginPersona",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"loginPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\" : \"user1\",\r\n\t\"contra\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/loginComercio",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"loginComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoUsuario",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoPersona",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoComercio",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoCuenta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoCuentas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoCuentas",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoCuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoTarjeta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoTarjetas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoTarjetas",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoTarjetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionCuenta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesCuentas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionesCuentas",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesCuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionTarjeta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesTarjetas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionesTarjetas",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesTarjetas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionMonedero",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "operacionesMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/operacionesMonedero",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"operacionesMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoReintegros",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/infoReintegros",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"infoReintegros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"referencia\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/solicitarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aceptarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/aceptarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"aceptarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rechazarReintegro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/rechazarReintegro",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"rechazarReintegro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solicitarPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuarioSolicitante\": 1,\r\n    \"userReceptor\": \"user2\",\r\n    \"monto\": 1.11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/solicitarPago",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"solicitarPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosSolicitante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/pagosSolicitadosSolicitante",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosSolicitante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagosSolicitadosReceptor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/pagosSolicitadosReceptor",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"pagosSolicitadosReceptor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/realizarPagoCuenta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoTarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"user2\",\r\n    \"monto\": 1.11,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/realizarPagoTarjeta",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoTarjeta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "realizarPagoMonedero",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idOrigen\": 1,\r\n    \"usuarioReceptor\": \"BRAYANDS\",\r\n    \"monto\": 100,\r\n    \"referencia\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/realizarPagoMonedero",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"realizarPagoMonedero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"user\": \"user1\",\r\n    \"di\": 1,\r\n    \"email\": \"1\",\r\n    \"telf\": \"1\",\r\n    \"dir\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarUsuario",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarComercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"razonSocial\": \"1\",\r\n    \"nombre\": \"1\",\r\n    \"apellido\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarComercio",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarComercio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajustarPersona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"nombre\": \"2\",\r\n    \"apellido\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/ajustarPersona",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"ajustarPersona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/saldo",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"saldo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cierre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/cierre",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"cierre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviarEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\" : \"robertocd98@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://monyucab.somee.com/api/Usuario/enviarEmail",
+							"protocol": "http",
+							"host": [
+								"monyucab",
+								"somee",
+								"com"
+							],
+							"path": [
+								"api",
+								"Usuario",
+								"enviarEmail"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
